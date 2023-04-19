@@ -40,23 +40,23 @@ Name your file the date-topic.md (mmddyy-topic.md). For example 011621-kickoff.m
 #### Team name will be 2020 Visionaries
 
 #### Team poster
-- Chi will design this
+- Chi volunteered to design this
 - team name in middle (+ logo)
 - color yes/no so that it is visible
 - let TA verify completion
 
 #### Intro Video
-- Sean will edit the video
+- Sean volunteered to edit the video
 - need intro (reveal group name) scene
 - each member will submit a 10 second clip where they perform an intro scene and push up their glasses and freeze for a bit + accompanying text about eyesight quality/other details **SUBMIT TONIGHT**
 - edited to ~15 seconds per clip after editing * 10 per team member = 150 seconds
 
 #### Rules contract
-- Tyler will make the contract and send it to us **TONIGHT**
+- Tyler volunteered to make the contract and send it to us **TONIGHT**
 - we need to all sign it and upload our signed copy by **THURSDAY**
 
 #### Team page
-- Everyone post a link to their lab 1 github pages in slack **TONIGHT**
+- Everyone post a link to their lab 1 github pages in slack for the team page **TONIGHT**
 
 #### 8-Ball role assignment
 Coding/Tests/Documentation (6 maybe 7)
@@ -75,6 +75,6 @@ Presentation:
 - Ho Heon
 - Thinh
 
-Meet over the weekend **sunday 11am** for mob coding session
+Meet over the weekend **Sunday 11am** for mob coding session
 
 #### Meeting finished at: *2:45pm*
