@@ -14,7 +14,9 @@
 
 ## Meet our Team:
 
-- [Brandon Kao]()
+- [Brandon Kao](https://brandon028.github.io/P2/)
+  - Third year student majoring in Cognitive Science in Marshall
+  - Has a box of redbulls under the bed.
 - [Brevin Gabriel Salvania](https://bsalvania.github.io/CSE-110-Lab/)
   - Second year student majoring in CS at Muir.
   - Has touched grass.
