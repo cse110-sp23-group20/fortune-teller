@@ -16,6 +16,8 @@
 
 - [Brandon Kao]()
 - [Brevin Gabriel Salvania](https://bsalvania.github.io/CSE-110-Lab/)
+  - Second year student majoring in CS Muir.
+  - Has touched grass.
 - [Chi Zhang]()
 - [Devika Torvi]()
 - [Do heon Kim]()
