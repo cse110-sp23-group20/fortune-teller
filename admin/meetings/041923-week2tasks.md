@@ -1,5 +1,3 @@
-Name your file the date-topic.md (mmddyy-topic.md). For example 011621-kickoff.md.
-
 # Meeting Minutes: 04/19, 1:45 pm - 2:45 pm
 
 #### Team 20: 2020 Visionaries
