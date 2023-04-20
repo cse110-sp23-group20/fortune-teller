@@ -27,4 +27,6 @@
   - 20 years of breathing experience at Earth LLC.
 - [Sean Yen]()
 - [Thinh Vo]()
-- [Tyler Lo]()
+- [Tyler Lo](https://tylerlo416.github.io/CSE110Week1Lab/)
+  - Second year CS major at Seventh.
+  - Desperately despises Calculus.
