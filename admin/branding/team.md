@@ -1,4 +1,5 @@
 # 2020 Visionaries
+![logo](/admin/branding/logotemp.jpeg)
 
 ## Brand Statement:
 "2020 Visionaries: Unlocking the Future through Fortune Telling"
@@ -20,7 +21,8 @@
 - [Do heon Kim]()
 - [Joseph Burgos]()
 - [Owen Huynh](https://ohuynh21.github.io/cse110_lab1/)
-  - Second year CS student at Muir. 20 years of breathing experience at Earth LLC.
+  - Second year CS student at Muir.
+  - 20 years of breathing experience at Earth LLC.
 - [Sean Yen]()
 - [Thinh Vo]()
 - [Tyler Lo]()
