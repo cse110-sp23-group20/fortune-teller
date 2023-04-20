@@ -15,7 +15,7 @@
 ## Meet our Team:
 
 - [Brandon Kao]()
-- [Brevin Gabriel Salvania]()
+- [Brevin Gabriel Salvania](https://bsalvania.github.io/CSE-110-Lab/)
 - [Chi Zhang]()
 - [Devika Torvi]()
 - [Do heon Kim]()
