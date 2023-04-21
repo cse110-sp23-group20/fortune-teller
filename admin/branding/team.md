@@ -21,7 +21,9 @@
   - Second year student majoring in CS at Muir.
   - Has touched grass.
 - [Chi Zhang]()
-- [Devika Torvi]()
+- [Devika Torvi](https://dtorvi.github.io/GitHubPages/)
+  -  Fourth year student majoring in Bioengineering: Bioinformatics in Warren
+  -  Obsessed with true crime documentaries
 - [Do heon Kim]()
 - [Joseph Burgos]()
 - [Owen Huynh](https://ohuynh21.github.io/cse110_lab1/)
