@@ -27,7 +27,9 @@
 - [Owen Huynh](https://ohuynh21.github.io/cse110_lab1/)
   - Second year CS student at Muir.
   - 20 years of breathing experience at Earth LLC.
-- [Sean Yen]()
+- [Sean Yen](https://sheeptester-forks.github.io/cse110-lab-1/)
+  - A second-year CE major at Sixth.
+  - Will come up with a clever tagline later.
 - [Thinh Vo](https://thinhgvo.github.io/CSE-110/index.html)
 - [Tyler Lo](https://tylerlo416.github.io/CSE110Week1Lab/)
   - Second year CS major at Seventh.
