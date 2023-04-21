@@ -31,6 +31,8 @@
   - A second-year CE major at Sixth.
   - Will come up with a clever tagline later.
 - [Thinh Vo](https://thinhgvo.github.io/CSE-110/index.html)
+  - Third year CE major at Warren.
+  - Cat memes are superior.
 - [Tyler Lo](https://tylerlo416.github.io/CSE110Week1Lab/)
   - Second year CS major at Seventh.
   - Desperately despises Calculus.
