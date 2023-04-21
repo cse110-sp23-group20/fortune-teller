@@ -28,7 +28,7 @@
   - Second year CS student at Muir.
   - 20 years of breathing experience at Earth LLC.
 - [Sean Yen]()
-- [Thinh Vo]()
+- [Thinh Vo](https://thinhgvo.github.io/CSE-110/index.html)
 - [Tyler Lo](https://tylerlo416.github.io/CSE110Week1Lab/)
   - Second year CS major at Seventh.
   - Desperately despises Calculus.
