@@ -20,7 +20,9 @@
 - [Brevin Gabriel Salvania](https://bsalvania.github.io/CSE-110-Lab/)
   - Second year student majoring in CS at Muir.
   - Has touched grass.
-- [Chi Zhang]()
+- [Chi Zhang](https://ayaaa99.github.io/CSE110/)
+  - Third year student majoring in Cognitive Science in Revelle.
+  - I'd rather be at a kpop concert.
 - [Devika Torvi](https://dtorvi.github.io/GitHubPages/)
   -  Fourth year student majoring in Bioengineering: Bioinformatics in Warren
   -  Obsessed with true crime documentaries
