@@ -25,7 +25,9 @@
   -  Fourth year student majoring in Bioengineering: Bioinformatics in Warren
   -  Obsessed with true crime documentaries
 - [Do heon Kim]()
-- [Joseph Burgos]()
+- [Joseph Burgos](https://josephburger.github.io/GitHubPages/)
+  - Third Year Student majoring in Math/CS
+  - apart of a fraternity :o     
 - [Owen Huynh](https://ohuynh21.github.io/cse110_lab1/)
   - Second year CS student at Muir.
   - 20 years of breathing experience at Earth LLC.
