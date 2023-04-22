@@ -14,6 +14,8 @@
 
 ## Meet our Team:
 
+https://user-images.githubusercontent.com/22133785/233798913-d026a577-a592-407a-a61a-103231703dfc.mp4
+
 - [Brandon Kao](https://brandon028.github.io/P2/)
   - Third year student majoring in Cognitive Science in Marshall
   - Has a box of redbulls under the bed.
