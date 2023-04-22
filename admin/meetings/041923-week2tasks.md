@@ -33,8 +33,6 @@
 
 ### Decisions made
 
-### Team Branding
-
 #### Team name will be 2020 Visionaries
 
 #### Team poster
