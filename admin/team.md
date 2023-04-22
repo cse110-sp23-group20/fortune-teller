@@ -1,5 +1,6 @@
+<img src="/admin/branding/logotemp.jpeg" alt="logo" width="200" align="right">
+
 # 2020 Visionaries
-![logo](/admin/branding/logotemp.jpeg)
 
 ## Brand Statement:
 "2020 Visionaries: Unlocking the Future through Fortune Telling"
