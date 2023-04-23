@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 </html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
   <style>
     body {
       font-family: 'Arial';
@@ -64,6 +63,7 @@
   <button id="submit">Ask!</button>
   <div id="answer"></div>
   <img id="eightball" src="img/eightball.gif">
+  <audio id="eightball-sound" src="img/magic-8-ball-sound.wav" preload="auto"></audio>
   <script>
     document.getElementById('submit').onclick = function () {
       // Get the user's question
@@ -95,6 +95,9 @@
 
       // Generate a random number between 0 and the length of the answers array
       var randomNumber = Math.floor(Math.random() * answers.length);
+
+      // Play the sound
+      document.getElementById('eightball-sound').play();
 
       // Animate the 8Ball
       document.getElementById('eightball').className = 'spinning';

@@ -30,3 +30,6 @@ Query 2 to ChatGPT 3.5
 Query 3 to ChatGPT 3.5
     Now rewrite this code so that the animation does 1 complete rotation 
     only after the submit button is pressed.
+
+Query 4 to ChatGPT 3.5
+    Now add an audio clip called magic-8-ball-sound.wav that plays when the submit button is pressed.
