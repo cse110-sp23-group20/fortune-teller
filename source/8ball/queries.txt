@@ -41,3 +41,6 @@ Query 5 to ChatGPT 3.5
 
 Query 6 to Lovo
     Generate audio based on the text of each possible answer.
+
+Query 7 to ChatGPT 3.5
+write code to set a timeout on the submit button so that it cannot be pressed for 5 seconds after it has been pressed.

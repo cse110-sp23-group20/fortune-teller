@@ -88,6 +88,12 @@
 
   <script>
     document.getElementById('submit').onclick = function () {
+
+      // Set a 5 second timeout
+      document.getElementById('submit').disabled = true;
+      setTimeout(function() {
+        document.getElementById('submit').disabled = false;
+      }, 5000);
       // Get the user's question
       var question = document.getElementById('question').value;
 
