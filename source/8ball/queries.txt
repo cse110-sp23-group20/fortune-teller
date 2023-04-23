@@ -26,3 +26,7 @@ Initial query to ChatGPT 3.5
 Query 2 to ChatGPT 3.5
     Now write an animation for an 8ball gif. 
     The middle of the 8ball gif should spin and eventually output the random answer from var answers
+
+Query 3 to ChatGPT 3.5
+    Now rewrite this code so that the animation does 1 complete rotation 
+    only after the submit button is pressed.

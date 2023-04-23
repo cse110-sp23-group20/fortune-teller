@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
+</html>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,8 +41,10 @@
       width: 150px;
       position: relative;
       margin: 0 auto;
+    }
+    #eightball.spinning {
       animation-name: spin;
-      animation-iteration-count: infinite;
+      animation-iteration-count: 1;
       animation-duration: 6s;
     }
     @keyframes spin {
@@ -91,8 +96,14 @@
       // Generate a random number between 0 and the length of the answers array
       var randomNumber = Math.floor(Math.random() * answers.length);
 
+      // Animate the 8Ball
+      document.getElementById('eightball').className = 'spinning';
+
       // Display the answer
-      document.getElementById('answer').innerHTML = answers[randomNumber];
+      setTimeout(function () {
+        document.getElementById('eightball').className = '';
+        document.getElementById('answer').innerHTML = answers[randomNumber];
+      }, 5000);
     };
   </script>
 </body>
