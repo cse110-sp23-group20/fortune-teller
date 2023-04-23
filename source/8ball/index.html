@@ -11,24 +11,34 @@
     <title>Document</title>
   <style>
     body {
-      font-family: 'Arial';
       font-size: 20px;
       text-align: center;
       background-image: url(img/background.png);
       color: #ffffff;
     }
+
+    @font-face {
+      font-family: 'Enchanted Land';
+      src: url('Enchanted Land.otf') format('opentype');
+    }
+    
+    * { 
+      font-family: 'Enchanted Land'; 
+    }
+    
     #question {
       width: 300px;
       height: 30px;
       font-size: 20px;
       margin: 20px auto;
+      font-family: 'Enchanted Land'
     }
     #submit {
       width: 150px;
       background-color: #4d4d4d;
       color: #ffffff;
-      font-size: 20px;
-      padding: 10px;
+      font-size: 30px;
+      padding: 5px;
       margin: 20px auto;
     }
     #answer {
