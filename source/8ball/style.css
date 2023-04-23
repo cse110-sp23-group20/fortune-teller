@@ -1,0 +1,45 @@
+body {
+    font-family: 'Arial';
+    font-size: 20px;
+    text-align: center;
+    background-image: url(img/background.png);
+    color: #ffffff;
+}
+#question {
+    width: 300px;
+    height: 30px;
+    font-size: 20px;
+    margin: 20px auto;
+}
+#submit {
+    width: 150px;
+    background-color: #4d4d4d;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px;
+    margin: 20px auto;
+}
+#answer {
+    font-size: 25px;
+    margin: 20px auto;
+    font-weight: bold;
+}
+#eightball {
+    height: 150px;
+    width: 150px;
+    position: relative;
+    margin: 0 auto;
+}
+#eightball.spinning {
+    animation-name: spin;
+    animation-iteration-count: 1;
+    animation-duration: 3s;
+}
+@keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
