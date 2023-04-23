@@ -3,111 +3,46 @@
 
 </html>
 <html>
+
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
-  <style>
-    body {
-      font-family: 'Arial';
-      font-size: 20px;
-      text-align: center;
-      background-color: #f3f3f3;
-    }
-    #question {
-      width: 300px;
-      height: 30px;
-      font-size: 20px;
-      margin: 20px auto;
-    }
-    #submit {
-      width: 150px;
-      background-color: #4d4d4d;
-      color: #ffffff;
-      font-size: 20px;
-      padding: 10px;
-      margin: 20px auto;
-    }
-    #answer {
-      color: #000000;
-      font-size: 25px;
-      margin: 20px auto;
-      font-weight: bold;
-    }
-    #eightball {
-      height: 150px;
-      width: 150px;
-      position: relative;
-      margin: 0 auto;
-    }
-    #eightball.spinning {
-      animation-name: spin;
-      animation-iteration-count: 1;
-      animation-duration: 6s;
-    }
-    @keyframes spin {
-      from {
-        transform: rotate(0deg);
-      }
-      to {
-        transform: rotate(360deg);
-      }
-    }
-  </style>
+    <link rel="shortcut icon" href="">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-  <h1>Magic 8 Ball</h1>
-  <p>Ask a yes or no question and the Magic 8 Ball will answer!</p>
-  <input type="text" id="question" placeholder="Ask a question...">
-  <button id="submit">Ask!</button>
-  <div id="answer"></div>
-  <img id="eightball" src="img/eightball.gif">
-  <audio id="eightball-sound" src="img/magic-8-ball-sound.wav" preload="auto"></audio>
-  <script>
-    document.getElementById('submit').onclick = function () {
-      // Get the user's question
-      var question = document.getElementById('question').value;
+    <h1>Magic 8 Ball</h1>
+    <p>Ask a yes or no question and the Magic 8 Ball will answer!</p>
+    <input type="text" id="question" placeholder="Ask a question...">
+    <button id="submit">ASK!</button>
+    <div id="answer"></div>
+    <img id="eightball" src="img/eightball.gif">
+    <audio id="eightball-sound" src="sounds/magic-8-ball-sound.wav" preload="auto"></audio>
+    <audio id="sound1" src="sounds/soundsource1.wav" preload="auto"></audio>
+    <audio id="sound2" src="sounds/soundsource2.wav" preload="auto"></audio>
+    <audio id="sound3" src="sounds/soundsource3.wav" preload="auto"></audio>
+    <audio id="sound4" src="sounds/soundsource4.wav" preload="auto"></audio>
+    <audio id="sound5" src="sounds/soundsource5.wav" preload="auto"></audio>
+    <audio id="sound6" src="sounds/soundsource6.wav" preload="auto"></audio>
+    <audio id="sound7" src="sounds/soundsource7.wav" preload="auto"></audio>
+    <audio id="sound8" src="sounds/soundsource8.wav" preload="auto"></audio>
+    <audio id="sound9" src="sounds/soundsource9.wav" preload="auto"></audio>
+    <audio id="sound10" src="sounds/soundsource10.wav" preload="auto"></audio>
+    <audio id="sound11" src="sounds/soundsource11.wav" preload="auto"></audio>
+    <audio id="sound12" src="sounds/soundsource12.wav" preload="auto"></audio>
+    <audio id="sound13" src="sounds/soundsource13.wav" preload="auto"></audio>
+    <audio id="sound14" src="sounds/soundsource14.wav" preload="auto"></audio>
+    <audio id="sound15" src="sounds/soundsource15.wav" preload="auto"></audio>
+    <audio id="sound16" src="sounds/soundsource16.wav" preload="auto"></audio>
+    <audio id="sound17" src="sounds/soundsource17.wav" preload="auto"></audio>
+    <audio id="sound18" src="sounds/soundsource18.wav" preload="auto"></audio>
+    <audio id="sound19" src="sounds/soundsource19.wav" preload="auto"></audio>
+    <audio id="sound20" src="sounds/soundsource20.wav" preload="auto"></audio>
 
-      // List of possible answers
-      var answers = [
-        'It is certain.',
-        'It is decidedly so.',
-        'Without a doubt.',
-        'Yes definitely.',
-        'You may rely on it.',
-        'As I see it, yes.',
-        'Most likely.',
-        'Outlook good.',
-        'Yes.',
-        'Signs point to yes.',
-        'Reply hazy, try again.',
-        'Ask again later.',
-        'Better not tell you now.',
-        'Cannot predict now.',
-        'Concentrate and ask again.',
-        'Don\'t count on it.',
-        'My reply is no.',
-        'My sources say no.',
-        'Outlook not so good.',
-        'Very doubtful.'
-      ];
-
-      // Generate a random number between 0 and the length of the answers array
-      var randomNumber = Math.floor(Math.random() * answers.length);
-
-      // Play the sound
-      document.getElementById('eightball-sound').play();
-
-      // Animate the 8Ball
-      document.getElementById('eightball').className = 'spinning';
-
-      // Display the answer
-      setTimeout(function () {
-        document.getElementById('eightball').className = '';
-        document.getElementById('answer').innerHTML = answers[randomNumber];
-      }, 5000);
-    };
-  </script>
+    <script src="script.js" type="module"></script>
 </body>
+
 </html>

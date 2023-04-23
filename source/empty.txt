@@ -1,1 +1,0 @@
-delete once another file is added to source folder

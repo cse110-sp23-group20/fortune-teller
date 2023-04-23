@@ -33,3 +33,20 @@ Query 3 to ChatGPT 3.5
 
 Query 4 to ChatGPT 3.5
     Now add an audio clip called magic-8-ball-sound.wav that plays when the submit button is pressed.
+
+<Brandon's AI he used to generate the background.png>
+
+Query 5 to ChatGPT 3.5
+    Now rewrite this code so that it includes an image called background.png as the background for the website. Make all the text on the website white.
+
+Query 6 to Lovo
+    Generate audio based on the text of each possible answer.
+
+Query 7 to ChatGPT 3.5
+write code to set a timeout on the submit button so that it cannot be pressed for 5 seconds after it has been pressed.
+
+Query 8 to ChatGPT 3.5 (https://platform.openai.com/playground)
+    Write code to change the font to Enchanted Land.otf
+
+Query 9 to ChatGPT 3.5 (https://platform.openai.com/playground)
+    Rewrite code so that the font of the whole website is Enchanted Land.otf
