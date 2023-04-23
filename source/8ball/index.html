@@ -64,6 +64,11 @@
   <div id="answer"></div>
   <img id="eightball" src="img/eightball.gif">
   <audio id="eightball-sound" src="img/magic-8-ball-sound.wav" preload="auto"></audio>
+  <audio id="sound1" src="img/soundsource1.wav" preload="auto"></audio>
+  <audio id="sound2" src="img/Untitled-block2.wav" preload="auto"></audio>
+  <audio id="sound3" src="img/Untitled-block3.wav" preload="auto"></audio>
+  <audio id="sound4" src="img/Untitled-block4.wav" preload="auto"></audio>
+  <audio id="sound5" src="img/Untitled-block5.wav" preload="auto"></audio>
   <script>
     document.getElementById('submit').onclick = function () {
       // Get the user's question
@@ -93,6 +98,30 @@
         'Very doubtful.'
       ];
 
+      // List of possible voices
+      var voices = [
+        'sound1',
+        'sound2',
+        'sound3',
+        'sound4',
+        'sound5',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1',
+        'sound1'
+      ]
+
       // Generate a random number between 0 and the length of the answers array
       var randomNumber = Math.floor(Math.random() * answers.length);
 
@@ -106,7 +135,9 @@
       setTimeout(function () {
         document.getElementById('eightball').className = '';
         document.getElementById('answer').innerHTML = answers[randomNumber];
+        document.getElementById(voices[randomNumber]).play();
       }, 5000);
+
     };
   </script>
 </body>
