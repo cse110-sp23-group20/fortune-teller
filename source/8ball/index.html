@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<html>
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+  <style>
+    body {
+      font-family: 'Arial';
+      font-size: 20px;
+      text-align: center;
+      background-color: #f3f3f3;
+    }
+    #question {
+      width: 300px;
+      height: 30px;
+      font-size: 20px;
+      margin: 20px auto;
+    }
+    #submit {
+      width: 150px;
+      background-color: #4d4d4d;
+      color: #ffffff;
+      font-size: 20px;
+      padding: 10px;
+      margin: 20px auto;
+    }
+    #answer {
+      color: #000000;
+      font-size: 25px;
+      margin: 20px auto;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <h1>Magic 8 Ball</h1>
+  <p>Ask a yes or no question and the Magic 8 Ball will answer!</p>
+  <input type="text" id="question" placeholder="Ask a question...">
+  <button id="submit">Ask!</button>
+  <div id="answer"></div>
+  <script>
+    document.getElementById('submit').onclick = function () {
+      // Get the user's question
+      var question = document.getElementById('question').value;
+
+      // List of possible answers
+      var answers = [
+        'It is certain.',
+        'It is decidedly so.',
+        'Without a doubt.',
+        'Yes definitely.',
+        'You may rely on it.',
+        'As I see it, yes.',
+        'Most likely.',
+        'Outlook good.',
+        'Yes.',
+        'Signs point to yes.',
+        'Reply hazy, try again.',
+        'Ask again later.',
+        'Better not tell you now.',
+        'Cannot predict now.',
+        'Concentrate and ask again.',
+        'Don\'t count on it.',
+        'My reply is no.',
+        'My sources say no.',
+        'Outlook not so good.',
+        'Very doubtful.'
+      ];
+
+      // Generate a random number between 0 and the length of the answers array
+      var randomNumber = Math.floor(Math.random() * answers.length);
+
+      // Display the answer
+      document.getElementById('answer').innerHTML = answers[randomNumber];
+    };
+  </script>
+</body>
+</html>
+</html>
