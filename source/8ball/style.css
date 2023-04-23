@@ -43,3 +43,10 @@ body {
         transform: rotate(360deg);
     }
 }
+@font-face {
+    font-family: 'Enchanted Land';
+    src: url('Font/Enchanted Land.otf') format('opentype');
+  }
+  * {
+    font-family: 'Enchanted Land';
+  }
