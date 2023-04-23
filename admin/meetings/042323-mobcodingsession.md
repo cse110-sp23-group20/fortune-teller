@@ -1,6 +1,6 @@
 (Name your file the date-topic.md (mmddyy-topic.md). For example 011621-kickoff.md.)
 
-# Meeting Minutes: 04/23 11:00AM - TBD 
+# Meeting Minutes: 04/23 11:00AM - 1:30
 
 #### Team 20: 2020 Visionaries
 
@@ -31,7 +31,7 @@ Code the magic 8 ball application using generative AI tools
   
 
 ### Undiscussed buisness for next meeting
-TBD
+None
   
 
 ### WHAT WE LEARNED
@@ -80,4 +80,4 @@ TBD
 - We considered the use of Speechify to enable dictation of the responses our magic 8 ball can generate, but it was locked behind a paywall.
 - We ultimately decided to use Jenny.ai because it gave us each 5 free audio downloads, which was enough across all of us in the mob coding session to create dictations of all 20 8-ball responses.
 
-### Meeting finished at: 5pm*
+### Meeting finished at: 1:30pm*
