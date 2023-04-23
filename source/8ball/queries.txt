@@ -33,3 +33,8 @@ Query 3 to ChatGPT 3.5
 
 Query 4 to ChatGPT 3.5
     Now add an audio clip called magic-8-ball-sound.wav that plays when the submit button is pressed.
+
+<Brandon's AI he used to generate the background.png>
+
+Query 5 to ChatGPT 3.5
+    Now rewrite this code so that it includes an image called background.png as the background for the website. Make all the text on the website white.
