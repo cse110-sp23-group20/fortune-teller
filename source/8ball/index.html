@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-<html>
+
 <head>
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Document</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
   <style>
     body {
       font-family: 'Arial';
@@ -33,6 +33,23 @@
       margin: 20px auto;
       font-weight: bold;
     }
+    #eightball {
+      height: 150px;
+      width: 150px;
+      position: relative;
+      margin: 0 auto;
+      animation-name: spin;
+      animation-iteration-count: infinite;
+      animation-duration: 6s;
+    }
+    @keyframes spin {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
   </style>
 </head>
 <body>
@@ -41,6 +58,7 @@
   <input type="text" id="question" placeholder="Ask a question...">
   <button id="submit">Ask!</button>
   <div id="answer"></div>
+  <img id="eightball" src="img/eightball.gif">
   <script>
     document.getElementById('submit').onclick = function () {
       // Get the user's question
@@ -78,5 +96,4 @@
     };
   </script>
 </body>
-</html>
 </html>
