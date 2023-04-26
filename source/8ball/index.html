@@ -16,9 +16,11 @@
 <body>
     <h1>Magic 8 Ball</h1>
     <p>Ask a yes or no question and the Magic 8 Ball will answer!</p>
-    <input type="text" id="question" placeholder="Ask a question...">
-    <button id="submit">ASK!</button>
-    <div id="answer"></div>
+    <form id="question-form">
+        <input type="text" id="question" placeholder="Ask a question...">
+        <button id="submit">ASK!</button>
+    </form>
+    <div id="answer">&nbsp;</div>
     <img id="eightball" src="img/eightball.gif">
     <audio id="eightball-sound" src="sounds/magic-8-ball-sound.wav" preload="auto"></audio>
     <audio id="sound1" src="sounds/soundsource1.wav" preload="auto"></audio>

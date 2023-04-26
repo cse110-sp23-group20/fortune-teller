@@ -1,4 +1,6 @@
-document.getElementById('submit').onclick = function() {
+document.getElementById('question-form').onsubmit = function(event) {
+    // Prevent actually submitting the form, which will leave the page
+    event.preventDefault();
 
     // Set a 5 second timeout
     document.getElementById('submit').disabled = true;
@@ -56,6 +58,9 @@ document.getElementById('submit').onclick = function() {
         'sound20'
     ]
 
+    // Clear the answer
+    document.getElementById('answer').textContent = '\u{a0}';
+
     // Generate a random number between 0 and the length of the answers array
     var randomNumber = Math.floor(Math.random() * answers.length);
 
@@ -64,15 +69,21 @@ document.getElementById('submit').onclick = function() {
 
     // Animate the 8Ball
     document.getElementById('eightball').className = 'spinning';
+    document.getElementById('answer').style.animation = 'none';
 
     // Display the answer
     setTimeout(function() {
         document.getElementById('eightball').className = '';
-        document.getElementById('answer').innerHTML = answers[randomNumber];
+        document.getElementById('answer').textContent = answers[randomNumber];
+        document.getElementById('answer').style.animation = null;
         document.getElementById(voices[randomNumber]).play();
     }, 3000);
 
 };
+
+document.getElementById('eightball').addEventListener('click', () => {
+    document.getElementById('submit').click();
+});
 
 // Test that the Magic 8 Ball page loads successfully
 (function() {
@@ -107,7 +118,7 @@ document.getElementById('submit').onclick = function() {
 
     // Wait for the response to be displayed
     setTimeout(function() {
-        if (answerDiv.innerHTML) {
+        if (answerDiv.textContent.trim()) {
             console.log('Magic 8 Ball gave a response');
         } else {
             console.error('Error: Magic 8 Ball did not give a response');
