@@ -58,9 +58,6 @@ document.getElementById('question-form').onsubmit = function(event) {
         'sound20'
     ]
 
-    // Clear the answer
-    document.getElementById('answer').textContent = '\u{a0}';
-
     // Generate a random number between 0 and the length of the answers array
     var randomNumber = Math.floor(Math.random() * answers.length);
 
@@ -69,13 +66,19 @@ document.getElementById('question-form').onsubmit = function(event) {
 
     // Animate the 8Ball
     document.getElementById('eightball-wrapper').className = 'spinning';
+
+    // Reset the answer animation
     document.getElementById('answer').style.animation = 'none';
+
+    // Change the particles to red
+    document.body.classList.add('thinking');
 
     // Display the answer
     setTimeout(function() {
         document.getElementById('eightball-wrapper').className = '';
         document.getElementById('answer').textContent = answers[randomNumber];
         document.getElementById('answer').style.animation = null;
+        document.body.classList.remove('thinking');
         document.getElementById(voices[randomNumber]).play();
     }, 3000);
 
@@ -145,7 +148,7 @@ function frame () {
         });
         element.style.opacity = Math.random() * 0.5 + 0.2;
         element.style.transform = `scale(${Math.random() * 0.2 + 0.9})`;
-        document.body.append(element);
+        document.getElementById('particles').append(element);
         particles.push({
             element,
             x: Math.random(),
