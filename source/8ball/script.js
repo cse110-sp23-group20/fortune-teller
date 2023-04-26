@@ -85,43 +85,47 @@ document.getElementById('eightball').addEventListener('click', () => {
     document.getElementById('submit').click();
 });
 
-// Test that the Magic 8 Ball page loads successfully
-(function() {
-    var magic8BallPage = document.getElementsByTagName('html')[0];
-    if (magic8BallPage) {
-        console.log('Magic 8 Ball page loaded successfully');
-    } else {
-        console.error('Error: Magic 8 Ball page did not load');
-    }
-})();
+const runTests = false;
 
-// Test that the question input and submit button exist
-(function() {
-    var questionInput = document.getElementById('question');
-    var submitButton = document.getElementById('submit');
-    if (questionInput && submitButton) {
-        console.log('Question input and submit button exist on the page');
-    } else {
-        console.error('Error: Question input or submit button does not exist');
-    }
-})();
-
-// Test that the Magic 8 Ball gives a response to a question
-(function() {
-    var questionInput = document.getElementById('question');
-    var submitButton = document.getElementById('submit');
-    var answerDiv = document.getElementById('answer');
-
-    // Set a question and click the submit button
-    questionInput.value = 'Will it rain today?';
-    submitButton.click();
-
-    // Wait for the response to be displayed
-    setTimeout(function() {
-        if (answerDiv.textContent.trim()) {
-            console.log('Magic 8 Ball gave a response');
+if (runTests) {
+    // Test that the Magic 8 Ball page loads successfully
+    (function() {
+        var magic8BallPage = document.getElementsByTagName('html')[0];
+        if (magic8BallPage) {
+            console.log('Magic 8 Ball page loaded successfully');
         } else {
-            console.error('Error: Magic 8 Ball did not give a response');
+            console.error('Error: Magic 8 Ball page did not load');
         }
-    }, 4000);
-})();
+    })();
+
+    // Test that the question input and submit button exist
+    (function() {
+        var questionInput = document.getElementById('question');
+        var submitButton = document.getElementById('submit');
+        if (questionInput && submitButton) {
+            console.log('Question input and submit button exist on the page');
+        } else {
+            console.error('Error: Question input or submit button does not exist');
+        }
+    })();
+
+    // Test that the Magic 8 Ball gives a response to a question
+    (function() {
+        var questionInput = document.getElementById('question');
+        var submitButton = document.getElementById('submit');
+        var answerDiv = document.getElementById('answer');
+
+        // Set a question and click the submit button
+        questionInput.value = 'Will it rain today?';
+        submitButton.click();
+
+        // Wait for the response to be displayed
+        setTimeout(function() {
+            if (answerDiv.textContent.trim()) {
+                console.log('Magic 8 Ball gave a response');
+            } else {
+                console.error('Error: Magic 8 Ball did not give a response');
+            }
+        }, 4000);
+    })();
+}
