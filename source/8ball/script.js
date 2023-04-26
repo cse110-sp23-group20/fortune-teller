@@ -68,12 +68,12 @@ document.getElementById('question-form').onsubmit = function(event) {
     document.getElementById('eightball-sound').play();
 
     // Animate the 8Ball
-    document.getElementById('eightball').className = 'spinning';
+    document.getElementById('eightball-wrapper').className = 'spinning';
     document.getElementById('answer').style.animation = 'none';
 
     // Display the answer
     setTimeout(function() {
-        document.getElementById('eightball').className = '';
+        document.getElementById('eightball-wrapper').className = '';
         document.getElementById('answer').textContent = answers[randomNumber];
         document.getElementById('answer').style.animation = null;
         document.getElementById(voices[randomNumber]).play();

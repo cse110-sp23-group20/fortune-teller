@@ -67,6 +67,9 @@ h1 {
     background-position: right;
   }
 }
+#eightball-wrapper {
+  font-size: 0;
+}
 #eightball {
     height: 150px;
     width: 150px;
@@ -75,10 +78,10 @@ h1 {
     cursor: pointer;
     transition: transform .2s;
 }
-#eightball:not(.spinning):hover {
+#eightball-wrapper:not(.spinning) #eightball:hover {
   transform: scale(1.1) rotate(5deg);
 }
-#eightball.spinning {
+.spinning {
     animation-name: spin;
     animation-iteration-count: 1;
     animation-duration: 3s;
