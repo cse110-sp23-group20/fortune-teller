@@ -30,15 +30,15 @@
 
 ### Agenda
 
-#### (unresolved buisness)
+#### (unresolved business)
 
   
 
-#### New buisness/agenda
+#### New business/agenda
 
   
 
-#### Undiscussed buisness for next meeting
+#### Undiscussed business for next meeting
 
   
 
