@@ -129,3 +129,43 @@ if (runTests) {
         }, 4000);
     })();
 }
+
+const TIME_PER_PARTICLE = 100;
+let particles = [];
+let lastParticleTime = 0;
+const PARTICLE_LIFETIME = 5000;
+
+function frame () {
+    const now = Date.now();
+
+    if (now - lastParticleTime > TIME_PER_PARTICLE) {
+        lastParticleTime = now;
+        const element = Object.assign(document.createElement('div'), {
+            className: 'particle'
+        });
+        element.style.opacity = Math.random() * 0.5 + 0.2;
+        element.style.transform = `scale(${Math.random() * 0.2 + 0.9})`;
+        document.body.append(element);
+        particles.push({
+            element,
+            x: Math.random(),
+            dx: Math.random() * 0.4 - 0.2,
+            birth: now
+        });
+    }
+
+    for (const particle of particles) {
+        const t = (now - particle.birth) / PARTICLE_LIFETIME;
+        if (t > 1) {
+            particle.dead = true;
+            particle.element.remove();
+            continue;
+        }
+        particle.element.style.left = `${(particle.x + particle.dx * t) * 100}%`;
+        particle.element.style.bottom = `${t * 100}%`;
+    }
+    particles = particles.filter(particle => !particle.dead);
+
+    window.requestAnimationFrame(frame);
+}
+frame();
