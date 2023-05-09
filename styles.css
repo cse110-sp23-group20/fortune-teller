@@ -1,6 +1,80 @@
 #wheel1, #wheel2{
-  width: 45%;
+  width: 40%;
   margin: 1%;
 }
 
-  
+#wheel2{
+  float: right;
+}
+
+#container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+#container button {
+  margin-top: 35%;
+}
+
+#find-out{
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1.2em;
+  background-color: #F1C86C;
+}
+body{
+  background-image: url("images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.slide-left {
+  transform: translateX(-100%);
+}
+
+.slide-right {
+  transform: translateX(100%);
+}
+
+@keyframes slideOffLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOffRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+
+
+
+
+
