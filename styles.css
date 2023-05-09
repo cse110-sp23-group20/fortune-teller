@@ -21,13 +21,14 @@
 #find-out{
   padding: 10px 20px;
   border-radius: 20px;
-  font-size: 1.2em;
+  font-size: 1.5vw;
   background-color: #F1C86C;
 }
 body{
   background-image: url("images/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
+  overflow: hidden;
 }
 
 .slide-left {
@@ -71,6 +72,33 @@ body{
     opacity: 0;
   }
 }
+
+#pop-up {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 60%;
+  height: 50%;
+  border-radius: 20px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+
+
+
 
 
 

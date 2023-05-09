@@ -14,7 +14,7 @@ function rotateWheel1(event) {
   const direction = Math.sign(event.deltaY);
 
   // Update the rotation angle based on the scrolling direction
-  w1angle += (direction * 3);
+  w1angle += (direction * 2);
   w1anglereal = w1angle % 360;
   console.log(w1anglereal);
   // Apply the rotation transform to the wheel element
@@ -29,7 +29,7 @@ function rotateWheel2(event) {
     const direction = Math.sign(event.deltaY);
   
     // Update the rotation angle based on the scrolling direction
-    w2angle += (direction * 3);
+    w2angle += (direction * 2);
     w2anglereal = w2angle % 360;
     // Apply the rotation transform to the wheel element
     wheel2.style.transform = `rotate(${w2anglereal}deg)`;
@@ -80,9 +80,19 @@ function stopRotation(event) {
   wheel2.addEventListener('wheel', rotateWheel2);
   document.addEventListener('mouseout', stopRotation);
 
+
 var button = document.getElementById('find-out');
+const popup = document.getElementById('pop-up');
+
+console.log(popup);
 button.addEventListener("click", () => {
     wheel1.style.animation = "slideOffLeft 1s forwards";
     wheel2.style.animation = "slideOffRight 1s forwards";
     button.style.animation = 'fadeOut 1s forwards';
+    setTimeout(() => {
+        popup.style.display = 'block';
+        popup.style.animation = 'fadeIn 3s forwards';
+      }, 2);
+    
   });
+
