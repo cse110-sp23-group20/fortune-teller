@@ -83,6 +83,19 @@ body{
   width: 60%;
   height: 50%;
   border-radius: 20px;
+  text-align: center;
+}
+
+#go-back {
+  display: block;
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #F1C86C;
+  width: auto;
+  border-radius: 20px;
+  font-size: 3vw;
 }
 
 @keyframes fadeIn {
