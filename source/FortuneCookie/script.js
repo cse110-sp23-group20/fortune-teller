@@ -33,11 +33,38 @@ const fortunes = [
   
   const fortuneButton = document.getElementById("fortune-button");
   const fortuneText = document.getElementById("fortune-text");
+  const fortuneAudio = document.getElementById("fortune-audio");
+
   
-  fortuneButton.addEventListener("click", function() {
+  // Gets a random fortune and displays it
+  function showFortune() {
     const randomIndex = Math.floor(Math.random() * fortunes.length);
     const fortune = fortunes[randomIndex];
     fortuneText.textContent = fortune;
     fortuneText.style.display = "block";
+    speakFortune(fortune);
+  }
+
+  // Uses speech synthesis to read out fortune
+  function speakFortune(fortune) {
+    const speech = new SpeechSynthesisUtterance(fortune);
+    speech.lang = "en-US";
+    speech.rate = 0.8;
+    speech.pitch = 1.2;
+    window.speechSynthesis.speak(speech);
+  }
+  
+  // When button is clicked, audio plays and then fortune is read/displayed
+  fortuneButton.addEventListener("click", function() {
+    fortuneText.style.display = "none";
+    fortuneAudio.currentTime = 0;
+    fortuneAudio.play();
+    fortuneButton.disabled = true;
+    fortuneButton.style.opacity = "0.5";
+    setTimeout(showFortune, 1000);
+    setTimeout(() => {
+        fortuneButton.disabled = false;
+        fortuneButton.style.opacity = "1";
+    }, 5000);
   });
   

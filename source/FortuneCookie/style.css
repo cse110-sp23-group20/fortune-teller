@@ -3,16 +3,8 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
-.circle {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #8A2BE2;
-  width: 300px;
-  height: 300px;
+img {
   border-radius: 50%;
-  margin: 0 auto;
 }
 
 .fortune-container {
@@ -51,4 +43,8 @@ body {
   font-weight: bold;
   text-align: center;
   display: none;
+}
+
+.nav-list>a:hover {
+  color: #3d3c59;
 }
