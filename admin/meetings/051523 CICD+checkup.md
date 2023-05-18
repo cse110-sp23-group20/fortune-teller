@@ -13,8 +13,6 @@
 
 - Joseph Burgos
 
-- Brandon Kao
-
 - Do heon Kim
 
 - Owen Huynh
@@ -38,19 +36,17 @@ updates on progress
 
 No current blockers, the goal is to finish up the pages by Thursday of next week, May 25. After that, begin merging the different parts.
   
+Began building the CI/CD pipeline. Jest successfully runs on github actions, and there is still work that needs to be done to make JSDocs functional.
 
 #### Undiscussed business for next meeting
 
-  
+Still need to finish CI/CD pipeline  
 
 ### Decisions made
 
-  
+Decided to use Jest to run unit tests.
 
-#### (Topic 1)
-
-(Note dissenting opinions)
-
+Decided to use JSDocs to help with documentation.
   
 
 #### Meeting finished at: 5pm*
