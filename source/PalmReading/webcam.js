@@ -13,7 +13,20 @@ function init () {
   })
   video.addEventListener('loadedmetadata', () => {
     video.play()
-    instructions.style.display = null
+    instructions.style.display = 'block'
+  })
+
+  /**
+   * The `<canvas>` element that captures whatever was on the webcam when you press "Read your hand".
+   * @type {HTMLVideoElement}
+   */
+  const result = document.getElementById('result')
+  const context = result.getContext('2d')
+  const readHandBtn = document.getElementById('read-your-hand')
+  readHandBtn.addEventListener('click', () => {
+    result.width = video.videoWidth
+    result.height = video.videoHeight
+    context.drawImage(video, 0, 0)
   })
 }
 

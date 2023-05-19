@@ -16,7 +16,7 @@
     <div class="webcam-wrapper">
       <video id="webcam-video"></video>
       <button id="request-webcam">Click here to enable palm reader</button>
-      <p id="instructions"></p>
+      <p id="instructions">Please hold your hand over your camera.</p>
     </div>
     <br>
     <button class="button" id="read-your-hand">Read your hand</button>
@@ -36,7 +36,7 @@
     <div class="column" id="column1">
       <h1 id="results-title">Results</h1>
       <div id="result-button-container">
-        <img id="result" class="align-div" src="images/palm-reading.PNG">
+        <canvas id="result" class="align-div"></canvas>
         <button class="button" id="read-another-hand">Read another hand</button>
       </div>
     </div>
