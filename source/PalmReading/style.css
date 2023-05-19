@@ -1,18 +1,16 @@
+/* code for picture-frame page */
 body {
   font-family: sans-serif;
   text-align: center;
-  margin: 0;
-  padding: 0;
 }
 h1 {
   display: flex;
-  margin-top: 1em;
   font-size: 1.5em;
 }
 img {
   position: relative;
   text-align: center;
-  height: 80vh;
+  height: 70vh;
 }
 .box {
   margin: auto;
@@ -20,24 +18,23 @@ img {
   width: 100vw;
   height: 5vh;
   position: relative;
-  z-index:-1
+  z-index:-1;
 }
-.box :first-child {
+.box:first-child {
   align-self: center;
 }
-#back{
-  display: block;
-  position: relative;
-  width: 8vw;
-  height: 5vh;
-  padding: 5px;
-  border-radius: 5px;
+
+#back {
+  text-align: left;
+  padding: 5px 10px;
+  width: 53px; /* modified by label length */
+  overflow: auto;
+  float: left;
 }
-#title {
+.title {
   position: relative;
   text-align: center;
-
-  display: flex;
+  display: block;
   justify-content: center;
 }
 #temp-camera {
@@ -47,11 +44,14 @@ img {
   color: beige;
 }
 
-#read-your-hand {
+.button {
   background-color: #F1C86C;
+  border-radius: 5px;
+}
+
+#read-your-hand {
   width: 20%;
   height: 10vh;
-  border-radius: 5px;
   position: relative;
   margin-top: 2vh;
 }
@@ -66,7 +66,77 @@ img {
 #button-container {
   position: relative;
   text-align: center;
-  margin-top: 50vh;
+  margin-top: 40vh;
   display: flex;
   justify-content: center;
+}
+
+
+/* code for results page */
+
+/* splits page into 2 seperate columns */
+.column {
+  float: left;
+  text-align: center;
+}
+
+#column1 {
+  width: 40%;
+  margin-left: 4%;
+}
+
+#column2 {
+  width: 56%
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+#text-box {
+  margin-top: 15vh;
+  height: 55vh;
+  width: 50vw;
+  display: box;
+  float: center;
+  background-color: #3D3C59; 
+  font-size: 30px;
+  border-radius: 10px;
+}
+
+.align-div {
+  position: inline-block;
+  vertical-align: middle;
+  justify-content: center;
+}
+
+#result {
+  object-fit: scale-down;
+  object-position: center;
+  max-width: 80%;
+  max-height: 70%;
+  display: inline;
+  float: center;
+  margin-bottom: 0vh;
+}
+
+#read-another-hand {
+  width: 20vw;
+  height: 10vh;
+  margin-top: -3vh;
+  position: relative;
+  object-position: center;
+
+}
+
+#result-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#result-text {
+  color:white;
 }
