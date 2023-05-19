@@ -5,12 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PalmReading</title>
-    <link rel="stylesheet" type="text/css" href="source/PalmReading/style.scss">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Palm Reading</h1>
-    <div class="box"></div>
+  <script src="script.js"></script>
+  <div id="camera-frame" display="inline">
+    <button id="back">back</button>
+    <h1 id="title">Palm Reading</h1>
+    <img id="palm-img" src="images/palm-reading.png">
     <br>
-    <button class="button">Read your hand</button>
-  </body>
+    <button class="button" id="read-your-hand">Read your hand</button>
+  </div>
+
+  <div hidden id="picture-frame">
+    <div id="video-container">
+      <video id="video"></video>
+    </div>
+    <div id="button-container">
+      <button id="take-picture-button">Take Picture</button>
+    </div>
+  </div>
+  
+  <div hidden id="results-frame">
+    <p>this should not appear</p>
+  </div>
+</body>
 </html>

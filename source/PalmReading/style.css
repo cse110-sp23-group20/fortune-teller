@@ -1,21 +1,72 @@
 body {
   font-family: sans-serif;
   text-align: center;
+  margin: 0;
+  padding: 0;
 }
 h1 {
+  display: flex;
   margin-top: 1em;
   font-size: 1.5em;
 }
-.box {
-  background-color: #3D3C59;
-  width: 100%;
-  height: 66%;
-  border-radius: 8px;
+img {
+  position: relative;
+  text-align: center;
+  height: 80vh;
 }
-.button {
+.box {
+  margin: auto;
+  background-color: #3D3C59;
+  width: 100vw;
+  height: 5vh;
+  position: relative;
+  z-index:-1
+}
+.box :first-child {
+  align-self: center;
+}
+#back{
+  display: block;
+  position: relative;
+  width: 8vw;
+  height: 5vh;
+  padding: 5px;
+  border-radius: 5px;
+}
+#title {
+  position: relative;
+  text-align: center;
+
+  display: flex;
+  justify-content: center;
+}
+#temp-camera {
+  position: absolute;
+  margin-top: 30vw;
+  margin-left: 44vw;
+  color: beige;
+}
+
+#read-your-hand {
   background-color: #F1C86C;
   width: 20%;
-  padding: 8px;
-  border-radius: 8px;
-  box-shadow: 5px 5px 0px #F1C86C, -5px -5px 0px #C1A246;
+  height: 10vh;
+  border-radius: 5px;
+  position: relative;
+  margin-top: 2vh;
+}
+
+#take-picture-button {
+  position: absolute;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+#button-container {
+  position: relative;
+  text-align: center;
+  margin-top: 50vh;
+  display: flex;
+  justify-content: center;
 }
