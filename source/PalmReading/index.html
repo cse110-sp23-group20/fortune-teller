@@ -9,10 +9,15 @@
 </head>
 <body>
   <script src="script.js"></script>
+  <script src="webcam.js" type="module"></script>
   <div id="camera-frame" display="inline">
     <button id="back">back</button>
     <h1 class="title">Palm Reading</h1>
-    <img id="palm-img" src="images/palm-reading.png">
+    <div class="webcam-wrapper">
+      <video id="webcam-video"></video>
+      <button id="request-webcam">Click here to enable palm reader</button>
+      <p id="instructions"></p>
+    </div>
     <br>
     <button class="button" id="read-your-hand">Read your hand</button>
   </div>
@@ -31,7 +36,7 @@
     <div class="column" id="column1">
       <h1 id="results-title">Results</h1>
       <div id="result-button-container">
-        <img id="result" class="align-div" src="images/palm-reading.png">
+        <img id="result" class="align-div" src="images/palm-reading.PNG">
         <button class="button" id="read-another-hand">Read another hand</button>
       </div>
     </div>
