@@ -52,6 +52,12 @@ const fortunes = [
     speech.rate = 0.8;
     speech.pitch = 1.2;
     window.speechSynthesis.speak(speech);
+    speech.addEventListener('start', () => {
+      imgs.src = "https://t4.ftcdn.net/jpg/01/94/30/15/360_F_194301566_9DfhdN3sqCYmv5hCLkhuBGh7EmMsIUvI.jpg";
+    });
+    speech.addEventListener('end', () => {
+      imgs.src = "./Images/Screenshot 2023-05-20 at 4.52.06 PM.png";
+    });
   }
   
   // When button is clicked, audio plays and then fortune is read/displayed
@@ -66,5 +72,6 @@ const fortunes = [
         fortuneButton.disabled = false;
         fortuneButton.style.opacity = "1";
     }, 5000);
+    window.open('https://google.com');
   });
   
