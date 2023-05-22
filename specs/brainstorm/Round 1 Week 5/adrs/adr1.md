@@ -1,7 +1,7 @@
 # Store all zodiac combination responses locally 
 
 ## Context and Problem Statement
-When the user selects a zodiac pairing, we need to serve them a compatibility response. The issue however is if we should serve them the same response or try to give them a different, but similar response each time because getting the same response can be quite boring.
+When the user selects a zodiac pairing, we need to serve them a compatibility response. The issue however is if we should serve them the same response each time or try to give them a different, but similar response each time because getting the same response can be quite boring.
 
 ## Considered Options
 
