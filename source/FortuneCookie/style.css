@@ -80,15 +80,15 @@ li.audio-dropdown {
 }
 
 .fortune-cookie {
-  width: 600px;
-  height: 600px;
+  width: 500px;
+  height: 500px;
 }
 
 #fortune-button {
   margin-top: 20px;
   font-size: 18px;
   padding: 10px 20px;
-  border-radius: 5px;
+  border-radius: 50px;
   background-color: #DAA520;
   color: #fff;
   border: none;
