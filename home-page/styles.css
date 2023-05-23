@@ -83,6 +83,43 @@
   .randomize-button:hover {
     background-color: #EBAF3E;
   }
+
+  .sign-in-form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+
+  .sign-in-form label {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .sign-in-form input[type="text"],
+  .sign-in-form input[type="date"],
+  .sign-in-form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  .sign-in-form input[type="submit"] {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .sign-in-form input[type="submit"]:hover {
+    background-color: #45a049;
+  }
   
   
   
