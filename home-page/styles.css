@@ -1,13 +1,22 @@
+/* used to set background image*/
 
-  /* used to set background image*/
-  body {
+@font-face {
+    font-family: "Enchanted Land";
+    src: url("Fonts/enchanted_land/Enchanted\ Land.otf") format("woff2"), url("Fonts/enchanted_land/Enchanted\ Land.otf") format("woff");
+}
+
+body {
+    font-family: "Enchanted Land", cursive;
     background-image: url("Images/Background.png");
     background-repeat: no-repeat;
     background-size: cover;
-  }
-  
-  /*used to style our "welcome to our Fortune Telling App" section */
-  /* .welcome-section {
+}
+
+
+/*used to style our "welcome to our Fortune Telling App" section */
+
+
+/* .welcome-section {
     text-align: center;
     background-color: #F1C86C;
     padding: 20px;
@@ -18,59 +27,67 @@
     margin-bottom:50px;
   } */
 
-  /* smaller version of the welcome section */
-  .welcome-section {
+
+/* smaller version of the welcome section */
+
+.welcome-section {
     text-align: center;
     background-color: #F1C86C;
     padding: 20px;
     margin-bottom: 20px;
     max-width: 800px;
     margin: 0 auto;
-  }
-  
-  
-  .welcome-section h1 {
+}
+
+.welcome-section h1 {
     font-size: 24px;
     margin-bottom: 10px;
-  }
-  
-  .welcome-section h2 {
+}
+
+.welcome-section h2 {
     font-size: 18px;
     font-style: italic;
-  }
+}
 
-  /*used to center all of the image cards */
-  .card-container {
-    display: inline-block;
+
+/*used to center all of the image cards */
+
+.card-container {
     text-align: center;
-    margin-right: 10px;
+    display: inline-block;
+    margin-right: 80px;
     margin-bottom: 10px;
     padding: 30px;
-  }
-  
+}
 
-  /*used to adjust the alignment of the "3 fortune telling cards" and their size */
-  .card-container img {
+
+/*used to adjust the alignment of the "3 fortune telling cards" and their size */
+
+.card-container img {
+    text-align: center;
     display: block;
     margin: 0 auto;
-    width: 400px;
+    width: 300px;
     height: 300px;
-  }
+}
 
-  /*used to style the text under each card */
-  .card-container p {
+
+/*used to style the text under each card */
+
+.card-container p {
     font-size: 18px;
     background-color: #36394D;
     color: #191A25;
     margin-top: 10px;
     padding: 8px;
     border-radius: 5px;
-  }
-  
-  
-  
-  /*used to style the randomzier button */
-  .randomize-button {
+}
+
+
+/*used to style the randomzier button */
+
+.randomize-button {
+    font-family: "Enchanted Land", cursive;
     background-color: #F1C86C;
     color: #191A25;
     padding: 10px 20px;
@@ -78,62 +95,45 @@
     border-radius: 5px;
     font-size: 18px;
     cursor: pointer;
-  }
-  
-  .randomize-button:hover {
-    background-color: #EBAF3E;
-  }
+}
 
-  .sign-in-form {
+.randomize-button:hover {
+    background-color: #EBAF3E;
+}
+
+.sign-in-form {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     background-color: #f2f2f2;
     border-radius: 5px;
-  }
+}
 
-  .sign-in-form label {
+.sign-in-form label {
     display: block;
     margin-bottom: 10px;
-  }
+}
 
-  .sign-in-form input[type="text"],
-  .sign-in-form input[type="date"],
-  .sign-in-form input[type="number"] {
+.sign-in-form input[type="text"],
+.sign-in-form input[type="date"],
+.sign-in-form input[type="number"] {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
     box-sizing: border-box;
-  }
+}
 
-  .sign-in-form input[type="submit"] {
+.sign-in-form input[type="submit"] {
     background-color: #4caf50;
     color: white;
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-  }
+}
 
-  .sign-in-form input[type="submit"]:hover {
+.sign-in-form input[type="submit"]:hover {
     background-color: #45a049;
-  }
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+}
