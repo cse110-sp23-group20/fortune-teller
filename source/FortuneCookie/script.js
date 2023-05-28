@@ -51,23 +51,65 @@ const fortunes = [
   // Uses speech synthesis to read out fortune
   function speakFortune(fortune) {
     const speech = new SpeechSynthesisUtterance(fortune);
+    const option = voiceSelect.selectedOptions[0].getAttribute('data-name');
+    for(let i = 0; i < voices.length; i++)
+    {
+      if(voices[i].name == option)
+      speech.voice = voices[i];
+    }
     speech.lang = "en-US";
     speech.rate = 0.8;
     speech.pitch = 1.2;
     window.speechSynthesis.speak(speech);
+
+    // Turn button back on when fortune is done being read
+    speech.addEventListener("end", (event) => {
+      fortuneButton.disabled = false;
+      fortuneButton.style.opacity = "1";
+    });
   }
   
   // When button is clicked, audio plays and then fortune is read/displayed
   fortuneButton.addEventListener("click", function() {
-    // fortuneText.style.display = "none";
-    // fortuneAudio.currentTime = 0;
     fortuneAudioCrack.play();
+
+    // Turn button off so user cannot spam click button
     fortuneButton.disabled = true;
     fortuneButton.style.opacity = "0.5";
     setTimeout(showFortune, 1000);
-    setTimeout(() => {
-        fortuneButton.disabled = false;
-        fortuneButton.style.opacity = "1";
-    }, 5000);
   });
   
+  // Added options for different voices
+  const synth = window.speechSynthesis;
+
+  const inputForm = document.querySelector("form");
+  const inputTxt = document.querySelector(".txt");
+  const voiceSelect = document.querySelector("select");
+  const pitch = document.querySelector("#pitch");
+  const pitchValue = document.querySelector(".pitch-value");
+  const rate = document.querySelector("#rate");
+  const rateValue = document.querySelector(".rate-value");
+  
+  let voices = [];
+  
+  function populateVoiceList() {
+    voices = synth.getVoices();
+  
+    for (let i = 0; i < voices.length; i++) {
+      const option = document.createElement("option");
+      option.textContent = `${voices[i].name} (${voices[i].lang})`;
+  
+      if (voices[i].default) {
+        option.textContent += " — DEFAULT";
+      }
+  
+      option.setAttribute("data-lang", voices[i].lang);
+      option.setAttribute("data-name", voices[i].name);
+      voiceSelect.appendChild(option);
+    }
+  }
+  
+  populateVoiceList();
+  if (speechSynthesis.onvoiceschanged !== undefined) {
+    speechSynthesis.onvoiceschanged = populateVoiceList;
+  }
