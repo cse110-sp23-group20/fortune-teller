@@ -14,11 +14,11 @@ img {
 }
 .box {
   margin: auto;
-  background-color: #3D3C59;
+  background-color: #3d3c59;
   width: 100vw;
   height: 5vh;
   position: relative;
-  z-index:-1;
+  z-index: -1;
 }
 .box:first-child {
   align-self: center;
@@ -45,7 +45,7 @@ img {
 }
 
 .button {
-  background-color: #F1C86C;
+  background-color: #f1c86c;
   border-radius: 5px;
 }
 
@@ -71,7 +71,6 @@ img {
   justify-content: center;
 }
 
-
 /* code for results page */
 
 /* splits page into 2 seperate columns */
@@ -86,7 +85,7 @@ img {
 }
 
 #column2 {
-  width: 56%
+  width: 56%;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -101,7 +100,7 @@ img {
   width: 50vw;
   display: box;
   float: center;
-  background-color: #3D3C59; 
+  background-color: #3d3c59;
   font-size: 30px;
   border-radius: 10px;
 }
@@ -128,7 +127,6 @@ img {
   margin-top: -3vh;
   position: relative;
   object-position: center;
-
 }
 
 #result-button-container {
@@ -138,5 +136,5 @@ img {
 }
 
 #result-text {
-  color:white;
+  color: white;
 }
