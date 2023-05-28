@@ -1,0 +1,20 @@
+name: Auto-format code with Prettier
+on: workflow_dispatch
+permissions:
+  contents: write
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Run Prettier, format files in place
+        run: npx prettier --write --no-config .
+      # https://stackoverflow.com/a/58393457
+      - name: Push changes
+        run: |
+          git config --global user.name 'Thomas A. Powell'
+          git config --global user.email 'tpowell@pint.com'
+          git commit -am "Auto-format"
+          git push
