@@ -19,6 +19,7 @@ We expect all team members to:
 - Test code locally/thoroughly before committing/PR to the main branch
 
 ## Meetings
+
 - Meetings will be scheduled using when2meet. If all 10 people can't make 1 meeting time(which will likely be common), meeting times will be adjusted to make sure no one is left out of a meeting 2 times in a row.
 
 ## Responsibilities
