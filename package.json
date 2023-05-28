@@ -1,7 +1,8 @@
 {
   "devDependencies": {
     "eslint": "^8.41.0",
-    "eslint-config-prettier": "^8.8.0"
+    "eslint-config-prettier": "^8.8.0",
+    "prettier": "^2.8.8"
   },
   "scripts": {
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"

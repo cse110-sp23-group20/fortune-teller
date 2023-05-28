@@ -2,7 +2,7 @@
 name: Lint code formatting with ESLint
 on: push
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -10,3 +10,5 @@ jobs:
         run: yarn
       - name: Run ESLint
         run: npm run lint
+      - name: Check if Prettier could format code
+        run: npx prettier --check --no-config .

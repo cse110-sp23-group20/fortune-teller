@@ -1,0 +1,19 @@
+name: Auto-format code with Prettier
+on: workflow_dispatch
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Run Prettier, format files in place
+        run: npx prettier --write --no-config .
+      # https://peterevans.dev/posts/github-actions-how-to-automate-code-formatting-in-pull-requests/
+      - name: Push changes
+        run: |
+          git config --global user.name 'Thomas A. Powell'
+          git config --global user.email 'tpowell@pint.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Auto-format"
+          git push
