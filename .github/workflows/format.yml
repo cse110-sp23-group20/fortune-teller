@@ -1,5 +1,7 @@
 name: Auto-format code with Prettier
 on: workflow_dispatch
+permissions:
+  contents: write
 jobs:
   format:
     runs-on: ubuntu-latest
