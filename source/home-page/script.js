@@ -7,17 +7,17 @@ cardContainers.forEach((cardContainer, index) => {
     let subpageURL;
     switch (index) {
       case 0:
-        subpageURL = "../Zodiac_compatibility/";
+        subpageURL = "../Zodiac_compatibility/index.html";
         break;
       case 1:
-        subpageURL = "../FortuneCookie/";
+        subpageURL = "../FortuneCookie/index.html";
         break;
       case 2:
-        subpageURL = "../PalmReading/";
+        subpageURL = "../PalmReading/index.html";
         break;
       // Add more cases for additional card containers if needed
       default:
-        subpageURL = "";
+        subpageURL = "index.html";
         break;
     }
     // Navigate to the subpage
