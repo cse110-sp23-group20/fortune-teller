@@ -7,7 +7,7 @@ cardContainer.addEventListener('click', () => {
     let subpageURL;
     switch (index) {
       case 0:
-        subpageURL = 'love-compatibility.html';
+        subpageURL = '../Zodiac_compatibility/index.html';
         break;
       case 1:
         subpageURL = '../FortuneCookie/index.html';
