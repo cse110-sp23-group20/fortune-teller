@@ -10,7 +10,7 @@ cardContainer.addEventListener('click', () => {
         subpageURL = 'love-compatibility.html';
         break;
       case 1:
-        subpageURL = 'source/FortuneCookie/index.html';
+        subpageURL = '../FortuneCookie/index.html';
         break;
       case 2:
         subpageURL = 'palm-reading.html';
