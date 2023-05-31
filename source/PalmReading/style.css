@@ -89,7 +89,7 @@ img {
 }
 /* Clear floats after the columns */
 .row:after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
