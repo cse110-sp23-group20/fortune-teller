@@ -60,7 +60,7 @@ function speakFortune(fortune) {
   window.speechSynthesis.speak(speech);
 
   // Turn button back on when fortune is done being read
-  speech.addEventListener("end", (event) => {
+  speech.addEventListener("end", () => {
     fortuneButton.disabled = false;
     fortuneButton.style.opacity = "1";
   });
@@ -79,13 +79,13 @@ fortuneButton.addEventListener("click", function () {
 // Added options for different voices
 const synth = window.speechSynthesis;
 
-const inputForm = document.querySelector("form");
-const inputTxt = document.querySelector(".txt");
+// const inputForm = document.querySelector("form");
+// const inputTxt = document.querySelector(".txt");
 const voiceSelect = document.querySelector("select");
-const pitch = document.querySelector("#pitch");
-const pitchValue = document.querySelector(".pitch-value");
-const rate = document.querySelector("#rate");
-const rateValue = document.querySelector(".rate-value");
+// const pitch = document.querySelector("#pitch");
+// const pitchValue = document.querySelector(".pitch-value");
+// const rate = document.querySelector("#rate");
+// const rateValue = document.querySelector(".rate-value");
 
 let voices = [];
 
