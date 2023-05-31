@@ -89,7 +89,7 @@ img {
 }
 /* Clear floats after the columns */
 .row:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
@@ -137,4 +137,41 @@ img {
 
 #result-text {
   color: white;
+}
+
+.webcam-wrapper {
+  display: inline-flex;
+  background-color: #3d3c59;
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+}
+#webcam-video {
+  /* Flip camera */
+  transform: scaleX(-1);
+  border-radius: 5px;
+  border: 1px solid black;
+}
+#request-webcam {
+  border: none;
+  background: none;
+  font: inherit;
+  color: white;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+#instructions {
+  display: none;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  margin: 20px;
+  color: white;
+  text-shadow: 0 3px 10px black, 0 3px 10px black, 0 3px 10px black;
 }
