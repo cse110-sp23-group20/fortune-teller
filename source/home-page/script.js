@@ -10,7 +10,7 @@ cardContainers.forEach((cardContainer, index) => {
         subpageURL = "love-compatibility.html";
         break;
       case 1:
-        subpageURL = "../FortuneCookie/index.html";
+        subpageURL = "../FortuneCookie/";
         break;
       case 2:
         subpageURL = "palm-reading.html";
