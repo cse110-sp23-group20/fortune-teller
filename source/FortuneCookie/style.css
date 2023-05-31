@@ -16,7 +16,7 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #1E1F2E;
+  background-color: #1e1f2e;
 }
 
 /* Navigation bar settings */
@@ -25,7 +25,8 @@ li {
 }
 
 /* Navigation bar settings */
-li a, .dropbtn {
+li a,
+.dropbtn {
   display: inline-block;
   color: white;
   text-align: center;
@@ -33,11 +34,11 @@ li a, .dropbtn {
   text-decoration: none;
 }
 
-li a:hover, .audio-dropdown:hover .dropbtn {
+li a:hover,
+.audio-dropdown:hover .dropbtn {
   /* background-color: #3d3c59; */
-  background-color: #1E1F2E;
+  background-color: #1e1f2e;
   color: #5d59d1;
-
 }
 
 li.audio-dropdown {
@@ -49,7 +50,7 @@ li.audio-dropdown {
   position: absolute;
   background-color: #f9f9f9;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -62,7 +63,7 @@ li.audio-dropdown {
 }
 
 .audio-content a:hover {
-  background-color: #1E1F2E;  
+  background-color: #1e1f2e;
   color: #5d59d1;
 }
 
@@ -89,7 +90,7 @@ li.audio-dropdown {
   font-size: 18px;
   padding: 10px 20px;
   border-radius: 50px;
-  background-color: #DAA520;
+  background-color: #daa520;
   color: #fff;
   border: none;
   cursor: pointer;
@@ -97,13 +98,13 @@ li.audio-dropdown {
 }
 
 #fortune-button:hover {
-  background-color: #FFD700;
+  background-color: #ffd700;
 }
 
 #fortune-text {
   margin-top: 20px;
   font-size: 24px;
-  color: #F1C86C;
+  color: #f1c86c;
   font-weight: bold;
   text-align: center;
   display: none;
@@ -116,18 +117,18 @@ li.audio-dropdown {
 .page-title {
   display: flex;
   justify-content: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .page-subtitle {
   display: flex;
   justify-content: center;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .nav-list a {
   text-decoration: none;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .menu-bar {
