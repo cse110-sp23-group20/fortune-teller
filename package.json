@@ -5,6 +5,7 @@
     "prettier": "^2.8.8"
   },
   "scripts": {
+    "format": "prettier --no-config -w .",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   }
 }
