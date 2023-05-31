@@ -2,52 +2,57 @@
 <html>
   <head>
     <title>Fortune Cookie</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <nav class="menu-bar" aria-label="navigation">
-        <ul class="nav-items-list" role="menubar">
-          <li class="nav-list">
-            <a href = "https://www.youtube.com/watch?v=dQw4w9WgXcQ">Main Page</a>
-          </li>
-          <li class="nav-list">
-            <a href = "https://www.youtube.com/watch?v=L_jWHffIx5E">Palm Reading</a>
-          </li>
-          <li class="nav-list">
-            <a href = "https://www.google.com">Zodiac Compatibility</a>
-          </li>
-          <li class="audio-dropdown">
-            <a href="#" class="dropbtn">Audio Options</a>
-            <div class="audio-content">
-              <a href="#">    
-                <input type="checkbox" id="voice-toggle-checkbox" checked>
-                <label for="voice-toggle-checkbox">Toggle Voice</label>
-              </a>
-              <a href="#">
-                <select name="voice" id="voice-select">
-                  <option value="select" disabled selected>Select Voice:</option>
-                </select>
-              </a>
-
-            </div>
-        </ul>
+      <ul class="nav-items-list" role="menubar">
+        <li class="nav-list">
+          <a href="../home-page/">Main Page</a>
+        </li>
+        <li class="nav-list">
+          <a href="../PalmReading/">Palm Reading</a>
+        </li>
+        <li class="nav-list">
+          <a href="../Zodiac_compatibility/">Zodiac Compatibility</a>
+        </li>
+        <li class="audio-dropdown">
+          <a href="#" class="dropbtn">Audio Options</a>
+          <div class="audio-content">
+            <a href="#">
+              <input type="checkbox" id="voice-toggle-checkbox" checked />
+              <label for="voice-toggle-checkbox">Toggle Voice</label>
+            </a>
+            <a href="#">
+              <select name="voice" id="voice-select">
+                <option value="select" disabled selected>Select Voice:</option>
+              </select>
+            </a>
+          </div>
+        </li>
+      </ul>
     </nav>
     <h1 class="page-title">DAILY FORTUNE COOKIE</h1>
     <p class="page-subtitle">
-      "Start your day by cracking a fortune cookie and finds out what your future holds..."
+      "Start your day by cracking a fortune cookie and finds out what your
+      future holds..."
     </p>
     <div class="fortune-container">
-      <img class="fortune-cookie" src="./Images/Fortune cookie image.png" alt="fortune cookie">
+      <img
+        class="fortune-cookie"
+        src="./Images/Fortune cookie image.png"
+        alt="fortune cookie"
+      />
       <button id="fortune-button">Open the cookie</button>
       <p id="fortune-text"></p>
     </div>
 
     <audio id="fortune-crack">
-        <source src="Audio/FortuneCrack.mp3" type="audio/mpeg">
+      <source src="Audio/FortuneCrack.mp3" type="audio/mpeg" />
     </audio>
-    
+
     <script src="script.js"></script>
   </body>
 </html>

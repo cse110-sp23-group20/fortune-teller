@@ -1,8 +1,8 @@
-const cardContainers = document.querySelectorAll('.card-container');
+const cardContainers = document.querySelectorAll(".card-container");
 
 // Add click event listener to each card container
 cardContainers.forEach((cardContainer, index) => {
-cardContainer.addEventListener('click', () => {
+  cardContainer.addEventListener("click", () => {
     // Determine the subpage URL based on the card index
     let subpageURL;
     switch (index) {
@@ -10,14 +10,14 @@ cardContainer.addEventListener('click', () => {
         subpageURL = '../Zodiac_compatibility/index.html';
         break;
       case 1:
-        subpageURL = '../FortuneCookie/index.html';
+        subpageURL = "../FortuneCookie/index.html";
         break;
       case 2:
-        subpageURL = 'palm-reading.html';
+        subpageURL = "../PalmReading/index.html";
         break;
       // Add more cases for additional card containers if needed
       default:
-        subpageURL = 'default.html';
+        subpageURL = "index.html";
         break;
     }
     // Navigate to the subpage
@@ -26,10 +26,10 @@ cardContainer.addEventListener('click', () => {
 });
 
 // Get the "Randomize" button element
-const randomizeButton = document.querySelector('.randomize-button');
+const randomizeButton = document.querySelector(".randomize-button");
 
 // Add click event listener to the "Randomize" button
-randomizeButton.addEventListener('click', () => {
+randomizeButton.addEventListener("click", () => {
   // Get a random index for the card containers
   const randomIndex = Math.floor(Math.random() * cardContainers.length);
 
