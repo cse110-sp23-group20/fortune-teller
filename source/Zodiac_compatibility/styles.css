@@ -1,0 +1,107 @@
+#wheel1,
+#wheel2 {
+  width: 40%;
+  margin: 1%;
+}
+
+#wheel2 {
+  float: right;
+}
+
+#container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+}
+
+#container button {
+  margin-top: 35%;
+}
+
+#find-out {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1.5vw;
+  background-color: #f1c86c;
+}
+body {
+  background-image: url("images/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+}
+
+@keyframes slideOffLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOffRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+#pop-up {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  width: 60%;
+  height: 50%;
+  border-radius: 20px;
+  text-align: center;
+}
+
+#go-back {
+  display: block;
+  position: absolute;
+  top: 120%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #f1c86c;
+  width: auto;
+  border-radius: 20px;
+  font-size: 3vw;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* .wheel{ ADD BACK LATER
+  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
+}
+*/
