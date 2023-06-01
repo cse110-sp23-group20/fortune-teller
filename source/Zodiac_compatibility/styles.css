@@ -1,22 +1,23 @@
 * {
   color: white;
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
 }
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
   overflow: auto;
 }
 
-.container{
+.container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5,1fr);
+  grid-template-rows: repeat(5, 1fr);
   justify-content: center;
   align-content: center;
 }
 
-.container > *{
+.container > * {
   aspect-ratio: 1/1;
   max-width: 100%;
   max-height: 100%;
@@ -29,16 +30,15 @@ html, body {
 }
 
 .relationship {
-  grid-area: 1 / 2 / 6 / 7; 
+  grid-area: 1 / 2 / 6 / 7;
   text-align: center;
   background-color: transparent;
   z-index: 0;
 }
 
-select:hover{
+select:hover {
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
 }
-
 
 option {
   background-color: transparent;
@@ -46,7 +46,7 @@ option {
   background: rgb(5, 0, 46);
 }
 
-.wheel_img{
+.wheel_img {
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
   max-width: 100%;
   max-height: 100%;
@@ -55,25 +55,24 @@ option {
   transition: 0.5s ease;
 }
 
-.wheel_img:hover{
+.wheel_img:hover {
   filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 242, 0));
 }
 
-
-#left_wheel_field{
+#left_wheel_field {
   grid-area: 2 / 1 / 5 / 4;
 }
 
-#right_wheel_field{
-  grid-area: 2 / 5 / 5 / 8; 
+#right_wheel_field {
+  grid-area: 2 / 5 / 5 / 8;
 }
 
 input {
   color-scheme: dark;
 }
 
-.bday_input{
-  font-family: 'Oswald', sans-serif;
+.bday_input {
+  font-family: "Oswald", sans-serif;
   ccolor: white;
   z-index: 1;
   align-content: center;
@@ -85,87 +84,86 @@ input {
   font-size: 0.8em;
 }
 
-.bday_input:hover{
+.bday_input:hover {
   filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 251, 0));
 }
-#left_bday_input{
-  grid-area: 3 / 2 / 4 / 3; 
+#left_bday_input {
+  grid-area: 3 / 2 / 4 / 3;
 }
 
-#right_bday_input{
+#right_bday_input {
   grid-area: 3 / 6 / 4 / 7;
 }
 
-.middle{ 
-  grid-area: 3 / 4 / 4 / 5; 
+.middle {
+  grid-area: 3 / 4 / 4 / 5;
   align-self: center;
   text-align: center;
 }
 
 input[type="date"] {
-  font-family: 'Oswald', sans-serif;
+  font-family: "Oswald", sans-serif;
   border: none;
   color: white;
-  background-color: rgba(0,0,0,0);
+  background-color: rgba(0, 0, 0, 0);
   font-size: 2vw;
 }
 
-#find-out{
+#find-out {
   padding: 10px 20px;
   border-radius: 20px;
   font-size: 2vw;
   border-color: white;
   background-color: transparent;
   color: white;
-  filter: brightness(10000%) drop-shadow(0px 0px 10px white);  
-  font-family: 'Oswald', sans-serif;
+  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
+  font-family: "Oswald", sans-serif;
 }
 
-#find-out:hover{
+#find-out:hover {
   filter: brightness(10000%) drop-shadow(0px 0px 10px yellow);
 }
 
-body{
+body {
   background-image: url("images/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   overflow: hidden;
-}  
-
+}
 
 @keyframes slideOffLeft {
   from {
     transform: translateX(0);
     opacity: 1;
-  }  
+  }
 
   to {
     transform: translateX(-100%);
     opacity: 0;
-  }  
-}  
+  }
+}
 
 @keyframes slideOffRight {
   from {
     transform: translateX(0);
     opacity: 1;
-  }  
+  }
 
   to {
     transform: translateX(100%);
     opacity: 0;
-  }  
-}  
+  }
+}
 
 @keyframes fadeOut {
   from {
     opacity: 1;
-  }  
+  }
 
   to {
     opacity: 0;
-  }  
-}  
+  }
+}
 
 #pop-up {
   display: none;
@@ -178,7 +176,7 @@ body{
   height: 50%;
   border-radius: 20px;
   text-align: center;
-}  
+}
 
 #go-back {
   display: block;
@@ -186,25 +184,18 @@ body{
   top: 120%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: #F1C86C;
+  background-color: #f1c86c;
   width: auto;
   border-radius: 20px;
   font-size: 3vw;
-}  
+}
 
 @keyframes fadeIn {
   from {
     opacity: 0;
-  }  
+  }
 
   to {
     opacity: 1;
-  }  
-}  
-
-
-
-
-
-
-
+  }
+}
