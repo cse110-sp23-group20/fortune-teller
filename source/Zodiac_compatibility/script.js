@@ -46,7 +46,7 @@ function roundAngle(angle) {
 }
 
 // Function to handle the mouseout event
-function stopRotation() {
+function stopRotation(event) {
   // Round the current angle of the wheels to the nearest multiple of 30
   const target1 = roundAngle(w1anglereal);
   const target2 = roundAngle(w2anglereal);
