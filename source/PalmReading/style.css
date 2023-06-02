@@ -2,6 +2,10 @@
 body {
   font-family: sans-serif;
   text-align: center;
+  background-image: url('./images/background.png');
+  background-size: cover;
+  color: white;
+  font-family: 'Inter', sans-serif;
 }
 h1 {
   display: flex;
@@ -89,7 +93,7 @@ img {
 }
 /* Clear floats after the columns */
 .row:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
