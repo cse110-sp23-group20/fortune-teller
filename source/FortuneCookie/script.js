@@ -149,17 +149,32 @@ const fortunes = [
     "In college, love is an adventure waiting to unfold. Embrace the journey and let your heart guide you to incredible destinations.",
     "The love you find in college can shape not only your present but also your future. Choose your love wisely, for it can inspire you to greatness."
   ];
-  
+
+  let previousFortune = '';  
   const fortuneButton = document.getElementById("fortune-button");
   const fortuneText = document.getElementById("fortune-text");
   const fortuneAudioCrack = document.getElementById("fortune-crack");
   const voiceToggle = document.getElementById("voice-toggle-checkbox");
 
+  // Gets a random fortune and ensures it does not match the previous fortune
+  function getRandomFortune() {
+    let randomIndex = Math.floor(Math.random() * fortunes.length);
+    let fortune = fortunes[randomIndex];
   
-  // Gets a random fortune and displays it
+    // Generate a new random fortune if it matches the previous fortune
+    while (fortune === previousFortune) {
+      randomIndex = Math.floor(Math.random() * fortunes.length);
+      fortune = fortunes[randomIndex];
+    }
+  
+    previousFortune = fortune;
+    return fortune;
+  }
+
+  
+  // Displays the fortune and if voice toggle is checked, read the fortune 
   function showFortune() {
-    const randomIndex = Math.floor(Math.random() * fortunes.length);
-    const fortune = fortunes[randomIndex];
+    const fortune = getRandomFortune();
     fortuneText.textContent = fortune;
     fortuneText.style.display = "block";
     if (voiceToggle.checked) {
