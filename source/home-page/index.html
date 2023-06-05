@@ -1,6 +1,12 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../common/styles.css" />
     <link rel="stylesheet" type="text/css" href="styles.css" />
     <script src="../common/index.js" type="module"></script>
@@ -9,50 +15,68 @@
 
   <body>
     <div class="welcome-section">
-      <h1>Welcome to our Fortune Telling App</h1>
-      <h2>
-        Improving the student experience by alleviating decision-making anxiety
-      </h2>
+      <h1>Envision Your Destiny</h1>
+      <aside class="subtitle">
+        Brought to you by
+        <a
+          href="https://github.com/cse110-sp23-group20/cse110-sp23-group20/blob/main/admin/team.md"
+          class="team-link hover-underline"
+          >20/20 Visionaries</a
+        >
+      </aside>
     </div>
-    <div>
-      <div class="card-container">
-        <a href="../Zodiac_compatibility/">
-          <img
-            src="Images/craiyon_142342_zodiac_wheel_tarot_card.png"
-            alt="Love Compatibility Card"
-            width="300"
-            height="200"
-          />
-        </a>
-        <p>Love Compatibility</p>
-      </div>
-      <div class="card-container">
-        <a href="../FortuneCookie/">
-          <img
-            src="Images/craiyon_115136_tarot_card_with_fortune_cookie.png"
-            alt="Fortune Cookie Card"
-            width="300"
-            height="200"
-          />
-        </a>
-        <p>Fortune Cookie</p>
-      </div>
-      <div class="card-container">
-        <a href="../PalmReading/">
-          <img
-            src="Images/craiyon_144054_a_tarot_card_depicting_palmistry.png"
-            alt="Palm Reading Card"
-            width="300"
-            height="200"
-          />
-        </a>
-        <p>Palm Reading</p>
-      </div>
+    <div class="cards">
+      <a href="../Zodiac_compatibility/" class="card-container">
+        <img
+          src="Images/craiyon_142342_zodiac_wheel_tarot_card.png"
+          alt="Love Compatibility Card"
+        />
+        <span class="description">
+          <strong>Love Compatibility</strong>
+          <span>
+            Discover your perfect match with cutting-edge astrological signs to
+            provide insightful guidance on finding lasting love.
+          </span>
+        </span>
+      </a>
+      <a href="../FortuneCookie/" class="card-container">
+        <img
+          src="Images/craiyon_115136_tarot_card_with_fortune_cookie.png"
+          alt="Fortune Cookie Card"
+        />
+        <span class="description">
+          <strong>Fortune Cookie</strong>
+          <span>
+            Unwrap the secrets of your destiny by combining ancient wisdom with
+            modern technology to bring clarity and inspiration.
+          </span>
+        </span>
+      </a>
+      <a href="../PalmReading/" class="card-container">
+        <img
+          src="Images/craiyon_144054_a_tarot_card_depicting_palmistry.png"
+          alt="Palm Reading Card"
+        />
+        <span class="description">
+          <strong>Palm Reading</strong>
+          <span>
+            Capture your heartbeat with your webcam to decode the hidden
+            messages in your hands to create a brighter future.
+          </span>
+        </span>
+      </a>
     </div>
-    <div>
+    <div class="randomize">
+      <div>
+        <h2>Can't decide?</h2>
+        <p>Your destiny is in our hands.</p>
+      </div>
       <button class="randomize-button" onclick="randomize()">Randomize</button>
-      <p>Your destiny is in our hands</p>
     </div>
+    <footer>
+      Improving the student experience by alleviating decision-making anxiety
+      since 2023.
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>
