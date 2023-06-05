@@ -7,13 +7,18 @@ function init() {
   const requestBtn = document.getElementById("request-webcam");
   const instructions = document.getElementById("instructions");
   requestBtn.addEventListener("click", async () => {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
-    video.srcObject = stream;
-    requestBtn.style.display = "none";
+    try {
+      requestBtn.parentNode.style.display = "none";
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      video.srcObject = stream;
+    } catch {
+      requestBtn.parentNode.style.display = null;
+    }
   });
   video.addEventListener("loadedmetadata", () => {
     video.play();
     instructions.style.display = "block";
+    video.classList.add("video-on");
   });
 
   /**

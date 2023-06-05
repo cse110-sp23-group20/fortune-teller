@@ -1,15 +1,21 @@
 /* code for picture-frame page */
 body {
-  font-family: sans-serif;
   text-align: center;
-  background-image: url('./images/background.png');
+  /* palm reading background image, two small palms with symbols, mystical, celestial, stars and nebulae, dark blue and purple */
+  background-image: url("./images/background.png");
   background-size: cover;
+  background-position: center;
   color: white;
-  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 h1 {
   display: flex;
-  font-size: 1.5em;
+  font-size: 60px;
+  font-family: "Enchanted Land", cursive;
+  font-weight: normal;
+  margin: 0;
 }
 img {
   position: relative;
@@ -93,7 +99,7 @@ img {
 }
 /* Clear floats after the columns */
 .row:after {
-  content: '';
+  content: "";
   display: table;
   clear: both;
 }
@@ -143,12 +149,42 @@ img {
   color: white;
 }
 
+#camera-frame {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .webcam-wrapper {
   display: inline-flex;
-  background-color: #3d3c59;
-  border-radius: 10px;
-  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  border-radius: 100vw;
   position: relative;
+  max-width: 500px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0 0 40px #ff00dd61;
+  animation: mystic-pulse 4s infinite alternate;
+}
+@keyframes mystic-pulse {
+  from {
+    box-shadow: 0 0 40px #ff00dd61;
+  }
+  to {
+    box-shadow: 0 0 40px #ff00dd;
+  }
+}
+.square-enforcer {
+  width: 100%;
+}
+.webcam-wrapper > *:not(.square-enforcer) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 #webcam-video {
   /* Flip camera */
@@ -156,24 +192,28 @@ img {
   border-radius: 5px;
   border: 1px solid black;
 }
-#request-webcam {
-  border: none;
-  background: none;
-  font: inherit;
-  color: white;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  cursor: pointer;
+.video-on {
+  animation: video-on 2s;
+}
+@keyframes video-on {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.request-webcam-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.request-webcam-wrapper p {
+  max-width: 80%;
 }
 #instructions {
   display: none;
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
   text-align: center;
   margin: 20px;
   color: white;

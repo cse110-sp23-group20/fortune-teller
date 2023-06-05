@@ -18,15 +18,17 @@
   <body>
     <script src="script.js"></script>
     <script src="webcam.js" type="module"></script>
-    <div id="camera-frame" display="inline">
-      <button id="back">back</button>
+    <div id="camera-frame">
       <h1 class="title">Palm Reading</h1>
       <div class="webcam-wrapper">
+        <canvas width="1" height="1" class="square-enforcer"></canvas>
         <video id="webcam-video"></video>
-        <button id="request-webcam">Click here to enable palm reader</button>
-        <p id="instructions">Please hold your hand over your camera.</p>
+        <div class="request-webcam-wrapper">
+          <button id="request-webcam" class="button">Begin</button>
+          <p>Enable your webcam to permit analysis.</p>
+        </div>
       </div>
-      <br />
+      <p id="instructions">Please hold your hand over your camera.</p>
       <button class="button" id="read-your-hand">Read your hand</button>
     </div>
 
@@ -56,7 +58,7 @@
         <div class="column" id="column1">
           <h1 id="results-title">Results</h1>
           <div id="result-button-container">
-            <img id="result" class="align-div" src="images/palm-reading.png" />
+            <img id="result" class="align-div" src="images/palm-reading.PNG" />
             <button class="button" id="read-another-hand">
               Read another hand
             </button>

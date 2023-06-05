@@ -1,11 +1,5 @@
 /* used to set background image*/
 
-@font-face {
-  font-family: "Enchanted Land";
-  src: url("Fonts/enchanted_land/Enchanted\ Land.otf") format("woff2"),
-    url("Fonts/enchanted_land/Enchanted\ Land.otf") format("woff");
-}
-
 body {
   background-image: url("Images/Background.png");
   background-repeat: no-repeat;
@@ -39,27 +33,6 @@ body {
   padding: 20px 0;
 }
 
-.welcome-section h1 {
-  font-size: 80px;
-  margin: 0;
-  font-family: "Enchanted Land", cursive;
-  font-weight: normal;
-  animation: shimmer linear 5s infinite;
-  background-size: 2000px;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  background-image: linear-gradient(95deg, white, #f4dda7, white);
-  text-shadow: 0 0 20px #f1c96c9f;
-}
-@keyframes shimmer {
-  from {
-    background-position: 2000px;
-  }
-  to {
-    background-position: 0;
-  }
-}
 .subtitle {
   color: rgba(255, 255, 255, 0.5);
 }
@@ -120,7 +93,7 @@ body {
     to bottom,
     transparent,
     transparent,
-    rgb(255, 0, 221),
+    #ff00dd,
     #f1c86c,
     #f1c86c
   );
@@ -169,21 +142,6 @@ body {
 .randomize h2,
 .randomize p {
   margin: 0;
-}
-
-.randomize-button {
-  font-family: "Enchanted Land", cursive;
-  background-color: #f1c86c;
-  color: #191a25;
-  padding: 5px 20px;
-  border: none;
-  border-radius: 5px;
-  font-size: 32px;
-  cursor: pointer;
-}
-
-.randomize-button:hover {
-  background-color: #ebaf3e;
 }
 
 .sign-in-form {
