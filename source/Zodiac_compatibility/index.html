@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Scrollable Wheel</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="relationship">
+        <form>
+          <label for="relationship">What is your relationship with them?:</label
+          ><br />
+          <select name="relationship" id="relationship">
+            <option value="volvo">Romantic</option>
+            <option value="saab">Friendship</option>
+            <option value="mercedes">Professional</option></select
+          ><br />
+        </form>
+      </div>
+      <div class="wheel_field" id="left_wheel_field">
+        <div class="wheel" id="left_wheel">
+          <img
+            src="images/hollow.png"
+            class="wheel_img"
+            id="left_wheel_img"
+            alt="idk"
+          />
+        </div>
+      </div>
+      <div class="bday_input" id="left_bday_input">
+        <form>
+          <label for="left_birthday">YOUR DATE OF BIRTH:</label><br />
+          <input type="date" id="left_birthday" name="left_birthday" /><br />
+        </form>
+      </div>
+
+      <div class="middle">
+        <button id="find-out">Find Out!</button>
+      </div>
+
+      <div class="wheel_field" id="right_wheel_field">
+        <div class="wheel" id="right_wheel">
+          <img
+            src="images/hollow.png"
+            class="wheel_img"
+            id="right_wheel_img"
+            alt="idk"
+          />
+        </div>
+      </div>
+      <div class="bday_input" id="right_bday_input">
+        <form>
+          <label for="right_birthday">THEIR DATE OF BIRTH:</label><br />
+          <input type="date" id="right_birthday" name="right_birthday" /><br />
+        </form>
+      </div>
+    </div>
+
+    <div id="pop-up">
+      <h2 id="pairing">Pop-up Box</h2>
+      <p>This is some sample text for the pop-up box.</p>
+      <button id="go-back" onclick="location.reload()">Go Back!</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

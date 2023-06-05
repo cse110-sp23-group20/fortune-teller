@@ -3,6 +3,7 @@
 # 2020 Visionaries
 
 ## Brand Statement:
+
 "2020 Visionaries: Unlocking the Future through Fortune Telling"
 
 ## Our Values:
@@ -27,14 +28,14 @@ https://user-images.githubusercontent.com/22133785/233798913-d026a577-a592-407a-
   - Third year student majoring in Cognitive Science in Revelle.
   - I'd rather be at a kpop concert.
 - [Devika Torvi](https://dtorvi.github.io/GitHubPages/)
-  -  Fourth year student majoring in Bioengineering: Bioinformatics in Warren
-  -  Obsessed with true crime documentaries
+  - Fourth year student majoring in Bioengineering: Bioinformatics in Warren
+  - Obsessed with true crime documentaries
 - [Do heon Kim](https://stopdatkimmy.github.io/Cse110/)
-  -  Second year Student majoring in Computer Science in ERC
-  -  I love Arsenal Come on you Gunners   
+  - Second year Student majoring in Computer Science in ERC
+  - I love Arsenal Come on you Gunners
 - [Joseph Burgos](https://josephburger.github.io/GitHubPages/)
   - Third Year Student majoring in Math/CS
-  - apart of a fraternity :o     
+  - apart of a fraternity :o
 - [Owen Huynh](https://ohuynh21.github.io/cse110_lab1/)
   - Second year CS student at Muir.
   - 20 years of breathing experience at Earth LLC.
