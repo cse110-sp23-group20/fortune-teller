@@ -17,8 +17,8 @@ function init() {
   });
   video.addEventListener("loadedmetadata", () => {
     video.play();
-    instructions.style.display = "block";
     video.classList.add("video-on");
+    instructions.style.display = "block";
   });
 
   /**
