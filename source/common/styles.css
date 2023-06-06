@@ -37,6 +37,11 @@ a {
   text-decoration: underline;
 }
 
+img,
+video {
+  max-width: 100%;
+}
+
 button,
 input,
 optgroup,

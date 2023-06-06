@@ -32,12 +32,20 @@ const ecgGraph = document.getElementById("ecg");
 const result = document.getElementById("result-palm");
 const context = result.getContext("2d");
 const readAnother = document.getElementById("read-another-hand");
+let flipCamera = true;
 async function startCamera() {
   requestBtn.parentNode.style.display = "none";
   readAnother.style.display = "none";
+  flipCamera = true;
+  video.classList.add("flip");
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
+    const { facingMode } = stream.getTracks()[0].getCapabilities();
+    if (facingMode.includes("environment")) {
+      video.classList.remove("flip");
+      flipCamera = false;
+    }
   } catch {
     requestBtn.parentNode.style.display = null;
   }
@@ -66,8 +74,10 @@ video.addEventListener("loadedmetadata", () => {
     const size = Math.min(video.videoWidth, video.videoHeight);
     result.width = size;
     result.height = size;
-    context.scale(-1, 1);
-    context.translate(-size, 0);
+    if (flipCamera) {
+      context.translate(size, 0);
+      context.scale(-1, 1);
+    }
     if (video.videoWidth > video.videoHeight) {
       context.drawImage(video, -(video.videoWidth - video.videoHeight) / 2, 0);
     } else {

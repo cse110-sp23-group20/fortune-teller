@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="style.css" />
     <script src="../common/index.js" type="module"></script>
   </head>
-  <body>
+  <body class="show-results">
     <script src="script.js"></script>
     <script src="webcam.js" type="module"></script>
 
@@ -47,27 +47,16 @@
     </div>
 
     <div id="results-frame">
-      <h1 class="title">Palm Reading Results</h1>
       <div class="column" id="column1">
         <h1 id="results-title">Results</h1>
         <div id="result-button-container">
-          <canvas id="result" class="align-div"></canvas>
+          <img id="result" class="align-div" src="images/palm-reading.PNG" />
         </div>
       </div>
-
-      <div hidden id="results-frame">
-        <h1 class="title">Palm Reading Results</h1>
-        <div class="column" id="column1">
-          <h1 id="results-title">Results</h1>
-          <div id="result-button-container">
-            <img id="result" class="align-div" src="images/palm-reading.PNG" />
-          </div>
-        </div>
-        <div class="column" id="column2">
-          <div id="results-panel">
-            <div id="text-box" class="align-div">
-              <p id="result-text">This is the result.</p>
-            </div>
+      <div class="column" id="column2">
+        <div id="results-panel">
+          <div id="text-box" class="align-div">
+            <p id="result-text">This is the result.</p>
           </div>
         </div>
       </div>
