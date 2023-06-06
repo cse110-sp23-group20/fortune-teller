@@ -5,60 +5,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PalmReading</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../common/styles.css" />
     <link rel="stylesheet" href="style.css" />
+    <script src="../common/index.js" type="module"></script>
   </head>
-  <body>
+  <body class="show-results">
     <script src="script.js"></script>
     <script src="webcam.js" type="module"></script>
-    <div id="camera-frame" display="inline">
-      <button id="back">back</button>
-      <h1 class="title">Palm Reading</h1>
-      <div class="webcam-wrapper">
-        <video id="webcam-video"></video>
-        <button id="request-webcam">Click here to enable palm reader</button>
-        <p id="instructions">Please hold your hand over your camera.</p>
+
+    <div class="camera-frame">
+      <div class="webcam-wrapper" id="webcam-wrapper">
+        <h1 class="title">Palm Reading</h1>
+        <canvas
+          id="result-palm"
+          width="1"
+          height="1"
+          class="square-enforcer circle-shape"
+        ></canvas>
+        <div class="circle circle-shape stretch-box"></div>
+        <video class="stretch-box circle-shape" id="webcam-video"></video>
+        <div class="request-webcam-wrapper stretch-box">
+          <button id="request-webcam" class="button">Begin</button>
+          <p>Enable your camera to permit analysis.</p>
+        </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 -40 300 80"
+          class="ecg"
+          id="ecg"
+        >
+          <path id="ecg-path" d="M 0 0 h 20 l 2 20 l 2 -40 l 2 20 h 20" />
+        </svg>
+        <button class="button" id="read-another-hand">Read Another Hand</button>
       </div>
-      <br />
-      <button class="button" id="read-your-hand">Read your hand</button>
     </div>
 
-    <div hidden id="picture-frame">
-      <div id="video-container">
-        <video id="video"></video>
-      </div>
-      <div id="button-container">
-        <button id="take-picture-button">Take Picture</button>
-      </div>
-    </div>
-
-    <div hidden id="results-frame">
-      <h1 class="title">Palm Reading Results</h1>
+    <div id="results-frame">
       <div class="column" id="column1">
         <h1 id="results-title">Results</h1>
         <div id="result-button-container">
-          <canvas id="result" class="align-div"></canvas>
-          <button class="button" id="read-another-hand">
-            Read another hand
-          </button>
+          <img id="result" class="align-div" src="images/palm-reading.PNG" />
         </div>
       </div>
-
-      <div hidden id="results-frame">
-        <h1 class="title">Palm Reading Results</h1>
-        <div class="column" id="column1">
-          <h1 id="results-title">Results</h1>
-          <div id="result-button-container">
-            <img id="result" class="align-div" src="images/palm-reading.png" />
-            <button class="button" id="read-another-hand">
-              Read another hand
-            </button>
-          </div>
-        </div>
-        <div class="column" id="column2">
-          <div id="results-panel">
-            <div id="text-box" class="align-div">
-              <p id="result-text">This is the result.</p>
-            </div>
+      <div class="column" id="column2">
+        <div id="results-panel">
+          <div id="text-box" class="align-div">
+            <p id="result-text">This is the result.</p>
           </div>
         </div>
       </div>
