@@ -144,6 +144,8 @@ const fortunes = [
     fortuneText.style.display = "block";
     if (voiceToggle.checked) {
       speakFortune(fortune);
+    } else {
+      setTimeout(enableButton, 1000);
     }
   }
 
@@ -160,20 +162,28 @@ function speakFortune(fortune) {
   speech.pitch = 1.2;
   window.speechSynthesis.speak(speech);
 
-  // Turn button back on when fortune is done being read
+  // Reenable button when fortune is done being read
   speech.addEventListener("end", () => {
-    fortuneButton.disabled = false;
-    fortuneButton.style.opacity = "1";
+    enableButton();
   });
+}
+
+// Disables button when called
+function disableButton() {
+  fortuneButton.disabled = true;
+  fortuneButton.style.opacity = "0.5";
+}
+
+// Enables button when called
+function enableButton() {
+  fortuneButton.disabled = false;
+  fortuneButton.style.opacity = "1";
 }
 
 // When button is clicked, audio plays and then fortune is read/displayed
 fortuneButton.addEventListener("click", function () {
   fortuneAudioCrack.play();
-
-  // Turn button off so user cannot spam click button
-  fortuneButton.disabled = true;
-  fortuneButton.style.opacity = "0.5";
+  disableButton();
   setTimeout(showFortune, 1000);
 });
 
