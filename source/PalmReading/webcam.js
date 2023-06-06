@@ -34,6 +34,7 @@ const context = result.getContext("2d");
 const readAnother = document.getElementById("read-another-hand");
 let flipCamera = true;
 async function startCamera() {
+  document.body.classList.remove("show-results");
   requestBtn.parentNode.style.display = "none";
   readAnother.style.display = "none";
   flipCamera = true;
@@ -90,6 +91,7 @@ video.addEventListener("loadedmetadata", () => {
     ecgGraph.classList.remove("ecg-active");
     setInstructions("");
     readAnother.style.display = "block";
+    document.body.classList.add("show-results");
   }, 10000);
 });
 readAnother.addEventListener("click", startCamera);

@@ -66,11 +66,11 @@ body {
   overflow: hidden;
 }
 .show-results #results-frame-anchor {
-  width: min(700px, calc(100vw - 430px));
+  width: min(700px, calc(100vw - 580px));
 }
 #results-frame {
   position: relative;
-  width: min(700px, calc(100vw - 430px));
+  width: min(700px, calc(100vw - 580px));
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -197,18 +197,17 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 130px 0;
 }
 .webcam-wrapper {
   display: inline-flex;
   position: relative;
+  text-align: center;
 }
 .square-enforcer {
   max-width: 500px;
   width: min(calc(100vh - 260px), calc(100vw - 80px));
   transition: max-width 0.5s;
-}
-.show-results .square-enforcer {
-  max-width: 350px;
 }
 .stretch-box {
   position: absolute;
@@ -309,4 +308,41 @@ body {
   white-space: nowrap;
   animation: fade-in 0.5s;
   z-index: 2;
+}
+
+@media (max-width: 900px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  #results-frame-anchor {
+    display: none;
+  }
+  .show-results #results-frame-anchor {
+    display: block;
+  }
+  .show-results #results-frame {
+    animation: slide-in 0.5s;
+  }
+  #results-frame-anchor,
+  .show-results #results-frame-anchor,
+  #results-frame {
+    width: unset;
+  }
+  #results-frame {
+    padding: 20px;
+    padding-top: 0;
+    flex: auto;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: none;
+    opacity: 1;
+  }
 }
