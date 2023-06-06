@@ -42,12 +42,16 @@ async function startCamera() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
-    const { facingMode } = stream.getTracks()[0].getCapabilities();
-    if (facingMode.includes("environment")) {
-      video.classList.remove("flip");
-      flipCamera = false;
+    const track = stream.getTracks()[0];
+    // Firefox does not support getCapabilities
+    if ("getCapabilities" in track) {
+      const { facingMode } = track.getCapabilities();
+      if (facingMode.includes("environment")) {
+        video.classList.remove("flip");
+        flipCamera = false;
+      }
     }
-  } catch {
+  } catch (error) {
     requestBtn.parentNode.style.display = null;
   }
 }
