@@ -1,10 +1,36 @@
+const webcamWrapper = document.getElementById("webcam-wrapper");
+/**
+ * The currently displayed `.instructions` element.
+ * @type {HTMLParagraphElement | null}
+ */
+let lastInstructionElem = null;
+function setInstructions(instruction) {
+  if (lastInstructionElem) {
+    lastInstructionElem.addEventListener("animationend", (e) => {
+      e.currentTarget.remove();
+    });
+    lastInstructionElem.classList.remove("instructions-active");
+  }
+  if (instruction) {
+    lastInstructionElem = Object.assign(document.createElement("p"), {
+      textContent: instruction,
+      className: "instructions instructions-active",
+    });
+    webcamWrapper.append(lastInstructionElem);
+  } else {
+    lastInstructionElem = null;
+  }
+}
+
 /**
  * The `<video>` element that previews whatever is on the webcam.
  * @type {HTMLVideoElement}
  */
 const video = document.getElementById("webcam-video");
 const requestBtn = document.getElementById("request-webcam");
-const instructions = document.getElementById("instructions");
+const ecgGraph = document.getElementById("ecg");
+const result = document.getElementById("result-palm");
+const context = result.getContext("2d");
 requestBtn.addEventListener("click", async () => {
   try {
     requestBtn.parentNode.style.display = "none";
@@ -17,20 +43,37 @@ requestBtn.addEventListener("click", async () => {
 video.addEventListener("loadedmetadata", () => {
   video.play();
   video.classList.add("video-on");
-  instructions.style.display = "block";
-});
+  ecgGraph.classList.add("ecg-active");
 
-/**
- * The `<canvas>` element that captures whatever was on the webcam when you press "Read your hand".
- * @type {HTMLVideoElement}
- */
-const result = document.getElementById("result");
-const context = result.getContext("2d");
-const readHandBtn = document.getElementById("read-your-hand");
-readHandBtn.addEventListener("click", () => {
-  result.width = video.videoWidth;
-  result.height = video.videoHeight;
-  context.drawImage(video, 0, 0);
+  setTimeout(() => {
+    setInstructions("Please hold your hand over your camera.");
+  }, 500);
+  setTimeout(() => {
+    paintEcg();
+    setInstructions("Heartbeat detected.");
+  }, 3000);
+  setTimeout(() => {
+    paintEcg();
+    setInstructions("Keep your hand steady.");
+  }, 6000);
+  setTimeout(() => {
+    video.pause();
+    const size = Math.min(video.videoWidth, video.videoHeight);
+    result.width = size;
+    result.height = size;
+    context.scale(-1, 1);
+    context.translate(-size, 0);
+    if (video.videoWidth > video.videoHeight) {
+      context.drawImage(video, -(video.videoWidth - video.videoHeight) / 2, 0);
+    } else {
+      context.drawImage(video, 0, -(video.videoHeight - video.videoWidth) / 2);
+    }
+    video.srcObject.getTracks()[0].stop();
+    window.cancelAnimationFrame(frameId);
+    video.classList.remove("video-on");
+    ecgGraph.classList.remove("ecg-active");
+    setInstructions("");
+  }, 10000);
 });
 
 // 20 units is about 0.6s, so 1 s = 33ish units
@@ -44,8 +87,8 @@ const ecgPoints = [
   [7.4, -4],
   [7.8, 0.2],
   [10, 0.8],
-  [12, 4.8],
-  [13, 4.8],
+  [12, 4],
+  [13, 4],
   [15, 0.5],
   [16.8, 1.1],
   [18, 0.2],
@@ -73,6 +116,7 @@ const ecgPath = document.getElementById("ecg-path");
 const ecgHistory = [];
 let simTime = 0;
 let startTime = Date.now();
+let frameId;
 function paintEcg() {
   // Correct for different monitor refresh rates
   const now = Date.now();
@@ -84,7 +128,9 @@ function paintEcg() {
   } else {
     while (simTime < realTime) {
       ecgHistory.unshift(
-        -ecg(now / 30) * (Math.random() * 1 + 2.5) + 15 + (Math.random() - 0.5)
+        -ecg(now / 30) * (Math.random() * 1 + 2.5) +
+          15 +
+          (Math.random() - 0.5) * 2
       );
       while (ecgHistory.length > ECG_LENGTH) {
         ecgHistory.pop();
@@ -97,6 +143,5 @@ function paintEcg() {
       simTime += 1000 / FPS;
     }
   }
-  window.requestAnimationFrame(paintEcg);
+  frameId = window.requestAnimationFrame(paintEcg);
 }
-paintEcg();

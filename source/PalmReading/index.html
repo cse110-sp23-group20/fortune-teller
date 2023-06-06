@@ -20,20 +20,25 @@
     <script src="webcam.js" type="module"></script>
 
     <div class="camera-frame">
-      <div class="webcam-wrapper">
+      <div class="webcam-wrapper" id="webcam-wrapper">
         <h1 class="title">Palm Reading</h1>
-        <canvas width="1" height="1" class="square-enforcer"></canvas>
-        <div class="circle stretch-box"></div>
-        <video class="stretch-box" id="webcam-video"></video>
+        <canvas
+          id="result-palm"
+          width="1"
+          height="1"
+          class="square-enforcer circle-shape"
+        ></canvas>
+        <div class="circle circle-shape stretch-box"></div>
+        <video class="stretch-box circle-shape" id="webcam-video"></video>
         <div class="request-webcam-wrapper stretch-box">
           <button id="request-webcam" class="button">Begin</button>
           <p>Enable your camera to permit analysis.</p>
         </div>
-        <p id="instructions">Please hold your hand over your camera.</p>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 -40 300 80"
           class="ecg"
+          id="ecg"
         >
           <path id="ecg-path" d="M 0 0 h 20 l 2 20 l 2 -40 l 2 20 h 20" />
         </svg>
