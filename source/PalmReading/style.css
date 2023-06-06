@@ -58,33 +58,122 @@ body {
 #results-frame {
   position: fixed;
   width: calc(100vw - 380px);
+  max-width: 700px;
   left: 100%;
   transition: left 0.5s;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 40px;
+  padding-left: 0;
 }
 .show-results #results-frame {
   left: 380px;
 }
 
-#text-box {
-  display: box;
-  float: center;
-  background-color: #3d3c59;
-  font-size: 30px;
-  border-radius: 10px;
+#results-title {
+  font-size: 36px;
+  margin: 0;
+  margin-bottom: 0.5em;
 }
-
-.align-div {
+#palm-guide {
+  width: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 }
-
-#result {
-  border-radius: 15px;
+.tabs {
+  position: relative;
+  display: flex;
+  font-weight: bold;
+  height: 40px;
+  padding: 0 10px;
 }
-
-#result-button-container {
+.tabs::before,
+.tabs::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 }
-
-#result-text {
-  color: white;
+.tabs::before {
+  background-image: url("./images/palm-reading.PNG");
+  background-size: 100% 2000px;
+  background-position: bottom;
+}
+.tabs::after {
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+}
+.tab {
+  display: flex;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+  gap: 10px;
+  padding: 0 10px;
+}
+.tab::before {
+  content: "";
+  background-color: var(--color);
+  width: 1em;
+  height: 1em;
+  border-radius: 100%;
+}
+.tab input {
+  overflow: hidden;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  top: 0;
+  left: 0;
+}
+.tab input:focus {
+  outline: none;
+}
+.tab-label {
+  display: block;
+}
+.tab-label::before,
+.tab-label::after {
+  content: "";
+  position: absolute;
+  display: block;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+}
+.tab-label::before {
+  height: 5px;
+  left: 10px;
+  right: 10px;
+}
+.tab input:checked + .tab-label::before {
+  background-color: var(--color);
+  border-top-left-radius: 100px;
+  border-top-right-radius: 100px;
+}
+.tab:hover .tab-label::after,
+.tab input:focus-visible + .tab-label::after {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.tab-content {
+  background-color: #3d3c5954;
+  backdrop-filter: blur(15px);
+  padding: 20px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+.tab-content h3 {
+  color: var(--color);
+  margin: 0;
+  font-size: 24px;
+}
+.tab-content p {
+  margin-bottom: 0;
 }
 
 /* Wrapper for the camera; guaranteed to be a square (1:1 aspect ratio) */

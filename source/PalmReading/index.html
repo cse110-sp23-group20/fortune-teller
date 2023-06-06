@@ -47,18 +47,33 @@
     </div>
 
     <div id="results-frame">
-      <div class="column" id="column1">
-        <h1 id="results-title">Results</h1>
-        <div id="result-button-container">
-          <img id="result" class="align-div" src="images/palm-reading.PNG" />
-        </div>
+      <h2 id="results-title">Results</h2>
+      <img id="palm-guide" class="align-div" src="images/palm-reading.PNG" />
+      <div class="tabs">
+        <label class="tab" style="--color: #f7ac80">
+          <input type="radio" name="tab" value="head" checked />
+          <span class="tab-label">Head</span>
+        </label>
+        <label class="tab" style="--color: #ee6ea7">
+          <input type="radio" name="tab" value="heart" />
+          <span class="tab-label">Heart</span>
+        </label>
+        <label class="tab" style="--color: #89cba0">
+          <input type="radio" name="tab" value="life" />
+          <span class="tab-label">Life</span>
+        </label>
+        <label class="tab" style="--color: #8293c9">
+          <input type="radio" name="tab" value="fate" />
+          <span class="tab-label">Fate</span>
+        </label>
+        <label class="tab" style="--color: #fef898">
+          <input type="radio" name="tab" value="sun" />
+          <span class="tab-label">Sun</span>
+        </label>
       </div>
-      <div class="column" id="column2">
-        <div id="results-panel">
-          <div id="text-box" class="align-div">
-            <p id="result-text">This is the result.</p>
-          </div>
-        </div>
+      <div class="tab-content" style="--color: #f7ac80">
+        <h3>Head Line</h3>
+        <p>Results go here</p>
       </div>
     </div>
   </body>
