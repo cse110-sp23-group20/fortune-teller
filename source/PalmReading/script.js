@@ -4,10 +4,10 @@ window.addEventListener("DOMContentLoaded", init);
 function init() {
   document
     .getElementById("read-your-hand")
-    .addEventListener("click", showResults);
+    ?.addEventListener("click", showResults);
   document
     .getElementById("read-another-hand")
-    .addEventListener("click", readHand);
+    ?.addEventListener("click", readHand);
 }
 
 function showResults() {

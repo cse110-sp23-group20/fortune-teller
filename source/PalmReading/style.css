@@ -8,12 +8,13 @@ body {
   color: white;
   display: flex;
 }
-h1 {
+.title {
   position: absolute;
   bottom: 100%;
   left: 50%;
   transform: translateX(-50%);
   white-space: nowrap;
+  margin-bottom: 20px;
 }
 img {
   position: relative;
@@ -123,14 +124,6 @@ img {
   margin-bottom: 0vh;
 }
 
-#read-another-hand {
-  width: 20vw;
-  height: 10vh;
-  margin-top: -3vh;
-  position: relative;
-  object-position: center;
-}
-
 #result-button-container {
   display: flex;
   flex-direction: column;
@@ -143,7 +136,7 @@ img {
 
 .camera-frame {
   flex: auto;
-  padding: 90px 40px;
+  padding: 130px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,13 +178,17 @@ img {
   backdrop-filter: blur(15px);
   animation: mystic-pulse 4s infinite alternate;
   z-index: -1;
+  border-width: 1px;
+  border-style: solid;
 }
 @keyframes mystic-pulse {
   from {
     box-shadow: 0 0 40px #ff00dd61;
+    border-color: #ff00dd8b;
   }
   to {
     box-shadow: 0 0 40px #ff00dd;
+    border-color: #ff00dd;
   }
 }
 #webcam-video {
@@ -250,4 +247,16 @@ img {
 .ecg-active {
   opacity: 1;
   transition-delay: 3.5s;
+}
+
+#read-another-hand {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 40px;
+  white-space: nowrap;
+  animation: fade-in 0.5s;
+  z-index: 2;
 }

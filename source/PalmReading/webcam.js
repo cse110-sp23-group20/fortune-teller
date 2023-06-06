@@ -31,24 +31,29 @@ const requestBtn = document.getElementById("request-webcam");
 const ecgGraph = document.getElementById("ecg");
 const result = document.getElementById("result-palm");
 const context = result.getContext("2d");
-requestBtn.addEventListener("click", async () => {
+const readAnother = document.getElementById("read-another-hand");
+async function startCamera() {
+  requestBtn.parentNode.style.display = "none";
+  readAnother.style.display = "none";
   try {
-    requestBtn.parentNode.style.display = "none";
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
   } catch {
     requestBtn.parentNode.style.display = null;
   }
-});
+}
+requestBtn.addEventListener("click", startCamera);
 video.addEventListener("loadedmetadata", () => {
   video.play();
   video.classList.add("video-on");
   ecgGraph.classList.add("ecg-active");
+  ecgHistory.splice(0, ecgHistory.length);
 
   setTimeout(() => {
     setInstructions("Please hold your hand over your camera.");
   }, 500);
   setTimeout(() => {
+    frameId = 0;
     paintEcg();
     setInstructions("Heartbeat detected.");
   }, 3000);
@@ -70,11 +75,14 @@ video.addEventListener("loadedmetadata", () => {
     }
     video.srcObject.getTracks()[0].stop();
     window.cancelAnimationFrame(frameId);
+    frameId = null;
     video.classList.remove("video-on");
     ecgGraph.classList.remove("ecg-active");
     setInstructions("");
+    readAnother.style.display = "block";
   }, 10000);
 });
+readAnother.addEventListener("click", startCamera);
 
 // 20 units is about 0.6s, so 1 s = 33ish units
 const ecgPoints = [
@@ -116,8 +124,11 @@ const ecgPath = document.getElementById("ecg-path");
 const ecgHistory = [];
 let simTime = 0;
 let startTime = Date.now();
-let frameId;
+let frameId = null;
 function paintEcg() {
+  if (frameId === null) {
+    return;
+  }
   // Correct for different monitor refresh rates
   const now = Date.now();
   const realTime = now - startTime;
