@@ -56,13 +56,13 @@ body {
 /* code for results page */
 
 #results-frame {
-  display: none;
   position: fixed;
+  width: calc(100vw - 380px);
+  left: 100%;
+  transition: left 0.5s;
 }
 .show-results #results-frame {
-  display: block;
-  left: 500px;
-  right: 0;
+  left: 380px;
 }
 
 #text-box {
@@ -74,9 +74,6 @@ body {
 }
 
 .align-div {
-  position: inline-block;
-  vertical-align: middle;
-  justify-content: center;
 }
 
 #result {
@@ -84,9 +81,6 @@ body {
 }
 
 #result-button-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 #result-text {
@@ -96,45 +90,25 @@ body {
 /* Wrapper for the camera; guaranteed to be a square (1:1 aspect ratio) */
 .camera-frame {
   flex: auto;
-  padding: 130px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: margin-right 0.5s;
 }
 .show-results .camera-frame {
-  flex: none;
+  margin-right: calc(100vw - 380px);
 }
 .webcam-wrapper {
   display: inline-flex;
   position: relative;
-  max-width: 500px;
-  width: 100%;
 }
 .square-enforcer {
-  width: 100%;
-  transition: all 0.2s;
+  max-width: 500px;
+  width: min(calc(100vh - 260px), calc(100vw - 80px));
+  transition: max-width 0.5s;
 }
 .show-results .square-enforcer {
-  width: 300px;
-}
-@media (orientation: landscape) {
-  .webcam-wrapper {
-    max-width: unset;
-    width: unset;
-    max-height: 500px;
-    height: 100%;
-  }
-  .show-results .webcam-wrapper {
-    height: unset;
-  }
-  .square-enforcer {
-    width: unset;
-    height: 100%;
-  }
-  .show-results .square-enforcer {
-    width: unset;
-    height: 300px;
-  }
+  max-width: 300px;
 }
 .stretch-box {
   position: absolute;
