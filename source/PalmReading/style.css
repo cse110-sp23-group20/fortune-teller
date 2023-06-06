@@ -143,7 +143,7 @@ img {
 
 .camera-frame {
   flex: auto;
-  padding: 90px;
+  padding: 90px 40px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -230,4 +230,18 @@ img {
   animation: fade-in 0.5s 1s backwards;
   background-color: rgba(156, 156, 156, 0.2);
   backdrop-filter: blur(5px);
+}
+.ecg {
+  position: absolute;
+  top: 100%;
+  background-color: rgba(255, 0, 51, 0.618);
+  backdrop-filter: blur(15px);
+  width: 300px;
+  left: 50%;
+  margin-left: -150px;
+  margin-top: -70px;
+  fill: none;
+  stroke: white;
+  border-radius: 15px;
+  stroke-width: 1;
 }

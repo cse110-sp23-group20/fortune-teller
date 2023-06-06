@@ -27,13 +27,19 @@
         <video class="stretch-box" id="webcam-video"></video>
         <div class="request-webcam-wrapper stretch-box">
           <button id="request-webcam" class="button">Begin</button>
-          <p>Enable your webcam to permit analysis.</p>
+          <p>Enable your camera to permit analysis.</p>
         </div>
         <p id="instructions">Please hold your hand over your camera.</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 -40 300 80"
+          class="ecg"
+        >
+          <path id="ecg-path" d="M 0 0 h 20 l 2 20 l 2 -40 l 2 20 h 20" />
+        </svg>
       </div>
     </div>
-    <!-- <p id="instructions">Please hold your hand over your camera.</p>
-    <button class="button" id="read-your-hand">Read your hand</button> -->
+    <button class="button" id="read-your-hand" hidden>Read your hand</button>
 
     <div hidden id="picture-frame">
       <div id="video-container">
