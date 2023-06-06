@@ -6,6 +6,8 @@ body {
   background-position: center;
   color: white;
   display: flex;
+  justify-content: center;
+  overflow-x: hidden;
 }
 .title {
   position: absolute;
@@ -55,41 +57,46 @@ body {
 
 /* code for results page */
 
+#results-frame-anchor {
+  width: 0;
+  transition: width 0.5s;
+  display: flex;
+  align-items: center;
+  flex: none;
+  overflow: hidden;
+}
+.show-results #results-frame-anchor {
+  width: min(700px, calc(100vw - 430px));
+}
 #results-frame {
-  position: fixed;
-  width: calc(100vw - 380px);
-  max-width: 700px;
-  left: 100%;
-  transition: left 0.5s;
+  position: relative;
+  width: min(700px, calc(100vw - 430px));
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   padding: 40px;
-  padding-left: 0;
-}
-.show-results #results-frame {
-  left: 380px;
+  padding-right: 0;
+  flex: none;
 }
 
 #results-title {
   font-size: 36px;
-  margin: 0;
-  margin-bottom: 0.5em;
+  position: absolute;
+  color: black;
+  margin: 30px;
+  line-height: 1;
 }
 #palm-guide {
   width: 100%;
   border-top-left-radius: 15px;
   border-top-right-radius: 15px;
 }
-.tabs {
-  position: relative;
+.tabs-wrapper {
   display: flex;
-  font-weight: bold;
-  height: 40px;
-  padding: 0 10px;
+  position: relative;
 }
-.tabs::before,
-.tabs::after {
+.tabs-wrapper::before,
+.tabs-wrapper::after {
   content: "";
   position: absolute;
   z-index: -1;
@@ -98,14 +105,20 @@ body {
   width: 100%;
   height: 100%;
 }
-.tabs::before {
+.tabs-wrapper::before {
   background-image: url("./images/palm-reading.PNG");
-  background-size: 100% 2000px;
+  background-size: 100% 3500px;
   background-position: bottom;
 }
-.tabs::after {
+.tabs-wrapper::after {
   background-color: rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(5px);
+}
+.tabs {
+  overflow-x: auto;
+  display: flex;
+  font-weight: bold;
+  padding: 0 20px;
 }
 .tab {
   display: flex;
@@ -114,6 +127,7 @@ body {
   align-items: center;
   gap: 10px;
   padding: 0 10px;
+  height: 60px;
 }
 .tab::before {
   content: "";
@@ -162,8 +176,8 @@ body {
 }
 .tab-content {
   background-color: #3d3c5954;
-  backdrop-filter: blur(15px);
-  padding: 20px;
+  backdrop-filter: blur(10px);
+  padding: 30px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
 }
@@ -171,21 +185,18 @@ body {
   color: var(--color);
   margin: 0;
   font-size: 24px;
+  line-height: 1;
 }
 .tab-content p {
   margin-bottom: 0;
+  line-height: 1.4;
 }
 
 /* Wrapper for the camera; guaranteed to be a square (1:1 aspect ratio) */
 .camera-frame {
-  flex: auto;
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: margin-right 0.5s;
-}
-.show-results .camera-frame {
-  margin-right: calc(100vw - 380px);
 }
 .webcam-wrapper {
   display: inline-flex;
@@ -197,7 +208,7 @@ body {
   transition: max-width 0.5s;
 }
 .show-results .square-enforcer {
-  max-width: 300px;
+  max-width: 350px;
 }
 .stretch-box {
   position: absolute;
