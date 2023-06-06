@@ -33,6 +33,40 @@ readHandBtn.addEventListener("click", () => {
   context.drawImage(video, 0, 0);
 });
 
+// 20 units is about 0.6s, so 1 s = 33ish units
+const ecgPoints = [
+  [-0.8, 0.2],
+  [0.4, 1.2],
+  [1.5, 0.2],
+  [4.8, 0.2],
+  [5.1, -0.8],
+  [6.2, 13.9],
+  [7.4, -4],
+  [7.8, 0.2],
+  [10, 0.8],
+  [12, 4.8],
+  [13, 4.8],
+  [15, 0.5],
+  [16.8, 1.1],
+  [18, 0.2],
+];
+const XSHIFT = 0.8;
+const YSHIFT = -0.2;
+const PERIOD = 30;
+function ecg(time) {
+  time = time % PERIOD;
+  const index = ecgPoints.findIndex(([x]) => x + XSHIFT > time);
+  if (index === -1) {
+    return 0;
+  }
+  const [left, right] = ecgPoints.slice(index - 1, index + 1);
+  return (
+    ((time - XSHIFT - left[0]) * (right[1] - left[1])) / (right[0] - left[0]) +
+    left[1] +
+    YSHIFT
+  );
+}
+
 const ECG_LENGTH = 300;
 const FPS = 60;
 const ecgPath = document.getElementById("ecg-path");
@@ -49,7 +83,9 @@ function paintEcg() {
     startTime = now;
   } else {
     while (simTime < realTime) {
-      ecgHistory.unshift(Math.random() * 50 - 25);
+      ecgHistory.unshift(
+        -ecg(now / 30) * (Math.random() * 1 + 2.5) + 15 + (Math.random() - 0.5)
+      );
       while (ecgHistory.length > ECG_LENGTH) {
         ecgHistory.pop();
       }
