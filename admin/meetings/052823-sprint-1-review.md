@@ -12,7 +12,7 @@
 
 - Sean Yen
 
-- Brevin Gabrield
+- Brevin Gabriel
 
 - Brandon Kao
 
