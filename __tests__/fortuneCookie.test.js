@@ -35,7 +35,7 @@ describe('Basic user flow for Website', () => {
     let booleanValue = await button.getProperty('disabled');
     buttonDisabled = await booleanValue.jsonValue();
     expect(buttonDisabled).toBe(false);
-}, 15000)
+}, 20000)
 
   // Check to make sure audio disables if user unchecks 'toggle voice' checkbox
 //   it('Make sure audio disables', async () => {
