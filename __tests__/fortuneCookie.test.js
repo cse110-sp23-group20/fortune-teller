@@ -1,7 +1,7 @@
 describe('Basic user flow for Website', () => {
   // First, visit the fortune cookie website
   beforeAll(async () => {
-    await page.goto('http://127.0.0.1:5501/source/FortuneCookie/');
+    await page.goto('https://cse110-sp23-group20.github.io/fortune-teller/source/FortuneCookie/');
   });
 
   // Check to make sure that button is enabled when page loads
