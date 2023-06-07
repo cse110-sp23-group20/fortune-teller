@@ -1,6 +1,5 @@
 * {
   color: white;
-  font-family: "Oswald", sans-serif;
 }
 html,
 body {
@@ -34,6 +33,7 @@ body {
   text-align: center;
   background-color: transparent;
   z-index: 0;
+  font-size: 1vw;
 }
 
 select:hover {
@@ -60,11 +60,11 @@ option {
 }
 
 #left_wheel_field {
-  grid-area: 2 / 1 / 5 / 4;
+  grid-area: 1 / 1 / 5 / 4;
 }
 
 #right_wheel_field {
-  grid-area: 2 / 5 / 5 / 8;
+  grid-area: 1 / 5 / 5 / 8;
 }
 
 input {
@@ -73,7 +73,7 @@ input {
 
 .bday_input {
   font-family: "Oswald", sans-serif;
-  ccolor: white;
+  color: white;
   z-index: 1;
   align-content: center;
   justify-self: stretch;
@@ -81,23 +81,23 @@ input {
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
-  font-size: 0.8em;
+  font-size: 1vw;
 }
 
 .bday_input:hover {
   filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 251, 0));
 }
 #left_bday_input {
-  grid-area: 3 / 2 / 4 / 3;
+  grid-area: 1 / 2 / 4 / 3;
 }
 
 #right_bday_input {
-  grid-area: 3 / 6 / 4 / 7;
+  grid-area: 1/ 6 / 4 / 7;
 }
 
 .middle {
-  grid-area: 3 / 4 / 4 / 5;
-  align-self: center;
+  grid-area: 3 / 4 / 5 / 5;
+  margin-top: 40px;
   text-align: center;
 }
 
@@ -118,6 +118,7 @@ input[type="date"] {
   color: white;
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
   font-family: "Oswald", sans-serif;
+  padding-top: 50px;
 }
 
 #find-out:hover {
@@ -177,6 +178,9 @@ body {
   border-radius: 20px;
   text-align: center;
 }
+#pop-up * {
+  color: black;
+}
 
 #go-back {
   display: block;
@@ -198,4 +202,37 @@ body {
   to {
     opacity: 1;
   }
+}
+
+#title {
+  align-self: center;
+  text-align: center;
+  font-size: 25px;
+}
+
+#title h1 {
+  font-size: 75px;
+  font-style: italic;
+  font-family: "Enchanted Land", cursive;
+  color: #f1c86c;
+  margin: 4vh;
+}
+
+
+#arrows {
+  grid-area: 2/ 4 / 2 / 4;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+#left_arrow {
+  width: 50px;
+  grid-area: 1 / 1;
+  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
+  
+}
+#right_arrow {
+  width: 50px;
+  grid-area: 1 / 3;
+  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
 }

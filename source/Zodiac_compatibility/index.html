@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Scrollable Wheel</title>
+    <title>Zodiac Compatibility Tool</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="../common/styles.css" />
@@ -9,16 +9,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
       rel="stylesheet"
     />
     <script src="../common/index.js" type="module"></script>
   </head>
   <body>
+    <div id = "title">
+      <h1>Welcome to the Zodiac Compatibility Tool</h1>
+    </div>
     <div class="container">
       <div class="relationship">
         <form>
-          <label for="relationship">What is your relationship with them?:</label
+          <label for="relationship">Select your relationship with them:</label
           ><br />
           <select name="relationship" id="relationship">
             <option value="volvo">Romantic</option>
@@ -33,7 +36,7 @@
             src="images/hollow.png"
             class="wheel_img"
             id="left_wheel_img"
-            alt="idk"
+            alt="left_zodiac_wheel"
           />
         </div>
       </div>
@@ -57,6 +60,11 @@
             alt="idk"
           />
         </div>
+      </div>
+      <div id = "arrows">
+        <img src="images/arrow_left.png" id="left_arrow">
+        <img src="images/arrow_right.png" id="right_arrow">
+        
       </div>
       <div class="bday_input" id="right_bday_input">
         <form>
