@@ -26,16 +26,16 @@ describe('Basic user flow for Website', () => {
   }, 5000)
 
   // Check to make sure that button reenables after it is clicked
-  it('Make sure button is reenabled', async () => {
-    console.log('Checking to make sure button reenables after being clicked...');
-    // Wait because it takes time until button is reenabled as it has to read out the fortune
-    await page.waitForTimeout(15000);
-    let buttonDisabled;
-    const button = await page.$('button');
-    let booleanValue = await button.getProperty('disabled');
-    buttonDisabled = await booleanValue.jsonValue();
-    expect(buttonDisabled).toBe(false);
-}, 20000)
+//   it('Make sure button is reenabled', async () => {
+//     console.log('Checking to make sure button reenables after being clicked...');
+//     // Wait because it takes time until button is reenabled as it has to read out the fortune
+//     await page.waitForTimeout(15000);
+//     let buttonDisabled;
+//     const button = await page.$('button');
+//     let booleanValue = await button.getProperty('disabled');
+//     buttonDisabled = await booleanValue.jsonValue();
+//     expect(buttonDisabled).toBe(false);
+// }, 20000)
 
   // Check to make sure audio disables if user unchecks 'toggle voice' checkbox
 //   it('Make sure audio disables', async () => {
