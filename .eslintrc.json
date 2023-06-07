@@ -8,6 +8,5 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
-  },
-  
+  }
 }
