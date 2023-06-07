@@ -29,7 +29,7 @@ describe('Basic user flow for Website', () => {
   it('Make sure button is reenabled', async () => {
     console.log('Checking to make sure button reenables after being clicked...');
     // Wait because it takes time until button is reenabled as it has to read out the fortune
-    await page.waitForTimeout(10000);
+    await page.waitForTimeout(15000);
     let buttonDisabled;
     const button = await page.$('button');
     let booleanValue = await button.getProperty('disabled');
