@@ -1,9 +1,19 @@
+import { handleFortune } from "./script.js";
+
 const webcamWrapper = document.getElementById("webcam-wrapper");
 /**
  * The currently displayed `.instructions` element.
  * @type {HTMLParagraphElement | null}
  */
 let lastInstructionElem = null;
+/**
+ * Sets the message that appears under the webcam while it is analyzing the
+ * palm. There will be a fade transition between the previous and new
+ * instruction message.
+ *
+ * @param {string} instruction - The message to display. If an empty string,
+ * it'll hide the instructions.
+ */
 function setInstructions(instruction) {
   if (lastInstructionElem) {
     lastInstructionElem.addEventListener("animationend", (e) => {
@@ -42,12 +52,16 @@ async function startCamera() {
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ video: true });
     video.srcObject = stream;
-    const { facingMode } = stream.getTracks()[0].getCapabilities();
-    if (facingMode.includes("environment")) {
-      video.classList.remove("flip");
-      flipCamera = false;
+    const track = stream.getTracks()[0];
+    // Firefox does not support getCapabilities
+    if ("getCapabilities" in track) {
+      const { facingMode } = track.getCapabilities();
+      if (facingMode.includes("environment")) {
+        video.classList.remove("flip");
+        flipCamera = false;
+      }
     }
-  } catch {
+  } catch (error) {
     requestBtn.parentNode.style.display = null;
   }
 }
@@ -91,6 +105,7 @@ video.addEventListener("loadedmetadata", () => {
     ecgGraph.classList.remove("ecg-active");
     setInstructions("");
     readAnother.style.display = "block";
+    handleFortune();
     document.body.classList.add("show-results");
   }, 10000);
 });
