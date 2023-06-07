@@ -8,6 +8,8 @@ let w2angle = 0;
 
 // Function to handle the mouse wheel event
 function rotateWheel1(event) {
+  const dateInput = document.getElementById('left_birthday');
+
   // Determine the direction of scrolling
   const direction = Math.sign(event.deltaY);
 
@@ -16,12 +18,16 @@ function rotateWheel1(event) {
   console.log(w1angle);
   // Apply the rotation transform to the wheel element
   wheel1.style.transform = `rotate(${w1angle}deg)`;
-
+  dateInput.type = 'text';
+  dateInput.value = determineDateRangeLeft(roundAngle(w1angle));
+  dateInput.style.textAlign = 'center';
+  dateInput.style.background = 'transparent';
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
 // Function to handle the mouse wheel event
 function rotateWheel2(event) {
+  const dateInput = document.getElementById('right_birthday');
   // Determine the direction of scrolling
   const direction = Math.sign(event.deltaY);
 
@@ -30,10 +36,113 @@ function rotateWheel2(event) {
   // Apply the rotation transform to the wheel element
   wheel2.style.transform = `rotate(${w2angle}deg)`;
 
+  dateInput.type = 'text';
+  dateInput.value = determineDateRangeRight(roundAngle(w2angle));
+  dateInput.style.textAlign = 'center';
+  dateInput.style.background = 'transparent';
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
 
+function determineDateRangeLeft(angle) {
+  angle = angle % 360;
+  const zodiacDateRanges = [
+    [0, "Dec 22 - Jan 19"], // Capricorn
+    [360, "Dec 22 - Jan 19"], // Capricorn
+    
+    [30, "Nov 22 - Dec 21"], // Sagittarius
+    [-330, "Nov 22 - Dec 21"], // Sagittarius
+    
+    [60, "Oct 23 - Nov 21"], // Scorpio
+    [-300, "Oct 23 - Nov 21"], // Scorpio
+    
+    [90, "Sep 23 - Oct 22"], // Libra
+    [-270, "Sep 23 - Oct 22"], // Libra
+    
+    [120, "Aug 23 - Sep 22"], // Virgo
+    [-240, "Aug 23 - Sep 22"], // Virgo
+    
+    [150, "Jul 23 - Aug 22"], // Leo
+    [-210, "Jul 23 - Aug 22"], // Leo
+    
+    [180, "Jun 21 - Jul 22"], // Cancer
+    [-180, "Jun 21 - Jul 22"], // Cancer
+    
+    [210, "May 21 - Jun 20"], // Gemini
+    [-150, "May 21 - Jun 20"], // Gemini
+    
+    [240, "Apr 20 - May 20"], // Taurus
+    [-120, "Apr 20 - May 20"], // Taurus
+    
+    [270, "Mar 21 - Apr 19"], // Aries
+    [-90, "Mar 21 - Apr 19"], // Aries
+    
+    [300, "Feb 19 - Mar 20"], // Pisces
+    [-60, "Feb 19 - Mar 20"], // Pisces
+    
+    [330, "Jan 20 - Feb 18"], // Aquarius
+    [-30, "Jan 20 - Feb 18"] // Aquarius
+  ];
+  for (let i = 0; i < zodiacDateRanges.length; i++) {
+    if (angle === zodiacDateRanges[i][0]) {
+      return zodiacDateRanges[i][1];
+    }
+  }
+  return "unknown";
+}
+
+function determineDateRangeRight(angle) {
+  angle = angle % 360;
+  const zodiacDateRanges = [
+    [0, "Jun 21 - Jul 22"], // Cancer
+    [360, "Jun 21 - Jul 22"], // Cancer
+  
+    [30, "May 21 - Jun 20"], // Gemini
+    [-330, "May 21 - Jun 20"], // Gemini
+  
+    [60, "Apr 20 - May 20"], // Taurus
+    [-300, "Apr 20 - May 20"], // Taurus
+  
+    [90, "Mar 21 - Apr 19"], // Aries
+    [-270, "Mar 21 - Apr 19"], // Aries
+  
+    [120, "Feb 19 - Mar 20"], // Pisces
+    [-240, "Feb 19 - Mar 20"], // Pisces
+  
+    [150, "Jan 20 - Feb 18"], // Aquarius
+    [-210, "Jan 20 - Feb 18"], // Aquarius
+  
+    [180, "Dec 22 - Jan 19"], // Capricorn
+    [-180, "Dec 22 - Jan 19"], // Capricorn
+  
+    [210, "Nov 22 - Dec 21"], // Sagittarius
+    [-150, "Nov 22 - Dec 21"], // Sagittarius
+  
+    [240, "Oct 23 - Nov 21"], // Scorpio
+    [-120, "Oct 23 - Nov 21"], // Scorpio
+  
+    [270, "Sep 23 - Oct 22"], // Libra
+    [-90, "Sep 23 - Oct 22"], // Libra
+  
+    [300, "Aug 23 - Sep 22"], // Virgo
+    [-60, "Aug 23 - Sep 22"], // Virgo
+  
+    [330, "Jul 23 - Aug 22"], // Leo
+    [-30, "Jul 23 - Aug 22"], // Leo
+  ];
+  for (let i = 0; i < zodiacDateRanges.length; i++) {
+    if (angle === zodiacDateRanges[i][0]) {
+      return zodiacDateRanges[i][1];
+    }
+  }
+  return "unknown";
+}
+
+
+var left_birthday = document.getElementById("left_birthday");
+left_birthday.addEventListener("mouseenter", function(){
+  left_birthday.type = 'date';
+})
 // Add the event listener for the mouse wheel event
 //wheel.addEventListener('wheel', rotateWheel);
 // Function to round the angle to the nearest multiple of 30
@@ -99,6 +208,7 @@ button.addEventListener("click", () => {
   stopRotation()
   const pair = determinePairing(w1angle, w2angle);
   //console.log(pair);
+  
   wheel1.style.animation = "slideOffLeft 1s forwards";
   wheel2.style.animation = "slideOffRight 1s forwards";
   left_arrow.style.animation = "slideOffLeft 0.1s forwards";

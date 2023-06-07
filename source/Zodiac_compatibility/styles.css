@@ -75,12 +75,16 @@ input {
   display: flex; /* Enable flexbox */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
-  font-size: 1vw;
+  /** filter: brightness(10000%) drop-shadow(0px 0px 10px white); **/
+  font-size: 1.25vw;
 }
 
+#birthday_label, #left_birthday, #right_birthday{
+  display: block;
+  text-align: center;
+}
 .bday_input:hover {
-  filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 251, 0));
+  /** filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 251, 0)); **/
 }
 #left_bday_input {
   grid-area: 1 / 2 / 4 / 3;
@@ -101,6 +105,13 @@ input[type="date"] {
   color: white;
   background-color: rgba(0, 0, 0, 0);
   font-size: 2vw;
+}
+input[type="text"] {
+  font-family: "Oswald", sans-serif;
+  border: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 1.5vw;
 }
 
 #find-out {
