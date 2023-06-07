@@ -11,7 +11,7 @@ body {
 .container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   align-content: center;
 }
@@ -34,6 +34,7 @@ body {
   background-color: transparent;
   z-index: 0;
   font-size: 1vw;
+  display: inline-block;
 }
 
 select:hover {
@@ -119,7 +120,7 @@ input[type="text"] {
   border-radius: 20px;
   font-size: 1.75vw;
   color: black;
-  margin-top: 75px;
+  margin-top: 15vh;
   background-color: gold;
   border-radius: 20px;
   border: none;
@@ -148,7 +149,7 @@ body {
   background-image: url("images/background.jpg");
   background-repeat: no-repeat;
   background-size: cover;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 @keyframes slideOffLeft {
@@ -218,15 +219,15 @@ body {
 #title {
   align-self: center;
   text-align: center;
-  font-size: 25px;
 }
 
 #title h1 {
-  font-size: 75px;
+  font-size: 5vw;
   font-style: italic;
   font-family: "Enchanted Land", cursive;
   color: #f1c86c;
-  margin: 4vh;
+  margin: 2vh;
+  margin-bottom: 0vh;
 }
 
 
