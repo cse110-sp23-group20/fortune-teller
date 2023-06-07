@@ -1,21 +1,9 @@
-window.addEventListener("DOMContentLoaded", init);
+const fortune = document.getElementById("fortune-paragraph");
+// etc
 
-// Starts the program, all function calls trace back here
-function init() {
-  document
-    .getElementById("read-your-hand")
-    .addEventListener("click", showResults);
-  document
-    .getElementById("read-another-hand")
-    .addEventListener("click", readHand);
-}
-
-function showResults() {
-  document.getElementById("camera-frame").hidden = true;
-  document.getElementById("results-frame").hidden = false;
-}
-
-function readHand() {
-  document.getElementById("results-frame").hidden = true;
-  document.getElementById("camera-frame").hidden = false;
+/**
+ * Generates random fortunes. Called when the app finishes analyzing the palm.
+ */
+export function handleFortune() {
+  console.log("TODO", fortune);
 }
