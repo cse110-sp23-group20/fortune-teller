@@ -221,5 +221,3 @@ populateVoiceList();
 if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = populateVoiceList;
 }
-
-module.exports = { getRandomFortune: getRandomFortune };
