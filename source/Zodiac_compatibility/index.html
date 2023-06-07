@@ -24,9 +24,9 @@
           <label for="relationship">Select your relationship with them:</label
           ><br />
           <select name="relationship" id="relationship">
-            <option value="volvo">Romantic</option>
-            <option value="saab">Friendship</option>
-            <option value="mercedes">Professional</option></select
+            <option value="romantic">Romantic</option>
+            <option value="friendship">Friendship</option>
+            <option value="professional">Professional</option></select
           ><br />
         </form>
       </div>
@@ -75,9 +75,13 @@
     </div>
 
     <div id="pop-up">
-      <h2 id="pairing">Pop-up Box</h2>
-      <p>This is some sample text for the pop-up box.</p>
-      <button id="go-back" onclick="location.reload()">Go Back!</button>
+      <div id="text">
+        <h2 id="pairing">Pop-up Box</h2>
+        <p id="pairing_text">This is some sample text for the pop-up box.</p>
+      </div>
+      <div>
+        <button id="go-back" onclick="location.reload()">Go Back!</button>
+      </div>
     </div>
 
     <script src="script.js"></script>

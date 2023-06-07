@@ -110,9 +110,11 @@ button.addEventListener("click", () => {
   
   setTimeout(() => {
     popup.style.display = "block";
-    popup.style.animation = "fadeIn 4s forwards";
+    popup.style.animation = "fadeIn 2s forwards";
     const pairingHeader = popup.querySelector("#pairing");
-    pairingHeader.textContent = pair;
+    pairingHeader.textContent = pair ;
+    const pairing_text = popup.querySelector("#pairing_text");
+    pairing_text.textContent =  'Aries and Pisces have different approaches to life and relationships. Aries is direct and assertive, while Pisces is intuitive and sensitive. They may need to find a balance between their contrasting traits to create harmony.'
   }, 2);
 });
 
@@ -217,11 +219,14 @@ function determinePairing(angle1, angle2) {
   return `${angle1Mapping} and ${angle2Mapping}`;
 }
 
+// generate results text
+
+
 function determineResults(pairing, relationship) {
-  if (relationship === romantic){
+  if (relationship === "romantic"){
 
   }
-  else if (relationship === professional){
+  else if (relationship === "friendship"){
 
   }
   else{
