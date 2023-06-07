@@ -166,7 +166,9 @@ function speakFortune(fortune) {
   });
 }
 
-// Disables button when called
+/**
+ * Disables button so user cannot click it
+ */
 function disableButton() {
   fortuneButton.disabled = true;
   fortuneButton.style.opacity = "0.5";
