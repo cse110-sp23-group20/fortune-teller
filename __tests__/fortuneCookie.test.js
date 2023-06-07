@@ -38,11 +38,10 @@ describe('Basic user flow for Website', () => {
 }, 15000)
 
   // Check to make sure audio disables if user unchecks 'toggle voice' checkbox
-  it('Make sure audio disables', async () => {
-    console.log('Checking to make sure audio disables after \'toggle voice\' is unchecked...');
-    // Wait because it takes time until button is reenabled as it has to read out the fortune
-    let 
-}, 15000)
+//   it('Make sure audio disables', async () => {
+//     console.log('Checking to make sure audio disables after \'toggle voice\' is unchecked...');
+//     // Wait because it takes time until button is reenabled as it has to read out the fortune
+// }, 15000)
 
 
 });
