@@ -184,33 +184,55 @@ function enableButton() {
 document.body.addEventListener("click", function (event) {
   if (event.target.closest(".fortune-button")) {
     document.body.classList.add("dramatic-mode");
-    fortuneAudioCrack.play();
     disableButton();
     // setTimeout(showFortune, 1000);
     setTimeout(() => {
-      cookieButton.classList.add("right-half");
-      x = 0;
-      y = 0;
-      yv = -0.4;
-      rot = 0;
-      lastTime = Date.now();
-      shakeIntensity = 10;
-      paint();
-    }, 1000);
+      fortuneAudioCrack.currentTime = 0;
+      fortuneAudioCrack.play();
+      fortuneAudioCrack.ontimeupdate = () => {
+        if (fortuneAudioCrack.currentTime > 0.3) {
+          // Only make the cookie break when the audio is actually crunching
+          // (this takes into account audio loading time)
+          cookieButton.classList.add("right-half");
+          cookieLeft.style.display = "block";
+          elem = cookieLeft;
+          x = 0;
+          y = 0;
+          xv = -0.25;
+          yv = -0.4;
+          rot = 0;
+          rotv = -0.05;
+          lastTime = Date.now();
+          shakeIntensity = 10;
+          paint();
+          fortuneAudioCrack.ontimeupdate = null;
+
+          setTimeout(() => {
+            cookieLeft.style.display = null;
+            elem = cookieButton;
+            x = 0;
+            y = 0;
+            xv = 0.25;
+            yv = 0;
+            rot = 0;
+            rotv = 0.05;
+            lastTime = Date.now();
+            shakeIntensity = 0;
+          }, 2000);
+        }
+      };
+    }, 800);
   }
 });
 
 /** in px/ms^2 */
 const GRAVITY = 0.002;
-/** in px/ms */
-const xv = -0.25;
-/** in deg/ms */
-const rotv = -0.05;
-let x, y, yv, rot;
+let elem, x, y, xv, yv, rot, rotv;
 const shakeV = -0.02;
 let shakeIntensity;
 
 let lastTime = 0;
+let frameId = null;
 function paint() {
   const now = Date.now();
   const elapsed = now - lastTime;
@@ -219,14 +241,14 @@ function paint() {
   x += xv * elapsed;
   y += yv * elapsed;
   rot += rotv * elapsed;
-  cookieLeft.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
+  elem.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
   shakeIntensity = Math.max(0, shakeIntensity + shakeV * elapsed);
   const shake = `translate(${(Math.random() * 2 - 1) * shakeIntensity}px, ${
     (Math.random() * 2 - 1) * shakeIntensity
   }px)`;
-  cookieButton.style.transform = shake;
+  cookieButton.parentElement.style.transform = shake;
   background.style.transform = shake;
-  window.requestAnimationFrame(paint);
+  frameId = window.requestAnimationFrame(paint);
 }
 
 // Added options for different voices
