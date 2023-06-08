@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Scrollable Wheel</title>
+    <title>Zodiac Compatibility Tool</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <link rel="stylesheet" href="../common/styles.css" />
@@ -9,21 +9,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Oswald&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
       rel="stylesheet"
     />
     <script src="../common/index.js" type="module"></script>
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
   </head>
   <body>
+    <div id="title">
+      <h1>Welcome to the Zodiac Compatibility Tool</h1>
+    </div>
     <div class="container">
       <div class="relationship">
         <form>
-          <label for="relationship">What is your relationship with them?:</label
-          ><br />
-          <select name="relationship" id="relationship">
-            <option value="volvo">Romantic</option>
-            <option value="saab">Friendship</option>
-            <option value="mercedes">Professional</option></select
+          <label for="relationship">Relationship Type:</label>
+          <select name="relationship" id="relationship_selector">
+            <option value="romantic">Romantic</option>
+            <option value="friendship">Friendship</option>
+            <option value="professional">Professional</option></select
           ><br />
         </form>
       </div>
@@ -33,14 +36,21 @@
             src="images/hollow.png"
             class="wheel_img"
             id="left_wheel_img"
-            alt="idk"
+            alt="left_zodiac_wheel"
           />
         </div>
       </div>
       <div class="bday_input" id="left_bday_input">
         <form>
-          <label for="left_birthday">YOUR DATE OF BIRTH:</label><br />
-          <input type="date" id="left_birthday" name="left_birthday" /><br />
+          <label for="left_birthday" id="birthday_label"
+            >YOUR DATE OF BIRTH:</label
+          ><br />
+          <input
+            type="text"
+            id="left_birthday"
+            name="left_birthday"
+            value="Dec 22 - Jan 19"
+          /><br />
         </form>
       </div>
 
@@ -58,18 +68,33 @@
           />
         </div>
       </div>
+      <div id="arrows">
+        <img src="images/arrow_left.png" id="left_arrow" />
+        <img src="images/arrow_right.png" id="right_arrow" />
+      </div>
       <div class="bday_input" id="right_bday_input">
         <form>
-          <label for="right_birthday">THEIR DATE OF BIRTH:</label><br />
-          <input type="date" id="right_birthday" name="right_birthday" /><br />
+          <label for="right_birthday" id="birthday_label"
+            >THEIR DATE OF BIRTH:</label
+          ><br />
+          <input
+            type="text"
+            id="right_birthday"
+            name="right_birthday"
+            value="Jun 21 - Jul 22"
+          /><br />
         </form>
       </div>
     </div>
 
     <div id="pop-up">
-      <h2 id="pairing">Pop-up Box</h2>
-      <p>This is some sample text for the pop-up box.</p>
-      <button id="go-back" onclick="location.reload()">Go Back!</button>
+      <div id="text">
+        <h2 id="pairing">Pop-up Box</h2>
+        <p id="pairing_text">This is some sample text for the pop-up box.</p>
+      </div>
+      <div>
+        <button id="go-back" onclick="location.reload()">Go Back!</button>
+      </div>
     </div>
 
     <script src="script.js"></script>
