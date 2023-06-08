@@ -7,13 +7,5 @@
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
-  },
-  "overrides": [
-    {
-      "files": ["*.test.js"],
-      "rules": {
-        "no-undef": "off"
-      }
-    }
-  ]
+  }
 }
