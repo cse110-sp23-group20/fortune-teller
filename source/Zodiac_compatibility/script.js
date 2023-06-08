@@ -14,7 +14,7 @@ function rotateWheel1(event) {
   const direction = Math.sign(event.deltaY);
 
   // Update the rotation angle based on the scrolling direction
-  w1angle += direction * 5;
+  w1angle += direction * 2;
   console.log(w1angle);
   // Apply the rotation transform to the wheel element
   wheel1.style.transform = `rotate(${w1angle}deg)`;
@@ -32,7 +32,7 @@ function rotateWheel2(event) {
   const direction = Math.sign(event.deltaY);
 
   // Update the rotation angle based on the scrolling direction
-  w2angle += direction * 5;
+  w2angle += direction * 2;
   // Apply the rotation transform to the wheel element
   wheel2.style.transform = `rotate(${w2angle}deg)`;
 
@@ -139,10 +139,6 @@ function determineDateRangeRight(angle) {
 }
 
 
-var left_birthday = document.getElementById("left_birthday");
-left_birthday.addEventListener("mouseenter", function(){
-  left_birthday.type = 'date';
-})
 // Add the event listener for the mouse wheel event
 //wheel.addEventListener('wheel', rotateWheel);
 // Function to round the angle to the nearest multiple of 30
@@ -204,8 +200,12 @@ const right_arrow = document.getElementById("right_arrow");
 const left_bday = document.getElementById("left_bday_input");
 const right_bday = document.getElementById("right_bday_input");
 var relationship_selector = document.querySelector(".relationship");
+
+
+button.addEventListener("mouseenter", () => {
+  stopRotation();
+});
 button.addEventListener("click", () => {
-  stopRotation()
   const pair = determinePairing(w1angle, w2angle);
   //console.log(pair);
   
