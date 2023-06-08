@@ -9,6 +9,9 @@
     <script src="../common/index.js" type="module"></script>
   </head>
   <body>
+    <div class="background" id="background"></div>
+    <div class="dramatic-bar top"></div>
+    <div class="dramatic-bar bottom"></div>
     <nav class="menu-bar" aria-label="navigation">
       <ul class="nav-items-list" role="menubar">
         <li class="nav-list">
@@ -42,14 +45,29 @@
       your future.
     </aside>
     <div class="fortune-container">
+      <button class="fortune-button" id="cookie-button">
+        <img
+          class="fortune-cookie full"
+          src="./Images/transparent-cookie.png"
+          alt="fortune cookie"
+        />
+        <img
+          class="fortune-cookie right-side"
+          src="./Images/transparent-cookie-right.png"
+          alt="fortune cookie right half"
+        />
+      </button>
       <img
-        class="fortune-cookie"
-        src="./Images/Fortune cookie image3.png"
-        alt="fortune cookie"
+        class="fortune-cookie left-side"
+        src="./Images/transparent-cookie-left.png"
+        alt="fortune cookie left half"
+        id="fortune-image-left"
       />
-      <button id="fortune-button">Open the cookie</button>
-      <p id="fortune-text"></p>
+      <button class="fortune-button button" id="fortune-button">
+        Open the cookie
+      </button>
     </div>
+    <p id="fortune-text"></p>
 
     <audio id="fortune-crack">
       <source src="Audio/FortuneCrack.mp3" type="audio/mpeg" />

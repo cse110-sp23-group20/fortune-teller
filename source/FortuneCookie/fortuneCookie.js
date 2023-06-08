@@ -120,6 +120,9 @@ const fortuneButton = document.getElementById("fortune-button");
 const fortuneText = document.getElementById("fortune-text");
 const fortuneAudioCrack = document.getElementById("fortune-crack");
 const voiceToggle = document.getElementById("voice-toggle-checkbox");
+const cookieButton = document.getElementById("cookie-button");
+const cookieLeft = document.getElementById("fortune-image-left");
+const background = document.getElementById("background");
 
 // Gets a random fortune and ensures it does not match the previous fortune
 function getRandomFortune() {
@@ -138,6 +141,7 @@ function getRandomFortune() {
 
 // Displays the fortune and if voice toggle is checked, read the fortune
 function showFortune() {
+  document.body.classList.remove("dramatic-mode");
   const fortune = getRandomFortune();
   fortuneText.textContent = fortune;
   fortuneText.style.display = "block";
@@ -169,21 +173,61 @@ function speakFortune(fortune) {
 // Disables button when called
 function disableButton() {
   fortuneButton.disabled = true;
-  fortuneButton.style.opacity = "0.5";
 }
 
 // Enables button when called
 function enableButton() {
   fortuneButton.disabled = false;
-  fortuneButton.style.opacity = "1";
 }
 
 // When button is clicked, audio plays and then fortune is read/displayed
-fortuneButton.addEventListener("click", function () {
-  fortuneAudioCrack.play();
-  disableButton();
-  setTimeout(showFortune, 1000);
+document.body.addEventListener("click", function (event) {
+  if (event.target.closest(".fortune-button")) {
+    document.body.classList.add("dramatic-mode");
+    fortuneAudioCrack.play();
+    disableButton();
+    // setTimeout(showFortune, 1000);
+    setTimeout(() => {
+      cookieButton.classList.add("right-half");
+      x = 0;
+      y = 0;
+      yv = -0.4;
+      rot = 0;
+      lastTime = Date.now();
+      shakeIntensity = 10;
+      paint();
+    }, 1000);
+  }
 });
+
+/** in px/ms^2 */
+const GRAVITY = 0.002;
+/** in px/ms */
+const xv = -0.25;
+/** in deg/ms */
+const rotv = -0.05;
+let x, y, yv, rot;
+const shakeV = -0.02;
+let shakeIntensity;
+
+let lastTime = 0;
+function paint() {
+  const now = Date.now();
+  const elapsed = now - lastTime;
+  lastTime = now;
+  yv += GRAVITY * elapsed;
+  x += xv * elapsed;
+  y += yv * elapsed;
+  rot += rotv * elapsed;
+  cookieLeft.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
+  shakeIntensity = Math.max(0, shakeIntensity + shakeV * elapsed);
+  const shake = `translate(${(Math.random() * 2 - 1) * shakeIntensity}px, ${
+    (Math.random() * 2 - 1) * shakeIntensity
+  }px)`;
+  cookieButton.style.transform = shake;
+  background.style.transform = shake;
+  window.requestAnimationFrame(paint);
+}
 
 // Added options for different voices
 const synth = window.speechSynthesis;
