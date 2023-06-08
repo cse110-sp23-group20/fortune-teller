@@ -1,7 +1,9 @@
 body {
   background-image: url("Images/Background.png");
-  background-repeat: no-repeat;
   background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Make center image round */
@@ -77,7 +79,7 @@ li.audio-dropdown {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  flex: auto;
 }
 
 .fortune-cookie {
@@ -114,10 +116,9 @@ li.audio-dropdown {
   color: #5d59d1;
 }
 
-.page-title {
+.title {
   display: flex;
   justify-content: center;
-  color: #ffffff;
 }
 
 .page-subtitle {

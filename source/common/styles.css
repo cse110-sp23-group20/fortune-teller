@@ -100,6 +100,10 @@ button,
     background-position: 0;
   }
 }
+.subtitle {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
 
 .button {
   font-family: "Enchanted Land", cursive;
