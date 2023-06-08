@@ -9,7 +9,7 @@ body {
 /* Make center image round */
 img {
   border-radius: 50%;
-  border: 0.25em #5d59d1 solid;
+  border: 0.15em black solid;
 }
 
 /* Navigation bar settings */
