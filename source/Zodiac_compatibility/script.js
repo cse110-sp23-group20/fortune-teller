@@ -62,9 +62,9 @@ function determineDateRangeLeft(angle) {
 }
 function determineDateRangeRight(angle) {
   angle = angle % 360;
-  for (let i = 0; i < zodiacDateRangesLeft.length; i++) {
-    if (angle === zodiacDateRangesLeft[i][0]) {
-      return zodiacDateRangesLeft[i][1];
+  for (let i = 0; i < zodiacDateRangesRight.length; i++) {
+    if (angle === zodiacDateRangesRight[i][0]) {
+      return zodiacDateRangesRight[i][1];
     }
   }
   return "unknown";
@@ -128,11 +128,6 @@ rightWheel.addEventListener("wheel", rotaterightWheel);
 leftWheel.addEventListener("mouseout", stopRotation);
 rightWheel.addEventListener("mouseout", stopRotation);
 
-
-
-
-
-
 // Gt all the elements that need to be moved when the find out button is pressed:
 const button = document.getElementById("find-out");
 const how_to = document.getElementById("how_to");
@@ -144,20 +139,17 @@ const right_arrow = document.getElementById("right_arrow");
 const left_bday = document.getElementById("left_bday_input");
 const right_bday = document.getElementById("right_bday_input");
 
-
 how_to.addEventListener("click", () => {
   how_to.style.visibility = "hidden";
   help.style.display = "block";
   help.style.animation = "fadeIn 1s forwards";
-})
+});
 
 closeButton.addEventListener("click", () => {
   how_to.style.visibility = "visible";
   help.style.animation = "fadeOut 1s forwards";
   help.style.display = "none";
-})
-
-
+});
 
 button.addEventListener("mouseenter", () => {
   stopRotation();

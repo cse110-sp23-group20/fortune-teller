@@ -5,7 +5,6 @@ html,
 body {
   height: 100%;
   width: 100%;
-  overflow: auto;
 }
 
 .container {
@@ -14,7 +13,7 @@ body {
   grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   align-content: center;
-  margin-top:-25px;
+  margin-top: -25px;
 }
 
 .container > * {
@@ -45,7 +44,6 @@ option {
   min-width: 100%;
   min-height: 100%;
   transition: 0.5s ease;
-
 }
 
 #left_wheel_field {
@@ -78,9 +76,7 @@ input {
   display: block;
   text-align: center;
 }
-.bday_input:hover {
-  /** filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 251, 0)); **/
-}
+
 #left_bday_input {
   grid-area: 2 / 2 / 2 / 3;
 }
@@ -138,50 +134,6 @@ body {
   overflow-x: hidden;
 }
 
-@keyframes slideOffLeft {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
-@keyframes slideOffRight {
-  from {
-    transform: translateX(0);
-    opacity: 1;
-  }
-
-  to {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
 #pop-up {
   display: none;
   position: absolute;
@@ -209,12 +161,12 @@ body {
   text-align: center;
 }
 
-.title{
+.title {
   font-size: 6vw;
   margin: 2vh;
   margin-bottom: 0vh;
 }
-#guide{
+#guide {
   align-self: center;
   text-align: center;
 }
@@ -277,4 +229,48 @@ body {
   top: 1vh;
   right: 1vw;
   width: 1.5vw;
+}
+
+@keyframes slideOffLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideOffRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
