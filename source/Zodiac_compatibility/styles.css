@@ -89,9 +89,6 @@ input {
   display: block;
   text-align: center;
 }
-.bday_input:hover {
-  /** filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 251, 0)); **/
-}
 #left_bday_input {
   grid-area: 1 / 2 / 4 / 3;
 }
