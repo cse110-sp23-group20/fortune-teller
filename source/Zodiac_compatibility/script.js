@@ -1,10 +1,10 @@
-import { 
-romantic,
-zodiacDateRangesLeft,
-zodiacDateRangesRight,
-mappingLeft,
-mappingRight,
-} from './data/dataArray.js';
+import {
+  romantic,
+  zodiacDateRangesLeft,
+  zodiacDateRangesRight,
+  mappingLeft,
+  mappingRight,
+} from "./data/dataArray.js";
 
 // Get the wheel element
 //const wheel = document.querySelector('.wheel');
@@ -53,7 +53,7 @@ function rotateWheel2(event) {
 }
 
 function determineDateRangeLeft(angle) {
-  angle = angle % 360; 
+  angle = angle % 360;
   for (let i = 0; i < zodiacDateRangesRight.length; i++) {
     if (angle === zodiacDateRangesRight[i][0]) {
       return zodiacDateRangesRight[i][1];
@@ -93,8 +93,12 @@ function stopRotation() {
   const target1 = roundAngle(w1angle);
   const target2 = roundAngle(w2angle);
   // print rounded angles for clarity
-  console.log(`Left Wheel is rounded to ${target1}: ${getMappingLeft(target1)}`);
-  console.log(`Right Wheel is rounded to ${target2}: ${getMappingRight(target2)}`);
+  console.log(
+    `Left Wheel is rounded to ${target1}: ${getMappingLeft(target1)}`
+  );
+  console.log(
+    `Right Wheel is rounded to ${target2}: ${getMappingRight(target2)}`
+  );
 
   // Apply the rounded rotation transform to the wheel elements smoothly over 500ms
   const interval = setInterval(() => {
@@ -171,7 +175,7 @@ function getMappingLeft(angle) {
   return "unknown";
 }
 function getMappingRight(angle) {
-  angle = angle % 360
+  angle = angle % 360;
   for (let i = 0; i < mappingRight.length; i++) {
     if (angle == mappingRight[i][0]) {
       return mappingRight[i][1];
