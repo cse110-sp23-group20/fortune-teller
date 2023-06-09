@@ -28,15 +28,6 @@ body {
   justify-items: center;
 }
 
-.relationship {
-  grid-area: 1 / 4;
-  text-align: center;
-  background-color: transparent;
-  z-index: 0;
-  font-size: 1.3vw;
-  display: inline-block;
-}
-
 select:hover {
   filter: brightness(100%) drop-shadow(0px 0px 10px white);
 }
@@ -223,6 +214,15 @@ body {
   color: #f1c86c;
   margin: 2vh;
   margin-bottom: 0vh;
+}
+#title button {
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 1vw;
+  color: black;
+  background-color: gold;
+  border-radius: 20px;
+  font-weight: bold;
 }
 
 #arrows {
