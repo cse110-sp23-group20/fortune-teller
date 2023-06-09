@@ -19,65 +19,53 @@
     <div class="dramatic-bar top"></div>
     <div class="dramatic-bar bottom"></div>
     <header>
-      <nav class="menu-bar" aria-label="navigation">
-        <ul class="nav-items-list" role="menubar">
-          <li class="nav-list">
-            <a href="../home-page/">Main Page</a>
-          </li>
-          <li class="nav-list">
-            <a href="../PalmReading/">Palm Reading</a>
-          </li>
-          <li class="nav-list">
-            <a href="../Zodiac_compatibility/">Zodiac Compatibility</a>
-          </li>
-          <li class="audio-dropdown">
-            <a href="#" class="dropbtn">Audio Options</a>
-            <div class="audio-content">
-              <label>
-                <span>Select a voice</span>
-                <select name="voice" id="voice-select">
-                  <option value="none">None (disable voice)</option>
-                </select>
-              </label>
-            </div>
-          </li>
-        </ul>
-      </nav>
-      <h1 class="title">Daily Fortune Cookie</h1>
+      <h1 class="title">Fortune Cookie</h1>
       <aside class="subtitle">
         Begin your day with a taste of destiny by cracking open the secrets of
         your future.
       </aside>
     </header>
-    <div class="fortune-container" id="cookie-wrapper">
-      <div class="fortune-paper" id="fortune-paper">
-        <p id="fortune-text">
-          Believe in yourself and you will achieve great things.
-        </p>
+
+    <main class="content">
+      <div class="fortune-container" id="cookie-wrapper">
+        <div class="fortune-paper" id="fortune-paper">
+          <p id="fortune-text">
+            Believe in yourself and you will achieve great things.
+          </p>
+        </div>
+        <button class="fortune-button" id="cookie-button">
+          <img
+            class="fortune-cookie full"
+            src="./Images/transparent-cookie.png"
+            alt="fortune cookie"
+          />
+          <img
+            class="fortune-cookie right-side"
+            src="./Images/transparent-cookie-right.png"
+            alt="fortune cookie right half"
+          />
+        </button>
+        <img
+          class="fortune-cookie left-side"
+          src="./Images/transparent-cookie-left.png"
+          alt="fortune cookie left half"
+          id="fortune-image-left"
+        />
+        <button class="button fortune-button" id="fortune-button">
+          Open the cookie
+        </button>
+        <button class="button" id="reset-button" disabled>New cookie</button>
       </div>
-      <button class="fortune-button" id="cookie-button">
-        <img
-          class="fortune-cookie full"
-          src="./Images/transparent-cookie.png"
-          alt="fortune cookie"
-        />
-        <img
-          class="fortune-cookie right-side"
-          src="./Images/transparent-cookie-right.png"
-          alt="fortune cookie right half"
-        />
-      </button>
-      <img
-        class="fortune-cookie left-side"
-        src="./Images/transparent-cookie-left.png"
-        alt="fortune cookie left half"
-        id="fortune-image-left"
-      />
-      <button class="button fortune-button" id="fortune-button">
-        Open the cookie
-      </button>
-      <button class="button" id="reset-button" disabled>New cookie</button>
-    </div>
+    </main>
+
+    <footer>
+      <label>
+        <span>Voice:</span>
+        <select name="voice" id="voice-select">
+          <option value="none">None (disable voice)</option>
+        </select>
+      </label>
+    </footer>
 
     <audio id="fortune-crack">
       <source src="Audio/FortuneCrack.mp3" type="audio/mpeg" />

@@ -18,14 +18,23 @@ body {
   background-position: center;
 }
 
+header,
+footer {
+  position: relative;
+  z-index: 2;
+}
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+  margin-top: 50px;
+  margin-bottom: auto;
+}
+footer {
+  margin-bottom: 20px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+select {
+  max-width: calc(100vw - 40px);
 }
 
 /* Navigation bar settings */
@@ -98,6 +107,16 @@ li.audio-dropdown {
   position: relative;
 }
 
+.content {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .fortune-cookie {
   width: 300px;
   height: 300px;
@@ -263,12 +282,12 @@ li.audio-dropdown {
 .bottom {
   bottom: 0;
 }
-nav,
+footer,
 h1,
 aside {
   transition: opacity 0.5s 0.5s;
 }
-.dramatic-mode nav,
+.dramatic-mode footer,
 .dramatic-mode h1,
 .dramatic-mode aside {
   opacity: 0;
