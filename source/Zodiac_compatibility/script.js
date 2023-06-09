@@ -53,9 +53,9 @@ function rotaterightWheel(event) {
 }
 function determineDateRangeLeft(angle) {
   angle = angle % 360;
-  for (let i = 0; i < zodiacDateRangesRight.length; i++) {
-    if (angle === zodiacDateRangesRight[i][0]) {
-      return zodiacDateRangesRight[i][1];
+  for (let i = 0; i < zodiacDateRangesLeft.length; i++) {
+    if (angle === zodiacDateRangesLeft[i][0]) {
+      return zodiacDateRangesLeft[i][1];
     }
   }
   return "unknown";
