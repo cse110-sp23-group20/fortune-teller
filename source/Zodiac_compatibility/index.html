@@ -12,24 +12,16 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="./data/dataArray.js"></script>
     <script src="../common/index.js" type="module"></script>
     <link rel="icon" href="images/icon.png" type="image/x-icon" />
   </head>
   <body>
     <div id="title">
       <h1>Welcome to the Zodiac Compatibility Tool</h1>
+      <p> How to Use </p>
     </div>
     <div class="container">
-      <div class="relationship">
-        <form>
-          <label for="relationship">Relationship Type:</label>
-          <select name="relationship" id="relationship_selector">
-            <option value="romantic">Romantic</option>
-            <option value="friendship">Friendship</option>
-            <option value="professional">Professional</option></select
-          ><br />
-        </form>
-      </div>
       <div class="wheel_field" id="left_wheel_field">
         <div class="wheel" id="left_wheel">
           <img
@@ -96,7 +88,6 @@
         <button id="go-back" onclick="location.reload()">Go Back!</button>
       </div>
     </div>
-
-    <script src="script.js"></script>
+    <script type = "module" src="script.js"></script>
   </body>
 </html>
