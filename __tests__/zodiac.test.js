@@ -1,13 +1,13 @@
 // E2E TESTS
 describe("Basic user flow for Website", () => {
-  // First, visit the lab 8 website
+  // First, visit the zodiac compatibility page
   beforeAll(async () => {
     await page.goto(
       "https://cse110-sp23-group20.github.io/fortune-teller/source/Zodiac_compatibility/"
     );
   });
 
-  it("should perform a user interaction and verify the result", async () => {
+  it("User rotates wheels and clicks find out", async () => {
     // Simulate a user interaction
     await page.click("#find-out");
     // Wait for a specific element to be visible or for a certain condition

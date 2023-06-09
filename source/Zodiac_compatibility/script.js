@@ -26,28 +26,8 @@ leftWheel.addEventListener("mouseout", stopRotation);
 rightWheel.addEventListener("mouseout", stopRotation);
 // add all the necessary event listeners for the buttons
 button.addEventListener("mouseenter", stopRotation);
-button.addEventListener("click", () => {
-  const pair = determinePairing(leftWheelAngle, rightWheelAngle);
-  leftWheel.style.animation = "slideOffLeft 1s forwards";
-  rightWheel.style.animation = "slideOffRight 1s forwards";
-  left_arrow.style.animation = "slideOffLeft 0.1s forwards";
-  right_arrow.style.animation = "slideOffRight 0.1s forwards";
-  left_bday.style.animation = "slideOffLeft 0.4s forwards";
-  right_bday.style.animation = "slideOffRight 0.4s forwards";
-  button.style.animation = "fadeOut 0.5s forwards";
-  button.style.display = "none";
-  how_to.style.animation = "fadeOut 0.5s forwards";
-  how_to.style.display = "none";
+button.addEventListener("click", displayResults);
 
-  setTimeout(() => {
-    popup.style.display = "block";
-    popup.style.animation = "fadeIn 2s forwards";
-    const pairingHeader = popup.querySelector("#pairing");
-    pairingHeader.textContent = pair[0] + " and " + pair[1];
-    const pairing_text = popup.querySelector("#pairing_text");
-    pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
-  }, 2);
-});
 how_to.addEventListener("click", () => {
   how_to.style.visibility = "hidden";
   help.style.display = "block";
@@ -218,6 +198,7 @@ function getMappingRight(angle) {
   }
   return "unknown";
 }
+
 /**
  * Gets the zodiac sign pair based on the angles of the left and right wheels.
  * @param {number} angleLeft - The angle of the left wheel.
@@ -231,6 +212,37 @@ function determinePairing(angleLeft, angleRight) {
   const rightMapping = getMappingRight(angleRight);
   return [leftMapping, rightMapping];
 }
+
+/**
+ * Displays the results of the pairing and animates the UI elements.
+ */
+function displayResults() {
+  const pair = determinePairing(leftWheelAngle, rightWheelAngle);
+  // slide off or fade all of the elements on the page to make room for results popup
+  leftWheel.style.animation = "slideOffLeft 1s forwards";
+  rightWheel.style.animation = "slideOffRight 1s forwards";
+  left_arrow.style.animation = "slideOffLeft 0.1s forwards";
+  right_arrow.style.animation = "slideOffRight 0.1s forwards";
+  left_bday.style.animation = "slideOffLeft 0.4s forwards";
+  right_bday.style.animation = "slideOffRight 0.4s forwards";
+  button.style.animation = "fadeOut 0.5s forwards";
+  button.style.display = "none";
+  how_to.style.animation = "fadeOut 0.5s forwards";
+  how_to.style.display = "none";
+
+  /**
+   * Displays the popup with the pairing information after a delay.
+   */
+  setTimeout(() => {
+    popup.style.display = "block";
+    popup.style.animation = "fadeIn 2s forwards";
+    const pairingHeader = popup.querySelector("#pairing");
+    pairingHeader.textContent = pair[0] + " and " + pair[1];
+    const pairing_text = popup.querySelector("#pairing_text");
+    pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
+  }, 2);
+}
+
 /**
  * Generates the text describing the romantic compatibility between two zodiac signs.
  * @param {string} leftSign - The left wheel's zodiac sign.
