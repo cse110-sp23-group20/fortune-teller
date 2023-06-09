@@ -120,7 +120,6 @@ const fortuneButton = document.getElementById("fortune-button");
 const fortunePaper = document.getElementById("fortune-paper");
 const fortuneText = document.getElementById("fortune-text");
 const fortuneAudioCrack = document.getElementById("fortune-crack");
-const voiceToggle = document.getElementById("voice-toggle-checkbox");
 const cookieWrapper = document.getElementById("cookie-wrapper");
 const cookieButton = document.getElementById("cookie-button");
 const cookieLeft = document.getElementById("fortune-image-left");
@@ -162,10 +161,7 @@ function getRandomFortune() {
 // Uses speech synthesis to read out fortune
 function speakFortune(fortune) {
   const speech = new SpeechSynthesisUtterance(fortune);
-  const option = voiceSelect.selectedOptions[0].getAttribute("data-name");
-  for (let i = 0; i < voices.length; i++) {
-    if (voices[i].name == option) speech.voice = voices[i];
-  }
+  speech.voice = voices[voiceSelect.value];
   speech.lang = "en-US";
   speech.rate = 0.8;
   speech.pitch = 1.2;
@@ -255,7 +251,7 @@ document.body.addEventListener("click", function (event) {
               fortunePaper.classList.remove("pull-out");
               fortunePaper.classList.add("reveal");
 
-              if (voiceToggle.checked) {
+              if (voiceSelect.value !== "none") {
                 speakFortune(fortuneText.textContent);
               } else {
                 setTimeout(handleFortuneEnd, 1000);
@@ -345,18 +341,22 @@ let voices = [];
 function populateVoiceList() {
   voices = synth.getVoices();
 
+  let defaultVoice = voices[0]?.lang ?? "none";
+
   for (let i = 0; i < voices.length; i++) {
     const option = document.createElement("option");
     option.textContent = `${voices[i].name} (${voices[i].lang})`;
+    option.value = i;
 
     if (voices[i].default) {
       option.textContent += " — DEFAULT";
+      defaultVoice = i;
     }
 
-    option.setAttribute("data-lang", voices[i].lang);
-    option.setAttribute("data-name", voices[i].name);
     voiceSelect.appendChild(option);
   }
+
+  voiceSelect.value = defaultVoice;
 }
 
 populateVoiceList();
