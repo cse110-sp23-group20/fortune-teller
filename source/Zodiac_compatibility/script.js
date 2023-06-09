@@ -8,50 +8,49 @@ import {
 
 // Get the wheel element
 //const wheel = document.querySelector('.wheel');
-var wheel1 = document.getElementById("left_wheel_img");
-var wheel2 = document.getElementById("right_wheel_img");
+var leftWheel = document.getElementById("left_wheel_img");
+var rightWheel = document.getElementById("right_wheel_img");
 // Set initial rotation angle
-let w1angle = 0;
-let w2angle = 0;
+let leftWheelAngle = 0;
+let rightWheelAngle = 0;
 
 // Function to handle the mouse wheel event
-function rotateWheel1(event) {
+function rotateleftWheel(event) {
   const dateInput = document.getElementById("left_birthday");
 
   // Determine the direction of scrolling
   const direction = Math.sign(event.deltaY);
 
   // Update the rotation angle based on the scrolling direction
-  w1angle += direction * 2;
-  //console.log(w1angle);
+  leftWheelAngle += direction * 2;
+  //console.log(leftWheelAngle);
   // Apply the rotation transform to the wheel element
-  wheel1.style.transform = `rotate(${w1angle}deg)`;
+  leftWheel.style.transform = `rotate(${leftWheelAngle}deg)`;
   dateInput.type = "text";
-  dateInput.value = determineDateRangeLeft(roundAngle(w1angle));
+  dateInput.value = determineDateRangeLeft(roundAngle(leftWheelAngle));
   dateInput.style.textAlign = "center";
   dateInput.style.background = "transparent";
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
 // Function to handle the mouse wheel event
-function rotateWheel2(event) {
+function rotaterightWheel(event) {
   const dateInput = document.getElementById("right_birthday");
   // Determine the direction of scrolling
   const direction = Math.sign(event.deltaY);
 
   // Update the rotation angle based on the scrolling direction
-  w2angle += direction * 2;
+  rightWheelAngle += direction * 2;
   // Apply the rotation transform to the wheel element
-  wheel2.style.transform = `rotate(${w2angle}deg)`;
+  rightWheel.style.transform = `rotate(${rightWheelAngle}deg)`;
 
   dateInput.type = "text";
-  dateInput.value = determineDateRangeRight(roundAngle(w2angle));
+  dateInput.value = determineDateRangeRight(roundAngle(rightWheelAngle));
   dateInput.style.textAlign = "center";
   dateInput.style.background = "transparent";
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
-
 function determineDateRangeLeft(angle) {
   angle = angle % 360;
   for (let i = 0; i < zodiacDateRangesRight.length; i++) {
@@ -61,7 +60,6 @@ function determineDateRangeLeft(angle) {
   }
   return "unknown";
 }
-
 function determineDateRangeRight(angle) {
   angle = angle % 360;
   for (let i = 0; i < zodiacDateRangesLeft.length; i++) {
@@ -90,8 +88,8 @@ function roundAngle(angle) {
 // Function to handle the mouseout event
 function stopRotation() {
   // Round the current angle of the wheels to the nearest multiple of 30
-  const target1 = roundAngle(w1angle);
-  const target2 = roundAngle(w2angle);
+  const target1 = roundAngle(leftWheelAngle);
+  const target2 = roundAngle(rightWheelAngle);
   // print rounded angles for clarity
   console.log(
     `Left Wheel is rounded to ${target1}: ${getMappingLeft(target1)}`
@@ -102,58 +100,81 @@ function stopRotation() {
 
   // Apply the rounded rotation transform to the wheel elements smoothly over 500ms
   const interval = setInterval(() => {
-    if (w1angle < target1) {
-      w1angle += 1;
-      wheel1.style.transform = `rotate(${w1angle}deg)`;
+    if (leftWheelAngle < target1) {
+      leftWheelAngle += 1;
+      leftWheel.style.transform = `rotate(${leftWheelAngle}deg)`;
     }
-    if (w1angle > target1) {
-      w1angle -= 1;
-      wheel1.style.transform = `rotate(${w1angle}deg)`;
+    if (leftWheelAngle > target1) {
+      leftWheelAngle -= 1;
+      leftWheel.style.transform = `rotate(${leftWheelAngle}deg)`;
     }
-    if (w2angle < target2) {
-      w2angle += 1;
-      wheel2.style.transform = `rotate(${w2angle}deg)`;
+    if (rightWheelAngle < target2) {
+      rightWheelAngle += 1;
+      rightWheel.style.transform = `rotate(${rightWheelAngle}deg)`;
     }
-    if (w2angle > target2) {
-      w2angle -= 1;
-      wheel2.style.transform = `rotate(${w2angle}deg)`;
+    if (rightWheelAngle > target2) {
+      rightWheelAngle -= 1;
+      rightWheel.style.transform = `rotate(${rightWheelAngle}deg)`;
     }
-    if (w1angle === target1 && w2angle === target2) {
+    if (leftWheelAngle === target1 && rightWheelAngle === target2) {
       clearInterval(interval);
     }
   }, 15);
 }
 
 // Add the event listeners for the mouse wheel and mouseout events
-wheel1.addEventListener("wheel", rotateWheel1);
-wheel2.addEventListener("wheel", rotateWheel2);
-wheel1.addEventListener("mouseout", stopRotation);
-wheel2.addEventListener("mouseout", stopRotation);
+leftWheel.addEventListener("wheel", rotateleftWheel);
+rightWheel.addEventListener("wheel", rotaterightWheel);
+leftWheel.addEventListener("mouseout", stopRotation);
+rightWheel.addEventListener("mouseout", stopRotation);
 
-var button = document.getElementById("find-out");
+
+
+
+
+
+// Gt all the elements that need to be moved when the find out button is pressed:
+const button = document.getElementById("find-out");
+const how_to = document.getElementById("how_to");
+const help = document.getElementById("help");
+const closeButton = document.getElementById("closeButton");
 const popup = document.getElementById("pop-up");
 const left_arrow = document.getElementById("left_arrow");
 const right_arrow = document.getElementById("right_arrow");
 const left_bday = document.getElementById("left_bday_input");
 const right_bday = document.getElementById("right_bday_input");
-// var relationship_selector = document.querySelector(".relationship");
+
+
+how_to.addEventListener("click", () => {
+  how_to.style.visibility = "hidden";
+  help.style.display = "block";
+  help.style.animation = "fadeIn 1s forwards";
+})
+
+closeButton.addEventListener("click", () => {
+  how_to.style.visibility = "visible";
+  help.style.animation = "fadeOut 1s forwards";
+  help.style.display = "none";
+})
+
+
 
 button.addEventListener("mouseenter", () => {
   stopRotation();
 });
-button.addEventListener("click", () => {
-  const pair = determinePairing(w1angle, w2angle);
-  //console.log(pair);
 
-  wheel1.style.animation = "slideOffLeft 1s forwards";
-  wheel2.style.animation = "slideOffRight 1s forwards";
+button.addEventListener("click", () => {
+  const pair = determinePairing(leftWheelAngle, rightWheelAngle);
+  leftWheel.style.animation = "slideOffLeft 1s forwards";
+  rightWheel.style.animation = "slideOffRight 1s forwards";
   left_arrow.style.animation = "slideOffLeft 0.1s forwards";
   right_arrow.style.animation = "slideOffRight 0.1s forwards";
   left_bday.style.animation = "slideOffLeft 0.4s forwards";
   right_bday.style.animation = "slideOffRight 0.4s forwards";
-  //relationship_selector.style.animation = "fadeOut 0.5s forwards";
   button.style.animation = "fadeOut 0.5s forwards";
   button.style.display = "none";
+  how_to.style.animation = "fadeOut 0.5s forwards";
+  how_to.style.display = "none";
 
   setTimeout(() => {
     popup.style.display = "block";
