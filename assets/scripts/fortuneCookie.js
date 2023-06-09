@@ -194,7 +194,7 @@ function enableButton() {
 }
 
 /**
- * When the user clicks the button, disables it so they cannot click the button 
+ * When the user clicks the button, disables it so they cannot click the button
  * in quick succession and cause audio issues
  */
 fortuneButton.addEventListener("click", function () {
