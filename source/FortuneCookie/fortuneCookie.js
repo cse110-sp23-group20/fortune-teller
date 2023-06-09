@@ -117,9 +117,11 @@ const fortunes = [
 
 let previousFortune = "";
 const fortuneButton = document.getElementById("fortune-button");
+const fortunePaper = document.getElementById("fortune-paper");
 const fortuneText = document.getElementById("fortune-text");
 const fortuneAudioCrack = document.getElementById("fortune-crack");
 const voiceToggle = document.getElementById("voice-toggle-checkbox");
+const cookieWrapper = document.getElementById("cookie-wrapper");
 const cookieButton = document.getElementById("cookie-button");
 const cookieLeft = document.getElementById("fortune-image-left");
 const background = document.getElementById("background");
@@ -180,6 +182,29 @@ function enableButton() {
   fortuneButton.disabled = false;
 }
 
+function fallLeft() {
+  elem = cookieLeft;
+  x = 0;
+  y = 0;
+  xv = -0.25;
+  yv = -0.4;
+  rot = 0;
+  rotv = -0.05;
+  lastTime = Date.now();
+  shakeIntensity = 10;
+}
+function fallRight(params) {
+  elem = cookieButton;
+  x = 0;
+  y = 0;
+  xv = 0.25;
+  yv = 0;
+  rot = 0;
+  rotv = 0.05;
+  lastTime = Date.now();
+  shakeIntensity = 0;
+}
+
 // When button is clicked, audio plays and then fortune is read/displayed
 document.body.addEventListener("click", function (event) {
   if (event.target.closest(".fortune-button")) {
@@ -193,36 +218,33 @@ document.body.addEventListener("click", function (event) {
         if (fortuneAudioCrack.currentTime > 0.3) {
           // Only make the cookie break when the audio is actually crunching
           // (this takes into account audio loading time)
-          cookieButton.classList.add("right-half");
-          cookieLeft.style.display = "block";
-          elem = cookieLeft;
-          x = 0;
-          y = 0;
-          xv = -0.25;
-          yv = -0.4;
-          rot = 0;
-          rotv = -0.05;
-          lastTime = Date.now();
-          shakeIntensity = 10;
+          cookieWrapper.classList.add("cracked");
+          fallLeft();
           paint();
           fortuneAudioCrack.ontimeupdate = null;
 
           setTimeout(() => {
-            cookieLeft.style.display = null;
-            elem = cookieButton;
-            x = 0;
-            y = 0;
-            xv = 0.25;
-            yv = 0;
-            rot = 0;
-            rotv = 0.05;
-            lastTime = Date.now();
-            shakeIntensity = 0;
-          }, 2000);
+            fortunePaper.classList.add("pull-out");
+          }, 1000);
         }
+
+        // TEMP
+        setTimeout(() => {
+          window.cancelAnimationFrame(frameId);
+        }, 5000);
       };
     }, 800);
   }
+});
+
+fortunePaper.addEventListener("animationend", () => {
+  fortunePaper.classList.remove("pull-out");
+  fortunePaper.classList.add("reveal");
+
+  setTimeout(() => {
+    cookieLeft.style.display = null;
+    fallRight();
+  }, 500);
 });
 
 /** in px/ms^2 */
@@ -246,7 +268,7 @@ function paint() {
   const shake = `translate(${(Math.random() * 2 - 1) * shakeIntensity}px, ${
     (Math.random() * 2 - 1) * shakeIntensity
   }px)`;
-  cookieButton.parentElement.style.transform = shake;
+  cookieWrapper.parentElement.style.transform = shake;
   background.style.transform = shake;
   frameId = window.requestAnimationFrame(paint);
 }

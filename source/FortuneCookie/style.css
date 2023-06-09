@@ -110,13 +110,13 @@ li.audio-dropdown {
   pointer-events: none;
   display: none;
 }
-.right-side {
+.right-side,
+.cracked .full {
   display: none;
 }
-.right-half .full {
-  display: none;
-}
-.right-half .right-side {
+.cracked .left-side,
+.cracked .right-side,
+.cracked .fortune-paper {
   display: block;
 }
 .fortune-button {
@@ -133,13 +133,78 @@ li.audio-dropdown {
   opacity: 0;
 }
 
-#fortune-text {
-  margin-top: 20px;
+.fortune-paper {
+  display: none;
+  position: absolute;
+  padding: 20px;
+  background-color: white;
+  border: 1px solid #ffffff82;
+  color: black;
+  max-width: 500px;
+  border-radius: 10px;
   font-size: 24px;
-  color: #f1c86c;
   font-weight: bold;
   text-align: center;
-  display: none;
+  z-index: -1;
+  width: calc(100vw - 40px);
+  color: transparent;
+  transform: perspective(1000px) scale(0.5) rotateY(-196deg) rotateX(20deg)
+    translateZ(900px) rotateZ(135deg);
+}
+#fortune-text {
+  margin: 0;
+}
+.pull-out {
+  animation: pull-out-paper 3s forwards;
+}
+@keyframes pull-out-paper {
+  0% {
+    transform: perspective(1000px) scale(0.5) rotateY(-196deg) rotateX(20deg)
+      translateZ(900px) rotateZ(135deg);
+    z-index: -1;
+  }
+  33% {
+    transform: perspective(1000px) scale(0.5) rotateY(-163deg) rotateX(43deg)
+      translateZ(900px) rotateZ(168deg);
+    z-index: -1;
+  }
+  100% {
+    transform: perspective(1000px) scale(0.5) rotateY(0deg) rotateX(0)
+      translateZ(350px) rotateZ(360deg);
+    z-index: 5;
+  }
+}
+
+.reveal {
+  background-color: #ffffffa6;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.5s;
+  transform: perspective(1000px) scale(0.5) rotateY(0deg) rotateX(0)
+    translateZ(350px) rotateZ(360deg);
+  z-index: 5;
+}
+.reveal p {
+  background-image: linear-gradient(
+    90deg,
+    transparent,
+    transparent,
+    rgb(255, 0, 221),
+    black,
+    black
+  );
+  background-size: 2000px;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: reveal-text 1s forwards;
+}
+
+@keyframes reveal-text {
+  from {
+    background-position: left;
+  }
+  to {
+    background-position: right;
+  }
 }
 
 .nav-list a:hover {
