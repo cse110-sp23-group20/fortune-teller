@@ -123,7 +123,8 @@ input[type="text"] {
 }
 
 #find-out:hover,
-#go-back:hover {
+#go-back:hover,
+#how_to:hover {
   filter: brightness(100%) drop-shadow(0px 0px 10px yellow);
 }
 
@@ -226,7 +227,7 @@ body {
 
 #closeButton {
   position: absolute;
-  top: 1vh;
+  top: 1vw;
   right: 1vw;
   width: 1.5vw;
 }
