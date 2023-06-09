@@ -58,7 +58,7 @@ describe("Basic user flow for Website", () => {
       const synthesis = {
         getVoices: jest.fn().mockReturnValue(voices)
       };
-      const option = document.createElement('option');
+      //const option = document.createElement('option');
       const appendchild = jest.spyOn(voiceSelect,'appendChild');
       //document.body.innerHTML=
       //<select></select>;
