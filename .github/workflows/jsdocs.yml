@@ -14,4 +14,4 @@ jobs:
         with:
           source_dir: ./assets/scripts
           recurse: true
-          output_dir: ./out
+          output_dir: ./JSDOCS
