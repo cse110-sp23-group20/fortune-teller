@@ -8,7 +8,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "ignorePatterns": ["./JSDOCS/*.js"],
+  "ignorePatterns": ["/JSDOCS/scripts/*.js"],
   "overrides": [
     {
       "files": ["*.test.js"],
