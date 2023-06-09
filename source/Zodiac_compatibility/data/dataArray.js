@@ -109,7 +109,6 @@ const mappingLeft = [
   [330, "Aquarius"],
   [-30, "Aquarius"],
 ];
-
 const mappingRight = [
   [0, "Cancer"],
   [360, "Cancer"],
@@ -147,8 +146,7 @@ const mappingRight = [
   [330, "Leo"],
   [-30, "Leo"],
 ];
-
-var romantic = [
+const romantic = [
   [
     "Aries and Taurus",
     "Aries and Taurus can experience an intense and passionate romantic relationship. Aries brings excitement, spontaneity, and a sense of adventure, while Taurus offers stability, loyalty, and sensuality. However, conflicts may arise due to Aries' impulsive nature and Taurus' desire for security and routine. Open communication and compromise are key to maintaining a harmonious and fulfilling romance.",
@@ -462,7 +460,6 @@ var romantic = [
     "When two Pisces individuals come together in a romantic relationship, they create a deep and emotionally rich connection. Both partners have a sensitive and compassionate nature, making them highly attuned to each other's emotional needs. They understand and empathize with each other's emotions, creating a safe and nurturing space for love to flourish. Pisces partners share a strong spiritual and intuitive connection, often feeling like they can understand each other on a profound level without the need for words. They enjoy creating a romantic and dreamy atmosphere, filled with love, romance, and imaginative gestures. However, their deep emotional sensitivity can sometimes lead to emotional intensity or mood swings within the relationship. It's important for Pisces partners to practice effective communication, establish healthy boundaries, and support each other's emotional well-being. When they embrace their shared empathy, emotional depth, and spiritual connection, Pisces partners can create a truly magical and soulful romantic bond.",
   ],
 ];
-
 export {
   zodiacDateRangesLeft,
   zodiacDateRangesRight,
