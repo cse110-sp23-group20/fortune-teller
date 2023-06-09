@@ -1,3 +1,6 @@
+/**
+ * Array of general, college, and collage-romance type fortunes
+ */
 const fortunes = [
   "Your future is bright, embrace it with open arms.",
   "A wonderful surprise is coming your way.",
@@ -121,7 +124,10 @@ const fortuneText = document.getElementById("fortune-text");
 const fortuneAudioCrack = document.getElementById("fortune-crack");
 const voiceToggle = document.getElementById("voice-toggle-checkbox");
 
-// Gets a random fortune and ensures it does not match the previous fortune
+/**
+ * This function will get a random fortune from the fortune array and make sure it does not match the previous one
+ * @returns {string} a random fortune
+ */
 function getRandomFortune() {
   let randomIndex = Math.floor(Math.random() * fortunes.length);
   let fortune = fortunes[randomIndex];
@@ -136,7 +142,9 @@ function getRandomFortune() {
   return fortune;
 }
 
-// Displays the fortune and if voice toggle is checked, read the fortune
+/**
+ * Displays the fortune and if voice toggle is checked, reads out the fortune
+ */
 function showFortune() {
   const fortune = getRandomFortune();
   fortuneText.textContent = fortune;
@@ -148,7 +156,10 @@ function showFortune() {
   }
 }
 
-// Uses speech synthesis to read out fortune
+/**
+ * Reads out the fortune using speech synthesis
+ * @param {string} fortune What the fortune to be read out is
+ */
 function speakFortune(fortune) {
   const speech = new SpeechSynthesisUtterance(fortune);
   const option = voiceSelect.selectedOptions[0].getAttribute("data-name");
@@ -174,20 +185,27 @@ function disableButton() {
   fortuneButton.style.opacity = "0.5";
 }
 
-// Enables button when called
+/**
+ * Enables button so user can click it
+ */
 function enableButton() {
   fortuneButton.disabled = false;
   fortuneButton.style.opacity = "1";
 }
 
-// When button is clicked, audio plays and then fortune is read/displayed
+/**
+ * When the user clicks the button, disables it so they cannot click the button 
+ * in quick succession and cause audio issues
+ */
 fortuneButton.addEventListener("click", function () {
   fortuneAudioCrack.play();
   disableButton();
   setTimeout(showFortune, 1000);
 });
 
-// Added options for different voices
+/**
+ * Added options for different voices using voice synthesis
+ */
 const synth = window.speechSynthesis;
 
 // const inputForm = document.querySelector("form");
@@ -200,6 +218,9 @@ const voiceSelect = document.querySelector("select");
 
 let voices = [];
 
+/**
+ * Speech synthesis API
+ */
 function populateVoiceList() {
   voices = synth.getVoices();
 
