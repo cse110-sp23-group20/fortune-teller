@@ -44,4 +44,28 @@ describe("Basic user flow for Website", () => {
   //     console.log('Checking to make sure audio disables after \'toggle voice\' is unchecked...');
   //     // Wait because it takes time until button is reenabled as it has to read out the fortune
   // }, 15000)
+
+  // Check to make sure that the speech synthesis is working correctly
+  describe('populateVoice', () => {
+    test('populate voice options', () => {
+      const voices = [
+        {name : 'Karen', lang: "en-AU", default : false},
+        {name: 'Eddy', lang:"pt-BR",default: false},
+        {name: 'Lesya', lang:"uk-UA",default: false }
+
+
+      ];
+      const synthesis = {
+        getVoices: jest.fn().mockReturnValue(voices)
+      };
+      const option = document.createElement('option');
+      const appendchild = jest.spyOn(voiceSelect,'appendChild');
+      document.body.innerHTML=
+      <select></select>;
+      populateVoiceList();
+      expect(synthesis.getVoices).toHaveBeenCalled();
+      expect(appendchild).toHaveBeenCalledTimes(3);
+      expect(voiceSelect.innerHTML).toContain('Karen');
+    })
+  })
 });
