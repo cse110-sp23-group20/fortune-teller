@@ -125,6 +125,24 @@ const cookieWrapper = document.getElementById("cookie-wrapper");
 const cookieButton = document.getElementById("cookie-button");
 const cookieLeft = document.getElementById("fortune-image-left");
 const background = document.getElementById("background");
+const resetButton = document.getElementById("reset-button");
+
+function reset() {
+  resetButton.disabled = true;
+  fallFortune();
+  fallNewCookie();
+  setTimeout(() => {
+    fortunePaper.classList.remove("reveal");
+    fortuneText.style.transform = null;
+    elem = null;
+    cookieFalling = false;
+    fortuneButton.disabled = false;
+    fortunePaper.style.transform = null;
+    cookieButton.style.transform = null;
+  }, 2000);
+}
+
+resetButton.addEventListener("click", reset);
 
 // Gets a random fortune and ensures it does not match the previous fortune
 function getRandomFortune() {
@@ -141,19 +159,6 @@ function getRandomFortune() {
   return fortune;
 }
 
-// Displays the fortune and if voice toggle is checked, read the fortune
-function showFortune() {
-  document.body.classList.remove("dramatic-mode");
-  const fortune = getRandomFortune();
-  fortuneText.textContent = fortune;
-  fortuneText.style.display = "block";
-  if (voiceToggle.checked) {
-    speakFortune(fortune);
-  } else {
-    setTimeout(enableButton, 1000);
-  }
-}
-
 // Uses speech synthesis to read out fortune
 function speakFortune(fortune) {
   const speech = new SpeechSynthesisUtterance(fortune);
@@ -168,7 +173,7 @@ function speakFortune(fortune) {
 
   // Reenable button when fortune is done being read
   speech.addEventListener("end", () => {
-    enableButton();
+    handleFortuneEnd();
   });
 }
 
@@ -177,9 +182,10 @@ function disableButton() {
   fortuneButton.disabled = true;
 }
 
-// Enables button when called
-function enableButton() {
-  fortuneButton.disabled = false;
+function handleFortuneEnd() {
+  resetButton.disabled = false;
+  document.body.classList.remove("dramatic-mode");
+  elem = null;
 }
 
 function fallLeft() {
@@ -190,10 +196,9 @@ function fallLeft() {
   yv = -0.4;
   rot = 0;
   rotv = -0.05;
-  lastTime = Date.now();
   shakeIntensity = 10;
 }
-function fallRight(params) {
+function fallRight() {
   elem = cookieButton;
   x = 0;
   y = 0;
@@ -201,13 +206,32 @@ function fallRight(params) {
   yv = 0;
   rot = 0;
   rotv = 0.05;
-  lastTime = Date.now();
   shakeIntensity = 0;
+}
+function fallFortune() {
+  elem = fortunePaper;
+  x = 0;
+  y = 0;
+  xv = 0;
+  yv = -0.4;
+  rot = 0;
+  rotv = -0.05;
+}
+function fallNewCookie() {
+  cookieWrapper.classList.remove("cracked");
+  cookieLeft.style.transform = null;
+  cookieButton.style.transform = null;
+  cookieY = -innerHeight / 2 - 300;
+  cookieYV = 0;
+  cookieFalling = true;
 }
 
 // When button is clicked, audio plays and then fortune is read/displayed
 document.body.addEventListener("click", function (event) {
   if (event.target.closest(".fortune-button")) {
+    if (fortuneButton.disabled) {
+      return;
+    }
     document.body.classList.add("dramatic-mode");
     disableButton();
     // setTimeout(showFortune, 1000);
@@ -218,33 +242,35 @@ document.body.addEventListener("click", function (event) {
         if (fortuneAudioCrack.currentTime > 0.3) {
           // Only make the cookie break when the audio is actually crunching
           // (this takes into account audio loading time)
-          cookieWrapper.classList.add("cracked");
-          fallLeft();
-          paint();
           fortuneAudioCrack.ontimeupdate = null;
+          cookieWrapper.classList.add("cracked");
+          fortuneText.textContent = getRandomFortune();
+          fallLeft();
 
           setTimeout(() => {
             fortunePaper.classList.add("pull-out");
+
+            fortunePaper.onanimationend = () => {
+              fortunePaper.onanimationend = null;
+              fortunePaper.classList.remove("pull-out");
+              fortunePaper.classList.add("reveal");
+
+              if (voiceToggle.checked) {
+                speakFortune(fortuneText.textContent);
+              } else {
+                setTimeout(handleFortuneEnd, 1000);
+              }
+            };
+
+            setTimeout(() => {
+              cookieLeft.style.display = null;
+              fallRight();
+            }, 1500);
           }, 1000);
         }
-
-        // TEMP
-        setTimeout(() => {
-          window.cancelAnimationFrame(frameId);
-        }, 5000);
       };
     }, 800);
   }
-});
-
-fortunePaper.addEventListener("animationend", () => {
-  fortunePaper.classList.remove("pull-out");
-  fortunePaper.classList.add("reveal");
-
-  setTimeout(() => {
-    cookieLeft.style.display = null;
-    fallRight();
-  }, 500);
 });
 
 /** in px/ms^2 */
@@ -252,26 +278,56 @@ const GRAVITY = 0.002;
 let elem, x, y, xv, yv, rot, rotv;
 const shakeV = -0.02;
 let shakeIntensity;
+let cookieY, cookieYV;
+let cookieFalling = false;
 
-let lastTime = 0;
-let frameId = null;
+let lastTime = Date.now();
 function paint() {
   const now = Date.now();
-  const elapsed = now - lastTime;
+  const elapsed = Math.min(now - lastTime, 200);
   lastTime = now;
+
   yv += GRAVITY * elapsed;
   x += xv * elapsed;
   y += yv * elapsed;
   rot += rotv * elapsed;
-  elem.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
+  if (elem) {
+    if (elem === fortunePaper) {
+      elem.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg) perspective(1000px) scale(0.5) translateZ(350px)`;
+    } else {
+      elem.style.transform = `translate(${x}px, ${y}px) rotate(${rot}deg)`;
+    }
+  }
+
   shakeIntensity = Math.max(0, shakeIntensity + shakeV * elapsed);
-  const shake = `translate(${(Math.random() * 2 - 1) * shakeIntensity}px, ${
-    (Math.random() * 2 - 1) * shakeIntensity
-  }px)`;
-  cookieWrapper.parentElement.style.transform = shake;
-  background.style.transform = shake;
-  frameId = window.requestAnimationFrame(paint);
+  if (shakeIntensity > 0) {
+    const shake = `translate(${(Math.random() * 2 - 1) * shakeIntensity}px, ${
+      (Math.random() * 2 - 1) * shakeIntensity
+    }px)`;
+    cookieWrapper.parentElement.style.transform = shake;
+    background.style.transform = shake;
+  } else {
+    cookieWrapper.parentElement.style.transform = null;
+    background.style.transform = null;
+  }
+
+  if (cookieFalling) {
+    cookieYV += GRAVITY * elapsed;
+    if (cookieYV > 10) {
+      cookieYV = 10;
+    }
+    cookieY += cookieYV * elapsed;
+    // Bounce from floor
+    if (cookieY > 0) {
+      cookieY = 0;
+      cookieYV *= -0.4;
+    }
+    cookieButton.style.transform = `translateY(${cookieY}px)`;
+  }
+
+  window.requestAnimationFrame(paint);
 }
+paint();
 
 // Added options for different voices
 const synth = window.speechSynthesis;

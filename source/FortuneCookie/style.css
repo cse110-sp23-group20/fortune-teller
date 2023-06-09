@@ -122,23 +122,27 @@ li.audio-dropdown {
 .fortune-button {
   position: relative;
 }
+.cracked .fortune-button:focus {
+  outline: none;
+}
 
-#fortune-button {
+.button {
   position: absolute;
   top: 100%;
   margin-top: 20px;
   transition: opacity 0.5s;
 }
-#fortune-button:disabled {
+.button:disabled {
   opacity: 0;
+  pointer-events: none;
 }
 
 .fortune-paper {
   display: none;
   position: absolute;
   padding: 20px;
-  background-color: white;
-  border: 1px solid #ffffff82;
+  background-color: black;
+  border: 3px solid #f1c86c;
   color: black;
   max-width: 500px;
   border-radius: 10px;
@@ -164,7 +168,7 @@ li.audio-dropdown {
     z-index: -1;
   }
   33% {
-    transform: perspective(1000px) scale(0.5) rotateY(-163deg) rotateX(43deg)
+    transform: perspective(1000px) scale(0.5) rotateY(-155deg) rotateX(43deg)
       translateZ(900px) rotateZ(168deg);
     z-index: -1;
   }
@@ -176,12 +180,10 @@ li.audio-dropdown {
 }
 
 .reveal {
-  background-color: #ffffffa6;
-  backdrop-filter: blur(10px);
-  transition: background-color 0.5s;
   transform: perspective(1000px) scale(0.5) rotateY(0deg) rotateX(0)
     translateZ(350px) rotateZ(360deg);
   z-index: 5;
+  display: block;
 }
 .reveal p {
   background-image: linear-gradient(
@@ -189,8 +191,8 @@ li.audio-dropdown {
     transparent,
     transparent,
     rgb(255, 0, 221),
-    black,
-    black
+    #f1c86c,
+    #f1c86c
   );
   background-size: 2000px;
   -webkit-background-clip: text;
