@@ -9,6 +9,7 @@
     />
     <meta name="theme-color" content="#f1c86c" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="../common/styles.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -19,12 +20,10 @@
       rel="stylesheet"
     />
     <script src="../common/index.js" type="module"></script>
-    <link rel="icon" href="images/icon.png" type="image/x-icon" />
+    <script src="script.js" type="module"></script>
   </head>
   <body>
-    <div id="title">
-      <h1>Welcome to the Zodiac Compatibility Tool</h1>
-    </div>
+    <h1 class="title">Welcome to the Zodiac Compatibility Tool</h1>
     <div class="container">
       <div class="relationship">
         <form>
@@ -61,7 +60,7 @@
       </div>
 
       <div class="middle">
-        <button id="find-out">Find Out!</button>
+        <button class="button" id="find-out">Find Out!</button>
       </div>
 
       <div class="wheel_field" id="right_wheel_field">
@@ -99,10 +98,10 @@
         <p id="pairing_text">This is some sample text for the pop-up box.</p>
       </div>
       <div>
-        <button id="go-back" onclick="location.reload()">Go Back!</button>
+        <button class="button" id="go-back" onclick="location.reload()">
+          Go Back!
+        </button>
       </div>
     </div>
-
-    <script src="script.js"></script>
   </body>
 </html>
