@@ -6,7 +6,7 @@ body {
   height: 100%;
   width: 100%;
   overflow: auto;
-  background-image: url("images/background.jpg");
+  background-image: url("images/background.png");
   background-size: cover;
   background-position: center;
   overflow: hidden;
@@ -18,7 +18,9 @@ body {
   grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   align-content: center;
-  margin-top: -3vw;
+  margin-top: 1vw;
+  margin-right:7vw;
+  margin-left:7vw;
 }
 
 .container > * {
@@ -82,10 +84,12 @@ input {
 }
 #left_bday_input {
   grid-area: 2 / 2 / 2 / 3;
+  opacity: 0;
 }
 
 #right_bday_input {
   grid-area: 2 / 6 / 2 / 7;
+  opacity: 0;
 }
 
 .middle {
@@ -125,12 +129,15 @@ input[type="text"] {
 
 .title {
   text-align: center;
+  margin-top: 1vw;
 }
 
 .title {
+  /**
   font-size: 6vw;
   margin: 2vh;
   margin-bottom: 0vh;
+*/
 }
 #guide {
   align-self: center;
@@ -147,11 +154,13 @@ input[type="text"] {
   width: 2.75vw;
   grid-area: 1 / 1;
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
+  opacity: 0;
 }
 #right_arrow {
   width: 2.75vw;
   grid-area: 1 / 3;
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
+  opacity: 0;
 }
 
 #help {
@@ -199,6 +208,50 @@ input[type="text"] {
   }
 }
 
+@keyframes slideOnLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOnLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+@keyframes slideOnRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
 @keyframes slideOffRight {
   from {
     transform: translateX(0);
@@ -232,12 +285,14 @@ input[type="text"] {
 }
 
 #how_to {
-  font-size: 1.25vw;
+  font-size: 1vw;
+  opacity: 0;
 }
 #go-back {
   margin-top: 1vw;
 }
 #find-out {
   margin-top: 5vw;
-  font-size: 2.5vw;
+  font-size: 2vw;
+  opacity: 0;
 }
