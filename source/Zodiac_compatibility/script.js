@@ -154,3 +154,29 @@ function displayResults() {
     pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
   }, 2);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const leftWheel = document.getElementById("left_wheel_img");
+  const rightWheel = document.getElementById("right_wheel_img");
+  leftWheel.style.animation = "slideOnLeft 1.25s forwards";
+  rightWheel.style.animation = "slideOnRight 1.25s forwards";
+
+  setTimeout(() => {
+    leftWheel.style.animation = "";
+    rightWheel.style.animation = "";
+    leftWheel.style.opacity = "1";
+    rightWheel.style.opacity = "1";
+  }, 1250);
+  left_bday.style.animation = "appear 1s 1.25s forwards";
+  right_bday.style.animation = "appear 1s 1.25s forwards";
+  left_arrow.style.animation = "appear 1s 2s forwards";
+  right_arrow.style.animation = "appear 1s 2s forwards";
+  button.style.animation = "appear 1s 2.5s forwards";
+  setTimeout(() => {
+    button.style.pointerEvents = "auto";
+  }, 3500);
+  how_to.style.animation = "appear 1s 3.25s forwards";
+  setTimeout(() => {
+    how_to.style.pointerEvents = "auto";
+  }, 4250);
+});
