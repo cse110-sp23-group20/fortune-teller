@@ -10,7 +10,7 @@ describe("Basic user flow for Website", () => {
   it("Make sure button is enabled", async () => {
     console.log("Checking to make sure button is enabled...");
     let buttonDisabled;
-    const button = await page.$("button");
+    const button = await page.$("#fortune-button");
     let booleanValue = await button.getProperty("disabled");
     buttonDisabled = await booleanValue.jsonValue();
     expect(buttonDisabled).toBe(false);
@@ -20,7 +20,7 @@ describe("Basic user flow for Website", () => {
   it("Make sure button disables", async () => {
     console.log("Checking to make sure button disables when clicked...");
     let buttonDisabled;
-    const button = await page.$("button");
+    const button = await page.$("#fortune-button");
     await button.click();
     let booleanValue = await button.getProperty("disabled");
     buttonDisabled = await booleanValue.jsonValue();
@@ -46,26 +46,24 @@ describe("Basic user flow for Website", () => {
   // }, 15000)
 
   // Check to make sure that the speech synthesis is being populated, the correct voices are called by the function
-  describe('populateVoice', () => {
-    test('populate voice options', () => {
+  describe("populateVoice", () => {
+    test("populate voice options", () => {
       const voices = [
-        {name : 'Karen', lang: "en-AU", default : false},
-        {name: 'Eddy', lang:"pt-BR",default: false},
-        {name: 'Lesya', lang:"uk-UA",default: false }
-
-
+        { name: "Karen", lang: "en-AU", default: false },
+        { name: "Eddy", lang: "pt-BR", default: false },
+        { name: "Lesya", lang: "uk-UA", default: false },
       ];
       const synthesis = {
-        getVoices: jest.fn().mockReturnValue(voices)
+        getVoices: jest.fn().mockReturnValue(voices),
       };
       //const option = document.createElement('option');
-      const appendchild = jest.spyOn(voiceSelect,'appendChild');
+      const appendchild = jest.spyOn(voiceSelect, "appendChild");
       //document.body.innerHTML=
       //<select></select>;
       populateVoiceList();
       expect(synthesis.getVoices).toHaveBeenCalled();
       expect(appendchild).toHaveBeenCalledTimes(3);
       //expect(voiceSelect.innerHTML).toContain('Karen');
-    })
-  })
+    });
+  });
 });
