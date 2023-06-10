@@ -59,9 +59,9 @@ function rotateLeftWheel(event) {
   leftWheelAngle += direction * 2;
   // Apply the rotation transform to the wheel element
   leftWheel.style.transform = `rotate(${leftWheelAngle}deg)`;
-  
+
   dateInput.value = determineDateRangeLeft(roundAngle(leftWheelAngle));
-  
+
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
@@ -80,7 +80,7 @@ function rotateRightWheel(event) {
   rightWheel.style.transform = `rotate(${rightWheelAngle}deg)`;
 
   dateInput.value = determineDateRangeRight(roundAngle(rightWheelAngle));
-  
+
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
