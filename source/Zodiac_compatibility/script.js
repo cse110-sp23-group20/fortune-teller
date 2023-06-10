@@ -173,11 +173,10 @@ document.addEventListener("DOMContentLoaded", function () {
   right_arrow.style.animation = "appear 1s 2s forwards";
   button.style.animation = "appear 1s 2.5s forwards";
   setTimeout(() => {
-    button.style.pointerEvents = 'auto';
+    button.style.pointerEvents = "auto";
   }, 3500);
   how_to.style.animation = "appear 1s 3.25s forwards";
   setTimeout(() => {
-    how_to.style.pointerEvents = 'auto';
+    how_to.style.pointerEvents = "auto";
   }, 4250);
-
 });
