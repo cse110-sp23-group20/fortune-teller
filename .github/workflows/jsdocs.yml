@@ -15,6 +15,7 @@ jobs:
           source_dir: ./source
           recurse: true
           output_dir: ./JSDOCs
+          config_file: .jsdoc.conf.json
           template: minami
       - name: Commit JSDOCS
         uses: EndBug/add-and-commit@v9
