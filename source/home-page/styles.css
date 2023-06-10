@@ -59,11 +59,12 @@ body {
   text-align: center;
   display: inline-block;
   background-color: #4b51754b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   border-radius: 15px;
   overflow: hidden;
   width: 300px;
-  transition: color 0.2s, box-shadow 0.5s;
+  transition: color 0.2s, box-shadow 0.5s, border-color 0.5s;
   display: flex;
   flex-direction: column;
 }
@@ -72,6 +73,7 @@ body {
   color: black;
   background-position: -600px;
   box-shadow: 0 0 10px #f1c86c, 0 0 40px #f1c86c;
+  border-color: #f1c86c;
 }
 
 /*used to adjust the alignment of the "3 fortune telling cards" and their size */

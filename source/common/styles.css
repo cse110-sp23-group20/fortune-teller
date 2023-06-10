@@ -127,12 +127,21 @@ button,
   height: 52px;
   white-space: nowrap;
   animation: fade-in 0.5s;
+  transition: width 0.3s, height 0.3s, background-color 0.3s,
+    backdrop-filter 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
+  border-right: 1px solid transparent;
+  transition-delay: 0.15s;
+  border-bottom-right-radius: 26px;
 }
 .site-nav:hover,
 .site-nav:focus-within {
-  padding-bottom: 20px;
-  width: auto;
-  height: auto;
+  width: 220px;
+  height: 220px;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  transition-delay: 0s;
+  border-color: rgba(255, 255, 255, 0.1);
 }
 .site-nav-menu-icon {
   display: block;
@@ -146,7 +155,15 @@ button,
   background-color: #36394d;
   margin: 8px;
   cursor: pointer;
-  margin-bottom: 0;
+  margin-bottom: 2px;
+  box-sizing: border-box;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.2s;
+}
+.site-nav:hover .site-nav-menu-icon,
+.site-nav:focus-within .site-nav-menu-icon {
+  background-color: transparent;
+  border-color: transparent;
 }
 .site-nav-link {
   display: flex;
