@@ -82,7 +82,7 @@ export function determineDateRangeRight(angle) {
  */
 export function determinePairing(angleLeft, angleRight) {
   angleLeft = angleLeft % 360;
-  angleRight = angleRight% 360;
+  angleRight = angleRight % 360;
   const leftMapping = getMappingLeft(angleLeft);
   const rightMapping = getMappingRight(angleRight);
   return [leftMapping, rightMapping];
