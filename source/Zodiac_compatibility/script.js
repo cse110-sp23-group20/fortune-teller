@@ -155,12 +155,12 @@ function displayResults() {
   }, 2);
 }
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   const leftWheel = document.getElementById("left_wheel_img");
   const rightWheel = document.getElementById("right_wheel_img");
   leftWheel.style.animation = "slideOnLeft 1.25s forwards";
   rightWheel.style.animation = "slideOnRight 1.25s forwards";
-  
+
   setTimeout(() => {
     leftWheel.style.animation = "";
     rightWheel.style.animation = "";
