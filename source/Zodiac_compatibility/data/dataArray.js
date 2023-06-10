@@ -73,44 +73,6 @@ const zodiacAngleMappingRight = [
   [-30, "Leo"],
 ];
 
-const mappingRight = [
-    [0, "Cancer"],
-    [360, "Cancer"],
-  
-    [30, "Gemini"],
-    [-330, "Gemini"],
-  
-    [60, "Taurus"],
-    [-300, "Taurus"],
-  
-    [90, "Aries"],
-    [-270, "Aries"],
-  
-    [120, "Pisces"],
-    [-240, "Pisces"],
-  
-    [150, "Aquarius"],
-    [-210, "Aquarius"],
-  
-    [180, "Capricorn"],
-    [-180, "Capricorn"],
-  
-    [210, "Sagittarius"],
-    [-150, "Sagittarius"],
-  
-    [240, "Scorpio"],
-    [-120, "Scorpio"],
-  
-    [270, "Libra"],
-    [-90, "Libra"],
-  
-    [300, "Virgo"],
-    [-60, "Virgo"],
-  
-    [330, "Leo"],
-    [-30, "Leo"],
-  ];
-
 const zodiacDateRanges = {
   Capricorn: "Dec 22 - Jan 19",
   Sagittarius: "Nov 22 - Dec 21",
