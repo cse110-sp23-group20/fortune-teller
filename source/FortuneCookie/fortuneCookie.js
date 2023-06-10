@@ -11,23 +11,49 @@ const cookieButton = document.getElementById("cookie-button");
 const cookieLeft = document.getElementById("fortune-image-left");
 const background = document.getElementById("background");
 const resetButton = document.getElementById("reset-button");
+const cancelButton = document.getElementById("cancel-animation-btn");
 
-function reset() {
+function reset(state) {
+  clearTimeout(timeoutId);
+  fortuneAudioCrack.ontimeupdate = null;
+  fortunePaper.onanimationend = null;
+  fortuneAudioCrack.pause();
+  window.speechSynthesis.cancel();
+  fortunePaper.classList.remove("pull-out");
+  document.body.classList.remove("dramatic-mode");
+  cancelButton.parentElement.classList.remove("animating");
+  cookieWrapper.classList.remove("cracked");
+  fortuneText.style.transform = null;
+  elem = null;
+  cookieFalling = false;
+  fortunePaper.style.transform = null;
+  cookieButton.style.transform = null;
+  cookieLeft.style.transform = null;
+  if (state === "fortune") {
+    fortunePaper.classList.add("reveal");
+    cookieButton.classList.add("hide-cookie");
+    resetButton.disabled = false;
+    fortuneButton.disabled = true;
+    cookieButton.disabled = true;
+  } else if (state === "cookie") {
+    fortunePaper.classList.remove("reveal");
+    cookieButton.classList.remove("hide-cookie");
+    resetButton.disabled = true;
+    fortuneButton.disabled = false;
+    cookieButton.disabled = false;
+  }
+}
+window.reset = reset; // TEMP
+
+resetButton.addEventListener("click", () => {
   resetButton.disabled = true;
+  cookieButton.classList.remove("hide-cookie");
+  cancelButton.parentElement.classList.add("animating");
+  cancelButton.parentElement.classList.add("animating-new-cookie");
   fallFortune();
   fallNewCookie();
-  setTimeout(() => {
-    fortunePaper.classList.remove("reveal");
-    fortuneText.style.transform = null;
-    elem = null;
-    cookieFalling = false;
-    fortuneButton.disabled = false;
-    fortunePaper.style.transform = null;
-    cookieButton.style.transform = null;
-  }, 2000);
-}
-
-resetButton.addEventListener("click", reset);
+  timeoutId = setTimeout(handleCookieReady, 2000);
+});
 
 /**
  * This function will get a random fortune from the fortune array and make sure it does not match the previous one
@@ -58,9 +84,7 @@ function speakFortune(fortune) {
   window.speechSynthesis.speak(speech);
 
   // Reenable button when fortune is done being read
-  speech.addEventListener("end", () => {
-    handleFortuneEnd();
-  });
+  speech.addEventListener("end", handleFortuneEnd);
 }
 
 /**
@@ -68,15 +92,18 @@ function speakFortune(fortune) {
  */
 function disableButton() {
   fortuneButton.disabled = true;
+  cookieButton.disabled = true;
 }
 
 /**
  * Enables button so user can click it
  */
 function handleFortuneEnd() {
-  resetButton.disabled = false;
-  document.body.classList.remove("dramatic-mode");
-  elem = null;
+  reset("fortune");
+}
+
+function handleCookieReady() {
+  reset("cookie");
 }
 
 function fallLeft() {
@@ -109,13 +136,14 @@ function fallFortune() {
   rotv = -0.05;
 }
 function fallNewCookie() {
-  cookieWrapper.classList.remove("cracked");
   cookieLeft.style.transform = null;
   cookieButton.style.transform = null;
   cookieY = -innerHeight / 2 - 300;
   cookieYV = 0;
   cookieFalling = true;
 }
+
+let timeoutId;
 
 /**
  * When the user clicks the button, disables it so they cannot click the button
@@ -127,8 +155,10 @@ document.body.addEventListener("click", function (event) {
       return;
     }
     document.body.classList.add("dramatic-mode");
+    cancelButton.parentElement.classList.add("animating");
+    cancelButton.parentElement.classList.remove("animating-new-cookie");
     disableButton();
-    setTimeout(() => {
+    timeoutId = setTimeout(() => {
       fortuneAudioCrack.currentTime = 0;
       fortuneAudioCrack.play();
       fortuneAudioCrack.ontimeupdate = () => {
@@ -140,7 +170,7 @@ document.body.addEventListener("click", function (event) {
           fortuneText.textContent = getRandomFortune();
           fallLeft();
 
-          setTimeout(() => {
+          timeoutId = setTimeout(() => {
             fortunePaper.classList.add("pull-out");
 
             fortunePaper.onanimationend = () => {
@@ -151,11 +181,11 @@ document.body.addEventListener("click", function (event) {
               if (voiceSelect.value !== "none") {
                 speakFortune(fortuneText.textContent);
               } else {
-                setTimeout(handleFortuneEnd, 1000);
+                timeoutId = setTimeout(handleFortuneEnd, 1000);
               }
             };
 
-            setTimeout(() => {
+            timeoutId = setTimeout(() => {
               cookieLeft.style.display = null;
               fallRight();
             }, 1500);
@@ -163,6 +193,14 @@ document.body.addEventListener("click", function (event) {
         }
       };
     }, 800);
+  }
+});
+
+cancelButton.addEventListener("click", () => {
+  if (cancelButton.parentElement.classList.contains("animating-new-cookie")) {
+    handleCookieReady();
+  } else {
+    handleFortuneEnd();
   }
 });
 

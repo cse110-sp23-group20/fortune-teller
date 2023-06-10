@@ -59,11 +59,16 @@
       </div>
     </main>
 
+    <div class="cancel-animation-wrapper">
+      <button id="cancel-animation-btn">Skip animation</button>
+    </div>
+
     <footer>
-      <label>
+      <label class="voice-select-label">
         <span>Voice:</span>
         <select name="voice" id="voice-select">
           <option value="none">None (disable voice)</option>
+          <option value="--" disabled>&mdash;&mdash;&mdash;</option>
         </select>
       </label>
     </footer>

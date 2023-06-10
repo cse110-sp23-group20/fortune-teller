@@ -31,10 +31,28 @@ footer {
   margin-bottom: 20px;
   display: flex;
   color: rgba(255, 255, 255, 0.5);
-  text-align: center;
+}
+.voice-select-label {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 select {
   max-width: calc(100vw - 40px);
+  border: 1px solid currentColor;
+  padding: 5px 10px;
+  background: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+select:hover,
+select:focus {
+  color: white;
+}
+option {
+  background-color: #3d3c59;
 }
 
 /* Navigation bar settings */
@@ -143,6 +161,9 @@ li.audio-dropdown {
 }
 .cracked .fortune-button:focus {
   outline: none;
+}
+.hide-cookie {
+  visibility: hidden;
 }
 
 .button {
@@ -292,4 +313,33 @@ aside {
 .dramatic-mode aside {
   opacity: 0;
   transition: opacity 0.5s;
+}
+
+.cancel-animation-wrapper {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.2s, opacity 0.2s;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  z-index: 6;
+}
+.animating {
+  visibility: visible;
+  opacity: 1;
+  transition-delay: 0s, 0.5s;
+}
+.animating-new-cookie {
+  margin-bottom: 60px;
+  transition-delay: 0s;
+}
+#cancel-animation-btn {
+  padding: 20px;
+  color: rgba(255, 255, 255, 0.3);
+}
+#cancel-animation-btn:hover {
+  text-decoration: underline;
 }
