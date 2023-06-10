@@ -1,7 +1,7 @@
 // @ts-check
 
 import { mod } from "../utils.js";
-import { zodiacOrder, zodiacDateRanges, romantic } from "./data/dataArray.js";
+import { zodiacAngleMappingLeft, zodiacAngleMappingRight, zodiacDateRanges, romantic } from "./data/dataArray.js";
 
 /**
  * Rounds the given angle to the nearest multiple of 30.
@@ -9,20 +9,28 @@ import { zodiacOrder, zodiacDateRanges, romantic } from "./data/dataArray.js";
  * @returns {number} The rounded angle.
  */
 export function roundAngle(angle) {
-  const rounded = Math.round(angle / 30) * 30;
-  return mod(rounded, 360);
+  let base = Math.floor(angle / 360);
+  let rem = angle % 360;
+  if (angle >= 0) {
+    return base * 360 + Math.round(rem / 30) * 30;
+  } else {
+    base = Math.ceil(angle / 360);
+    //console.log(base + ';' + rem)
+    return base * 360 + Math.round(rem / 30) * 30;
+  }
 }
 
 /**
  * Retrieves the zodiac sign mapping for the given angle on the left wheel.
- * @param {number} angle - The angle on the left wheel.
+ * @param {number} roundedAngle - The angle on the left wheel pre-rounded to the nearest 30 degree increment
  * @returns {string} The corresponding zodiac sign.
  */
-export function getMappingLeft(angle) {
-  angle = mod(angle, 360);
-  for (const [i, zodiac] of zodiacOrder.entries()) {
-    if (angle < (i + 1) * 60) {
-      return zodiac;
+export function getMappingLeft(roundedAngle) {
+  roundedAngle = roundedAngle % 360;
+  for (let i = 0; i < zodiacAngleMappingLeft.length; i++) {
+    if (roundedAngle === zodiacAngleMappingLeft[i][0]) {
+      // @ts-ignore
+      return zodiacAngleMappingLeft[i][1];
     }
   }
   return "unknown";
@@ -30,22 +38,15 @@ export function getMappingLeft(angle) {
 
 /**
  * Retrieves the zodiac sign mapping for the given angle on the right wheel.
- * @param {number} angle - The angle on the right wheel.
+ * @param {number} roundedAngle - The angle on the right wheel pre-rounded to the nearest 30 degree increment
  * @returns {string} The corresponding zodiac sign.
  */
-export function getMappingRight(angle) {
-  angle = mod(angle, 360);
-  if (angle < 180) {
-    for (const [i, zodiac] of zodiacOrder.slice(6).entries()) {
-      if (angle < (i + 1) * 60) {
-        return zodiac;
-      }
-    }
-  } else {
-    for (const [i, zodiac] of zodiacOrder.slice(0, 6).entries()) {
-      if (angle - 180 < (i + 1) * 60) {
-        return zodiac;
-      }
+export function getMappingRight(roundedAngle) {
+  roundedAngle = roundedAngle % 360;
+  for (let i = 0; i < zodiacAngleMappingRight.length; i++) {
+    if (roundedAngle === zodiacAngleMappingRight[i][0]) {
+      // @ts-ignore
+      return zodiacAngleMappingRight[i][1];
     }
   }
   return "unknown";

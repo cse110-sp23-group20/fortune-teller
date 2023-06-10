@@ -22,8 +22,8 @@ const left_bday = document.getElementById("left_bday_input");
 const right_bday = document.getElementById("right_bday_input");
 
 // add the necessary event listeners for the wheels
-leftWheel.addEventListener("wheel", rotateleftWheel);
-rightWheel.addEventListener("wheel", rotaterightWheel);
+leftWheel.addEventListener("wheel", rotateLeftWheel);
+rightWheel.addEventListener("wheel", rotateRightWheel);
 leftWheel.addEventListener("mouseout", stopRotation);
 rightWheel.addEventListener("mouseout", stopRotation);
 // add all the necessary event listeners for the buttons
@@ -49,7 +49,7 @@ let rightWheelAngle = 0;
  * Rotates the left wheel based on the mouse wheel event.
  * @param {WheelEvent} event - The mouse wheel event.
  */
-function rotateleftWheel(event) {
+function rotateLeftWheel(event) {
   const dateInput = document.getElementById("left_birthday");
 
   // Determine the direction of scrolling
@@ -59,10 +59,9 @@ function rotateleftWheel(event) {
   leftWheelAngle += direction * 2;
   // Apply the rotation transform to the wheel element
   leftWheel.style.transform = `rotate(${leftWheelAngle}deg)`;
-  dateInput.type = "text";
+  
   dateInput.value = determineDateRangeLeft(roundAngle(leftWheelAngle));
-  dateInput.style.textAlign = "center";
-  dateInput.style.background = "transparent";
+  
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
@@ -70,7 +69,7 @@ function rotateleftWheel(event) {
  * Rotates the right wheel based on the mouse wheel event.
  * @param {WheelEvent} event - The mouse wheel event.
  */
-function rotaterightWheel(event) {
+function rotateRightWheel(event) {
   const dateInput = document.getElementById("right_birthday");
   // Determine the direction of scrolling
   const direction = Math.sign(event.deltaY);
@@ -80,10 +79,8 @@ function rotaterightWheel(event) {
   // Apply the rotation transform to the wheel element
   rightWheel.style.transform = `rotate(${rightWheelAngle}deg)`;
 
-  dateInput.type = "text";
   dateInput.value = determineDateRangeRight(roundAngle(rightWheelAngle));
-  dateInput.style.textAlign = "center";
-  dateInput.style.background = "transparent";
+  
   // Prevent the default scrolling behavior
   event.preventDefault();
 }

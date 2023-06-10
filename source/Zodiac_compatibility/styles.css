@@ -68,10 +68,9 @@ input {
   z-index: 1;
   align-content: center;
   justify-self: stretch;
-  display: flex; /* Enable flexbox */
-  justify-content: center; /* Center horizontally */
-  align-items: center; /* Center vertically */
-  /** filter: brightness(10000%) drop-shadow(0px 0px 10px white); **/
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.25vw;
 }
 
