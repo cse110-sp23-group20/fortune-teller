@@ -128,7 +128,6 @@ document.body.addEventListener("click", function (event) {
     }
     document.body.classList.add("dramatic-mode");
     disableButton();
-    // setTimeout(showFortune, 1000);
     setTimeout(() => {
       fortuneAudioCrack.currentTime = 0;
       fortuneAudioCrack.play();
@@ -223,23 +222,12 @@ function paint() {
 }
 paint();
 
-/**
- * Added options for different voices using voice synthesis
- */
 const synth = window.speechSynthesis;
-
-// const inputForm = document.querySelector("form");
-// const inputTxt = document.querySelector(".txt");
 const voiceSelect = document.querySelector("select");
-// const pitch = document.querySelector("#pitch");
-// const pitchValue = document.querySelector(".pitch-value");
-// const rate = document.querySelector("#rate");
-// const rateValue = document.querySelector(".rate-value");
-
 let voices = [];
 
 /**
- * Speech synthesis API
+ * Speech synthesis API, adds options for different voices to read out fortune using voice synthesis
  */
 function populateVoiceList() {
   voices = synth.getVoices();
