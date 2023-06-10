@@ -1,3 +1,6 @@
+/**
+ * Array of general, college, and collage-romance type fortunes
+ */
 export const fortunes = [
   "Your future is bright, embrace it with open arms.",
   "A wonderful surprise is coming your way.",

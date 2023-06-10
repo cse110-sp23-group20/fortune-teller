@@ -102,36 +102,6 @@ input[type="text"] {
   pointer-events: none;
 }
 
-#find-out {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 1.75vw;
-  color: black;
-  margin-top: 7vw;
-  background-color: gold;
-  border-radius: 20px;
-  border: none;
-  font-weight: bold;
-}
-
-#go-back {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 1.75vw;
-  color: black;
-  margin-top: 5vh;
-  background-color: gold;
-  border-radius: 20px;
-  border: none;
-  font-weight: bold;
-}
-
-#find-out:hover,
-#go-back:hover,
-#how_to:hover {
-  filter: brightness(100%) drop-shadow(0px 0px 10px yellow);
-}
-
 #pop-up {
   display: none;
   position: absolute;
@@ -166,16 +136,6 @@ input[type="text"] {
 #guide {
   align-self: center;
   text-align: center;
-}
-
-#guide button {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 1vw;
-  color: black;
-  background-color: gold;
-  border-radius: 20px;
-  font-weight: bold;
 }
 
 #arrows {

@@ -1,10 +1,12 @@
 import {
-  romantic,
-  zodiacDateRangesLeft,
-  zodiacDateRangesRight,
-  mappingLeft,
-  mappingRight,
-} from "./data/dataArray.js";
+  determineDateRangeLeft,
+  determineDateRangeRight,
+  determinePairing,
+  getMappingLeft,
+  getMappingRight,
+  roundAngle,
+  textGenerator,
+} from "./zodiac-angles.js";
 
 // Get all necessary document objects
 const leftWheel = document.getElementById("left_wheel_img");
@@ -85,50 +87,6 @@ function rotaterightWheel(event) {
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
-/**
- * Determines the zodiac sign date range based on the given angle on the left wheel.
- * @param {number} angle - The angle of the left wheel.
- * @returns {string} The zodiac sign associated with the angle.
- */
-function determineDateRangeLeft(angle) {
-  angle = angle % 360;
-  for (let i = 0; i < zodiacDateRangesLeft.length; i++) {
-    if (angle === zodiacDateRangesLeft[i][0]) {
-      return zodiacDateRangesLeft[i][1];
-    }
-  }
-  return "unknown";
-}
-/**
- * Determines the zodiac sign date range based on the given angle on the right wheel.
- * @param {number} angle - The angle of the right wheel.
- * @returns {string} The zodiac sign associated with the angle.
- */
-function determineDateRangeRight(angle) {
-  angle = angle % 360;
-  for (let i = 0; i < zodiacDateRangesRight.length; i++) {
-    if (angle === zodiacDateRangesRight[i][0]) {
-      return zodiacDateRangesRight[i][1];
-    }
-  }
-  return "unknown";
-}
-/**
- * Rounds the given angle to the nearest multiple of 30.
- * @param {number} angle - The angle to round.
- * @returns {number} The rounded angle.
- */
-function roundAngle(angle) {
-  var base = Math.floor(angle / 360);
-  var rem = angle % 360;
-  if (angle >= 0) {
-    return base * 360 + Math.round(rem / 30) * 30;
-  } else {
-    base = Math.ceil(angle / 360); // Use Math.ceil instead of Math.floor
-    //console.log(base + ';' + rem)
-    return base * 360 + Math.round(rem / 30) * 30;
-  }
-}
 
 /**
  * Stops the rotation of the wheels and applies a smooth transition to the nearest rounded angle.
@@ -171,50 +129,6 @@ function stopRotation() {
 }
 
 /**
- * Retrieves the zodiac sign mapping for the given angle on the left wheel.
- * @param {number} angle - The angle on the left wheel.
- * @returns {string} The corresponding zodiac sign.
- */
-function getMappingLeft(angle) {
-  angle = angle % 360;
-  for (let i = 0; i < mappingLeft.length; i++) {
-    if (angle == mappingLeft[i][0]) {
-      return mappingLeft[i][1];
-    }
-  }
-  return "unknown";
-}
-
-/**
- * Retrieves the zodiac sign mapping for the given angle on the right wheel.
- * @param {number} angle - The angle on the right wheel.
- * @returns {string} The corresponding zodiac sign.
- */
-function getMappingRight(angle) {
-  angle = angle % 360;
-  for (let i = 0; i < mappingRight.length; i++) {
-    if (angle == mappingRight[i][0]) {
-      return mappingRight[i][1];
-    }
-  }
-  return "unknown";
-}
-
-/**
- * Gets the zodiac sign pair based on the angles of the left and right wheels.
- * @param {number} angleLeft - The angle of the left wheel.
- * @param {number} angleRight - The angle of the right wheel.
- * @returns {Array} An array containing the zodiac sign pair.
- */
-function determinePairing(angleLeft, angleRight) {
-  angleLeft = angleLeft % 360;
-  angleRight = angleRight % 360;
-  const leftMapping = getMappingLeft(angleLeft);
-  const rightMapping = getMappingRight(angleRight);
-  return [leftMapping, rightMapping];
-}
-
-/**
  * Displays the results of the pairing and animates the UI elements.
  */
 function displayResults() {
@@ -242,22 +156,4 @@ function displayResults() {
     const pairing_text = popup.querySelector("#pairing_text");
     pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
   }, 2);
-}
-
-/**
- * Generates the text describing the romantic compatibility between two zodiac signs.
- * @param {string} leftSign - The left wheel's zodiac sign.
- * @param {string} rightSign - The right wheel's zodiac sign.
- * @returns {string} The generated text.
- */
-function textGenerator(leftSign, rightSign) {
-  for (let i = 0; i < romantic.length; i++) {
-    console.log(leftSign + " and " + rightSign);
-    if (leftSign + " and " + rightSign === romantic[i][0]) {
-      return romantic[i][1];
-    } else if (rightSign + " and " + leftSign === romantic[i][0]) {
-      return romantic[i][1];
-    }
-  }
-  return "An error has occurred";
 }

@@ -46,20 +46,6 @@ function getRandomFortune() {
 }
 
 /**
- * Displays the fortune and if voice toggle is checked, reads out the fortune
- */
-function showFortune() {
-  const fortune = getRandomFortune();
-  fortuneText.textContent = fortune;
-  fortuneText.style.display = "block";
-  if (voiceToggle.checked) {
-    speakFortune(fortune);
-  } else {
-    setTimeout(enableButton, 1000);
-  }
-}
-
-/**
  * Reads out the fortune using speech synthesis
  * @param {string} fortune What the fortune to be read out is
  */
