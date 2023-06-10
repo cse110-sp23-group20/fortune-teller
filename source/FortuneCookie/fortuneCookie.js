@@ -29,7 +29,10 @@ function reset() {
 
 resetButton.addEventListener("click", reset);
 
-// Gets a random fortune and ensures it does not match the previous fortune
+/**
+ * This function will get a random fortune from the fortune array and make sure it does not match the previous one
+ * @returns {string} a random fortune
+ */
 function getRandomFortune() {
   let fortune = pick(fortunes);
 
@@ -42,7 +45,24 @@ function getRandomFortune() {
   return fortune;
 }
 
-// Uses speech synthesis to read out fortune
+/**
+ * Displays the fortune and if voice toggle is checked, reads out the fortune
+ */
+function showFortune() {
+  const fortune = getRandomFortune();
+  fortuneText.textContent = fortune;
+  fortuneText.style.display = "block";
+  if (voiceToggle.checked) {
+    speakFortune(fortune);
+  } else {
+    setTimeout(enableButton, 1000);
+  }
+}
+
+/**
+ * Reads out the fortune using speech synthesis
+ * @param {string} fortune What the fortune to be read out is
+ */
 function speakFortune(fortune) {
   const speech = new SpeechSynthesisUtterance(fortune);
   speech.voice = voices[voiceSelect.value];
@@ -57,11 +77,16 @@ function speakFortune(fortune) {
   });
 }
 
-// Disables button when called
+/**
+ * Disables button so user cannot click it
+ */
 function disableButton() {
   fortuneButton.disabled = true;
 }
 
+/**
+ * Enables button so user can click it
+ */
 function handleFortuneEnd() {
   resetButton.disabled = false;
   document.body.classList.remove("dramatic-mode");
@@ -106,7 +131,10 @@ function fallNewCookie() {
   cookieFalling = true;
 }
 
-// When button is clicked, audio plays and then fortune is read/displayed
+/**
+ * When the user clicks the button, disables it so they cannot click the button
+ * in quick succession and cause audio issues
+ */
 document.body.addEventListener("click", function (event) {
   if (event.target.closest(".fortune-button")) {
     if (fortuneButton.disabled) {
@@ -209,7 +237,9 @@ function paint() {
 }
 paint();
 
-// Added options for different voices
+/**
+ * Added options for different voices using voice synthesis
+ */
 const synth = window.speechSynthesis;
 
 // const inputForm = document.querySelector("form");
@@ -222,6 +252,9 @@ const voiceSelect = document.querySelector("select");
 
 let voices = [];
 
+/**
+ * Speech synthesis API
+ */
 function populateVoiceList() {
   voices = synth.getVoices();
 
