@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>PalmReading/script.js - Documentation</title>
+    <title>utils.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">PalmReading/script.js</h1>
+    <h1 class="page-title">utils.js</h1>
     
 
     
@@ -39,29 +39,37 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>const fortune = document.getElementById("fortune-paragraph");
-// etc
+            <pre class="prettyprint source linenums"><code>// @ts-check
 
 /**
- * Generates random fortunes. Called when the app finishes analyzing the palm.
+ * @file Utility functions. Conveniently, these functions are good candidates
+ * for unit tests.
  */
-export function handleFortune() {
-  console.log("TODO", fortune);
+
+/**
+ * Randomly selects an item in the given list.
+ *
+ * @template T
+ * @param {ArrayLike&lt;T>} options - List of options to choose from.
+ * @returns {T} The randomly chosen option
+ */
+export function pick(options) {
+  return options[Math.floor(Math.random() * options.length)];
 }
 
-const tabLabels = document.querySelectorAll('input[name="tab"]');
-const tabContents = document.querySelectorAll('.tab-content');
-
-tabLabels.forEach(function(label){
-  label.addEventListener('change',function(){
-    tabContents.forEach(function(content){
-      content.hidden = true;
-    });
-
-    const selectedContent = document.getElementById(`${this.value}-tab`);
-    selectedContent.hidden = false;
-  });
-});</code></pre>
+/**
+ * Calculates the modulus. JavaScript's `%` operator is the remainder operator,
+ * which works differently for negative numbers. For example, `-10 % 360` in
+ * JavaScript, but `-10 mod 360` is 350.
+ *
+ * @param {number} a - Dividend
+ * @param {number} b - Div-sor
+ * @returns {number} The modulus of `a` and `b`
+ */
+export function mod(a, b) {
+  return ((a % b) + b) % b;
+}
+</code></pre>
         </article>
     </section>
 

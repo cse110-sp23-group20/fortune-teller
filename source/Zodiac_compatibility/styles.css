@@ -5,6 +5,11 @@ html,
 body {
   height: 100%;
   width: 100%;
+  overflow: auto;
+  background-image: url("images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
 .container {
@@ -76,7 +81,6 @@ input {
   display: block;
   text-align: center;
 }
-
 #left_bday_input {
   grid-area: 2 / 2 / 2 / 3;
 }
@@ -96,43 +100,6 @@ input[type="text"] {
   background-color: rgba(0, 0, 0, 0);
   font-size: 1.5vw;
   pointer-events: none;
-}
-
-#find-out {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 1.75vw;
-  color: black;
-  margin-top: 7vw;
-  background-color: gold;
-  border-radius: 20px;
-  border: none;
-  font-weight: bold;
-}
-
-#go-back {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 1.75vw;
-  color: black;
-  margin-top: 5vh;
-  background-color: gold;
-  border-radius: 20px;
-  border: none;
-  font-weight: bold;
-}
-
-#find-out:hover,
-#go-back:hover,
-#how_to:hover {
-  filter: brightness(100%) drop-shadow(0px 0px 10px yellow);
-}
-
-body {
-  background-image: url("images/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow-x: hidden;
 }
 
 #pop-up {
@@ -158,7 +125,6 @@ body {
 }
 
 .title {
-  align-self: center;
   text-align: center;
 }
 
@@ -170,16 +136,6 @@ body {
 #guide {
   align-self: center;
   text-align: center;
-}
-
-#guide button {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 1vw;
-  color: black;
-  background-color: gold;
-  border-radius: 20px;
-  font-weight: bold;
 }
 
 #arrows {

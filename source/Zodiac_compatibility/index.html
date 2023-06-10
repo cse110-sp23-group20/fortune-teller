@@ -1,8 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Zodiac Compatibility Tool</title>
+    <title>Love Compatibility | Envision Your Destiny</title>
+    <meta
+      name="description"
+      content="Discover your perfect match with cutting-edge astrological signs to
+      provide insightful guidance on finding lasting love."
+    />
+    <meta name="theme-color" content="#f1c86c" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="images/icon.png" type="image/x-icon" />
 
     <link rel="stylesheet" href="../common/styles.css" />
     <link rel="stylesheet" href="styles.css" />
@@ -14,12 +21,12 @@
     />
     <script type="module" src="./data/dataArray.js"></script>
     <script src="../common/index.js" type="module"></script>
-    <link rel="icon" href="images/icon.png" type="image/x-icon" />
+    <script src="script.js" type="module"></script>
   </head>
   <body>
-    <h1 class="title">Welcome to the Zodiac Compatibility Tool</h1>
+    <h1 class="title">Love Compatibility</h1>
     <div id="guide">
-      <button id="how_to">How to Use</button>
+      <button class="button" id="how_to">How to Use</button>
     </div>
     <div class="container">
       <div class="wheel_field" id="left_wheel_field">
@@ -47,7 +54,7 @@
       </div>
 
       <div class="middle">
-        <button id="find-out">Find Out!</button>
+        <button class="button" id="find-out">Find Out!</button>
       </div>
 
       <div class="wheel_field" id="right_wheel_field">
@@ -85,7 +92,9 @@
         <p id="pairing_text">This is some sample text for the pop-up box.</p>
       </div>
       <div>
-        <button id="go-back" onclick="location.reload()">Go Back!</button>
+        <button class="button" id="go-back" onclick="location.reload()">
+          Go Back!
+        </button>
       </div>
     </div>
 
@@ -128,7 +137,5 @@
         </ul>
       </div>
     </div>
-
-    <script type="module" src="script.js"></script>
   </body>
 </html>
