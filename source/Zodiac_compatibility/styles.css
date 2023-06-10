@@ -293,6 +293,7 @@ input[type="text"] {
 #how_to {
   font-size: 1vw;
   opacity: 0;
+  pointer-events: none;
 }
 #go-back {
   margin-top: 1vw;
@@ -301,4 +302,5 @@ input[type="text"] {
   margin-top: 5vw;
   font-size: 2vw;
   opacity: 0;
+  pointer-events: none;
 }
