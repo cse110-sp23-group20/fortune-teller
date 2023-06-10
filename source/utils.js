@@ -1,5 +1,3 @@
-// @ts-check
-
 /**
  * @file Utility functions. Conveniently, these functions are good candidates
  * for unit tests.
@@ -52,5 +50,7 @@ export let timeoutId = 0;
  * milliseconds.
  */
 export function wait(delay) {
-  return new Promise((resolve) => setTimeout(resolve, delay));
+  return new Promise((resolve) => {
+    timeoutId = setTimeout(resolve, delay);
+  });
 }

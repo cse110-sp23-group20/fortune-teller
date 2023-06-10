@@ -113,12 +113,44 @@ button,
   font-family: "Enchanted Land", cursive;
   background-color: #f1c86c;
   color: #191a25;
-  padding: 5px 20px;
+  padding: 5px 15px;
   border-radius: 5px;
   font-size: 32px;
+  background-image: linear-gradient(
+    95deg,
+    transparent,
+    transparent,
+    #ed36c9,
+    #6b08d8
+  );
+  background-size: 300%;
+  background-position: left;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 0.5s;
+}
+.button::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: linear-gradient(95deg, #ed36c9, #6b08d8);
+  z-index: -1;
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.5s;
 }
 .button:not(:disabled):hover {
-  background-color: #ebaf3e;
+  background-position: right;
+  color: white;
+  transition: opacity 0.5s, all 0.2s;
+}
+.button:not(:disabled):hover::before {
+  opacity: 1;
+  filter: blur(10px);
 }
 
 .site-nav {

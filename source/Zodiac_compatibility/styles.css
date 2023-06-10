@@ -10,6 +10,7 @@ body {
   background-image: url("images/background.jpg");
   background-size: cover;
   background-position: center;
+  overflow: visible;
   overflow-x: hidden;
 }
 
@@ -70,7 +71,7 @@ option {
   max-height: 100%;
   min-width: 100%;
   min-height: 100%;
-  transition: 0.5s ease;
+  /* transition: 0.5s ease; */
 }
 
 #left_wheel_field {
@@ -175,6 +176,7 @@ input[type="text"] {
 }
 .popup {
   position: relative;
+  z-index: 1;
   margin: 40px;
   max-width: 800px;
   max-height: calc(100% - 80px);
@@ -246,12 +248,12 @@ input[type="text"] {
   transform: translateX(50vw);
   opacity: 0;
 }
-#find-out,
-#how_to {
+.middle,
+#guide {
   transition: opacity 0.5s, visibility 0.5s;
 }
-.remove-wheels #find-out,
-.remove-wheels #how_to {
+.remove-wheels .middle,
+.remove-wheels #guide {
   visibility: hidden;
   opacity: 0;
 }

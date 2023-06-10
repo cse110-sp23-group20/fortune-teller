@@ -51,7 +51,9 @@ async function startCamera() {
   flipCamera = true;
   video.classList.add("flip");
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "environment" },
+    });
     video.srcObject = stream;
     const track = stream.getTracks()[0];
     // Firefox does not support getCapabilities
