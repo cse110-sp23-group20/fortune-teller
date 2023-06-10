@@ -14,7 +14,6 @@ const rightWheel = document.getElementById("right_wheel_img");
 const button = document.getElementById("find-out");
 const how_to = document.getElementById("how_to");
 const help = document.getElementById("help");
-const closeButton = document.getElementById("closeButton");
 const popup = document.getElementById("pop-up");
 const left_arrow = document.getElementById("left_arrow");
 const right_arrow = document.getElementById("right_arrow");
@@ -31,14 +30,15 @@ button.addEventListener("mouseenter", stopRotation);
 button.addEventListener("click", displayResults);
 
 how_to.addEventListener("click", () => {
-  how_to.style.visibility = "hidden";
-  help.style.display = "block";
-  help.style.animation = "fadeIn 1s forwards";
+  help.parentElement.classList.add("open");
 });
-closeButton.addEventListener("click", () => {
-  how_to.style.visibility = "visible";
-  help.style.animation = "fadeOut 1s forwards";
-  help.style.display = "none";
+document.addEventListener("click", (event) => {
+  if (
+    event.target.classList.contains("popup-wrapper") ||
+    event.target.closest(".closeButton")
+  ) {
+    event.target.closest(".popup-wrapper").classList.remove("open");
+  }
 });
 
 // Set initial rotation angle of the two zodiac wheels
