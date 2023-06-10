@@ -179,9 +179,11 @@ body {
 .tab-content {
   background-color: #3d3c5954;
   backdrop-filter: blur(10px);
-  padding: 30px;
+  padding: 29px;
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: none;
 }
 .tab-content h3 {
   color: var(--color);
@@ -227,17 +229,13 @@ body {
   backdrop-filter: blur(15px);
   animation: mystic-pulse 4s infinite alternate;
   z-index: -1;
-  border-width: 1px;
-  border-style: solid;
 }
 @keyframes mystic-pulse {
   from {
-    box-shadow: 0 0 40px #ff00dd61;
-    border-color: #ff00dd8b;
+    box-shadow: 0 0 40px #ff00dd61, 0 0 0 1px #ff00dd8b;
   }
   to {
-    box-shadow: 0 0 40px #ff00dd;
-    border-color: #ff00dd;
+    box-shadow: 0 0 40px #ff00dd, 0 0 0 1px #ff00dd;
   }
 }
 #webcam-video {
@@ -272,6 +270,7 @@ body {
   border-radius: 50px;
   color: white;
   background-color: rgba(156, 156, 156, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(5px);
   transition: opacity 0.5s;
 }
@@ -284,6 +283,7 @@ body {
   position: absolute;
   top: 100%;
   background-color: rgba(255, 0, 51, 0.3);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(15px);
   width: 300px;
   left: 50%;

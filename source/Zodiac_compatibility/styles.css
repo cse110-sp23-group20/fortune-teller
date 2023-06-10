@@ -1,20 +1,24 @@
 * {
   color: white;
-  font-family: "Oswald", sans-serif;
 }
 html,
 body {
   height: 100%;
   width: 100%;
   overflow: auto;
+  background-image: url("images/background.jpg");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
 }
 
 .container {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   justify-content: center;
   align-content: center;
+  margin-top: -25px;
 }
 
 .container > * {
@@ -29,15 +33,8 @@ body {
   justify-items: center;
 }
 
-.relationship {
-  grid-area: 1 / 2 / 6 / 7;
-  text-align: center;
-  background-color: transparent;
-  z-index: 0;
-}
-
 select:hover {
-  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
+  filter: brightness(100%) drop-shadow(0px 0px 10px white);
 }
 
 option {
@@ -47,7 +44,6 @@ option {
 }
 
 .wheel_img {
-  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
   max-width: 100%;
   max-height: 100%;
   min-width: 100%;
@@ -55,16 +51,12 @@ option {
   transition: 0.5s ease;
 }
 
-.wheel_img:hover {
-  filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 242, 0));
-}
-
 #left_wheel_field {
-  grid-area: 2 / 1 / 5 / 4;
+  grid-area: 1 / 1 / 5 / 4;
 }
 
 #right_wheel_field {
-  grid-area: 2 / 5 / 5 / 8;
+  grid-area: 1 / 5 / 5 / 8;
 }
 
 input {
@@ -72,63 +64,128 @@ input {
 }
 
 .bday_input {
-  font-family: "Oswald", sans-serif;
-  ccolor: white;
+  color: white;
   z-index: 1;
   align-content: center;
   justify-self: stretch;
   display: flex; /* Enable flexbox */
   justify-content: center; /* Center horizontally */
   align-items: center; /* Center vertically */
-  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
-  font-size: 0.8em;
+  /** filter: brightness(10000%) drop-shadow(0px 0px 10px white); **/
+  font-size: 1.25vw;
 }
 
-.bday_input:hover {
-  filter: brightness(10000%) drop-shadow(0px 0px 10px rgb(255, 251, 0));
+#birthday_label,
+#left_birthday,
+#right_birthday {
+  display: block;
+  text-align: center;
 }
 #left_bday_input {
-  grid-area: 3 / 2 / 4 / 3;
+  grid-area: 2 / 2 / 2 / 3;
 }
 
 #right_bday_input {
-  grid-area: 3 / 6 / 4 / 7;
+  grid-area: 2 / 6 / 2 / 7;
 }
 
 .middle {
-  grid-area: 3 / 4 / 4 / 5;
+  grid-area: 3 / 4 / 5 / 5;
+  text-align: center;
+}
+
+input[type="text"] {
+  border: none;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  font-size: 1.5vw;
+  pointer-events: none;
+}
+
+#pop-up {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+#pop-up #text {
+  background-color: #3d3c59;
+  border-radius: 20px;
+  padding: 1vh;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 0 white;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 25px;
+  font-size: 1vw;
+}
+
+.title {
+  text-align: center;
+}
+
+.title {
+  font-size: 6vw;
+  margin: 2vh;
+  margin-bottom: 0vh;
+}
+#guide {
   align-self: center;
   text-align: center;
 }
 
-input[type="date"] {
-  font-family: "Oswald", sans-serif;
-  border: none;
-  color: white;
-  background-color: rgba(0, 0, 0, 0);
-  font-size: 2vw;
+#arrows {
+  grid-area: 2/ 4 / 2 / 4;
+  display: grid;
+  place-items: center;
+  grid-template-columns: repeat(3, 1fr);
 }
-
-#find-out {
-  padding: 10px 20px;
-  border-radius: 20px;
-  font-size: 2vw;
-  border-color: white;
-  background-color: transparent;
-  color: white;
+#left_arrow {
+  width: 4vw;
+  grid-area: 1 / 1;
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
-  font-family: "Oswald", sans-serif;
+}
+#right_arrow {
+  width: 4vw;
+  grid-area: 1 / 3;
+  filter: brightness(10000%) drop-shadow(0px 0px 10px white);
 }
 
-#find-out:hover {
-  filter: brightness(10000%) drop-shadow(0px 0px 10px yellow);
+#help {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
 }
 
-body {
-  background-image: url("images/background.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  overflow: hidden;
+#help #text {
+  background-color: #3d3c59;
+  border-radius: 20px;
+  padding: 1vh;
+  color: white;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  box-shadow: 0 0 20px 0 white;
+  padding-left: 50px;
+  padding-right: 50px;
+  padding-bottom: 25px;
+  font-size: 1vw;
+}
+#help #text h2 {
+  text-align: center;
+}
+
+#closeButton {
+  position: absolute;
+  top: 1vw;
+  right: 1vw;
+  width: 1.5vw;
 }
 
 @keyframes slideOffLeft {
@@ -163,31 +220,6 @@ body {
   to {
     opacity: 0;
   }
-}
-
-#pop-up {
-  display: none;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: white;
-  width: 60%;
-  height: 50%;
-  border-radius: 20px;
-  text-align: center;
-}
-
-#go-back {
-  display: block;
-  position: absolute;
-  top: 120%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: #f1c86c;
-  width: auto;
-  border-radius: 20px;
-  font-size: 3vw;
 }
 
 @keyframes fadeIn {

@@ -1,0 +1,24 @@
+{
+  "plugins": [],
+  "recurseDepth": 10,
+  "opts": {
+    "recurse": true
+  },
+  "source": {
+    "include": ["source"],
+    "includePattern": ".+\\.js(doc|x)?$",
+    "excludePattern": "node_modules"
+  },
+  "sourceType": "module",
+  "tags": {
+    "allowUnknownTags": true,
+    "dictionaries": ["jsdoc", "closure"]
+  },
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "includeDate": false
+    }
+  }
+}
