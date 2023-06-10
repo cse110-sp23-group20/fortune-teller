@@ -56,9 +56,15 @@ option {
 #left_wheel_field {
   grid-area: 1 / 1 / 5 / 4;
 }
+#left_wheel_img {
+  opacity: 0;
+}
 
 #right_wheel_field {
   grid-area: 1 / 5 / 5 / 8;
+}
+#right_wheel_img {
+  opacity: 0;
 }
 
 input {

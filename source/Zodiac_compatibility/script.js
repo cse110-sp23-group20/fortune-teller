@@ -164,6 +164,8 @@ document.addEventListener("DOMContentLoaded", function () {
   setTimeout(() => {
     leftWheel.style.animation = "";
     rightWheel.style.animation = "";
+    leftWheel.style.opacity = "1";
+    rightWheel.style.opacity = "1";
   }, 1250);
   left_bday.style.animation = "appear 1s 1.25s forwards";
   right_bday.style.animation = "appear 1s 1.25s forwards";
