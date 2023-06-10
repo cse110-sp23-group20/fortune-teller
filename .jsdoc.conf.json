@@ -5,7 +5,7 @@
     "recurse": true
   },
   "source": {
-    "include": ["src"],
+    "include": ["source"],
     "includePattern": ".+\\.js(doc|x)?$",
     "excludePattern": "node_modules"
   },
@@ -16,6 +16,9 @@
   },
   "templates": {
     "cleverLinks": false,
-    "monospaceLinks": false
+    "monospaceLinks": false,
+    "default": {
+      "includeDate": false
+    }
   }
 }
