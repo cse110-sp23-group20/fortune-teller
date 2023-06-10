@@ -77,15 +77,9 @@ option {
 #left_wheel_field {
   grid-area: 2 / 1 / 5 / 4;
 }
-#left_wheel_img {
-  opacity: 0;
-}
 
 #right_wheel_field {
   grid-area: 2 / 5 / 5 / 8;
-}
-#right_wheel_img {
-  opacity: 0;
 }
 
 input {
@@ -111,12 +105,10 @@ input {
 }
 #left_bday_input {
   grid-area: 3 / 2 / 3 / 3;
-  opacity: 0;
 }
 
 #right_bday_input {
   grid-area: 3 / 6 / 3 / 7;
-  opacity: 0;
 }
 
 .middle {
@@ -138,6 +130,7 @@ input[type="text"] {
 #guide {
   align-self: center;
   text-align: center;
+  margin-top: 20px;
 }
 
 #arrows {
@@ -150,13 +143,11 @@ input[type="text"] {
   width: 2.75vw;
   grid-area: 1 / 1;
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
-  opacity: 0;
 }
 #right_arrow {
   width: 2.75vw;
   grid-area: 1 / 3;
   filter: brightness(10000%) drop-shadow(0px 0px 10px white);
-  opacity: 0;
 }
 
 .popup-wrapper {
@@ -235,6 +226,31 @@ input[type="text"] {
   display: block;
 }
 
+#left_wheel_field {
+  animation: slideOnLeft 1.25s;
+}
+#right_wheel_field {
+  animation: slideOnRight 1.25s;
+}
+#left_bday_input {
+  animation: appear 1s 1.25s backwards;
+}
+#right_bday_input {
+  animation: appear 1s 1.25s backwards;
+}
+#left_arrow {
+  animation: appear 1s 1.75s backwards;
+}
+#right_arrow {
+  animation: appear 1s 1.75s backwards;
+}
+#find-out {
+  animation: appear 1s 2.25s backwards;
+}
+#how_to {
+  animation: appear 1s 2.75s backwards;
+}
+
 #left_wheel_field,
 #right_wheel_field,
 #left_arrow,
@@ -263,21 +279,6 @@ input[type="text"] {
 .remove-wheels #guide {
   visibility: hidden;
   opacity: 0;
-}
-
-#how_to {
-  font-size: 1vw;
-  opacity: 0;
-  pointer-events: none;
-}
-#go-back {
-  margin-top: 1vw;
-}
-#find-out {
-  margin-top: 5vw;
-  font-size: 2vw;
-  opacity: 0;
-  pointer-events: none;
 }
 
 @keyframes slideOnLeft {
@@ -318,10 +319,12 @@ input[type="text"] {
 @keyframes appear {
   from {
     opacity: 0;
+    pointer-events: none;
   }
 
   to {
     opacity: 1;
+    pointer-events: none;
   }
 }
 @keyframes slideOffRight {
