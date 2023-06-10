@@ -1,6 +1,5 @@
 // @ts-check
 
-import { mod } from "../utils.js";
 import {
   zodiacAngleMappingLeft,
   zodiacAngleMappingRight,
@@ -82,8 +81,8 @@ export function determineDateRangeRight(angle) {
  * @returns {Array} An array containing the zodiac sign pair.
  */
 export function determinePairing(angleLeft, angleRight) {
-  angleLeft = mod(angleLeft, 360);
-  angleRight = mod(angleRight, 360);
+  angleLeft = angleLeft % 360;
+  angleRight = angleRight% 360;
   const leftMapping = getMappingLeft(angleLeft);
   const rightMapping = getMappingRight(angleRight);
   return [leftMapping, rightMapping];
