@@ -10,7 +10,7 @@ describe("Basic user flow for Website", () => {
   it("Make sure button is enabled", async () => {
     console.log("Checking to make sure button is enabled...");
     let buttonDisabled;
-    const button = await page.$("button");
+    const button = await page.$("#fortune-button");
     let booleanValue = await button.getProperty("disabled");
     buttonDisabled = await booleanValue.jsonValue();
     expect(buttonDisabled).toBe(false);
@@ -20,7 +20,7 @@ describe("Basic user flow for Website", () => {
   it("Make sure button disables", async () => {
     console.log("Checking to make sure button disables when clicked...");
     let buttonDisabled;
-    const button = await page.$("button");
+    const button = await page.$("#fortune-button");
     await button.click();
     let booleanValue = await button.getProperty("disabled");
     buttonDisabled = await booleanValue.jsonValue();

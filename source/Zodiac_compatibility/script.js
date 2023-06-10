@@ -18,8 +18,8 @@ const help = document.getElementById("help");
 const popup = document.getElementById("pop-up");
 
 // add the necessary event listeners for the wheels
-leftWheel.addEventListener("wheel", rotateleftWheel);
-rightWheel.addEventListener("wheel", rotaterightWheel);
+leftWheel.addEventListener("wheel", rotateLeftWheel);
+rightWheel.addEventListener("wheel", rotateRightWheel);
 leftWheel.addEventListener("mouseout", stopRotation);
 rightWheel.addEventListener("mouseout", stopRotation);
 // add all the necessary event listeners for the buttons
@@ -50,7 +50,7 @@ let rightWheelAngle = 0;
  * Rotates the left wheel based on the mouse wheel event.
  * @param {WheelEvent} event - The mouse wheel event.
  */
-function rotateleftWheel(event) {
+function rotateLeftWheel(event) {
   const dateInput = document.getElementById("left_birthday");
 
   // Determine the direction of scrolling
@@ -60,10 +60,9 @@ function rotateleftWheel(event) {
   leftWheelAngle += direction * 2;
   // Apply the rotation transform to the wheel element
   leftWheel.style.transform = `rotate(${leftWheelAngle}deg)`;
-  dateInput.type = "text";
+
   dateInput.value = determineDateRangeLeft(roundAngle(leftWheelAngle));
-  dateInput.style.textAlign = "center";
-  dateInput.style.background = "transparent";
+
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
@@ -71,7 +70,7 @@ function rotateleftWheel(event) {
  * Rotates the right wheel based on the mouse wheel event.
  * @param {WheelEvent} event - The mouse wheel event.
  */
-function rotaterightWheel(event) {
+function rotateRightWheel(event) {
   const dateInput = document.getElementById("right_birthday");
   // Determine the direction of scrolling
   const direction = Math.sign(event.deltaY);
@@ -81,10 +80,8 @@ function rotaterightWheel(event) {
   // Apply the rotation transform to the wheel element
   rightWheel.style.transform = `rotate(${rightWheelAngle}deg)`;
 
-  dateInput.type = "text";
   dateInput.value = determineDateRangeRight(roundAngle(rightWheelAngle));
-  dateInput.style.textAlign = "center";
-  dateInput.style.background = "transparent";
+
   // Prevent the default scrolling behavior
   event.preventDefault();
 }
@@ -147,3 +144,29 @@ async function displayResults() {
   const pairing_text = popup.querySelector("#pairing_text");
   pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const leftWheel = document.getElementById("left_wheel_img");
+  const rightWheel = document.getElementById("right_wheel_img");
+  leftWheel.style.animation = "slideOnLeft 1.25s forwards";
+  rightWheel.style.animation = "slideOnRight 1.25s forwards";
+
+  setTimeout(() => {
+    leftWheel.style.animation = "";
+    rightWheel.style.animation = "";
+    leftWheel.style.opacity = "1";
+    rightWheel.style.opacity = "1";
+  }, 1250);
+  left_bday.style.animation = "appear 1s 1.25s forwards";
+  right_bday.style.animation = "appear 1s 1.25s forwards";
+  left_arrow.style.animation = "appear 1s 2s forwards";
+  right_arrow.style.animation = "appear 1s 2s forwards";
+  button.style.animation = "appear 1s 2.5s forwards";
+  setTimeout(() => {
+    button.style.pointerEvents = "auto";
+  }, 3500);
+  how_to.style.animation = "appear 1s 3.25s forwards";
+  setTimeout(() => {
+    how_to.style.pointerEvents = "auto";
+  }, 4250);
+});

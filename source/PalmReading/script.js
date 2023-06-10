@@ -9,11 +9,11 @@ export function handleFortune() {
 }
 
 const tabLabels = document.querySelectorAll('input[name="tab"]');
-const tabContents = document.querySelectorAll('.tab-content');
+const tabContents = document.querySelectorAll(".tab-content");
 
-tabLabels.forEach(function(label){
-  label.addEventListener('change',function(){
-    tabContents.forEach(function(content){
+tabLabels.forEach(function (label) {
+  label.addEventListener("change", function () {
+    tabContents.forEach(function (content) {
       content.hidden = true;
     });
 
