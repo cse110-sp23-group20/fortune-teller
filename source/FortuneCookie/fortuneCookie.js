@@ -1,4 +1,4 @@
-import { pick } from "../utils.js";
+import { pick, timeoutId, wait } from "../utils.js";
 import { fortunes } from "./fortunes.js";
 
 let previousFortune = "";
@@ -52,7 +52,7 @@ resetButton.addEventListener("click", () => {
   cancelButton.parentElement.classList.add("animating-new-cookie");
   fallFortune();
   fallNewCookie();
-  timeoutId = setTimeout(handleCookieReady, 2000);
+  wait(2000).then(handleCookieReady);
 });
 
 /**
@@ -143,13 +143,11 @@ function fallNewCookie() {
   cookieFalling = true;
 }
 
-let timeoutId;
-
 /**
  * When the user clicks the button, disables it so they cannot click the button
  * in quick succession and cause audio issues
  */
-document.body.addEventListener("click", function (event) {
+document.body.addEventListener("click", async function (event) {
   if (event.target.closest(".fortune-button")) {
     if (fortuneButton.disabled) {
       return;
@@ -158,41 +156,50 @@ document.body.addEventListener("click", function (event) {
     cancelButton.parentElement.classList.add("animating");
     cancelButton.parentElement.classList.remove("animating-new-cookie");
     disableButton();
-    timeoutId = setTimeout(() => {
-      fortuneAudioCrack.currentTime = 0;
-      fortuneAudioCrack.play();
+
+    await wait(800);
+
+    fortuneAudioCrack.currentTime = 0;
+    fortuneAudioCrack.play();
+    // Only make the cookie break when the audio is actually crunching
+    // (this takes into account audio loading time)
+    await new Promise((resolve) => {
       fortuneAudioCrack.ontimeupdate = () => {
         if (fortuneAudioCrack.currentTime > 0.3) {
-          // Only make the cookie break when the audio is actually crunching
-          // (this takes into account audio loading time)
           fortuneAudioCrack.ontimeupdate = null;
-          cookieWrapper.classList.add("cracked");
-          fortuneText.textContent = getRandomFortune();
-          fallLeft();
-
-          timeoutId = setTimeout(() => {
-            fortunePaper.classList.add("pull-out");
-
-            fortunePaper.onanimationend = () => {
-              fortunePaper.onanimationend = null;
-              fortunePaper.classList.remove("pull-out");
-              fortunePaper.classList.add("reveal");
-
-              if (voiceSelect.value !== "none") {
-                speakFortune(fortuneText.textContent);
-              } else {
-                timeoutId = setTimeout(handleFortuneEnd, 1000);
-              }
-            };
-
-            timeoutId = setTimeout(() => {
-              cookieLeft.style.display = null;
-              fallRight();
-            }, 1500);
-          }, 1000);
+          resolve();
         }
       };
-    }, 800);
+    });
+
+    cookieWrapper.classList.add("cracked");
+    fortuneText.textContent = getRandomFortune();
+    fallLeft();
+
+    await wait(1000);
+
+    fortunePaper.classList.add("pull-out");
+
+    wait(1500).then(() => {
+      cookieLeft.style.display = null;
+      fallRight();
+    });
+
+    await new Promise((resolve) => {
+      fortunePaper.onanimationend = () => {
+        fortunePaper.onanimationend = null;
+        resolve();
+      };
+    });
+
+    fortunePaper.classList.remove("pull-out");
+    fortunePaper.classList.add("reveal");
+
+    if (voiceSelect.value !== "none") {
+      speakFortune(fortuneText.textContent);
+    } else {
+      wait(1000).then(handleFortuneEnd);
+    }
   }
 });
 

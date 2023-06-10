@@ -28,3 +28,29 @@ export function pick(options) {
 export function mod(a, b) {
   return ((a % b) + b) % b;
 }
+
+/**
+ * Stores the ID of the last `setTimeout` call by `wait`, so it can be cancelled
+ * by `clearTimeout`.
+ *
+ * @example
+ * wait(1000).then(() => console.log("This will never run!"));
+ * clearTimeout(timeoutId);
+ *
+ * @type {number}
+ */
+export let timeoutId = 0;
+
+/**
+ * A promise-ified version of `setTimeout`: returns a new `Promise` that
+ * resolves after `delay` milliseconds.
+ *
+ * If the timeout is cancelled, the `Promise` will never resolve.
+ *
+ * @param {number} delay - The time to wait for in milliseconds.
+ * @returns {Promise<void>} A new `Promise` that resolves in `delay`
+ * milliseconds.
+ */
+export function wait(delay) {
+  return new Promise((resolve) => setTimeout(resolve, delay));
+}

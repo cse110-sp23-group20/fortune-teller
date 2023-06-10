@@ -1,3 +1,4 @@
+import { wait } from "../utils.js";
 import {
   determineDateRangeLeft,
   determineDateRangeRight,
@@ -131,7 +132,7 @@ function stopRotation() {
 /**
  * Displays the results of the pairing and animates the UI elements.
  */
-function displayResults() {
+async function displayResults() {
   const pair = determinePairing(leftWheelAngle, rightWheelAngle);
   // slide off or fade all of the elements on the page to make room for results popup
   document.body.classList.add("remove-wheels");
@@ -139,11 +140,10 @@ function displayResults() {
   /**
    * Displays the popup with the pairing information after a delay.
    */
-  setTimeout(() => {
-    popup.parentElement.classList.add("open");
-    const pairingHeader = popup.querySelector("#pairing");
-    pairingHeader.textContent = pair[0] + " and " + pair[1];
-    const pairing_text = popup.querySelector("#pairing_text");
-    pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
-  }, 200);
+  await wait(200);
+  popup.parentElement.classList.add("open");
+  const pairingHeader = popup.querySelector("#pairing");
+  pairingHeader.textContent = pair[0] + " and " + pair[1];
+  const pairing_text = popup.querySelector("#pairing_text");
+  pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
 }
