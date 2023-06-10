@@ -86,22 +86,22 @@
       </div>
     </div>
 
-    <div id="pop-up">
-      <div id="text">
-        <h2 id="pairing">Pop-up Box</h2>
-        <p id="pairing_text">This is some sample text for the pop-up box.</p>
-      </div>
-      <div>
-        <button class="button" id="go-back" onclick="location.reload()">
-          Go Back!
-        </button>
+    <div class="popup-wrapper">
+      <div class="popup" id="pop-up">
+        <div id="text">
+          <h2 id="pairing">Pop-up Box</h2>
+          <p id="pairing_text">This is some sample text for the pop-up box.</p>
+        </div>
+        <div>
+          <button class="button close-button" id="go-back">Back</button>
+        </div>
       </div>
     </div>
 
-    <div class="popup-wrapper open">
+    <div class="popup-wrapper">
       <div class="popup" id="help">
         <div id="text">
-          <button class="closeButton">
+          <button class="close-button" id="closeButton">
             <img src="./images/close.png" alt="close" />
           </button>
           <h2 id="pairing">User Guide</h2>
@@ -134,8 +134,8 @@
               compatibility between the selected zodiac signs.
             </li>
             <li>
-              From there, you can then press the "Go Back" button to return to
-              the Zodiac Compatibility site.
+              From there, you can then press the "Back" button to return to the
+              Zodiac Compatibility site.
             </li>
           </ul>
         </div>

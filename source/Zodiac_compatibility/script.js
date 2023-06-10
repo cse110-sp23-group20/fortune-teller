@@ -15,10 +15,6 @@ const button = document.getElementById("find-out");
 const how_to = document.getElementById("how_to");
 const help = document.getElementById("help");
 const popup = document.getElementById("pop-up");
-const left_arrow = document.getElementById("left_arrow");
-const right_arrow = document.getElementById("right_arrow");
-const left_bday = document.getElementById("left_bday_input");
-const right_bday = document.getElementById("right_bday_input");
 
 // add the necessary event listeners for the wheels
 leftWheel.addEventListener("wheel", rotateleftWheel);
@@ -35,9 +31,13 @@ how_to.addEventListener("click", () => {
 document.addEventListener("click", (event) => {
   if (
     event.target.classList.contains("popup-wrapper") ||
-    event.target.closest(".closeButton")
+    event.target.closest(".close-button")
   ) {
-    event.target.closest(".popup-wrapper").classList.remove("open");
+    const popupWrapper = event.target.closest(".popup-wrapper");
+    popupWrapper.classList.remove("open");
+    if (popupWrapper === popup.parentElement) {
+      document.body.classList.remove("remove-wheels");
+    }
   }
 });
 
@@ -134,26 +134,16 @@ function stopRotation() {
 function displayResults() {
   const pair = determinePairing(leftWheelAngle, rightWheelAngle);
   // slide off or fade all of the elements on the page to make room for results popup
-  leftWheel.style.animation = "slideOffLeft 1s forwards";
-  rightWheel.style.animation = "slideOffRight 1s forwards";
-  left_arrow.style.animation = "slideOffLeft 0.1s forwards";
-  right_arrow.style.animation = "slideOffRight 0.1s forwards";
-  left_bday.style.animation = "slideOffLeft 0.4s forwards";
-  right_bday.style.animation = "slideOffRight 0.4s forwards";
-  button.style.animation = "fadeOut 0.5s forwards";
-  button.style.display = "none";
-  how_to.style.animation = "fadeOut 0.5s forwards";
-  how_to.style.display = "none";
+  document.body.classList.add("remove-wheels");
 
   /**
    * Displays the popup with the pairing information after a delay.
    */
   setTimeout(() => {
-    popup.style.display = "block";
-    popup.style.animation = "fadeIn 2s forwards";
+    popup.parentElement.classList.add("open");
     const pairingHeader = popup.querySelector("#pairing");
     pairingHeader.textContent = pair[0] + " and " + pair[1];
     const pairing_text = popup.querySelector("#pairing_text");
     pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
-  }, 2);
+  }, 200);
 }
