@@ -12,24 +12,16 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap"
       rel="stylesheet"
     />
+    <script type="module" src="./data/dataArray.js"></script>
     <script src="../common/index.js" type="module"></script>
     <link rel="icon" href="images/icon.png" type="image/x-icon" />
   </head>
   <body>
-    <div id="title">
-      <h1>Welcome to the Zodiac Compatibility Tool</h1>
+    <h1 class="title">Welcome to the Zodiac Compatibility Tool</h1>
+    <div id="guide">
+      <button id="how_to">How to Use</button>
     </div>
     <div class="container">
-      <div class="relationship">
-        <form>
-          <label for="relationship">Relationship Type:</label>
-          <select name="relationship" id="relationship_selector">
-            <option value="romantic">Romantic</option>
-            <option value="friendship">Friendship</option>
-            <option value="professional">Professional</option></select
-          ><br />
-        </form>
-      </div>
       <div class="wheel_field" id="left_wheel_field">
         <div class="wheel" id="left_wheel">
           <img
@@ -97,6 +89,46 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <div id="help">
+      <div id="text">
+        <img id="closeButton" src="./images/close.png" alt="close" />
+        <h2 id="pairing">User Guide</h2>
+        <h3>Step 1: Selecting Zodiac Pairs</h3>
+        <ul>
+          <li>
+            First, move your mouse cursor over the left wheel and begin
+            scrolling to rotate the wheel to select your zodiac sign as
+            indicated by where the selector arrow is pointing.
+          </li>
+          <li>
+            Repeat the same action on the right wheel to select your partner's
+            zodiac sign.
+          </li>
+        </ul>
+        <h3>Step 2: Confirm Selection and Calculate Compatibility</h3>
+        <ul>
+          <li>
+            After selecting you and your partner's zodiac sign, press the "Find
+            Out" button located near the bottom of the page.
+          </li>
+          <li>
+            Wait for a moment as the compatibility calculation is processed.
+          </li>
+        </ul>
+        <h3>Step 3: Interpret the Compatibility Results</h3>
+        <ul>
+          <li>
+            The compatibility results will provide insights into the romantic
+            compatibility between the selected zodiac signs.
+          </li>
+          <li>
+            From there, you can then press the "Go Back" button to return to the
+            Zodiac Compatibility site.
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
   </body>
 </html>
