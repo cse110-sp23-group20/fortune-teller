@@ -26,6 +26,9 @@ body {
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
   background-color: #020617;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: white;
   margin: 0;
 }
@@ -113,7 +116,7 @@ button,
   font-family: "Enchanted Land", cursive;
   background-color: #f1c86c;
   color: #191a25;
-  padding: 5px 15px;
+  padding: 0.15em 0.5em;
   border-radius: 5px;
   font-size: 32px;
   background-image: linear-gradient(

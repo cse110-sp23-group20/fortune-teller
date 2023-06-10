@@ -2,9 +2,6 @@
 
 body {
   background-image: url("Images/Background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
 }

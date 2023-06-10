@@ -2,8 +2,6 @@
 body {
   /* palm reading background image, two small palms with symbols, mystical, celestial, stars and nebulae, dark blue and purple */
   background-image: url("./images/background.png");
-  background-size: cover;
-  background-position: center;
   color: white;
   display: flex;
   justify-content: center;
