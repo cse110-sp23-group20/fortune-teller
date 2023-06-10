@@ -1,20 +1,20 @@
 {
   "env": {
     "browser": true,
-    "es2021": true
+    "es2021": true,
+    "jest": true
+  },
+  "globals": {
+    "page": true,
+    "browser": true,
+    "context": true,
+    "puppeteerConfig": true,
+    "jestPuppeteer": true
   },
   "extends": ["eslint:recommended", "prettier"],
   "parserOptions": {
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "ignorePatterns": ["/JSDOCS/scripts"],
-  "overrides": [
-    {
-      "files": ["*.test.js"],
-      "rules": {
-        "no-undef": "off"
-      }
-    }
-  ]
+  "ignorePatterns": ["/JSDOCS/scripts"]
 }
