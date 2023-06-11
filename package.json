@@ -23,6 +23,9 @@
       "^.+\\.jsx?$": "babel-jest"
     },
     "preset": "jest-puppeteer",
-    "verbose": true
+    "verbose": true,
+    "testPathIgnorePatterns": [
+      "/__tests__/consts.js"
+    ]
   }
 }

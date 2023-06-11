@@ -1,3 +1,4 @@
+import { wait } from "../utils.js";
 import { handleFortune } from "./script.js";
 
 const webcamWrapper = document.getElementById("webcam-wrapper");
@@ -50,7 +51,9 @@ async function startCamera() {
   flipCamera = true;
   video.classList.add("flip");
   try {
-    const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "environment" },
+    });
     video.srcObject = stream;
     const track = stream.getTracks()[0];
     // Firefox does not support getCapabilities
@@ -66,48 +69,43 @@ async function startCamera() {
   }
 }
 requestBtn.addEventListener("click", startCamera);
-video.addEventListener("loadedmetadata", () => {
+video.addEventListener("loadedmetadata", async () => {
   video.play();
   video.classList.add("video-on");
   ecgGraph.classList.add("ecg-active");
   ecgHistory.splice(0, ecgHistory.length);
 
-  setTimeout(() => {
-    setInstructions("Please hold your hand over your camera.");
-  }, 500);
-  setTimeout(() => {
-    frameId = 0;
-    paintEcg();
-    setInstructions("Heartbeat detected.");
-  }, 3000);
-  setTimeout(() => {
-    paintEcg();
-    setInstructions("Keep your hand steady.");
-  }, 6000);
-  setTimeout(() => {
-    video.pause();
-    const size = Math.min(video.videoWidth, video.videoHeight);
-    result.width = size;
-    result.height = size;
-    if (flipCamera) {
-      context.translate(size, 0);
-      context.scale(-1, 1);
-    }
-    if (video.videoWidth > video.videoHeight) {
-      context.drawImage(video, -(video.videoWidth - video.videoHeight) / 2, 0);
-    } else {
-      context.drawImage(video, 0, -(video.videoHeight - video.videoWidth) / 2);
-    }
-    video.srcObject.getTracks()[0].stop();
-    window.cancelAnimationFrame(frameId);
-    frameId = null;
-    video.classList.remove("video-on");
-    ecgGraph.classList.remove("ecg-active");
-    setInstructions("");
-    readAnother.style.display = "block";
-    handleFortune();
-    document.body.classList.add("show-results");
-  }, 10000);
+  await wait(500);
+  setInstructions("Please hold your hand over your camera.");
+  await wait(2500);
+  frameId = 0;
+  paintEcg();
+  setInstructions("Heartbeat detected.");
+  await wait(3000);
+  setInstructions("Keep your hand steady.");
+  await wait(4000);
+  video.pause();
+  const size = Math.min(video.videoWidth, video.videoHeight);
+  result.width = size;
+  result.height = size;
+  if (flipCamera) {
+    context.translate(size, 0);
+    context.scale(-1, 1);
+  }
+  if (video.videoWidth > video.videoHeight) {
+    context.drawImage(video, -(video.videoWidth - video.videoHeight) / 2, 0);
+  } else {
+    context.drawImage(video, 0, -(video.videoHeight - video.videoWidth) / 2);
+  }
+  video.srcObject.getTracks()[0].stop();
+  window.cancelAnimationFrame(frameId);
+  frameId = null;
+  video.classList.remove("video-on");
+  ecgGraph.classList.remove("ecg-active");
+  setInstructions("");
+  readAnother.style.display = "block";
+  handleFortune();
+  document.body.classList.add("show-results");
 });
 readAnother.addEventListener("click", startCamera);
 

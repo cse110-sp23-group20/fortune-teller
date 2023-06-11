@@ -1,9 +1,9 @@
+import { BASE } from "./consts.js";
+
 describe("Basic user flow for Website", () => {
   // First, visit the fortune cookie website
   beforeAll(async () => {
-    await page.goto(
-      "https://cse110-sp23-group20.github.io/fortune-teller/source/FortuneCookie/"
-    );
+    await page.goto(`${BASE}/source/FortuneCookie/`);
   });
 
   // Check to make sure that fortune button is enabled when page loads

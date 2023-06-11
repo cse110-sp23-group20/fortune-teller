@@ -8,6 +8,8 @@
 :before,
 :after {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-overflow-scrolling: touch;
 }
 
 :root {
@@ -24,6 +26,9 @@ body {
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
     "Noto Color Emoji";
   background-color: #020617;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   color: white;
   margin: 0;
 }
@@ -68,7 +73,6 @@ button,
 }
 :disabled {
   cursor: default;
-  opacity: 0.5;
 }
 
 @keyframes fade-in {
@@ -92,6 +96,8 @@ button,
   color: transparent;
   background-image: linear-gradient(95deg, white, #f4dda7, white);
   text-shadow: 0 0 20px #f1c96c9f;
+  line-height: 0.6;
+  padding: 15px 0;
 }
 @keyframes shimmer {
   from {
@@ -110,12 +116,44 @@ button,
   font-family: "Enchanted Land", cursive;
   background-color: #f1c86c;
   color: #191a25;
-  padding: 5px 20px;
+  padding: 0.15em 0.5em;
   border-radius: 5px;
   font-size: 32px;
+  background-image: linear-gradient(
+    95deg,
+    transparent,
+    transparent,
+    #ed36c9,
+    #6b08d8
+  );
+  background-size: 300%;
+  background-position: left;
+  background-repeat: no-repeat;
+  position: relative;
+  transition: all 0.5s;
+}
+.button::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: linear-gradient(95deg, #ed36c9, #6b08d8);
+  z-index: -1;
+  border-radius: 5px;
+  opacity: 0;
+  transition: all 0.5s;
 }
 .button:not(:disabled):hover {
-  background-color: #ebaf3e;
+  background-position: right;
+  color: white;
+  transition: opacity 0.5s, all 0.2s;
+}
+.button:not(:disabled):hover::before {
+  opacity: 1;
+  filter: blur(10px);
 }
 
 .site-nav {
