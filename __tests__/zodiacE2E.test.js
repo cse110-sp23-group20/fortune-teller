@@ -1,6 +1,5 @@
 import { BASE } from "./consts.js";
 
-
 describe("User rotates NO wheels and presses find out", () => {
   // First, visit the zodiac compatibility page
   beforeAll(async () => {
@@ -22,7 +21,6 @@ describe("User rotates NO wheels and presses find out", () => {
   });
 });
 
-
 describe("User rotates LEFT wheel ONLY and presses find out", () => {
   // First, visit the zodiac compatibility page
   beforeAll(async () => {
@@ -37,7 +35,7 @@ describe("User rotates LEFT wheel ONLY and presses find out", () => {
       leftWheelBoundingBox.x + leftWheelBoundingBox.width / 4,
       leftWheelBoundingBox.y + leftWheelBoundingBox.height / 4
     );
-  
+
     await new Promise((resolve) => setTimeout(resolve, 4000));
     // Spin the left wheel
     await page.evaluate(() => {
@@ -47,14 +45,14 @@ describe("User rotates LEFT wheel ONLY and presses find out", () => {
       }
     });
     await new Promise((resolve) => setTimeout(resolve, 2000));
-    
-    // User presses find out button 
+
+    // User presses find out button
     await page.hover("#find-out");
     await new Promise((resolve) => setTimeout(resolve, 1000));
     await page.click("#find-out");
 
-     // Wait for results pop up to be visible
-    await page.waitForSelector("#pop-up", { timeout: 10000 }); 
+    // Wait for results pop up to be visible
+    await page.waitForSelector("#pop-up", { timeout: 10000 });
 
     // Get the text content of an element
     const pairingHeader = await page.$eval(
@@ -74,7 +72,6 @@ describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
   });
 
   it("User rotates RIGHT and RIGHT wheel then clicks find out", async () => {
-
     // Hover over the left wheel
     const leftWheel = await page.$("#left_wheel_img");
     const leftWheelBoundingBox = await leftWheel.boundingBox();
@@ -82,7 +79,7 @@ describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
       leftWheelBoundingBox.x + leftWheelBoundingBox.width / 4,
       leftWheelBoundingBox.y + leftWheelBoundingBox.height / 4
     );
-  
+
     await new Promise((resolve) => setTimeout(resolve, 4000));
     // Spin the left wheel
     await page.evaluate(() => {
@@ -126,5 +123,5 @@ describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
     // Through visual inspection the for loop spins the left wheel to Leo
     // and the right to Aquarius
     expect(pairingHeader).toEqual("Leo and Aquarius");
-  }, 15000); 
+  }, 15000);
 });
