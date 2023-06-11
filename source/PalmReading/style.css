@@ -293,6 +293,11 @@ body {
   stroke-width: 1;
   transition: opacity 0.5s;
 }
+@media (prefers-reduced-motion) {
+  .ecg {
+    display: none;
+  }
+}
 .ecg-active {
   opacity: 1;
   transition-delay: 3.5s;

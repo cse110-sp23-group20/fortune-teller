@@ -12,6 +12,15 @@
   -webkit-overflow-scrolling: touch;
 }
 
+@media (prefers-reduced-motion) {
+  *,
+  :before,
+  :after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 :root {
   color-scheme: dark;
 }

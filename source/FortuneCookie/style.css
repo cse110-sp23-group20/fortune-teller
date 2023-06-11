@@ -236,6 +236,11 @@ li.audio-dropdown {
   background-clip: text;
   animation: reveal-text 1s forwards;
 }
+@media (prefers-reduced-motion) {
+  .reveal p {
+    background-position: right;
+  }
+}
 
 @keyframes reveal-text {
   from {

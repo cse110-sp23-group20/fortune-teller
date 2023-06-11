@@ -51,6 +51,10 @@ function reset(state) {
 }
 
 resetButton.addEventListener("click", () => {
+  if (prefersReducedMotion()) {
+    reset("cookie");
+    return;
+  }
   resetButton.disabled = true;
   cookieButton.classList.remove("hide-cookie");
   cancelButton.parentElement.classList.add("animating");
@@ -165,12 +169,24 @@ function fallNewCookie() {
 }
 
 /**
+ * Determines whether the user has `prefers-reduced-motion` enabled.
+ * @returns {boolean} Whether to reduce motion.
+ */
+function prefersReducedMotion() {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+}
+
+/**
  * When the user clicks the button, disables it so they cannot click the button
  * in quick succession and cause audio issues
  */
 document.body.addEventListener("click", async function (event) {
   if (event.target.closest(".fortune-button")) {
     if (fortuneButton.disabled) {
+      return;
+    }
+    if (prefersReducedMotion()) {
+      reset("fortune");
       return;
     }
     document.body.classList.add("dramatic-mode");
