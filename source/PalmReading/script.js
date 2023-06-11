@@ -88,7 +88,6 @@ export function handleFortune() {
   document.getElementById("life-tab").querySelector("p").innerText = lifeResult;
   document.getElementById("fate-tab").querySelector("p").innerText = fateResult;
   document.getElementById("sun-tab").querySelector("p").innerText = sunResult;
-  console.log("TODO", fortune);
 }
 
 /**
