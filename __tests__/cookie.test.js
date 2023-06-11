@@ -488,25 +488,29 @@ describe("Basic user flow for Website", () => {
     expect(elementHasClass).toBe(true);
   }, 5000);
 
-  // Check to make sure that the speech synthesis is being populated, the correct voices are called by the function
-  // describe("populateVoice", () => {
-  //   test("populate voice options", () => {
-  //     const voices = [
-  //       { name: "Karen", lang: "en-AU", default: false },
-  //       { name: "Eddy", lang: "pt-BR", default: false },
-  //       { name: "Lesya", lang: "uk-UA", default: false },
-  //     ];
-  //     const synthesis = {
-  //       getVoices: jest.fn().mockReturnValue(voices),
-  //     };
-  //     //const option = document.createElement('option');
-  //     const appendchild = jest.spyOn(voiceSelect, "appendChild");
-  //     //document.body.innerHTML=
-  //     //<select></select>;
-  //     populateVoiceList();
-  //     expect(synthesis.getVoices).toHaveBeenCalled();
-  //     expect(appendchild).toHaveBeenCalledTimes(3);
-  //     //expect(voiceSelect.innerHTML).toContain('Karen');
-  //   });
-  // });
+  //Check to make sure that the speech synthesis is being populated, the correct voices are called by the function
+  it("Make sure that the speech synthesis options are working correctly", async() => {
+    console.log("check to make sure that speech synthesis list is working..");
+    //mock voice data
+    const voice = [
+      {name : 'Karen',lang: 'en-AU',default:false}
+    ];
+    window.speechSynthesis.getVoices.mockReturnValue(voice);
+    //call the populatevoicelist function
+    await page.evaluate(window.speechSynthesis,populateVoiceList);
+    await page.waitForSelector('select');
+    const voiceSelect = await page.evaluate(() => ({
+      value: document.querySelector('select').value,
+      childElementCount: document.querySelector('select').childElementCount,
+      options : Array.from(document.querySelector('select').options).map(option => ({
+        textContent: option.textContent,
+        value: option.value,
+      })),
+
+    }));
+    expect(voiceSelect.value).toBe('');
+    expect(voiceSelect.childElementCount).toBe(1);
+
+
+  })
 });
