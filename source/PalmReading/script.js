@@ -1,6 +1,3 @@
-const fortune = document.getElementById("fortune-paragraph");
-// etc
-
 const heads = [
   "Long and straight head line: You possess a logical and analytical mind. You excel in problem-solving and have a practical approach to life.",
   "Short head line: You tend to be impulsive and prefer to make decisions based on intuition rather than careful analysis. You may have a quick wit and enjoy spontaneous experiences.",
