@@ -1,3 +1,23 @@
+// @ts-check
+
+/**
+ * @file Creates a navigation menu that gets added to all pages on the web app,
+ * linking all pages with each other.
+ */
+
+/**
+ * Defines an entry in the navigation menu.
+ * @typedef {object} Link
+ * @property {string} label - The text to show for the link.
+ * @property {string} url - The URL of the page to link to.
+ * @property {string} imageUrl - The URL of the image icon to show next to the
+ * link text.
+ */
+
+/**
+ * The list of entries in the navigation menu.
+ * @type {Link[]}
+ */
 const links = [
   {
     label: "Home",
@@ -23,9 +43,19 @@ const links = [
   },
 ];
 
+/**
+ * The created `<nav>` element that gets prepended to `<body>` containing the
+ * navigation menu.
+ * @type {HTMLElement}
+ */
 const nav = document.createElement("nav");
 nav.className = "site-nav";
 
+/**
+ * The menu icon, which is a focusable element to allow the menu contents to be
+ * tab accessible.
+ * @type {HTMLAnchorElement}
+ */
 const menuButton = document.createElement("a");
 menuButton.className = "site-nav-menu-icon";
 menuButton.tabIndex = 0;

@@ -13,6 +13,12 @@ const background = document.getElementById("background");
 const resetButton = document.getElementById("reset-button");
 const cancelButton = document.getElementById("cancel-animation-btn");
 
+/**
+ * Stops the current animation and resets all animatable parts of the app to the
+ * specified view (`state`).
+ * @param {'fortune' | 'cookie'} state - Whether to set the view to showing the
+ * fortune (`'fortune'`) or the cookie (`'cookie'`).
+ */
 function reset(state) {
   clearTimeout(timeoutId);
   fortuneAudioCrack.ontimeupdate = null;
@@ -43,7 +49,6 @@ function reset(state) {
     cookieButton.disabled = false;
   }
 }
-window.reset = reset; // TEMP
 
 resetButton.addEventListener("click", () => {
   resetButton.disabled = true;
@@ -96,16 +101,23 @@ function disableButton() {
 }
 
 /**
- * Enables button so user can click it
+ * A handler called whenever the animation for opening the fortune cookie ends.
  */
 function handleFortuneEnd() {
   reset("fortune");
 }
 
+/**
+ * A handler called whenever the animation for dropping a new fortune cookie
+ * ends.
+ */
 function handleCookieReady() {
   reset("cookie");
 }
 
+/**
+ * Sets the animation to make the left half of the cookie fall.
+ */
 function fallLeft() {
   elem = cookieLeft;
   x = 0;
@@ -116,6 +128,9 @@ function fallLeft() {
   rotv = -0.05;
   shakeIntensity = 10;
 }
+/**
+ * Sets the animation to make the right half of the cookie fall.
+ */
 function fallRight() {
   elem = cookieButton;
   x = 0;
@@ -126,6 +141,9 @@ function fallRight() {
   rotv = 0.05;
   shakeIntensity = 0;
 }
+/**
+ * Sets the animation to make the fortune paper fall.
+ */
 function fallFortune() {
   elem = fortunePaper;
   x = 0;
@@ -135,6 +153,9 @@ function fallFortune() {
   rot = 0;
   rotv = -0.05;
 }
+/**
+ * Sets the animation to make a new, full fortune cookie fall.
+ */
 function fallNewCookie() {
   cookieLeft.style.transform = null;
   cookieButton.style.transform = null;
@@ -211,15 +232,34 @@ cancelButton.addEventListener("click", () => {
   }
 });
 
-/** in px/ms^2 */
+/**
+ * The acceleration due to "gravity" applied on all falling objects in the
+ * animation, in px/ms^2.
+ * @type {number}
+ */
 const GRAVITY = 0.002;
 let elem, x, y, xv, yv, rot, rotv;
+/**
+ * The decrease in shake intensity, in px/ms.
+ * @type {number}
+ */
 const shakeV = -0.02;
 let shakeIntensity;
 let cookieY, cookieYV;
+/**
+ * Whether to animate a new cookie falling.
+ * @type {boolean}
+ */
 let cookieFalling = false;
 
+/**
+ * The timestamp of the last time `paint` was called.
+ * @type {number}
+ */
 let lastTime = Date.now();
+/**
+ * Draws the next frame of the cookie falling animation.
+ */
 function paint() {
   const now = Date.now();
   const elapsed = Math.min(now - lastTime, 200);
@@ -267,8 +307,20 @@ function paint() {
 }
 paint();
 
+/**
+ * A reference to `window.speechSynthesis`.
+ * @type {SpeechSynthesis}
+ */
 const synth = window.speechSynthesis;
+/**
+ * The voice selection dropdown.
+ * @type {HTMLSelectElement}
+ */
 const voiceSelect = document.querySelector("select");
+/**
+ * A list of voices available by the browser.
+ * @type {SpeechSynthesisVoice[]}
+ */
 let voices = [];
 
 /**

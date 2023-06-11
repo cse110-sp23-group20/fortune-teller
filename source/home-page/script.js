@@ -1,6 +1,9 @@
 import { pick } from "../utils.js";
 
-// Define the randomize function
+/**
+ * Event handler for the "Randomize" button. Clicks a random card to navigate to
+ * the corresponding page.
+ */
 function randomize() {
   // Get all the card containers
   const cardContainers = document.querySelectorAll(".card-container");
@@ -11,8 +14,6 @@ function randomize() {
   // Trigger the click event on the random card container
   randomCardContainer.click();
 }
-
-const cardContainers = document.querySelectorAll(".card-container");
 
 // Get the "Randomize" button element
 const randomizeButton = document.querySelector(".randomize-button");
