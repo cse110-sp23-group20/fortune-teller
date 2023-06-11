@@ -96,7 +96,7 @@ What if the user is in public places like the library or public coffee shop and 
 ## Decision Drivers
 
 - Avoid uncomfortable situations for users
-- Provide users with options 
+- Provide users with options
 
 ## Considered Options
 
@@ -106,7 +106,7 @@ What if the user is in public places like the library or public coffee shop and 
 
 ## Decision Outcome
 
-Chosen option: A checkbox underneath the button. We chose this option because it doesn't interfere with the layout of our website. This will be important for 
+Chosen option: A checkbox underneath the button. We chose this option because it doesn't interfere with the layout of our website. This will be important for
 
 ### Consequences
 
