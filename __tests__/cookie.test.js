@@ -275,7 +275,7 @@ describe("Basic user flow for Website", () => {
       "Checking to make sure cancel button is visible and has correct classes after fortune/cookie button are enabled..."
     );
 
-    // Only get past here if cancel button is visible
+    // Only get past here if cancel button is not visible
     await page.waitForSelector("#cancel-animation-btn", { visible: false });
 
     // cancel button should not have animating class
@@ -468,7 +468,7 @@ describe("Basic user flow for Website", () => {
       "Checking to make sure cancel button is visible and has correct classes after fortune/cookie button are enabled..."
     );
 
-    // Only get past here if cancel button is visible
+    // Only get past here if cancel button is not visible
     await page.waitForSelector("#cancel-animation-btn", { visible: false });
 
     // cancel button should not have animating class
@@ -489,30 +489,27 @@ describe("Basic user flow for Website", () => {
   }, 5000);
 
   //Check to make sure that the speech synthesis is being populated, the correct voices are called by the function
-  it("Make sure that the speech synthesis options are working correctly", async() => {
+  it("Make sure that the speech synthesis options are working correctly", async () => {
     console.log("check to make sure that speech synthesis list is working..");
     //mock voice data
+    const voice = [
+      {name : 'Karen',lang: 'en-AU',default:false}
+    ];
+    window.speechSynthesis.getVoices.mockReturnValue(voice);
     //call the populatevoicelist function
-    await page.evaluate(() => {
-      const voice = [
-        {name : 'Karen',lang: 'en-AU',default:false}
-      ];
-      window.speechSynthesis.getVoices = jest.fn().mockReturnValue(voices);
-    });
-    
+    await page.evaluate(window.speechSynthesis,populateVoiceList);
     await page.waitForSelector('select');
     const voiceSelect = await page.evaluate(() => ({
-      value: document.querySelector('select').value,
-      childElementCount: document.querySelector('select').childElementCount,
-      options : Array.from(document.querySelector('select').options).map(option => ({
-        textContent: option.textContent,
-        value: option.value,
-      })),
-
+      value: document.querySelector("select").value,
+      childElementCount: document.querySelector("select").childElementCount,
+      options: Array.from(document.querySelector("select").options).map(
+        (option) => ({
+          textContent: option.textContent,
+          value: option.value,
+        })
+      ),
     }));
-    expect(voiceSelect.value).toBe('');
+    expect(voiceSelect.value).toBe("");
     expect(voiceSelect.childElementCount).toBe(1);
-
-
-  })
+  });
 });
