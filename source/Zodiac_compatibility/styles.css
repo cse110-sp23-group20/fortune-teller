@@ -70,7 +70,13 @@ option {
   max-height: 100%;
   min-width: 100%;
   min-height: 100%;
-  /* transition: 0.5s ease; */
+  touch-action: none;
+  -webkit-user-drag: none;
+  user-drag: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 #left_wheel_field {

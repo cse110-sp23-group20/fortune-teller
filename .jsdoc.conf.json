@@ -2,6 +2,7 @@
   "plugins": [],
   "recurseDepth": 10,
   "opts": {
+    "private": true,
     "recurse": true
   },
   "source": {

@@ -1,84 +1,20 @@
 /**
- * A mapping of modulo'd angles to Zodiacs for the left wheel.
- * @type {Array<Array<number, string>>}
+ * The order of the zodiacs along a wheel.
+ * @type {string[]}
  */
-const zodiacAngleMappingLeft = [
-  [0, "Capricorn"],
-  [360, "Capricorn"],
-
-  [30, "Sagittarius"],
-  [-330, "Sagittarius"],
-
-  [60, "Scorpio"],
-  [-300, "Scorpio"],
-
-  [90, "Libra"],
-  [-270, "Libra"],
-
-  [120, "Virgo"],
-  [-240, "Virgo"],
-
-  [150, "Leo"],
-  [-210, "Leo"],
-
-  [180, "Cancer"],
-  [-180, "Cancer"],
-
-  [210, "Gemini"],
-  [-150, "Gemini"],
-
-  [240, "Taurus"],
-  [-120, "Taurus"],
-
-  [270, "Aries"],
-  [-90, "Aries"],
-
-  [300, "Pisces"],
-  [-60, "Pisces"],
-
-  [330, "Aquarius"],
-  [-30, "Aquarius"],
-];
-/**
- * A mapping of modulo'd angles to Zodiacs for the right wheel.
- * @type {Array<Array<number, string>>}
- */
-const zodiacAngleMappingRight = [
-  [0, "Cancer"],
-  [360, "Cancer"],
-
-  [30, "Gemini"],
-  [-330, "Gemini"],
-
-  [60, "Taurus"],
-  [-300, "Taurus"],
-
-  [90, "Aries"],
-  [-270, "Aries"],
-
-  [120, "Pisces"],
-  [-240, "Pisces"],
-
-  [150, "Aquarius"],
-  [-210, "Aquarius"],
-
-  [180, "Capricorn"],
-  [-180, "Capricorn"],
-
-  [210, "Sagittarius"],
-  [-150, "Sagittarius"],
-
-  [240, "Scorpio"],
-  [-120, "Scorpio"],
-
-  [270, "Libra"],
-  [-90, "Libra"],
-
-  [300, "Virgo"],
-  [-60, "Virgo"],
-
-  [330, "Leo"],
-  [-30, "Leo"],
+const zodiacOrder = [
+  "Capricorn",
+  "Sagittarius",
+  "Scorpio",
+  "Libra",
+  "Virgo",
+  "Leo",
+  "Cancer",
+  "Gemini",
+  "Taurus",
+  "Aries",
+  "Pisces",
+  "Aquarius",
 ];
 
 /**
@@ -417,9 +353,4 @@ const romantic = new Map([
     "When two Pisces individuals come together in a romantic relationship, they create a deep and emotionally rich connection. Both partners have a sensitive and compassionate nature, making them highly attuned to each other's emotional needs. They understand and empathize with each other's emotions, creating a safe and nurturing space for love to flourish. Pisces partners share a strong spiritual and intuitive connection, often feeling like they can understand each other on a profound level without the need for words. They enjoy creating a romantic and dreamy atmosphere, filled with love, romance, and imaginative gestures. However, their deep emotional sensitivity can sometimes lead to emotional intensity or mood swings within the relationship. It's important for Pisces partners to practice effective communication, establish healthy boundaries, and support each other's emotional well-being. When they embrace their shared empathy, emotional depth, and spiritual connection, Pisces partners can create a truly magical and soulful romantic bond.",
   ],
 ]);
-export {
-  zodiacAngleMappingLeft,
-  zodiacAngleMappingRight,
-  zodiacDateRanges,
-  romantic,
-};
+export { zodiacOrder, zodiacDateRanges, romantic };
