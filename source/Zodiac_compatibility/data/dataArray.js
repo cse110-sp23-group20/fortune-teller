@@ -1,6 +1,6 @@
 /**
  * A mapping of modulo'd angles to Zodiacs for the left wheel.
- * @type {[][number, string]}
+ * @type {[[number, string]]}
  */
 const zodiacAngleMappingLeft = [
   [0, "Capricorn"],
@@ -41,7 +41,7 @@ const zodiacAngleMappingLeft = [
 ];
 /**
  * A mapping of modulo'd angles to Zodiacs for the right wheel.
- * @type {[][number, string]}
+ * @type {[[number, string]]}
  */
 const zodiacAngleMappingRight = [
   [0, "Cancer"],
