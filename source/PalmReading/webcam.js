@@ -146,7 +146,7 @@ readAnother.addEventListener("click", startCamera);
  * Some points on an image of an ECG graph I found on Google Images that I
  * manually marked out in MS Paint. Used to form the piecewise linear `ecg`
  * polyline.
- * @type {[number, number][]}
+ * @type {Array<Array<number, number>>}
  */
 const ecgPoints = [
   [-0.8, 0.2],
