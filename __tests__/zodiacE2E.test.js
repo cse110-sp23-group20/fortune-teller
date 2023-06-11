@@ -50,6 +50,7 @@ describe("User rotates LEFT wheel ONLY and presses find out", () => {
     
     // User presses find out button 
     await page.hover("#find-out");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     await page.click("#find-out");
 
      // Wait for results pop up to be visible
@@ -110,6 +111,7 @@ describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
 
     // User presses find out button
     await page.hover("#find-out");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     await page.click("#find-out");
 
     // Wait for results pop up to be visible
