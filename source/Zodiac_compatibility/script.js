@@ -2,7 +2,9 @@
 
 import { wait } from "../utils.js";
 import {
+  angleDiff,
   determineDateRangeLeft,
+  ease,
   getMappingLeft,
   roundAngle,
   textGenerator,
@@ -26,9 +28,20 @@ const popup = document.getElementById("pop-up");
  */
 
 /**
- * @typedef {object} AnimInfo
+ * @typedef {object} MomentumInfo
+ * @property {'momentum'} type
  * @property {number} frameId
  * @property {number} lastTime
+ * @property {number} angleVel
+ */
+
+/**
+ * @typedef {object} SnapInfo
+ * @property {'snap'} type
+ * @property {number} frameId
+ * @property {number} startTime
+ * @property {number} startAngle
+ * @property {number} targetAngle
  */
 
 class Wheel {
@@ -37,6 +50,11 @@ class Wheel {
    * @type {number}
    */
   static #FRICTION = 0.001;
+  /**
+   * In ms.
+   * @type {number}
+   */
+  static #SNAP_DURATION = 500;
 
   /**
    * @type {HTMLElement}
@@ -59,11 +77,7 @@ class Wheel {
    */
   #pointer = null;
   /**
-   * @type {number}
-   */
-  #angleVel = 0;
-  /**
-   * @type {AnimInfo | null}
+   * @type {MomentumInfo | SnapInfo | null}
    */
   #animating = null;
 
@@ -161,20 +175,16 @@ class Wheel {
    */
   #handlePointerUp = (event) => {
     if (this.#pointer?.pointerId === event.pointerId) {
-      let angleDiff =
-        this.#pointer.lastMouseAngle1 - this.#pointer.lastMouseAngle2;
-      if (angleDiff > 180) {
-        angleDiff -= 360;
-      } else if (angleDiff < -180) {
-        angleDiff += 360;
-      }
-      const timeDiff = this.#pointer.lastTime1 - this.#pointer.lastTime2;
+      this.#startMomentum(
+        this.#pointer.lastTime1 > this.#pointer.lastTime2
+          ? angleDiff(
+              this.#pointer.lastMouseAngle1,
+              this.#pointer.lastMouseAngle2
+            ) /
+              (this.#pointer.lastTime1 - this.#pointer.lastTime2)
+          : 0
+      );
       this.#pointer = null;
-
-      if (timeDiff > 0) {
-        this.#angleVel = angleDiff / timeDiff;
-        this.#startMomentum();
-      }
     }
   };
 
@@ -193,11 +203,16 @@ class Wheel {
     event.preventDefault();
   };
 
-  #startMomentum() {
+  /**
+   * @param {number} angleVel
+   */
+  #startMomentum(angleVel = 0) {
     if (!this.#animating) {
       this.#animating = {
+        type: "momentum",
         frameId: 0,
         lastTime: Date.now(),
+        angleVel,
       };
       this.#paint();
     }
@@ -215,19 +230,46 @@ class Wheel {
       return;
     }
     const now = Date.now();
-    const elapsed = Math.min(now - this.#animating.lastTime, 200);
-    this.#animating.lastTime = now;
-    if (this.#angleVel > 0) {
-      this.#angleVel = Math.max(this.#angleVel - Wheel.#FRICTION * elapsed, 0);
-    } else {
-      this.#angleVel = Math.min(this.#angleVel + Wheel.#FRICTION * elapsed, 0);
+    if (this.#animating.type === "momentum") {
+      const elapsed = Math.min(now - this.#animating.lastTime, 200);
+      this.#animating.lastTime = now;
+      if (this.#animating.angleVel > 0) {
+        this.#animating.angleVel = Math.max(
+          this.#animating.angleVel - Wheel.#FRICTION * elapsed,
+          0
+        );
+      } else {
+        this.#animating.angleVel = Math.min(
+          this.#animating.angleVel + Wheel.#FRICTION * elapsed,
+          0
+        );
+      }
+      if (this.#animating.angleVel === 0) {
+        this.#animating = {
+          type: "snap",
+          frameId: this.#animating.frameId,
+          startTime: now,
+          startAngle: this.#angle,
+          targetAngle: roundAngle(this.#angle),
+        };
+      } else {
+        this.#setAngle(this.#angle + this.#animating.angleVel * elapsed);
+      }
     }
-    if (this.#angleVel === 0) {
-      this.#animating = null;
-      // TODO
-      return;
+    if (this.#animating.type === "snap") {
+      const progress = (now - this.#animating.startTime) / Wheel.#SNAP_DURATION;
+      if (progress >= 1) {
+        this.#setAngle(this.#animating.targetAngle);
+        this.#animating = null;
+        return;
+      } else {
+        this.#setAngle(
+          this.#animating.startAngle +
+            ease(progress) *
+              angleDiff(this.#animating.targetAngle, this.#animating.startAngle)
+        );
+      }
     }
-    this.#setAngle(this.#angle + this.#angleVel * elapsed);
     this.#animating.frameId = window.requestAnimationFrame(this.#paint);
   };
 }

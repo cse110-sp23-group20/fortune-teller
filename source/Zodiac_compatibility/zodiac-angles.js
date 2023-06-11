@@ -81,3 +81,60 @@ export function textGenerator(leftSign, rightSign) {
     "An error has occurred"
   );
 }
+
+/**
+ * Finds the smaller difference between two angles. For example, the difference
+ * -170° - 170° should be 20°, because -170° is equivalent to 190°.
+ * @param {number} angle - The angle to subtract the base from.
+ * @param {number} base - The base angle that is subtracted from the angle.
+ * @returns {number} `angle - base`, but it's guaranteed to be between -180° and
+ * 180°.
+ */
+export function angleDiff(angle, base) {
+  const diff = mod(angle - base, 360);
+  return diff > 180 ? diff - 360 : diff;
+}
+
+/**
+ * Calculates the default CSS transition-timing-function, `ease`
+ * (`cubic-bezier(0.25, 0.1, 0.25, 1.0)`).
+ *
+ * @param {number} t - Transition time (between 0 and 1).
+ * @returns {number} The interpolated value (between 0 and 1).
+ */
+export function ease(t) {
+  const ax = 0;
+  const ay = 0;
+  const bx = 0.25;
+  const by = 0.1;
+  const cx = 0.25;
+  const cy = 1.0;
+  const dx = 1.0;
+  const dy = 1.0;
+
+  function cubicBezier(t) {
+    const t2 = t * t;
+    const t3 = t2 * t;
+    const mt = 1 - t;
+    const mt2 = mt * mt;
+    const mt3 = mt2 * mt;
+    return ax * mt3 + 3 * bx * mt2 * t + 3 * cx * mt * t2 + dx * t3;
+  }
+
+  // Use binary search to find the approximate value of t
+  let start = 0;
+  let end = 1;
+  const epsilon = 0.0001; // Desired precision
+
+  while (Math.abs(end - start) > epsilon) {
+    const mid = (start + end) / 2;
+    const value = cubicBezier(mid);
+    if (value < t) {
+      start = mid;
+    } else {
+      end = mid;
+    }
+  }
+
+  return cubicBezier((start + end) / 2);
+}
