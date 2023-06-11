@@ -1,9 +1,9 @@
+import { BASE } from "./consts.js";
+
 describe("Basic user flow for Website", () => {
   // First, visit the fortune cookie website
   beforeAll(async () => {
-    await page.goto(
-      "https://cse110-sp23-group20.github.io/fortune-teller/source/FortuneCookie/"
-    );
+    await page.goto(`${BASE}/source/FortuneCookie/`);
   });
 
   // Check to make sure that fortune button is enabled when page loads
@@ -126,7 +126,7 @@ describe("Basic user flow for Website", () => {
     // Check that fortune button is now enabled
     let fortuneButtonDisabled;
     const fortuneButton = await page.$("#fortune-button");
-    booleanValue = await fortuneButton.getProperty("disabled");
+    const booleanValue = await fortuneButton.getProperty("disabled");
     fortuneButtonDisabled = await booleanValue.jsonValue();
     expect(fortuneButtonDisabled).toBe(false);
   }, 10000);
@@ -149,7 +149,7 @@ describe("Basic user flow for Website", () => {
     // Check that cookie button is now enabled
     let cookieButtonDisabled;
     const cookieButton = await page.$("#cookie-button");
-    booleanValue = await cookieButton.getProperty("disabled");
+    const booleanValue = await cookieButton.getProperty("disabled");
     cookieButtonDisabled = await booleanValue.jsonValue();
     expect(cookieButtonDisabled).toBe(false);
   }, 5000);
@@ -241,7 +241,7 @@ describe("Basic user flow for Website", () => {
     // Check that fortune button is now enabled
     let fortuneButtonDisabled;
     const fortuneButton = await page.$("#fortune-button");
-    booleanValue = await fortuneButton.getProperty("disabled");
+    const booleanValue = await fortuneButton.getProperty("disabled");
     fortuneButtonDisabled = await booleanValue.jsonValue();
     expect(fortuneButtonDisabled).toBe(false);
   }, 10000);
@@ -264,7 +264,7 @@ describe("Basic user flow for Website", () => {
     // Check that cookie button is now enabled
     let cookieButtonDisabled;
     const cookieButton = await page.$("#cookie-button");
-    booleanValue = await cookieButton.getProperty("disabled");
+    const booleanValue = await cookieButton.getProperty("disabled");
     cookieButtonDisabled = await booleanValue.jsonValue();
     expect(cookieButtonDisabled).toBe(false);
   }, 5000);

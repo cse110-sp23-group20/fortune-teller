@@ -134,13 +134,14 @@ async function displayResults() {
   // slide off or fade all of the elements on the page to make room for results popup
   document.body.classList.add("remove-wheels");
 
+  const pairingHeader = popup.querySelector("#pairing");
+  pairingHeader.textContent = pair[0] + " and " + pair[1];
+  const pairing_text = popup.querySelector("#pairing_text");
+  pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
+
   /**
    * Displays the popup with the pairing information after a delay.
    */
   await wait(200);
   popup.parentElement.classList.add("open");
-  const pairingHeader = popup.querySelector("#pairing");
-  pairingHeader.textContent = pair[0] + " and " + pair[1];
-  const pairing_text = popup.querySelector("#pairing_text");
-  pairing_text.innerHTML = textGenerator(pair[0], pair[1]);
 }

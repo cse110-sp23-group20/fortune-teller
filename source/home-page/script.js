@@ -18,4 +18,4 @@ const cardContainers = document.querySelectorAll(".card-container");
 const randomizeButton = document.querySelector(".randomize-button");
 
 /** Add click event listener to the "Randomize" button */
-randomizeButton.addEventListener("click", randomize());
+randomizeButton.addEventListener("click", randomize);

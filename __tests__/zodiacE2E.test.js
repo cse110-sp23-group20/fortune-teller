@@ -1,10 +1,10 @@
+import { BASE } from "./consts.js";
+
 // E2E TESTS
 describe("Basic user flow for Website", () => {
   // First, visit the zodiac compatibility page
   beforeAll(async () => {
-    await page.goto(
-      "https://cse110-sp23-group20.github.io/fortune-teller/source/Zodiac_compatibility/"
-    );
+    await page.goto(`${BASE}/source/Zodiac_compatibility/`);
   });
 
   it("User rotates wheels and clicks find out", async () => {
@@ -22,10 +22,11 @@ describe("Basic user flow for Website", () => {
 
     await page.click("#go-back");
 
-    // Check if the pop-up element is not visible (display is set to "none")
+    // Check if the pop-up element is not visible (visibility is set to
+    // "hidden")
     const isPopupVisible = await page.evaluate(() => {
       const popup = document.querySelector("#pop-up");
-      return getComputedStyle(popup).display !== "none";
+      return getComputedStyle(popup).visibility !== "hidden";
     });
 
     // Assert that the pop-up element is not visible

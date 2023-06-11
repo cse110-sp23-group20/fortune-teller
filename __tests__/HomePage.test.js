@@ -1,8 +1,9 @@
 //import { randomize } from "source\home-page\script.js";
+import { BASE } from "./consts.js";
 
 describe("Basic unit Tests for the Home Page", () => {
     beforeAll(async() => {
-        await page.goto("https://cse110-sp23-group20.github.io/fortune-teller/source/home-page/");
+        await page.goto(`${BASE}/source/home-page/`);
 
     });
 
@@ -20,17 +21,12 @@ describe("Basic unit Tests for the Home Page", () => {
 
     //checking to make sure the link actually works
     it("should navigate to the correct page when the link is clicked", async() => {
-        const teamLink = await page.$('a.team-link.hover-underline');
-
-        // Listen for the page navigation event
-        const navigationPromise = page.waitForNavigation();
-
-        // Click on the link
-        await teamLink.click();
-
-        // Wait for the page navigation to complete
-        await navigationPromise;
-
+        // Click on the link and wait for the page navigation to complete
+        await Promise.all([
+            page.waitForNavigation(),
+            page.click('a.team-link.hover-underline'),
+        ]);
+        
         // Get the current URL after navigation
         const currentURL = page.url();
 
