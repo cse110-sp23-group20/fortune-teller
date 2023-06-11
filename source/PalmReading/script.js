@@ -8,7 +8,15 @@ export function handleFortune() {
   console.log("TODO", fortune);
 }
 
+/**
+ * The tabs' `<input type=radio>` elements.
+ * @type {ArrayLike<HTMLInputElement>}
+ */
 const tabLabels = document.querySelectorAll('input[name="tab"]');
+/**
+ * Each tabs' tab content.
+ * @type {ArrayLike<HTMLDivElement>}
+ */
 const tabContents = document.querySelectorAll(".tab-content");
 
 tabLabels.forEach(function (label) {

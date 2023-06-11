@@ -1,5 +1,6 @@
 /**
  * Array of general, college, and collage-romance type fortunes
+ * @type {string[]}
  */
 export const fortunes = [
   "Your future is bright, embrace it with open arms.",

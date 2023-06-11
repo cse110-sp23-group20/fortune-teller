@@ -1,3 +1,7 @@
+/**
+ * A mapping of modulo'd angles to Zodiacs for the left wheel.
+ * @type {[number, string][]}
+ */
 const zodiacAngleMappingLeft = [
   [0, "Capricorn"],
   [360, "Capricorn"],
@@ -35,6 +39,10 @@ const zodiacAngleMappingLeft = [
   [330, "Aquarius"],
   [-30, "Aquarius"],
 ];
+/**
+ * A mapping of modulo'd angles to Zodiacs for the right wheel.
+ * @type {[number, string][]}
+ */
 const zodiacAngleMappingRight = [
   [0, "Cancer"],
   [360, "Cancer"],
@@ -73,6 +81,10 @@ const zodiacAngleMappingRight = [
   [-30, "Leo"],
 ];
 
+/**
+ * Mapping of zodiacs to their date range.
+ * @type {Record<string, string>}
+ */
 const zodiacDateRanges = {
   Capricorn: "Dec 22 - Jan 19",
   Sagittarius: "Nov 22 - Dec 21",
@@ -87,6 +99,10 @@ const zodiacDateRanges = {
   Pisces: "Feb 19 - Mar 20",
   Aquarius: "Jan 20 - Feb 18",
 };
+/**
+ * Mapping of zodiac pairs to their college romance analysis.
+ * @type {Map<string, string>}
+ */
 const romantic = new Map([
   [
     "Aries and Taurus",
