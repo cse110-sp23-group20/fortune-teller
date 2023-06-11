@@ -52,7 +52,7 @@ const heads = [
   "Wavy head line: Your thoughts and mental processes are influenced by fluctuating moods and emotions. You may have a creative and imaginative mind but can also be prone to mood swings.",
   "Absent head line: A missing head line indicates a highly intuitive and unconventional thinker. You rely more on instincts and emotions rather than logic and analysis.",
   "Deep and well-defined head line: You possess strong mental focus and concentration. You have the ability to think deeply about complex matters and make well-informed decisions.",
-  "Faint or unclear head line: This may indicate a lack of clarity in your thoughts and difficulty in making decisions. You may benefit from cultivating a more focused and organized mindset."
+  "Faint or unclear head line: This may indicate a lack of clarity in your thoughts and difficulty in making decisions. You may benefit from cultivating a more focused and organized mindset.",
 ];
 
 const hearts = [
@@ -65,7 +65,7 @@ const hearts = [
   "Wavy heart line: Your emotions fluctuate, and you may experience highs and lows in your relationships. You have a sensitive and empathetic nature, which can make you more susceptible to emotional turbulence.",
   "Absent heart line: A missing heart line can indicate difficulty in expressing or understanding emotions. You may struggle with forming deep emotional connections or have a more logical approach to relationships.",
   "Deep and well-defined heart line: You have a strong emotional intelligence and are deeply in touch with your feelings. You have the capacity for profound love and may be highly empathetic and nurturing in relationships.",
-  "Faint or unclear heart line: This may suggest challenges in understanding or expressing emotions. You may need to work on developing greater emotional awareness and communication skills in relationships."
+  "Faint or unclear heart line: This may suggest challenges in understanding or expressing emotions. You may need to work on developing greater emotional awareness and communication skills in relationships.",
 ];
 
 const lifes = [
@@ -78,7 +78,7 @@ const lifes = [
   "Deep and well-defined life line: You have a strong sense of purpose and a solid foundation in life. You have the ability to overcome obstacles and make the most of opportunities that come your way.",
   "Absent life line: A missing life line is rare but can indicate a unique life path or a sense of detachment from traditional norms. You may forge your own path and have a non-conventional approach to life.",
   "Multiple life lines: This suggests a multifaceted personality and the ability to pursue different paths simultaneously. You may have diverse interests and talents that allow you to thrive in various areas of life.",
-  "Overlapping life lines: Overlapping life lines can indicate complex relationships or intertwining paths with significant others. It may signify strong connections or dependencies on others throughout your life."
+  "Overlapping life lines: Overlapping life lines can indicate complex relationships or intertwining paths with significant others. It may signify strong connections or dependencies on others throughout your life.",
 ];
 
 const fates = [
@@ -91,7 +91,7 @@ const fates = [
   "Curved fate line: Your life path is influenced by your creative and intuitive nature. You may find success in artistic or unconventional fields and have a unique approach to your career or life's purpose.",
   "Multiple fate lines: This suggests diverse talents and interests. You may have the ability to pursue different paths simultaneously or have multiple successful careers in your lifetime.",
   "Crossed fate lines: Crossing fate lines can indicate significant life-changing events or major decisions that alter the course of your life. These events can shape your destiny and open new opportunities.",
-  "Rising fate line: Your career or life path may experience gradual progress and growth over time. You have the potential to achieve greater success and reach new heights through consistent effort and perseverance."
+  "Rising fate line: Your career or life path may experience gradual progress and growth over time. You have the potential to achieve greater success and reach new heights through consistent effort and perseverance.",
 ];
 
 const suns = [
@@ -104,7 +104,7 @@ const suns = [
   "Island or chain of islands on the sun line: This suggests periods of instability or obstacles that may hinder your progress. It is important to stay resilient and seek support during challenging times.",
   "Cross or intersecting lines on the sun line: This may indicate significant turning points or major decisions in your career or personal life. It is important to carefully consider your options and make choices that align with your long-term goals.",
   "Absent sun line: The absence of a sun line suggests a more subtle or understated path to success. You may find fulfillment in personal growth and inner achievements rather than external recognition.",
-  "Rising sun line: A sun line that starts low on the palm and rises towards the mount of Apollo indicates increasing success and recognition as you progress in your career or life journey."
+  "Rising sun line: A sun line that starts low on the palm and rises towards the mount of Apollo indicates increasing success and recognition as you progress in your career or life journey.",
 ];
 
 /**
@@ -124,13 +124,13 @@ export function handleFortune() {
   let sunResult = suns[sunIndex];
 
   document.getElementById("head-tab").querySelector("p").innerText = headResult;
-  document.getElementById("heart-tab").querySelector("p").innerText = heartResult;
+  document.getElementById("heart-tab").querySelector("p").innerText =
+    heartResult;
   document.getElementById("life-tab").querySelector("p").innerText = lifeResult;
   document.getElementById("fate-tab").querySelector("p").innerText = fateResult;
   document.getElementById("sun-tab").querySelector("p").innerText = sunResult;
   console.log("TODO", fortune);
 }
-
 
 /**
  * The tabs' `&lt;input type=radio>` elements.
