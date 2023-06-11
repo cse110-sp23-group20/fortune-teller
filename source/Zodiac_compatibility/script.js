@@ -1,3 +1,5 @@
+// @ts-check
+
 import { wait } from "../utils.js";
 import {
   determineDateRangeLeft,
@@ -12,78 +14,221 @@ const how_to = document.getElementById("how_to");
 const help = document.getElementById("help");
 const popup = document.getElementById("pop-up");
 
-class Wheel {
-  elem;
-  dateInput;
-  // Set initial rotation angle of the zodiac wheel
-  angle = 0;
-  angleOffset;
+/**
+ * @typedef {object} PointerInfo
+ * @property {number} pointerId
+ * @property {number} initWheelAngle
+ * @property {number} initMouseAngle
+ * @property {number} lastMouseAngle2
+ * @property {number} lastTime2
+ * @property {number} lastMouseAngle1
+ * @property {number} lastTime1
+ */
 
+/**
+ * @typedef {object} AnimInfo
+ * @property {number} frameId
+ * @property {number} lastTime
+ */
+
+class Wheel {
+  /**
+   * In degrees/ms^2.
+   * @type {number}
+   */
+  static #FRICTION = 0.001;
+
+  /**
+   * @type {HTMLElement}
+   */
+  #elem;
+  /**
+   * @type {HTMLInputElement}
+   */
+  #dateInput;
+  /**
+   * @type {number}
+   */
+  #angle = 0;
+  /**
+   * @type {number}
+   */
+  #angleOffset;
+  /**
+   * @type {PointerInfo | null}
+   */
+  #pointer = null;
+  /**
+   * @type {number}
+   */
+  #angleVel = 0;
+  /**
+   * @type {AnimInfo | null}
+   */
+  #animating = null;
+
+  /**
+   * @param {HTMLElement} elem
+   * @param {HTMLInputElement} dateInput
+   * @param {number} angleOffset
+   */
   constructor(elem, dateInput, angleOffset = 0) {
-    this.elem = elem;
-    this.dateInput = dateInput;
-    this.angleOffset = angleOffset;
+    this.#elem = elem;
+    this.#dateInput = dateInput;
+    this.#angleOffset = angleOffset;
 
     // add the necessary event listeners for the wheel
-    this.elem.addEventListener("wheel", this.#handleRotate);
-    this.elem.addEventListener("mouseout", this.stopRotation);
+    this.#elem.addEventListener("wheel", this.#handleWheel);
+    this.#elem.addEventListener("pointerdown", this.#handlePointerDown);
+    this.#elem.addEventListener("pointermove", this.#handlePointerMove);
+    this.#elem.addEventListener("pointerup", this.#handlePointerUp);
+    this.#elem.addEventListener("pointercancel", this.#handlePointerUp);
   }
 
   getMapping() {
-    return getMappingLeft(roundAngle(this.angle + this.angleOffset));
+    return getMappingLeft(roundAngle(this.#angle + this.#angleOffset));
   }
 
   #getDateRange() {
-    return determineDateRangeLeft(roundAngle(this.angle + this.angleOffset));
+    return determineDateRangeLeft(roundAngle(this.#angle + this.#angleOffset));
   }
 
   #setAngle(angle) {
-    this.angle = angle;
+    if (!Number.isFinite(angle)) {
+      throw new RangeError(`Expected a numerical angle. Received ${angle}`);
+    }
+    this.#angle = angle;
     // Apply the rotation transform to the wheel element
-    this.elem.style.transform = `rotate(${this.angle}deg)`;
-    this.dateInput.value = this.#getDateRange();
+    this.#elem.style.transform = `rotate(${this.#angle}deg)`;
+    this.#dateInput.value = this.#getDateRange();
   }
+
+  /**
+   * @param {PointerEvent} event
+   * @returns {number} Clockwise, between -180° and 180°, where 0° means the
+   * mouse is right of the center.
+   */
+  #getMouseAngle(event) {
+    const rect = this.#elem.getBoundingClientRect();
+    // y is first
+    return (
+      Math.atan2(
+        event.clientY - (rect.top + rect.height / 2),
+        event.clientX - (rect.left + rect.width / 2)
+      ) *
+      (180 / Math.PI)
+    );
+  }
+
+  /**
+   * @param {PointerEvent} event
+   */
+  #handlePointerDown = (event) => {
+    if (!this.#pointer) {
+      const mouseAngle = this.#getMouseAngle(event);
+      this.#pointer = {
+        pointerId: event.pointerId,
+        initWheelAngle: this.#angle,
+        initMouseAngle: mouseAngle,
+        lastMouseAngle2: mouseAngle,
+        lastTime2: Date.now(),
+        lastMouseAngle1: mouseAngle,
+        lastTime1: Date.now(),
+      };
+      this.#elem.setPointerCapture(event.pointerId);
+      this.#stopMomentum();
+    }
+  };
+
+  /**
+   * @param {PointerEvent} event
+   */
+  #handlePointerMove = (event) => {
+    if (this.#pointer?.pointerId === event.pointerId) {
+      const mouseAngle = this.#getMouseAngle(event);
+      this.#pointer.lastMouseAngle2 = this.#pointer.lastMouseAngle1;
+      this.#pointer.lastTime2 = this.#pointer.lastTime1;
+      this.#pointer.lastMouseAngle1 = mouseAngle;
+      this.#pointer.lastTime1 = Date.now();
+      this.#setAngle(
+        mouseAngle - this.#pointer.initMouseAngle + this.#pointer.initWheelAngle
+      );
+    }
+  };
+
+  /**
+   * @param {PointerEvent} event
+   */
+  #handlePointerUp = (event) => {
+    if (this.#pointer?.pointerId === event.pointerId) {
+      let angleDiff =
+        this.#pointer.lastMouseAngle1 - this.#pointer.lastMouseAngle2;
+      if (angleDiff > 180) {
+        angleDiff -= 360;
+      } else if (angleDiff < -180) {
+        angleDiff += 360;
+      }
+      const timeDiff = this.#pointer.lastTime1 - this.#pointer.lastTime2;
+      this.#pointer = null;
+
+      if (timeDiff > 0) {
+        this.#angleVel = angleDiff / timeDiff;
+        this.#startMomentum();
+      }
+    }
+  };
 
   /**
    * Rotates the wheel based on the mouse wheel event.
    * @param {WheelEvent} event - The mouse wheel event.
    */
-  #handleRotate = (event) => {
+  #handleWheel = (event) => {
     // Determine the direction of scrolling
     const direction = Math.sign(event.deltaY);
 
     // Update the rotation angle based on the scrolling direction
-    this.#setAngle(this.angle + direction * 2);
+    this.#setAngle(this.#angle + direction * 2);
 
     // Prevent the default scrolling behavior
     event.preventDefault();
   };
 
-  /**
-   * Stops the rotation of the wheels and applies a smooth transition to the nearest rounded angle.
-   */
-  stopRotation = () => {
-    // Round the current angle of the wheels to the nearest multiple of 30
-    const target = roundAngle(this.angle);
+  #startMomentum() {
+    if (!this.#animating) {
+      this.#animating = {
+        frameId: 0,
+        lastTime: Date.now(),
+      };
+      this.#paint();
+    }
+  }
 
-    // print rounded angles for clarity
-    console.log(
-      this.elem.id,
-      `Wheel is rounded to ${target}: ${this.getMapping()}`
-    );
+  #stopMomentum() {
+    if (this.#animating) {
+      window.cancelAnimationFrame(this.#animating.frameId);
+      this.#animating = null;
+    }
+  }
 
-    // Apply the rounded rotation transform to the wheel elements smoothly over 500ms
-    const interval = setInterval(() => {
-      if (this.angle < target) {
-        this.#setAngle(this.angle + 1);
-      }
-      if (this.angle > target) {
-        this.#setAngle(this.angle - 1);
-      }
-      if (this.angle === target) {
-        clearInterval(interval);
-      }
-    }, 15);
+  #paint = () => {
+    if (!this.#animating) {
+      return;
+    }
+    const now = Date.now();
+    const elapsed = Math.min(now - this.#animating.lastTime, 200);
+    this.#animating.lastTime = now;
+    if (this.#angleVel > 0) {
+      this.#angleVel = Math.max(this.#angleVel - Wheel.#FRICTION * elapsed, 0);
+    } else {
+      this.#angleVel = Math.min(this.#angleVel + Wheel.#FRICTION * elapsed, 0);
+    }
+    if (this.#angleVel === 0) {
+      this.#animating = null;
+      // TODO
+      return;
+    }
+    this.#setAngle(this.#angle + this.#angleVel * elapsed);
+    this.#animating.frameId = window.requestAnimationFrame(this.#paint);
   };
 }
 
@@ -98,10 +243,6 @@ const rightWheel = new Wheel(
 );
 
 // add all the necessary event listeners for the buttons
-button.addEventListener("mouseenter", () => {
-  leftWheel.stopRotation();
-  rightWheel.stopRotation();
-});
 button.addEventListener("click", displayResults);
 
 how_to.addEventListener("click", () => {
