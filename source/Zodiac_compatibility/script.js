@@ -26,7 +26,6 @@ const popup = document.getElementById("pop-up");
 
 /**
  * @typedef {object} MomentumInfo
- * @property {'momentum'} type
  * @property {number} frameId
  * @property {number} lastTime
  * @property {number} angleVel
@@ -63,6 +62,10 @@ class Wheel {
    * @type {MomentumInfo | null}
    */
   #animating = null;
+  /**
+   * @type {number | null}
+   */
+  #wheelTimeout = null;
 
   /**
    * @param {HTMLElement} elem
@@ -90,6 +93,14 @@ class Wheel {
     return determineDateRangeLeft(roundAngle(this.#angle + this.#angleOffset));
   }
 
+  /**
+   * @returns {{ x: number; y: number }}
+   */
+  #getCenter() {
+    const rect = this.#elem.getBoundingClientRect();
+    return { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 };
+  }
+
   #setAngle(angle) {
     if (!Number.isFinite(angle)) {
       throw new RangeError(`Expected a numerical angle. Received ${angle}`);
@@ -102,7 +113,9 @@ class Wheel {
 
   #getAngle() {
     const matrix = window.getComputedStyle(this.#elem).transform;
-    const match = matrix.match(/^matrix\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)/);
+    const match = matrix.match(
+      /^matrix\((-?\d+(?:\.\d+)?(?:e-?\d+)?), (-?\d+(?:\.\d+)?(?:e-?\d+)?)/
+    );
     if (match) {
       const cosine = +match[1];
       const sine = +match[2];
@@ -118,13 +131,10 @@ class Wheel {
    * mouse is right of the center.
    */
   #getMouseAngle(event) {
-    const rect = this.#elem.getBoundingClientRect();
-    // y is first
+    const center = this.#getCenter();
     return (
-      Math.atan2(
-        event.clientY - (rect.top + rect.height / 2),
-        event.clientX - (rect.left + rect.width / 2)
-      ) *
+      // y is first
+      Math.atan2(event.clientY - center.y, event.clientX - center.x) *
       (180 / Math.PI)
     );
   }
@@ -191,11 +201,22 @@ class Wheel {
    * @param {WheelEvent} event - The mouse wheel event.
    */
   #handleWheel = (event) => {
+    const center = this.#getCenter();
+    const wheelAngle = this.#getAngle();
+
     // Determine the direction of scrolling
-    const direction = Math.sign(event.deltaY);
+    const direction =
+      Math.sign(event.deltaY) * Math.sign(center.x - event.clientX);
 
     // Update the rotation angle based on the scrolling direction
-    this.#setAngle(this.#angle + direction * 2);
+    this.#setAngle(wheelAngle + direction * 2);
+    console.log(wheelAngle, this.#angle);
+
+    this.#stopMomentum();
+    this.#wheelTimeout = setTimeout(() => {
+      this.#wheelTimeout = null;
+      this.#snap();
+    }, 500);
 
     // Prevent the default scrolling behavior
     event.preventDefault();
@@ -207,7 +228,6 @@ class Wheel {
   #startMomentum(angleVel = 0) {
     if (!this.#animating) {
       this.#animating = {
-        type: "momentum",
         frameId: 0,
         lastTime: Date.now(),
         angleVel,
@@ -221,6 +241,10 @@ class Wheel {
       window.cancelAnimationFrame(this.#animating.frameId);
       this.#animating = null;
     }
+    if (this.#wheelTimeout) {
+      clearTimeout(this.#wheelTimeout);
+      this.#wheelTimeout = null;
+    }
     this.#elem.style.transition = null;
   }
 
@@ -229,31 +253,33 @@ class Wheel {
       return;
     }
     const now = Date.now();
-    if (this.#animating.type === "momentum") {
-      const elapsed = Math.min(now - this.#animating.lastTime, 200);
-      this.#animating.lastTime = now;
-      if (this.#animating.angleVel > 0) {
-        this.#animating.angleVel = Math.max(
-          this.#animating.angleVel - Wheel.#FRICTION * elapsed,
-          0
-        );
-      } else {
-        this.#animating.angleVel = Math.min(
-          this.#animating.angleVel + Wheel.#FRICTION * elapsed,
-          0
-        );
-      }
-      if (this.#animating.angleVel === 0) {
-        this.#animating = null;
-        this.#elem.style.transition = "transform 0.5s";
-        this.#setAngle(roundAngle(this.#angle));
-        return;
-      } else {
-        this.#setAngle(this.#angle + this.#animating.angleVel * elapsed);
-      }
+    const elapsed = Math.min(now - this.#animating.lastTime, 200);
+    this.#animating.lastTime = now;
+    if (this.#animating.angleVel > 0) {
+      this.#animating.angleVel = Math.max(
+        this.#animating.angleVel - Wheel.#FRICTION * elapsed,
+        0
+      );
+    } else {
+      this.#animating.angleVel = Math.min(
+        this.#animating.angleVel + Wheel.#FRICTION * elapsed,
+        0
+      );
+    }
+    if (this.#animating.angleVel === 0) {
+      this.#animating = null;
+      this.#snap();
+      return;
+    } else {
+      this.#setAngle(this.#angle + this.#animating.angleVel * elapsed);
     }
     this.#animating.frameId = window.requestAnimationFrame(this.#paint);
   };
+
+  #snap() {
+    this.#elem.style.transition = "transform 0.5s";
+    this.#setAngle(roundAngle(this.#angle));
+  }
 }
 
 const leftWheel = new Wheel(
