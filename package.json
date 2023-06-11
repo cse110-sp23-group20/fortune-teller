@@ -2,7 +2,7 @@
   "name": "fortune-teller",
   "devDependencies": {
     "@babel/core": "^7.22.1",
-    "@babel/preset-env": "^7.22.4",
+    "@babel/preset-env": "^7.22.5",
     "babel-jest": "^29.5.0",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^8.8.0",
@@ -19,6 +19,9 @@
     "docs": "jsdoc"
   },
   "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
     "preset": "jest-puppeteer",
     "verbose": true
   }
