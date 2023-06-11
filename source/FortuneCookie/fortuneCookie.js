@@ -22,6 +22,7 @@ function reset() {
     elem = null;
     cookieFalling = false;
     fortuneButton.disabled = false;
+    cookieButton.disabled = false;
     fortunePaper.style.transform = null;
     cookieButton.style.transform = null;
   }, 2000);
@@ -68,6 +69,7 @@ function speakFortune(fortune) {
  */
 function disableButton() {
   fortuneButton.disabled = true;
+  cookieButton.disabled = true;
 }
 
 /**
