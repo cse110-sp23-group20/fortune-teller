@@ -492,12 +492,14 @@ describe("Basic user flow for Website", () => {
   it("Make sure that the speech synthesis options are working correctly", async() => {
     console.log("check to make sure that speech synthesis list is working..");
     //mock voice data
-    const voice = [
-      {name : 'Karen',lang: 'en-AU',default:false}
-    ];
-    window.speechSynthesis.getVoices.mockReturnValue(voice);
     //call the populatevoicelist function
-    await page.evaluate(window.speechSynthesis,populateVoiceList);
+    await page.evaluate(() => {
+      const voice = [
+        {name : 'Karen',lang: 'en-AU',default:false}
+      ];
+      window.speechSynthesis.getVoices = jest.fn().mockReturnValue(voices);
+    });
+    
     await page.waitForSelector('select');
     const voiceSelect = await page.evaluate(() => ({
       value: document.querySelector('select').value,
