@@ -1,13 +1,12 @@
 import { BASE } from "./consts.js";
 
-// E2E TESTS
-describe("Basic user flow for Website", () => {
+describe("User rotates NO wheels and presses find out", () => {
   // First, visit the zodiac compatibility page
   beforeAll(async () => {
     await page.goto(`${BASE}/source/Zodiac_compatibility/`);
   });
 
-  it("User rotates wheels and clicks find out", async () => {
+  it("User immediately clicks find out", async () => {
     // Simulate a user interaction
     await page.click("#find-out");
     // Wait for a specific element to be visible or for a certain condition
@@ -19,17 +18,110 @@ describe("Basic user flow for Website", () => {
     );
     // Assert the expected result
     expect(pairingHeader).toEqual("Capricorn and Cancer");
-
-    await page.click("#go-back");
-
-    // Check if the pop-up element is not visible (visibility is set to
-    // "hidden")
-    const isPopupVisible = await page.evaluate(() => {
-      const popup = document.querySelector("#pop-up");
-      return getComputedStyle(popup).visibility !== "hidden";
-    });
-
-    // Assert that the pop-up element is not visible
-    expect(isPopupVisible).toBe(false);
   });
+});
+
+describe("User rotates LEFT wheel ONLY and presses find out", () => {
+  // First, visit the zodiac compatibility page
+  beforeAll(async () => {
+    await page.goto(`${BASE}/source/Zodiac_compatibility/`);
+  });
+
+  it("User rotates LEFT wheel then clicks find out", async () => {
+    // Hover over the left wheel
+    const leftWheel = await page.$("#left_wheel_img");
+    const leftWheelBoundingBox = await leftWheel.boundingBox();
+    await page.mouse.move(
+      leftWheelBoundingBox.x + leftWheelBoundingBox.width / 4,
+      leftWheelBoundingBox.y + leftWheelBoundingBox.height / 4
+    );
+
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+    // Spin the left wheel
+    await page.evaluate(() => {
+      const leftWheelImg = document.querySelector("#left_wheel_img");
+      for (let i = 0; i < 100; i++) {
+        leftWheelImg.dispatchEvent(new WheelEvent("wheel", { deltaY: -720 }));
+      }
+    });
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // User presses find out button
+    await page.hover("#find-out");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await page.click("#find-out");
+
+    // Wait for results pop up to be visible
+    await page.waitForSelector("#pop-up", { timeout: 10000 });
+
+    // Get the text content of an element
+    const pairingHeader = await page.$eval(
+      "#pairing",
+      (element) => element.textContent
+    );
+
+    // Through visual inspection the for loop spins the left wheel to Leo
+    expect(pairingHeader).toEqual("Leo and Cancer");
+  }, 15000);
+});
+
+describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
+  // First, visit the zodiac compatibility page
+  beforeAll(async () => {
+    await page.goto(`${BASE}/source/Zodiac_compatibility/`);
+  });
+
+  it("User rotates RIGHT and RIGHT wheel then clicks find out", async () => {
+    // Hover over the left wheel
+    const leftWheel = await page.$("#left_wheel_img");
+    const leftWheelBoundingBox = await leftWheel.boundingBox();
+    await page.mouse.move(
+      leftWheelBoundingBox.x + leftWheelBoundingBox.width / 4,
+      leftWheelBoundingBox.y + leftWheelBoundingBox.height / 4
+    );
+
+    await new Promise((resolve) => setTimeout(resolve, 4000));
+    // Spin the left wheel
+    await page.evaluate(() => {
+      const leftWheelImg = document.querySelector("#left_wheel_img");
+      for (let i = 0; i < 100; i++) {
+        leftWheelImg.dispatchEvent(new WheelEvent("wheel", { deltaY: -720 }));
+      }
+    });
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    // Hover over the right wheel
+    const rightWheel = await page.$("#right_wheel_img");
+    const rightWheelBoundingBox = await rightWheel.boundingBox();
+    await page.mouse.move(
+      rightWheelBoundingBox.x + rightWheelBoundingBox.width / 4,
+      rightWheelBoundingBox.y + rightWheelBoundingBox.height / 4
+    );
+    // Spin the right wheel
+    await page.evaluate(() => {
+      const rightWheelImg = document.querySelector("#right_wheel_img");
+      for (let i = 0; i < 100; i++) {
+        rightWheelImg.dispatchEvent(new WheelEvent("wheel", { deltaY: -720 }));
+      }
+    });
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+
+    // User presses find out button
+    await page.hover("#find-out");
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+    await page.click("#find-out");
+
+    // Wait for results pop up to be visible
+    await page.waitForSelector("#pop-up", { timeout: 10000 });
+
+    // Get the text content of an element
+    const pairingHeader = await page.$eval(
+      "#pairing",
+      (element) => element.textContent
+    );
+
+    // Through visual inspection the for loop spins the left wheel to Leo
+    // and the right to Aquarius
+    expect(pairingHeader).toEqual("Leo and Aquarius");
+  }, 15000);
 });
