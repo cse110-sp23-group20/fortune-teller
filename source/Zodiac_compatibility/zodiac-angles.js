@@ -1,11 +1,7 @@
 // @ts-check
 
-import {
-  zodiacAngleMappingLeft,
-  zodiacAngleMappingRight,
-  zodiacDateRanges,
-  romantic,
-} from "./data/dataArray.js";
+import { mod } from "../utils.js";
+import { zodiacOrder, zodiacDateRanges, romantic } from "./data/dataArray.js";
 
 /**
  * Rounds the given angle to the nearest multiple of 30.
@@ -13,47 +9,33 @@ import {
  * @returns {number} The rounded angle.
  */
 export function roundAngle(angle) {
-  let base = Math.floor(angle / 360);
-  let rem = angle % 360;
-  if (angle >= 0) {
-    return base * 360 + Math.round(rem / 30) * 30;
-  } else {
-    base = Math.ceil(angle / 360);
-    //console.log(base + ';' + rem)
-    return base * 360 + Math.round(rem / 30) * 30;
-  }
+  return Math.round(angle / 30) * 30;
 }
 
 /**
  * Retrieves the zodiac sign mapping for the given angle on the left wheel.
  * @param {number} roundedAngle - The angle on the left wheel pre-rounded to the nearest 30 degree increment
- * @returns {string} The corresponding zodiac sign.
+ * @returns {string} The corresponding zodiac sign, or `'unknown'` if the angle does not correspond to a zodiac.
  */
 export function getMappingLeft(roundedAngle) {
-  roundedAngle = roundedAngle % 360;
-  for (let i = 0; i < zodiacAngleMappingLeft.length; i++) {
-    if (roundedAngle === zodiacAngleMappingLeft[i][0]) {
-      // @ts-ignore
-      return zodiacAngleMappingLeft[i][1];
-    }
+  if (Math.round(roundedAngle / 30) * 30 !== roundedAngle) {
+    return "unknown";
   }
-  return "unknown";
+  const index = Math.round(mod(roundedAngle, 360) / 30);
+  return zodiacOrder[index < 12 ? Math.round(mod(roundedAngle, 360) / 30) : 0];
 }
 
 /**
  * Retrieves the zodiac sign mapping for the given angle on the right wheel.
  * @param {number} roundedAngle - The angle on the right wheel pre-rounded to the nearest 30 degree increment
- * @returns {string} The corresponding zodiac sign.
+ * @returns {string} The corresponding zodiac sign, or `'unknown'` if the angle does not correspond to a zodiac.
  */
 export function getMappingRight(roundedAngle) {
-  roundedAngle = roundedAngle % 360;
-  for (let i = 0; i < zodiacAngleMappingRight.length; i++) {
-    if (roundedAngle === zodiacAngleMappingRight[i][0]) {
-      // @ts-ignore
-      return zodiacAngleMappingRight[i][1];
-    }
+  if (Math.round(roundedAngle / 30) * 30 !== roundedAngle) {
+    return "unknown";
   }
-  return "unknown";
+  const index = Math.round(mod(roundedAngle, 360) / 30);
+  return zodiacOrder[index < 6 ? index + 6 : index < 12 ? index - 6 : 0];
 }
 
 /**
@@ -81,8 +63,6 @@ export function determineDateRangeRight(angle) {
  * @returns {Array} An array containing the zodiac sign pair.
  */
 export function determinePairing(angleLeft, angleRight) {
-  angleLeft = angleLeft % 360;
-  angleRight = angleRight % 360;
   const leftMapping = getMappingLeft(angleLeft);
   const rightMapping = getMappingRight(angleRight);
   return [leftMapping, rightMapping];
