@@ -33,13 +33,13 @@ describe("Basic user flow test cases for Website", () => {
   });
 
   it("User scrolls 1 wheel then clicks find out", async () => {
-   // Simulate hovering over the image
-   await page.hover("#left_wheel_img");
+    // Simulate hovering over the image
+    await page.hover("#left_wheel_img");
 
-   // Simulate scrolling down while still hovering
-   await page.evaluate(() => {
-     window.scrollBy(0, 1000);
-   });
+    // Simulate scrolling down while still hovering
+    await page.evaluate(() => {
+      window.scrollBy(0, 1000);
+    });
     // Simulate the user clicking the find-out button when it appears
     await page.click("#find-out");
     // Wait for the popup to be visible or for a certain condition
@@ -54,37 +54,35 @@ describe("Basic user flow test cases for Website", () => {
 
     // Simulate the user clicking the go-back button
     await page.click("#go-back");
-
   });
   it("User scrolls 2 wheels then clicks find out", async () => {
     // Simulate hovering over the image
     await page.hover("#left_wheel_img");
- 
+
     // Simulate scrolling down while still hovering
     await page.evaluate(() => {
       window.scrollBy(0, 1000);
     });
 
     await page.hover("#right_wheel_img");
- 
+
     // Simulate scrolling down while still hovering
     await page.evaluate(() => {
       window.scrollBy(0, 1000);
     });
-     // Simulate the user clicking the find-out button when it appears
-     await page.click("#find-out");
-     // Wait for the popup to be visible or for a certain condition
-     await page.waitForSelector("#pop-up");
-     // Get the text content of an element
-     const pairingHeader = await page.$eval(
-       "#pairing",
-       (element) => element.textContent
-     );
- 
-     expect(pairingHeader).toEqual("Capricorn and Cancer");
- 
-     // Simulate the user clicking the go-back button
-     await page.click("#go-back");
- 
-   });
+    // Simulate the user clicking the find-out button when it appears
+    await page.click("#find-out");
+    // Wait for the popup to be visible or for a certain condition
+    await page.waitForSelector("#pop-up");
+    // Get the text content of an element
+    const pairingHeader = await page.$eval(
+      "#pairing",
+      (element) => element.textContent
+    );
+
+    expect(pairingHeader).toEqual("Capricorn and Cancer");
+
+    // Simulate the user clicking the go-back button
+    await page.click("#go-back");
+  });
 });

@@ -1,13 +1,14 @@
-# Store all zodiac combination responses locally 
+# Store all zodiac combination responses locally
 
 ## Context and Problem Statement
+
 When the user selects a zodiac pairing, we need to serve them a compatibility response. The issue however is if we should serve them the same response each time or try to give them a different, but similar response each time because getting the same response can be quite boring.
 
 ## Considered Options
 
-* One response for all 33 unique combinations
-* Make 1 or 2 more custom responses and pick a random one to serve each time
-* Use some kind of API (maybe ChatGPT) to deliver a custom response
+- One response for all 33 unique combinations
+- Make 1 or 2 more custom responses and pick a random one to serve each time
+- Use some kind of API (maybe ChatGPT) to deliver a custom response
 
 ## Decision Outcome
 
