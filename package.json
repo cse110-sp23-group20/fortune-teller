@@ -19,6 +19,9 @@
     "docs": "jsdoc"
   },
   "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    },
     "preset": "jest-puppeteer",
     "verbose": true
   }
