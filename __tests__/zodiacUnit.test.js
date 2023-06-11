@@ -7,7 +7,6 @@ import {
   determinePairing,
   textGenerator,
   angleDiff,
-  ease,
 } from "../source/Zodiac_compatibility/zodiac-angles.js";
 
 describe("roundAngle Tests", () => {
@@ -274,37 +273,5 @@ describe("angleDiff", () => {
     const base = -1;
     const result = angleDiff(angle, base);
     expect(result).toBe(-178);
-  });
-});
-
-describe("ease", () => {
-  test("returns the correct value at t = 0", () => {
-    const t = 0;
-    const result = ease(t);
-    expect(result).toBe(0);
-  });
-
-  test("returns the correct value at t = 0.25", () => {
-    const t = 0.25;
-    const result = ease(t);
-    expect(result).toBeCloseTo(0.41);
-  });
-
-  test("returns the correct value at t = 0.5", () => {
-    const t = 0.5;
-    const result = ease(t);
-    expect(result).toBeCloseTo(0.8);
-  });
-
-  test("returns the correct value at t = 0.75", () => {
-    const t = 0.75;
-    const result = ease(t);
-    expect(result).toBeCloseTo(0.96);
-  });
-
-  test("returns the correct value at t = 1", () => {
-    const t = 1;
-    const result = ease(t);
-    expect(result).toBe(1);
   });
 });

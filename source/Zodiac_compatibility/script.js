@@ -1,10 +1,7 @@
-// @ts-check
-
 import { wait } from "../utils.js";
 import {
   angleDiff,
   determineDateRangeLeft,
-  ease,
   getMappingLeft,
   roundAngle,
   textGenerator,
@@ -35,26 +32,12 @@ const popup = document.getElementById("pop-up");
  * @property {number} angleVel
  */
 
-/**
- * @typedef {object} SnapInfo
- * @property {'snap'} type
- * @property {number} frameId
- * @property {number} startTime
- * @property {number} startAngle
- * @property {number} targetAngle
- */
-
 class Wheel {
   /**
    * In degrees/ms^2.
    * @type {number}
    */
   static #FRICTION = 0.001;
-  /**
-   * In ms.
-   * @type {number}
-   */
-  static #SNAP_DURATION = 500;
 
   /**
    * @type {HTMLElement}
@@ -77,7 +60,7 @@ class Wheel {
    */
   #pointer = null;
   /**
-   * @type {MomentumInfo | SnapInfo | null}
+   * @type {MomentumInfo | null}
    */
   #animating = null;
 
@@ -117,6 +100,18 @@ class Wheel {
     this.#dateInput.value = this.#getDateRange();
   }
 
+  #getAngle() {
+    const matrix = window.getComputedStyle(this.#elem).transform;
+    const match = matrix.match(/^matrix\((-?\d+(?:\.\d+)?), (-?\d+(?:\.\d+)?)/);
+    if (match) {
+      const cosine = +match[1];
+      const sine = +match[2];
+      return Math.atan2(sine, cosine) * (180 / Math.PI);
+    } else {
+      return this.#angle;
+    }
+  }
+
   /**
    * @param {PointerEvent} event
    * @returns {number} Clockwise, between -180° and 180°, where 0° means the
@@ -139,10 +134,11 @@ class Wheel {
    */
   #handlePointerDown = (event) => {
     if (!this.#pointer) {
+      const wheelAngle = this.#getAngle();
       const mouseAngle = this.#getMouseAngle(event);
       this.#pointer = {
         pointerId: event.pointerId,
-        initWheelAngle: this.#angle,
+        initWheelAngle: wheelAngle,
         initMouseAngle: mouseAngle,
         lastMouseAngle2: mouseAngle,
         lastTime2: Date.now(),
@@ -150,6 +146,8 @@ class Wheel {
         lastTime1: Date.now(),
       };
       this.#elem.setPointerCapture(event.pointerId);
+      // Set angle again in case it was interrupted mid-transition
+      this.#setAngle(wheelAngle);
       this.#stopMomentum();
     }
   };
@@ -223,6 +221,7 @@ class Wheel {
       window.cancelAnimationFrame(this.#animating.frameId);
       this.#animating = null;
     }
+    this.#elem.style.transition = null;
   }
 
   #paint = () => {
@@ -245,29 +244,12 @@ class Wheel {
         );
       }
       if (this.#animating.angleVel === 0) {
-        this.#animating = {
-          type: "snap",
-          frameId: this.#animating.frameId,
-          startTime: now,
-          startAngle: this.#angle,
-          targetAngle: roundAngle(this.#angle),
-        };
-      } else {
-        this.#setAngle(this.#angle + this.#animating.angleVel * elapsed);
-      }
-    }
-    if (this.#animating.type === "snap") {
-      const progress = (now - this.#animating.startTime) / Wheel.#SNAP_DURATION;
-      if (progress >= 1) {
-        this.#setAngle(this.#animating.targetAngle);
         this.#animating = null;
+        this.#elem.style.transition = "transform 0.5s";
+        this.#setAngle(roundAngle(this.#angle));
         return;
       } else {
-        this.#setAngle(
-          this.#animating.startAngle +
-            ease(progress) *
-              angleDiff(this.#animating.targetAngle, this.#animating.startAngle)
-        );
+        this.#setAngle(this.#angle + this.#animating.angleVel * elapsed);
       }
     }
     this.#animating.frameId = window.requestAnimationFrame(this.#paint);
