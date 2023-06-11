@@ -2,6 +2,8 @@ name: Generate JSDOCS
 run-name: Action by @${{ github.actor }}
 on:
   push:
+    branches:
+      - main
 permissions:
   contents: write
 jobs:
