@@ -6,6 +6,7 @@ body {
   overflow: hidden;
 }
 
+/* background image settings */
 .background {
   position: fixed;
   top: -10px;
@@ -251,10 +252,7 @@ li.audio-dropdown {
   }
 }
 
-.nav-list a:hover {
-  color: #5d59d1;
-}
-
+/* Page title and subtitle settings */
 .title {
   display: flex;
   justify-content: center;
@@ -266,27 +264,7 @@ li.audio-dropdown {
   color: #ffffff;
 }
 
-.nav-list a {
-  text-decoration: none;
-  color: #ffffff;
-}
-
-.menu-bar {
-  display: flex;
-  justify-content: center;
-}
-
-.nav-items-list {
-  display: flex;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-}
-
-.nav-list {
-  margin: 0 10px;
-}
-
+/* Dramatic mode & bars settings */
 .dramatic-bar {
   position: fixed;
   background-color: black;
@@ -317,6 +295,7 @@ aside {
   transition: opacity 0.5s;
 }
 
+/* Animation settings */
 .cancel-animation-wrapper {
   visibility: hidden;
   opacity: 0;
