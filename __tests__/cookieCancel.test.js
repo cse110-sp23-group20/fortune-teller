@@ -35,7 +35,7 @@ describe("Basic user flow for Website", () => {
     // Cookie button should be disabled
     let cookieButtonDisabled;
     const cookieButton = await page.$("#cookie-button");
-    booleanValue = await fortuneButton.getProperty("disabled");
+    booleanValue = await cookieButton.getProperty("disabled");
     cookieButtonDisabled = await booleanValue.jsonValue();
     expect(cookieButtonDisabled).toBe(true);
 
@@ -98,7 +98,7 @@ describe("Basic user flow for Website", () => {
     // Cookie button should be enabled as well
     let cookieButtonDisabled;
     const cookieButton = await page.$("#cookie-button");
-    booleanValue = await fortuneButton.getProperty("disabled");
+    booleanValue = await cookieButton.getProperty("disabled");
     cookieButtonDisabled = await booleanValue.jsonValue();
     expect(cookieButtonDisabled).toBe(false);
 
@@ -222,7 +222,7 @@ describe("Basic user flow for Website", () => {
     // Cookie button should be enabled as well
     let cookieButtonDisabled;
     const cookieButton = await page.$("#cookie-button");
-    booleanValue = await fortuneButton.getProperty("disabled");
+    booleanValue = await cookieButton.getProperty("disabled");
     cookieButtonDisabled = await booleanValue.jsonValue();
     expect(cookieButtonDisabled).toBe(false);
 
