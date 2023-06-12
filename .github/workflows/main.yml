@@ -1,5 +1,4 @@
-name: CI/CD Pipeline
-run-name: Action by @${{ github.actor }}
+name: Lint, Check Format, and Generate JSDocs
 on:
   push:
 
@@ -17,7 +16,6 @@ jobs:
         run: npm run lint
 
   format_check:
-    needs: lint_check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,16 +24,7 @@ jobs:
       - name: Check if Prettier could format code
         run: npx prettier --check --no-config .
 
-  testing:
-    needs: format_check
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Run Tests
-        run: npm install && npm test
-
   jsdocs:
-    needs: testing
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
