@@ -1,12 +1,29 @@
-name: Generate JSDOCS
-run-name: Action by @${{ github.actor }}
+name: Lint, Check Format, and Generate JSDocs
 on:
   push:
-    branches:
-      - main
+
 permissions:
   contents: write
+
 jobs:
+  lint_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Run ESLint
+        run: npm run lint
+
+  format_check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Check if Prettier could format code
+        run: npx prettier --check --no-config .
+
   jsdocs:
     runs-on: ubuntu-latest
     steps:
@@ -15,6 +32,7 @@ jobs:
       - name: Build JSDOCS
         uses: andstor/jsdoc-action@v1
         with:
+          source_dir: ./source
           recurse: true
           output_dir: ./JSDOCs
           config_file: .jsdoc.conf.json

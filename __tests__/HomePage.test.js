@@ -13,7 +13,7 @@ describe("Basic unit Tests for the Home Page", () => {
     const hrefValue = await hrefProperty.jsonValue();
 
     expect(hrefValue).toBe(
-      "https://github.com/cse110-sp23-group20/cse110-sp23-group20/blob/main/admin/team.md"
+      "https://github.com/cse110-sp23-group20/fortune-teller/blob/main/admin/team.md"
     );
   });
 
@@ -30,7 +30,7 @@ describe("Basic unit Tests for the Home Page", () => {
 
     // Assert that the current URL matches the expected destination
     expect(currentURL).toBe(
-      "https://github.com/cse110-sp23-group20/cse110-sp23-group20/blob/main/admin/team.md"
+      "https://github.com/cse110-sp23-group20/fortune-teller/blob/main/admin/team.md"
     );
   });
 });
