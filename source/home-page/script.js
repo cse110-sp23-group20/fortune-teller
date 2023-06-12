@@ -12,8 +12,6 @@ function randomize() {
   randomCardContainer.click();
 }
 
-const cardContainers = document.querySelectorAll(".card-container");
-
 // Get the "Randomize" button element
 const randomizeButton = document.querySelector(".randomize-button");
 
