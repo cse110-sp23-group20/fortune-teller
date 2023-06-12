@@ -411,10 +411,14 @@ describe("Basic user flow for Website", () => {
 
     //call the populatevoicelist function
     await page.evaluate(() => {
-      const voice = [{ name: "Karen", lang: "en-AU", default: false }];
-      speechSynthesis.getVoices = () => voice;
-    });
-
+      const voice = [
+        {name : 'Karen',lang: 'en-AU',default:false}
+      ];
+      speechSynthesis.getVoices = () => voice});
+    
+    
+    
+  
     await page.waitForSelector("select");
     const voiceSelect = await page.evaluate(() => ({
       value: document.querySelector("select").value,
