@@ -1,7 +1,7 @@
 /* code for picture-frame page */
 body {
   /* palm reading background image, two small palms with symbols, mystical, celestial, stars and nebulae, dark blue and purple */
-  background-image: url("./images/background.png");
+  background-image: url("../common/Images/Background.png");
   color: white;
   display: flex;
   justify-content: center;
