@@ -1,0 +1,56 @@
+name: CI/CD Pipeline
+run-name: Action by @${{ github.actor }}
+on:
+  push:
+
+permissions:
+  contents: write
+
+jobs:
+  lint check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Run ESLint
+        run: npm run lint
+
+  format check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Check if Prettier could format code
+        run: npx prettier --check --no-config .
+
+  testing:
+    needs: checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Tests
+        run: npm install && npm test
+
+  jsdocs:
+    needs: testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Build JSDOCS
+        uses: andstor/jsdoc-action@v1
+        with:
+          source_dir: ./source
+          recurse: true
+          output_dir: ./JSDOCs
+          config_file: .jsdoc.conf.json
+          template: minami
+      - name: Commit JSDOCS
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: GitHub Actions
+          author_email: noreply@github.com
+          message: "Generated JSDocs"
+          add: "JSDOCs/*"
