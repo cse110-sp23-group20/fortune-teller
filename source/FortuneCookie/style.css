@@ -15,6 +15,8 @@ body {
   bottom: -10px;
   z-index: -1;
   background-image: url("Images/Background.png");
+  background-size: cover;
+  background-position: center;
 }
 
 header,
