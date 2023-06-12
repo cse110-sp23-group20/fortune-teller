@@ -8,7 +8,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that fortune button is enabled when page loads
   it("Make sure fortune button is enabled on page load", async () => {
-    console.log("Checking to make sure fortune button is enabled...");
     let fortuneButtonDisabled;
     const fortuneButton = await page.$("#fortune-button");
 
@@ -19,7 +18,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cookie button is enabled when page loads
   it("Make sure cookie button is enabled on page load", async () => {
-    console.log("Checking to make sure cookie button is enabled...");
     let cookieButtonDisabled;
     const cookieButton = await page.$("#cookie-button");
 
@@ -30,7 +28,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that reset button is disabled when page loads
   it("Make sure reset button is disabled on page load", async () => {
-    console.log("Checking to make sure reset button is disabled...");
     let resetButtonDisabled;
     const resetButton = await page.$("#reset-button");
 
@@ -41,10 +38,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button is not visible and has correct classes when page loads
   it("Make sure cancel button is not visible and has correct classes on page load", async () => {
-    console.log(
-      "Checking to make sure cancel button is not visible and has correct classes..."
-    );
-
     // Only get past here if cancel button is not visible
     await page.waitForSelector("#cancel-animation-btn", { visible: false });
 
@@ -67,10 +60,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that fortune button disables when it is clicked
   it("Make sure fortune button disables after being clicked", async () => {
-    console.log(
-      "Checking to make sure fortune button disables when clicked..."
-    );
-
     let fortuneButtonDisabled;
     const fortuneButton = await page.$("#fortune-button");
     await fortuneButton.click();
@@ -82,10 +71,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cookie button also disables when the fortune button is clicked
   it("Make sure cookie button disables after the fortune button is clicked", async () => {
-    console.log(
-      "Checking to make sure cookie button disables when fortune button is clicked..."
-    );
-
     let cookieButtonDisabled;
     const cookieButton = await page.$("#cookie-button");
 
@@ -96,10 +81,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button becomes visible and has correct classes after fortune button is clicked
   it("Make sure cancel button is visible and has correct classes when fortune button is clicked", async () => {
-    console.log(
-      "Checking to make sure cancel button is visible and has correct classes when fortune button is clicked..."
-    );
-
     // Only get past here if cancel button is visible
     await page.waitForSelector("#cancel-animation-btn", { visible: true });
 
@@ -122,8 +103,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that reset button is enabled when after fortune button is clicked
   it("Make sure reset button is enabled after fortune button is clicked", async () => {
-    console.log("Checking to make sure reset button is enabled...");
-
     /**
      * The waitForFunction() waits for the provided function to return true, indicating that the button element with the ID 'reset-button'
      * has its disabled attribute set to false. If the button's disabled value becomes false within the specified timeout, the test will pass.
@@ -143,10 +122,6 @@ describe("Basic user flow for Website", () => {
 
   // Make sure fortune paper is revealed by the time reset button appears
   it("Make sure fortune paper is revealed after fortune button is clicked", async () => {
-    console.log(
-      "Checking to make sure fortune button is revealed after fortune button is clicked..."
-    );
-
     let elementHasClass = await page.evaluate(() => {
       const fortunePaper = document.querySelector("#fortune-paper");
       return fortunePaper.classList.contains("reveal");
@@ -156,10 +131,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button is not visible and has correct classes when reset button appears
   it("Make sure cancel button is not visible and has correct classes when reset button appears", async () => {
-    console.log(
-      "Checking to make sure cancel button is not visible and has correct classes when reset button appears..."
-    );
-
     // Only get past here if cancel button is not visible
     await page.waitForSelector("#cancel-animation-btn", { visible: false });
 
@@ -182,10 +153,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that reset button gets disabled when the reset button is clicked
   it("Make sure after reset button is clicked, reset button is disabled", async () => {
-    console.log(
-      "Checking to make sure reset button is disabled after the reset button is clicked ..."
-    );
-
     // Click reset button
     let resetButtonDisabled;
     const resetButton = await page.$("#reset-button");
@@ -199,10 +166,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button becomes visible and has correct classes after reset button is clicked
   it("Make sure cancel button is visible and has correct classes when reset button is clicked", async () => {
-    console.log(
-      "Checking to make sure cancel button is visible and has correct classes when reset button is clicked..."
-    );
-
     // Only get past here if cancel button is visible
     await page.waitForSelector("#cancel-animation-btn", { visible: true });
 
@@ -225,10 +188,6 @@ describe("Basic user flow for Website", () => {
 
   // Now that reset button has been clicked, check that the fortune button is enabled
   it("Make sure that after the reset button is clicked, the fortune button is reenabled", async () => {
-    console.log(
-      "Checking to make sure fortune button is reenabled after the reset button has been clicked ..."
-    );
-
     /**
      * The waitForFunction() waits for the provided function to return true, indicating that the button element with the ID 'fortune-button'
      * has its disabled attribute set to false. If the button's disabled value becomes false within the specified timeout, the test will pass.
@@ -248,10 +207,6 @@ describe("Basic user flow for Website", () => {
 
   // Now that reset button has been clicked, check that the cookie button is enabled
   it("Make sure after reset button is clicked, the cookie button is reenabled", async () => {
-    console.log(
-      "Checking to make sure cookie button is reenabled after the reset button has been clicked ..."
-    );
-
     /**
      * The waitForFunction() waits for the provided function to return true, indicating that the button element with the ID 'cookie-button'
      * has its disabled attribute set to false. If the button's disabled value becomes false within the specified timeout, the test will pass.
@@ -271,10 +226,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button becomes not visible and has correct classes after fortune/cookie button are enabled
   it("Make sure cancel button is not visible and has correct classes after fortune/cookie button are enabled", async () => {
-    console.log(
-      "Checking to make sure cancel button is visible and has correct classes after fortune/cookie button are enabled..."
-    );
-
     // Only get past here if cancel button is not visible
     await page.waitForSelector("#cancel-animation-btn", { visible: false });
 
@@ -299,8 +250,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cookie button disables when it is clicked
   it("Make sure cookie button disables after being clicked", async () => {
-    console.log("Checking to make sure cookie button disables when clicked...");
-
     let cookieButtonDisabled;
     const cookieButton = await page.$("#cookie-button");
     await cookieButton.click();
@@ -312,10 +261,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that fortune button also disables when the cookie button is clicked
   it("Make sure fortune button disables after the cookie button is clicked", async () => {
-    console.log(
-      "Checking to make sure fortune button disables when cookie button is clicked..."
-    );
-
     let fortuneButtonDisabled;
     const fortuneButton = await page.$("#fortune-button");
 
@@ -326,10 +271,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button becomes visible and has correct classes after cookie button is clicked
   it("Make sure cancel button is visible and has correct classes when cookie button is clicked", async () => {
-    console.log(
-      "Checking to make sure cancel button is visible and has correct classes when cookie button is clicked..."
-    );
-
     // Only get past here if cancel button is visible
     await page.waitForSelector("#cancel-animation-btn", { visible: true });
 
@@ -352,10 +293,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that reset button is enabled when after cookie button is clicked
   it("Make sure reset button is enabled after cookie button is clicked", async () => {
-    console.log(
-      "Checking to make sure reset button is enabled after cookie button is clicked..."
-    );
-
     /**
      * The waitForFunction() waits for the provided function to return true, indicating that the button element with the ID 'reset-button'
      * has its disabled attribute set to false. If the button's disabled value becomes false within the specified timeout, the test will pass.
@@ -375,10 +312,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that reset button gets disabled when the reset button is clicked
   it("Make sure after reset button is clicked, reset button is disabled", async () => {
-    console.log(
-      "Checking to make sure reset button is disabled after the reset button is clicked ..."
-    );
-
     // Click reset button
     let resetButtonDisabled;
     const resetButton = await page.$("#reset-button");
@@ -392,10 +325,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button becomes visible and has correct classes after reset button is clicked
   it("Make sure cancel button is visible and has correct classes when reset button is clicked", async () => {
-    console.log(
-      "Checking to make sure cancel button is visible and has correct classes when reset button is clicked..."
-    );
-
     // Only get past here if cancel button is visible
     await page.waitForSelector("#cancel-animation-btn", { visible: true });
 
@@ -418,10 +347,6 @@ describe("Basic user flow for Website", () => {
 
   // Now that reset button has been clicked, check that the fortune button is enabled
   it("Make sure that after the reset button is clicked, the fortune button is reenabled", async () => {
-    console.log(
-      "Checking to make sure fortune button is reenabled after the reset button has been clicked ..."
-    );
-
     /**
      * The waitForFunction() waits for the provided function to return true, indicating that the button element with the ID 'fortune-button'
      * has its disabled attribute set to false. If the button's disabled value becomes false within the specified timeout, the test will pass.
@@ -441,10 +366,6 @@ describe("Basic user flow for Website", () => {
 
   // Now that reset button has been clicked, check that the cookie button is enabled
   it("Make sure after reset button is clicked, the cookie button is reenabled", async () => {
-    console.log(
-      "Checking to make sure cookie button is reenabled after the reset button has been clicked ..."
-    );
-
     /**
      * The waitForFunction() waits for the provided function to return true, indicating that the button element with the ID 'cookie-button'
      * has its disabled attribute set to false. If the button's disabled value becomes false within the specified timeout, the test will pass.
@@ -464,10 +385,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button is not visible and has correct classes after fortune/cookie button are enabled
   it("Make sure cancel button is not visible and has correct classes after fortune/cookie button are enabled", async () => {
-    console.log(
-      "Checking to make sure cancel button is visible and has correct classes after fortune/cookie button are enabled..."
-    );
-
     // Only get past here if cancel button is not visible
     await page.waitForSelector("#cancel-animation-btn", { visible: false });
 
@@ -490,7 +407,6 @@ describe("Basic user flow for Website", () => {
 
   //Check to make sure that the speech synthesis is being populated, the correct voices are called by the function
   it("Make sure that the speech synthesis options are working correctly", async () => {
-    console.log("check to make sure that speech synthesis list is working..");
     //mock voice data
 
     //call the populatevoicelist function
@@ -499,6 +415,10 @@ describe("Basic user flow for Website", () => {
         {name : 'Karen',lang: 'en-AU',default:false}
       ];
       speechSynthesis.getVoices = () => voice});
+    
+    
+    
+  
     await page.waitForSelector("select");
     const voiceSelect = await page.evaluate(() => ({
       value: document.querySelector("select").value,

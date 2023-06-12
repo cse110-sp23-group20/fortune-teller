@@ -10,10 +10,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button cancel button works when clicked after fortune button is clicked
   it("Make sure cancel button works when clicked after fortune button is clicked", async () => {
-    console.log(
-      "Checking to make sure cancel button works when clicked after fortune button is clicked..."
-    );
-
     const fortuneButton = await page.$("#fortune-button");
     await fortuneButton.click();
 
@@ -76,10 +72,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button cancel button works when clicked after reset button is clicked
   it("Make sure cancel button works when clicked after reset button is clicked", async () => {
-    console.log(
-      "Checking to make sure cancel button works when clicked after reset button is clicked..."
-    );
-
     const resetButton = await page.$("#reset-button");
     await resetButton.click();
 
@@ -142,10 +134,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button cancel button works when clicked after cookie button is clicked
   it("Make sure cancel button works when clicked after cookie button is clicked", async () => {
-    console.log(
-      "Checking to make sure cancel button works when clicked after cookie button is clicked..."
-    );
-
     const cookieButton = await page.$("#cookie-button");
     await cookieButton.click();
 
@@ -208,10 +196,6 @@ describe("Basic user flow for Website", () => {
 
   // Check to make sure that cancel button cancel button works when clicked after reset button is clicked
   it("Make sure cancel button works when clicked after reset button is clicked", async () => {
-    console.log(
-      "Checking to make sure cancel button works when clicked after reset button is clicked..."
-    );
-
     const resetButton = await page.$("#reset-button");
     await resetButton.click();
 
