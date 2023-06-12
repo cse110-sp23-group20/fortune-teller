@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  lint check:
+  lint_check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,7 +16,7 @@ jobs:
       - name: Run ESLint
         run: npm run lint
 
-  format check:
+  format_check:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
