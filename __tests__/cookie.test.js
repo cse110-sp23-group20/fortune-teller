@@ -411,14 +411,10 @@ describe("Basic user flow for Website", () => {
 
     //call the populatevoicelist function
     await page.evaluate(() => {
-      const voice = [
-        {name : 'Karen',lang: 'en-AU',default:false}
-      ];
-      speechSynthesis.getVoices = () => voice});
-    
-    
-    
-  
+      const voice = [{ name: "Karen", lang: "en-AU", default: false }];
+      speechSynthesis.getVoices = () => voice;
+    });
+
     await page.waitForSelector("select");
     const voiceSelect = await page.evaluate(() => ({
       value: document.querySelector("select").value,
@@ -430,7 +426,8 @@ describe("Basic user flow for Website", () => {
         })
       ),
     }));
-    expect(voiceSelect.value).toBe("0");
+    expect(voiceSelect.options[0].value).toBe("none");
+
     // There should be at least one voice
     expect(voiceSelect.childElementCount).toBeGreaterThan(0);
   });
