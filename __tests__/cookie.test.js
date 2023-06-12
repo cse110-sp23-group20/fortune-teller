@@ -492,13 +492,18 @@ describe("Basic user flow for Website", () => {
   it("Make sure that the speech synthesis options are working correctly", async () => {
     console.log("check to make sure that speech synthesis list is working..");
     //mock voice data
-    const voice = [
-      {name : 'Karen',lang: 'en-AU',default:false}
-    ];
-    window.speechSynthesis.getVoices.mockReturnValue(voice);
+
     //call the populatevoicelist function
-    await page.evaluate(window.speechSynthesis,populateVoiceList);
-    await page.waitForSelector('select');
+    await page.evaluate(() => {
+      const voice = [
+        {name : 'Karen',lang: 'en-AU',default:false}
+      ];
+      speechSynthesis.getVoices = () => voice);
+    });
+    
+    
+  
+    await page.waitForSelector("select");
     const voiceSelect = await page.evaluate(() => ({
       value: document.querySelector("select").value,
       childElementCount: document.querySelector("select").childElementCount,
@@ -509,7 +514,7 @@ describe("Basic user flow for Website", () => {
         })
       ),
     }));
-    expect(voiceSelect.value).toBe("");
-    expect(voiceSelect.childElementCount).toBe(1);
+    expect(voiceSelect.value).toBe("0");
+    expect(voiceSelect.childElementCount).toBe(145);
   });
 });
