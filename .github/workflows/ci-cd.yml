@@ -17,6 +17,7 @@ jobs:
         run: npm run lint
 
   format_check:
+    needs: lint_check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -26,7 +27,7 @@ jobs:
         run: npx prettier --check --no-config .
 
   testing:
-    needs: checks
+    needs: format_check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
