@@ -1,0 +1,15 @@
+name: Post Pages Deployment Testing
+on:
+  workflow_run:
+    workflows:
+      - "pages-build-deployment"
+    types:
+      - completed
+
+jobs:
+  testing:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run Tests
+        run: npm install && npm test
