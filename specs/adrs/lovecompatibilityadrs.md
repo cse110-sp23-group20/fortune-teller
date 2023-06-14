@@ -14,16 +14,6 @@ When the user selects a zodiac pairing, we need to serve them a compatibility re
 
 Chosen option: For now we will just stick to using one response for all 33 unique combinations. Considering the time that we have left, adding extra features/complexity to our mini-app is not what we are trying to do. Once we have all 33 unique responses hard coded we can think about adding more or using an API to give us responses. We will reconsider this decision again once we have our mini-app completed and have the opportunity to add extra features.
 
-# Question
-
-## Context and Problem Statement
-
-## Decision Drivers
-
-## Considered Options
-
-## Decision Outcome
-
 # Question: How should the user choose their birthdate/zodiac sign
 
 ## Context and Problem Statement
