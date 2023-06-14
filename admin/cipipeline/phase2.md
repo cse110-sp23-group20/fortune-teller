@@ -1,4 +1,4 @@
-![Pipeline Image](phase2.md)
+![Pipeline](phase2.md)
 
 # What is functional
 
