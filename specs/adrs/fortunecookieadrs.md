@@ -1,4 +1,6 @@
-# How will the user get the fortune
+# How will the user get the fortune (changed)
+
+Change happened 6/8 to use have a fortune cookie image button and a regular button that says "Open the cookie." Was made because it fits with the new fortune cookie animation.
 
 ## Context and Problem Statement
 
