@@ -32,7 +32,7 @@ export function mod(a, b) {
  * by `clearTimeout`.
  *
  * @example
- * wait(1000).then(() => console.log("This will never run!"));
+ * wait(1000);
  * clearTimeout(timeoutId);
  *
  * @type {number}

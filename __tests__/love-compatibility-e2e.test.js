@@ -3,7 +3,7 @@ import { BASE } from "./consts.js";
 describe("User rotates NO wheels and presses find out", () => {
   // First, visit the zodiac compatibility page
   beforeAll(async () => {
-    await page.goto(`${BASE}/source/Zodiac_compatibility/`);
+    await page.goto(`${BASE}/source/love-compatibility/`);
   });
 
   it("User immediately clicks find out", async () => {
@@ -24,12 +24,12 @@ describe("User rotates NO wheels and presses find out", () => {
 describe("User rotates LEFT wheel ONLY and presses find out", () => {
   // First, visit the zodiac compatibility page
   beforeAll(async () => {
-    await page.goto(`${BASE}/source/Zodiac_compatibility/`);
+    await page.goto(`${BASE}/source/love-compatibility/`);
   });
 
   it("User rotates LEFT wheel then clicks find out", async () => {
     // Hover over the left wheel
-    const leftWheel = await page.$("#left_wheel_img");
+    const leftWheel = await page.$("#left-wheel-img");
     const leftWheelBoundingBox = await leftWheel.boundingBox();
     await page.mouse.move(
       leftWheelBoundingBox.x + leftWheelBoundingBox.width / 4,
@@ -39,7 +39,7 @@ describe("User rotates LEFT wheel ONLY and presses find out", () => {
     await new Promise((resolve) => setTimeout(resolve, 4000));
     // Spin the left wheel
     await page.evaluate(() => {
-      const leftWheelImg = document.querySelector("#left_wheel_img");
+      const leftWheelImg = document.querySelector("#left-wheel-img");
       for (let i = 0; i < 100; i++) {
         leftWheelImg.dispatchEvent(new WheelEvent("wheel", { deltaY: -720 }));
       }
@@ -68,12 +68,12 @@ describe("User rotates LEFT wheel ONLY and presses find out", () => {
 describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
   // First, visit the zodiac compatibility page
   beforeAll(async () => {
-    await page.goto(`${BASE}/source/Zodiac_compatibility/`);
+    await page.goto(`${BASE}/source/love-compatibility/`);
   });
 
   it("User rotates RIGHT and RIGHT wheel then clicks find out", async () => {
     // Hover over the left wheel
-    const leftWheel = await page.$("#left_wheel_img");
+    const leftWheel = await page.$("#left-wheel-img");
     const leftWheelBoundingBox = await leftWheel.boundingBox();
     await page.mouse.move(
       leftWheelBoundingBox.x + leftWheelBoundingBox.width / 4,
@@ -83,7 +83,7 @@ describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
     await new Promise((resolve) => setTimeout(resolve, 4000));
     // Spin the left wheel
     await page.evaluate(() => {
-      const leftWheelImg = document.querySelector("#left_wheel_img");
+      const leftWheelImg = document.querySelector("#left-wheel-img");
       for (let i = 0; i < 100; i++) {
         leftWheelImg.dispatchEvent(new WheelEvent("wheel", { deltaY: -720 }));
       }
@@ -91,7 +91,7 @@ describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
     await new Promise((resolve) => setTimeout(resolve, 1000));
 
     // Hover over the right wheel
-    const rightWheel = await page.$("#right_wheel_img");
+    const rightWheel = await page.$("#right-wheel-img");
     const rightWheelBoundingBox = await rightWheel.boundingBox();
     await page.mouse.move(
       rightWheelBoundingBox.x + rightWheelBoundingBox.width / 4,
@@ -99,7 +99,7 @@ describe("User rotates LEFT and RIGHT wheel and presses find out", () => {
     );
     // Spin the right wheel
     await page.evaluate(() => {
-      const rightWheelImg = document.querySelector("#right_wheel_img");
+      const rightWheelImg = document.querySelector("#right-wheel-img");
       for (let i = 0; i < 100; i++) {
         rightWheelImg.dispatchEvent(new WheelEvent("wheel", { deltaY: -720 }));
       }

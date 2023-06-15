@@ -7,7 +7,7 @@ import {
   determinePairing,
   textGenerator,
   angleDiff,
-} from "../source/Zodiac_compatibility/zodiac-angles.js";
+} from "../source/love-compatibility/zodiac-angles.js";
 
 describe("roundAngle Tests", () => {
   test("should round positive angles correctly", () => {

@@ -345,7 +345,6 @@ class Wheel {
 
     // Update the rotation angle based on the scrolling direction
     this.#setAngle(wheelAngle + direction * 2);
-    console.log(wheelAngle, this.#angle);
 
     this.#stopMomentum();
     this.#wheelTimeout = setTimeout(() => {
@@ -444,7 +443,7 @@ class Wheel {
  * @type {Wheel}
  */
 const leftWheel = new Wheel(
-  document.getElementById("left_wheel_img"),
+  document.getElementById("left-wheel-img"),
   document.getElementById("left_birthday")
 );
 /**
@@ -452,7 +451,7 @@ const leftWheel = new Wheel(
  * @type {Wheel}
  */
 const rightWheel = new Wheel(
-  document.getElementById("right_wheel_img"),
+  document.getElementById("right-wheel-img"),
   document.getElementById("right_birthday"),
   180
 );

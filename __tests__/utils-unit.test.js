@@ -2,8 +2,6 @@
 
 import { mod, pick, wait, timeoutId } from "../source/utils.js";
 
-// Yes. I generated these tests with ChatGPT. 😎
-
 describe("pick", () => {
   // Test with an array of numbers
   test("picks a number from the given array", () => {

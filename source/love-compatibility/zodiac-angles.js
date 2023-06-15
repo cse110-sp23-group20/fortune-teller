@@ -1,7 +1,7 @@
 // @ts-check
 
 import { mod } from "../utils.js";
-import { zodiacOrder, zodiacDateRanges, romantic } from "./data/dataArray.js";
+import { zodiacOrder, zodiacDateRanges, romantic } from "./data/data-array.js";
 
 /**
  * Rounds the given angle to the nearest multiple of 30.

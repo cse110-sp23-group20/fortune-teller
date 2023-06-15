@@ -9,7 +9,7 @@ import {
 
 // Get all necessary document objects
 const button = document.getElementById("find-out");
-const how_to = document.getElementById("how_to");
+const howTo = document.getElementById("how-to");
 const help = document.getElementById("help");
 const popup = document.getElementById("pop-up");
 
@@ -304,7 +304,6 @@ class Wheel {
 
     // Update the rotation angle based on the scrolling direction
     this.#setAngle(wheelAngle + direction * 2);
-    console.log(wheelAngle, this.#angle);
 
     this.#stopMomentum();
     this.#wheelTimeout = setTimeout(() => {
@@ -403,23 +402,23 @@ class Wheel {
  * @type {Wheel}
  */
 const leftWheel = new Wheel(
-  document.getElementById("left_wheel_img"),
-  document.getElementById("left_birthday")
+  document.getElementById("left-wheel-img"),
+  document.getElementById("left-birthday")
 );
 /**
  * The right wheel.
  * @type {Wheel}
  */
 const rightWheel = new Wheel(
-  document.getElementById("right_wheel_img"),
-  document.getElementById("right_birthday"),
+  document.getElementById("right-wheel-img"),
+  document.getElementById("right-birthday"),
   180
 );
 
 // add all the necessary event listeners for the buttons
 button.addEventListener("click", displayResults);
 
-how_to.addEventListener("click", () => {
+howTo.addEventListener("click", () => {
   help.parentElement.classList.add("open");
 });
 document.addEventListener("click", (event) => {

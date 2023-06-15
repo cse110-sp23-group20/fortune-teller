@@ -1,7 +1,7 @@
 @font-face {
   font-family: "Enchanted Land";
-  src: url("Fonts/enchanted_land/Enchanted\ Land.otf") format("woff2"),
-    url("Fonts/enchanted_land/Enchanted\ Land.otf") format("woff");
+  src: url("fonts/enchanted_land/Enchanted\ Land.otf") format("woff2"),
+    url("fonts/enchanted_land/Enchanted\ Land.otf") format("woff");
 }
 
 *,
