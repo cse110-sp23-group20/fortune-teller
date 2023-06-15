@@ -207,7 +207,7 @@ function ecg(time) {
  * The number of SVG units in width of the fake heartbeat graph.
  * @type {number}
  */
-const ECG_LENGTH = 300;
+const ecgLength = 300;
 /**
  * The FPS of the animation. `paintEcg` will try to keep the animation at this
  * rate, for displays that have slower or faster refresh rates.
@@ -221,7 +221,7 @@ const FPS = 60;
 const ecgPath = document.getElementById("ecg-path");
 /**
  * A queue of points (new elements added to the beginning) representing the ECG
- * graph. Kept to a maximum of `ECG_LENGTH` items.
+ * graph. Kept to a maximum of `ecgLength` items.
  * @type {number[]}
  */
 const ecgHistory = [];
@@ -269,7 +269,7 @@ function paintEcg() {
           15 +
           (Math.random() - 0.5) * 2
       );
-      while (ecgHistory.length > ECG_LENGTH) {
+      while (ecgHistory.length > ecgLength) {
         ecgHistory.pop();
       }
       ecgPath.setAttributeNS(

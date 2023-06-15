@@ -3,7 +3,7 @@ import { BASE } from "./consts.js";
 describe("Basic user flow for Website", () => {
   // First, visit the fortune cookie website
   beforeAll(async () => {
-    await page.goto(`${BASE}/source/FortuneCookie/`);
+    await page.goto(`${BASE}/source/fortune-cookie/`);
   });
 
   // Testing clicking cancel button

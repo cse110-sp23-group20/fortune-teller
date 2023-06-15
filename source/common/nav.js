@@ -26,20 +26,18 @@ const links = [
   },
   {
     label: "Love Compatibility",
-    url: "../Zodiac_compatibility/",
-    imageUrl: "../home-page/Images/craiyon_142342_zodiac_wheel_tarot_card.png",
+    url: "../love-compatibility/",
+    imageUrl: "../home-page/images/love-compatibility-img.png",
   },
   {
     label: "Fortune Cookie",
-    url: "../FortuneCookie/",
-    imageUrl:
-      "../home-page/Images/craiyon_115136_tarot_card_with_fortune_cookie.png",
+    url: "../fortune-cookie/",
+    imageUrl: "../home-page/images/fortune-cookie-img.png",
   },
   {
     label: "Palm Reading",
-    url: "../PalmReading/",
-    imageUrl:
-      "../home-page/Images/craiyon_144054_a_tarot_card_depicting_palmistry.png",
+    url: "../palm-reading/",
+    imageUrl: "../home-page/images/palm-reading-img.png",
   },
 ];
 
