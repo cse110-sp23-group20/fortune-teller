@@ -23,7 +23,7 @@ The rest of the pipeline is manual (development, creating branches, reviewing co
 Though our pipeline does almost all of the things in the following list:
 
 ```
-linting and code style enforcement (may happen in pipeline and/or in editor)
+linting and code style enforcement (may happen in pipeline and/or in editor) 
 code quality via tool  (ex. Codeclimate, Codacy, etc.)
 code quality via human review (ex. Pull Requests)
 unit tests via automation (ex. Jest, Tape, Ava, Cypress, Mocha/Chai, etc.)*
