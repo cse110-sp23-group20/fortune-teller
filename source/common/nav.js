@@ -32,14 +32,12 @@ const links = [
   {
     label: "Fortune Cookie",
     url: "../fortune-cookie/",
-    imageUrl:
-      "../home-page/images/fortune-cookie-img.png",
+    imageUrl: "../home-page/images/fortune-cookie-img.png",
   },
   {
     label: "Palm Reading",
     url: "../palm-reading/",
-    imageUrl:
-      "../home-page/images/palm-reading-img.png",
+    imageUrl: "../home-page/images/palm-reading-img.png",
   },
 ];
 
