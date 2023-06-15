@@ -34,7 +34,6 @@
 - Because of a lack of communication and a lack of a style guideline, every group's naming/coding style differed and now time must be spent fixing that
 - Some people wanted to contribute more than they did and it felt like there were only a few people actually working on developing the app
 
-
 #### What went good
 
 - Everyone in the team was respectful, so the group felt psychological safety
@@ -55,7 +54,6 @@
 - As mentioned before, we'd like to add background music to our website, and preferably have it seamlessly transition when entering sub-applications (i.e. don't suddenly stop), though that seems to be difficult. If we do that, then we have a plan where we add page animations between each sub-application.
 - Because we had issues keeping everyone on track, we would like to add bots to slack to keep everyone up to date. This would hopefully resolve issues of procrastination and let everyone know what needs to be done before its too late
 - We are considering making another sub-application and possibly bringing over the Magic 8 Ball. Having more features is nice but it most likely will be too much workload, so its only a possibility.
-  
 
 ### Decisions made
 

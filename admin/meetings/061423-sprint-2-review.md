@@ -6,7 +6,6 @@
 
 #### Present Members:
 
-
 - Sean Yen
 - Owen Huynh
 - Brevin Gabriel Salvania
@@ -27,6 +26,7 @@
 ## Main Page
 
 ### Overall site:
+
 - Design overhaul throughout entire site
   - Consistent heading and button styles, background images, frosted glass aesthetic, font
   - Added animations, but they can be disabled with `(prefers-reduced-motion)`
@@ -35,22 +35,23 @@
 - Site navigation through non-intrusive menu button on top left corner that lists all pages on the site
 
 ### Home Page:
+
 ![img](media/sprint2homePage.png)
 
-
 - The positioning and spacing of the app cards have been adjusted to look cleaner and more visually appealing
-- The randomize button has been moved to the center of the screen 
+- The randomize button has been moved to the center of the screen
 - The header (title and subtitle) is now styled with the default title font and subtext font
 - Added links to team page and GitHub repo
 
 ### Navigation:
+
 ![img](media/sprint2navigationbar.png)
 
-- A global dropdown navigation window has been added to to each part of the application/website enable navigation between each sub app 
+- A global dropdown navigation window has been added to to each part of the application/website enable navigation between each sub app
   - Appears in the top left corner and when hovered over, will drop down the menu as shown above
 
-
 ### Love Compatibility (Formerly Zodiac Compatibility):
+
 ![img](media/sprint2zodiacHowTo.png)
 ![img](media/sprint2zodiac1.png)
 ![img](media/sprint2zodiac2.png)
@@ -69,12 +70,13 @@
   - The color and font of popups and text on the page have been updated to the global common style
   - Buttons also now do the color shimmer effect on hover
 - Functionality changes
-  - The wheels can now be spun by clicking and dragging (click and hold to rotate), this makes the app more accessible to mobile users who can’t hover their cursor over the wheels and scroll 
+  - The wheels can now be spun by clicking and dragging (click and hold to rotate), this makes the app more accessible to mobile users who can’t hover their cursor over the wheels and scroll
 - Other changes
   - Renamed to love compatibility because zodiac compatibility couldn’t fit on the title card without decreasing the font size
     - And it fit with the student theme more
 
 ### Fortune Cookie:
+
 ![img](media/sprint2fortuneCookie.png)
 ![img](media/sprint2fortuneCookie2.png)
 
@@ -87,6 +89,7 @@
 - Fortunes.js added to move the fortune prompts to this file
 
 ### Palm Reading
+
 ![img](media/sprint2palmReading1.png)
 ![img](media/sprint2palmReading2.png)
 
@@ -97,11 +100,12 @@
 - Background has been changed to the global common background
 
 ### CI/CD Pipeline
+
 ![img](media/sprint2pipeline1.png)
 ![img](media/sprint2pipeline2.png)
 ![img](media/sprint2pipeline3.png)
 
-- Works by first running the lint_check, format_check, and jsdocs. The the page will be built and deployed. Finally, after the page has been deployed, runs testing (Jest/Puppeteer) to run our tests on the newly deployed webpage 
+- Works by first running the lint_check, format_check, and jsdocs. The the page will be built and deployed. Finally, after the page has been deployed, runs testing (Jest/Puppeteer) to run our tests on the newly deployed webpage
 - Prettier configuration to ensure that code conforms to a consistent style
 - JSDOCs to make documentation for our javascript files
 - Site deployment with Github pages
