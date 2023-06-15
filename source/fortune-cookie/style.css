@@ -14,7 +14,7 @@ body {
   right: -10px;
   bottom: -10px;
   z-index: -1;
-  background-image: url("../common/Images/background.png");
+  background-image: url("../common/Images/Background.png");
   background-size: cover;
   background-position: center;
 }

@@ -1,7 +1,7 @@
 /* used to set background image*/
 
 body {
-  background-image: url("../common/Images/background.png");
+  background-image: url("../common/Images/Background.png");
   display: flex;
   flex-direction: column;
 }
