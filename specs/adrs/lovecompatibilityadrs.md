@@ -1,6 +1,7 @@
 # Store all zodiac combination responses locally
 
 ## Decision Drivers
+
 - How are we going to fetch the compatibility results for the user?
 
 ## Context and Problem Statement
@@ -25,44 +26,44 @@ When designing a feature that requires users to input their birthdate or zodiac 
 
 ## Decision Drivers
 
-* User experience: The chosen method should provide a visually appealing, engaging, and intuitive experience for the user.
-* Ease of use: The method should be simple and straightforward, allowing users to select their birthdate or zodiac sign without confusion.
-* Flexibility: Users should have the ability to easily change their selection if needed.
-
+- User experience: The chosen method should provide a visually appealing, engaging, and intuitive experience for the user.
+- Ease of use: The method should be simple and straightforward, allowing users to select their birthdate or zodiac sign without confusion.
+- Flexibility: Users should have the ability to easily change their selection if needed.
 
 ## Considered Options
 
 Scrolling to select:
 
-* Pros:
+- Pros:
+
   - easy to implement, hover -> rotate zodiac wheel based on wheel direction
   - allows for very consistent scrolling speeds
 
-* Cons:
+- Cons:
   - Might require additional user guidance to ensure intuitive navigation.
   - mobile users might not be able to use the app
 
 Click on wheel to select:
 
-* Pros:
+- Pros:
   - Relatively easy and intuitive for users to interact with. (clicking highlights a certain part of the wheel)
-* Cons:
+- Cons:
   - Less visually striking compared to scrolling.
   - Implementation may pose some challenges (how are we going to make certain sections of the wheel glow when they are selected?)
 
 Date input box:
 
-* Pros:
+- Pros:
   - Easiest to implement.
   - Intuitive for users who are familiar with date input fields.
-* Cons:
+- Cons:
   - The default design of the form might clash with the design of the rest of the site
   - Requires users to choose a specific date, which may be unnecessary for zodiac sign selection (date ranges work too)
   - Relatively difficult for users to select and change options on mobile (too small)
 
 ## Decision Outcome
 
-Chosen option: Select zodiac signs by hovering and scrolling.  Although some additional user guidance may be necessary as it is not quite intuitive, such as through a FAQ or tutorial page, it is the easiest. We should first consider implementing this selection feature first, then add others if we have time. Basically, by choosing this option early in the project, we ensure that there is at least 1 input method that works well with the theme of our site.
+Chosen option: Select zodiac signs by hovering and scrolling. Although some additional user guidance may be necessary as it is not quite intuitive, such as through a FAQ or tutorial page, it is the easiest. We should first consider implementing this selection feature first, then add others if we have time. Basically, by choosing this option early in the project, we ensure that there is at least 1 input method that works well with the theme of our site.
 
 # Question: How to indicate to the user that they have chosen a particular sign?
 
@@ -73,34 +74,32 @@ With a way to select the zodiac signs, it is now crucial to provide them with a 
 ## Decision Drivers
 
 Need a way to indicate which zodiac is being selected
-  
+
 ## Considered Options
 
 Highlighting the selected part of the wheel:
 
-* Pros:
+- Pros:
   - Offers a visually striking indication.
   - Provides intuitive and obvious feedback to the user.
-* Cons:
+- Cons:
   - Complex to implement, requiring precise highlighting techniques.
   - Potential technical challenges in achieving the desired visual effect.
 
-
 Arrows next to a segment of the wheel:
 
-* Pros:
+- Pros:
   - Easy to implement.
   - Intuitive as arrows naturally point to the chosen option.
-* Cons:
+- Cons:
   - Might be perceived as less visually appealing compared to other options.
-
 
 Pop-up image:
 
-* Pros:
+- Pros:
   - We can use it to fill the blank space in the middle of the wheel
   - Relatively straightforward to implement (dedicate a section for an image of the zodiac sign to appear).
-* Cons:
+- Cons:
   - We can no longer display any other information in the center of each wheel (like birthday information)
   - What image would we choose to fit the theme?
 
@@ -114,30 +113,28 @@ chosen option: Use arrows next to a segment of the wheel to indicate the user's 
 
 After users have submitted their zodiac signs or birthdates, it is important to provide them with relevant feedback regarding their compatibility. The feedback should align with traditional fortune-telling practices and focus on love relationships, which are typically of great interest to users. Additionally, considering the large number of possible zodiac sign combinations, the chosen method should be relatively straightforward to implement while still being engaging for the user.
 
-
 ## Decision Drivers
 
 - What kind of compatibility results should we give?
 - How should we display it?
-  
+
 ## Considered Options
 
 Simple love-related paragraph feedback generated by ChatGPT:
 
-* Pros:
+- Pros:
   - Offers interesting and tailored feedback specifically related to love relationships.
   - Aligns with the purpose and theme of the app.
-* Cons:
+- Cons:
   - Implementation may require effort due to generating appropriate and engaging paragraphs.
   - Could potentially become repetitive or less engaging over time.
 
-
 Random compatibility percentage:
 
-* Pros:
+- Pros:
   - Easy to implement and requires minimal coding effort.
   - Directly conveys compatibility in a straightforward manner.
-* Cons:
+- Cons:
   - Might be perceived as less interesting or engaging compared to other options.
   - Lacks the personalized and narrative aspect of fortune-telling feedback.
 
