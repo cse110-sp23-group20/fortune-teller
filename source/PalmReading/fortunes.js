@@ -1,3 +1,7 @@
+/**
+ * Possible outcomes for the head line in a palm reading.
+ * @type {string[]}
+ */
 const heads = [
   "Long and straight head line: You possess a logical and analytical mind. You excel in problem-solving and have a practical approach to life.",
   "Short head line: You tend to be impulsive and prefer to make decisions based on intuition rather than careful analysis. You may have a quick wit and enjoy spontaneous experiences.",
@@ -11,6 +15,10 @@ const heads = [
   "Faint or unclear head line: This may indicate a lack of clarity in your thoughts and difficulty in making decisions. You may benefit from cultivating a more focused and organized mindset.",
 ];
 
+/**
+ * Possible outcomes for the heart line in a palm reading.
+ * @type {string[]}
+ */
 const hearts = [
   "Long and curved heart line: You are emotionally expressive and have a deep capacity for love and affection. You value meaningful connections and are often guided by your heart in matters of love and relationships.",
   "Short and straight heart line: You have a practical approach to love and relationships. You may prioritize stability and security over intense emotional experiences.",
@@ -24,6 +32,10 @@ const hearts = [
   "Faint or unclear heart line: This may suggest challenges in understanding or expressing emotions. You may need to work on developing greater emotional awareness and communication skills in relationships.",
 ];
 
+/**
+ * Possible outcomes for the life line in a palm reading.
+ * @type {string[]}
+ */
 const lifes = [
   "Long and deep life line: You possess a strong vitality and have the potential for a long and healthy life. You have a resilient nature and the ability to bounce back from challenges.",
   "Short life line: This may indicate a tendency to live life to the fullest and take risks. You may have a sense of urgency and a desire to make the most of every moment.",
@@ -37,6 +49,10 @@ const lifes = [
   "Overlapping life lines: Overlapping life lines can indicate complex relationships or intertwining paths with significant others. It may signify strong connections or dependencies on others throughout your life.",
 ];
 
+/**
+ * Possible outcomes for the fate line in a palm reading.
+ * @type {string[]}
+ */
 const fates = [
   "Straight and well-defined fate line: You have a clear sense of purpose and direction in life. You are likely to achieve success and recognition in your chosen career or path.",
   "Faint or unclear fate line: This may suggest a lack of clarity or uncertainty regarding your life's purpose or career path. It is important to explore different possibilities and seek clarity to align with your true calling.",
@@ -50,6 +66,10 @@ const fates = [
   "Rising fate line: Your career or life path may experience gradual progress and growth over time. You have the potential to achieve greater success and reach new heights through consistent effort and perseverance.",
 ];
 
+/**
+ * Possible outcomes for the sun line in a palm reading.
+ * @type {string[]}
+ */
 const suns = [
   "Strong and well-defined sun line: You possess natural leadership qualities and have the potential for success and recognition in your chosen field. Your charisma and confidence can attract opportunities and positive attention.",
   "Faint or broken sun line: This may suggest a period of uncertainty or challenges in achieving your ambitions. It could indicate setbacks or obstacles that may require perseverance and adaptability to overcome.",
