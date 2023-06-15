@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>utils.js - Documentation</title>
+    <title>palm-reading/script.js - Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -29,7 +29,7 @@
 
 <div id="main">
     
-    <h1 class="page-title">utils.js</h1>
+    <h1 class="page-title">palm-reading/script.js</h1>
     
 
     
@@ -39,62 +39,53 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>/**
- * @file Utility functions. Conveniently, these functions are good candidates
- * for unit tests.
- */
+            <pre class="prettyprint source linenums"><code>import { heads, hearts, lifes, fates, suns } from "./fortunes.js";
 
 /**
- * Randomly selects an item in the given list.
- *
- * @template T
- * @param {ArrayLike&lt;T>} options - List of options to choose from.
- * @returns {T} The randomly chosen option
+ * Generates random fortunes. Called when the app finishes analyzing the palm.
  */
-export function pick(options) {
-  return options[Math.floor(Math.random() * options.length)];
+export function handleFortune() {
+  let headIndex = Math.floor(Math.random() * heads.length);
+  let heartIndex = Math.floor(Math.random() * hearts.length);
+  let lifeIndex = Math.floor(Math.random() * lifes.length);
+  let fateIndex = Math.floor(Math.random() * fates.length);
+  let sunIndex = Math.floor(Math.random() * suns.length);
+
+  let headResult = heads[headIndex];
+  let heartResult = hearts[heartIndex];
+  let lifeResult = lifes[lifeIndex];
+  let fateResult = fates[fateIndex];
+  let sunResult = suns[sunIndex];
+
+  document.getElementById("head-tab").querySelector("p").innerText = headResult;
+  document.getElementById("heart-tab").querySelector("p").innerText =
+    heartResult;
+  document.getElementById("life-tab").querySelector("p").innerText = lifeResult;
+  document.getElementById("fate-tab").querySelector("p").innerText = fateResult;
+  document.getElementById("sun-tab").querySelector("p").innerText = sunResult;
 }
 
 /**
- * Calculates the modulus. JavaScript's `%` operator is the remainder operator,
- * which works differently for negative numbers. For example, `-10 % 360` in
- * JavaScript, but `-10 mod 360` is 350.
- *
- * @param {number} a - Dividend
- * @param {number} b - Div-sor
- * @returns {number} The modulus of `a` and `b`
+ * The tabs' `&lt;input type=radio>` elements.
+ * @type {ArrayLike&lt;HTMLInputElement>}
  */
-export function mod(a, b) {
-  return ((a % b) + b) % b;
-}
-
+const tabLabels = document.querySelectorAll('input[name="tab"]');
 /**
- * Stores the ID of the last `setTimeout` call by `wait`, so it can be cancelled
- * by `clearTimeout`.
- *
- * @example
- * wait(1000);
- * clearTimeout(timeoutId);
- *
- * @type {number}
+ * Each tabs' tab content.
+ * @type {ArrayLike&lt;HTMLDivElement>}
  */
-export let timeoutId = 0;
+const tabContents = document.querySelectorAll(".tab-content");
 
-/**
- * A promise-ified version of `setTimeout`: returns a new `Promise` that
- * resolves after `delay` milliseconds.
- *
- * If the timeout is cancelled, the `Promise` will never resolve.
- *
- * @param {number} delay - The time to wait for in milliseconds.
- * @returns {Promise&lt;void>} A new `Promise` that resolves in `delay`
- * milliseconds.
- */
-export function wait(delay) {
-  return new Promise((resolve) => {
-    timeoutId = setTimeout(resolve, delay);
+tabLabels.forEach(function (label) {
+  label.addEventListener("change", function () {
+    tabContents.forEach(function (content) {
+      content.hidden = true;
+    });
+
+    const selectedContent = document.getElementById(`${this.value}-tab`);
+    selectedContent.hidden = false;
   });
-}
+});
 </code></pre>
         </article>
     </section>
