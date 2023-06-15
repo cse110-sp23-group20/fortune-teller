@@ -14,15 +14,6 @@
     <link rel="stylesheet" href="style.css" />
     <script src="../common/index.js" type="module"></script>
     <script src="script.js" type="module"></script>
-    <a id="trigger_me" onclick="speech_text()"></a>
-    <script>
-      function speech_text() {
-          var msg = new SpeechSynthesisUtterance();
-          /* ... */
-      }
-      /* and now you must trigger the event for #trigger_me */
-      $('#trigger_me').trigger('click');
-  </script>
   </head>
   <body>
     <div class="background" id="background"></div>
