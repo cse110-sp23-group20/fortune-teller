@@ -1,4 +1,4 @@
-# Meeting Minutes: 06/14, 4 pm - 5 pm
+# Meeting Minutes: 06/14, 4:10 pm - 4:40 pm
 
 #### Team 20: 2020 Visionaries
 
@@ -17,7 +17,6 @@
 ### Agenda
 
 - Go over what every group did during the second sprint and present what they did and what they worked on
-
 
 #### Unresolved business
 
