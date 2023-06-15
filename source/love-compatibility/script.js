@@ -445,8 +445,8 @@ async function displayResults() {
 
   const pairingHeader = popup.querySelector("#pairing");
   pairingHeader.textContent = left + " and " + right;
-  const pairing_text = popup.querySelector("#pairing_text");
-  pairing_text.innerHTML = textGenerator(left, right);
+  const pairing-text = popup.querySelector("#pairing-text");
+  pairing-text.innerHTML = textGenerator(left, right);
 
   /**
    * Displays the popup with the pairing information after a delay.
