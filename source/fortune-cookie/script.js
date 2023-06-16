@@ -13,6 +13,18 @@ const background = document.getElementById("background");
 const resetButton = document.getElementById("reset-button");
 const cancelButton = document.getElementById("cancel-animation-btn");
 
+let hasEnabledVoice = false;
+
+document.addEventListener('click', () => {
+  if (hasEnabledVoice) {
+    return;
+  }
+  const lecture = new SpeechSynthesisUtterance('hello');
+  lecture.volume = 0;
+  speechSynthesis.speak(lecture);
+  hasEnabledVoice = true;
+});
+
 /**
  * Stops the current animation and resets all animatable parts of the app to the
  * specified view (`state`).
