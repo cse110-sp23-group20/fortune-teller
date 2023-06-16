@@ -56,11 +56,11 @@ const cancelButton = document.getElementById("cancel-animation-btn");
 
 let hasEnabledVoice = false;
 
-document.addEventListener('click', () => {
+document.addEventListener("click", () => {
   if (hasEnabledVoice) {
     return;
   }
-  const lecture = new SpeechSynthesisUtterance('hello');
+  const lecture = new SpeechSynthesisUtterance("hello");
   lecture.volume = 0;
   speechSynthesis.speak(lecture);
   hasEnabledVoice = true;
